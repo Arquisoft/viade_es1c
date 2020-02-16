@@ -40,8 +40,12 @@ together with a mapping table showing the relationships between channels and inp
 
 ViaDe is a web based application which relies on the foundation of decentralization. For this to be reached, all data is stored in the users' SOLID PODs. This will be integrated through the use of React JS, which will be the library of JavaScript used to build all the user interfaces of the application. An important key in the interaction and manageability of the web when communicating with the users will be the maps, which will be offered making use of OpenStreetMap API. Users will send their tracks through the application using SOLID POD URLs, meaning it must be connected to the internet.
 
-:!figure-caption:
-image::TechnicalContextDiagram.png[title="Figure: Technical context diagram"]
+****
+
+.Technical context diagram
+image:TechnicalContextDiagram.png[]
+
+****
 
 **<optionally: Explanation of technical interfaces>**
 
