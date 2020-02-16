@@ -7,7 +7,7 @@ To achive this main objetive we are using SOLID's PODS, so our web has to be cap
 
 Viade will ask user own pod to retrieve user's tracks and never will save that tracks on the other users' POD.
 
-Viade will have two different interfaces: 
+Viade will have some different interfaces: 
 ****
 . Login page: where user must enter his SOLID credentials. +
 . Main page: shows the Viade's main page.
