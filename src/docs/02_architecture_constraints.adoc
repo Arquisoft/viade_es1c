@@ -68,7 +68,7 @@ Restrictions that have to do with the conventions that the team will agree, for 
 |===
 
 
-
+[role="arc42help"]
 ****
 .Contents
 Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
