@@ -2,6 +2,72 @@
 == Architecture Constraints
 
 
+We will divide the restrictions into:
+
+. Technical constraints
+. Organizational and political constraints
+. Conventions constraints
+
+
+
+=== Technical constraints
+
+Constraints that have to do with design and implementation decisions
+
+|===
+|Constraint|Explanation
+
+|Decentralized system, where data storage will be separated from the application
+|For this we will use the Solid pods. Where customer data will be saved
+|Data persistence. Where to save customer data: routes, friends, images, videos, route information
+|For this we will also use the Solid pods
+|Using the React framework
+|We will use the React JavaScript library for the development of user interfaces. This development environment merges, links the structure of the interface with the logic.
+|Interoperability between different route management systems
+|The application must be compatible with other route management systems.
+|Use of third party applications to display maps.
+|Investigate how to show customer routes on a map
+
+*Topic to discuss* 
+
+Google maps use credit card, study the option of using OpenStreetMaps
+|Parse routes
+|The formats must be supported by WikiLoc, for example, XML format.
+|Login
+|The login must be redirected to Solid in order to obtain the customers' pods
+| *ADD MORE IF NECESSARY*
+| *ADD MORE IF NECESSARY*
+|===
+
+=== Organizational and political constraints
+Constraints that have to do with team organization.
+
+|===
+|Constraint|Explanation
+
+|Work distribution
+|Labor division in frontend and backend
+| *ADD MORE IF NECESSARY*
+| *ADD MORE IF NECESSARY*
+|===
+
+=== Conventions constraints
+Restrictions that have to do with the conventions that the team will agree, for example, programming or versioning guidelines, documentation or naming conventions
+
+|===
+|Constraint|Explanation
+
+|Documentation
+|The documentation will be done using Ascii-Doctor, Ruby, Node and following the Arc42 structure
+|Nomenclature
+|All class names, methods, etc., must appear in English
+|Version control
+|Version control will be performed using GitHub
+| *ADD MORE IF NECESSARY*
+| *ADD MORE IF NECESSARY*
+|===
+
+
 [role="arc42help"]
 ****
 .Contents
