@@ -4,6 +4,8 @@
 
 [role="arc42help"]
 ****
+To develop the project we are going to use React, based on SOLID specifications. 
+
 .Decisions
 * TO DO
 
@@ -18,3 +20,5 @@
 * Protecting users privacy and security throughtout the development process.
 * Non-complex interfaces. 
 * Taking care of efficiency and concurrency: availability for many users at the same time. 
+
+****
