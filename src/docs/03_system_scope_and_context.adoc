@@ -15,11 +15,11 @@ Viade will have some different interfaces:
 
 === Business Context
 ****
-.Black box diagram
+.ViaDe - Black box diagram
 image:Diagrama_caja_negra.PNG[]
 ****
 ****
-.Black box diagram's legend
+.ViaDe - Black box diagram's keylegend
 image:Leyenda_diagrama_caja_negra.PNG[]
 ****
 |===
