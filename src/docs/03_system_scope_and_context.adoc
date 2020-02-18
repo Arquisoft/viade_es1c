@@ -22,6 +22,7 @@ image:Diagrama_caja_negra.PNG[]
 .ViaDe - Black box diagram's keylegend
 image:Leyenda_diagrama_caja_negra.PNG[]
 ****
+[options="header",cols="1,1"]
 |===
 |Action|Description
 |Log in|User has to log in using his *SOLID* credentials
@@ -64,4 +65,3 @@ image:TechnicalContextDiagram.png[]
 |SOLID (Social Linked Data)|New web ecosystem
 |===
 
-****
