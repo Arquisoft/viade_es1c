@@ -1,7 +1,6 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-****
 To develop the project we are going to use React, based on SOLID specifications. 
 
 .Decisions
@@ -19,4 +18,3 @@ To develop the project we are going to use React, based on SOLID specifications.
 * Non-complex interfaces. 
 * Taking care of efficiency and concurrency: availability for many users at the same time. 
 
-****
