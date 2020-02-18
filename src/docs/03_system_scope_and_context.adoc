@@ -15,13 +15,21 @@ Viade will have some different interfaces:
 
 === Business Context
 ****
-.Black box diagram
+.ViaDe - Black box diagram
 image:Diagrama_caja_negra.PNG[]
 ****
 ****
-.Black box diagram's legend
+.ViaDe - Black box diagram's keylegend
 image:Leyenda_diagrama_caja_negra.PNG[]
 ****
+|===
+|Action|Description
+|Log in|User has to log in using his *SOLID* credentials
+|Share his tracks|User can upload his new tracks, don't saved in his SOLID POD
+|Visualize tracks|User can watch his track displayed on a map
+|Save new tracks|ViaDe application will *save* user's tracks that he has saved on his *SOLID POD*
+|Load tracks|ViaDe application will *get* user's tracks that he has saved on his *SOLID POD*
+|===
 === Technical Context
 
 [role="arc42help"]
@@ -56,3 +64,4 @@ image:TechnicalContextDiagram.png[]
 |SOLID (Social Linked Data)|New web ecosystem
 |===
 
+****
