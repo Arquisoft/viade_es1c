@@ -64,3 +64,4 @@ image:TechnicalContextDiagram.png[]
 |SOLID (Social Linked Data)|New web ecosystem
 |===
 
+****
