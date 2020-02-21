@@ -29,4 +29,5 @@ Potentially more columns in case you need translations.
 | React JS     | Is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies [Official Website: https://reactjs.org]
 | JavaScript     | JavaScript often abbreviated as JS. Is a high-level interpreted programming language, that conforms to the ECMAScript specification
 |Solid           | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles [Official Website: https://solid.mit.edu/]
+|OpenStreetMap API  | OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. OpenStreetMap has an editing API for fetching and saving raw geodata from/to the OpenStreetMap database [Official Website: https://www.openstreetmap.org]
 |===
