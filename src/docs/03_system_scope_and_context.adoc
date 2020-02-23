@@ -39,8 +39,10 @@ ViaDe is a web based application which relies on the foundation of decentralizat
 
 ****
 
+****
 .ViaDe - Technical context diagram
 image:TechnicalContextDiagram.png[]
+****
 
 [options="header",cols="1,1"]
 |===
