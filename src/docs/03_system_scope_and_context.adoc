@@ -33,27 +33,15 @@ image:Leyenda_diagrama_caja_negra.PNG[]
 |===
 === Technical Context
 
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-
 ****
 
 ViaDe is a web based application which relies on the foundation of decentralization. For this to be reached, all data is stored in the users' SOLID PODs. This will be integrated through the use of React JS, which will be the library of JavaScript used to build all the user interfaces of the application. An important key in the interaction and manageability of the web when communicating with the users will be the maps, which will be offered making use of OpenStreetMap API. Users will send their tracks through the application using SOLID POD URLs, meaning it must be connected to the internet.
 
 ****
 
-.Technical context diagram
+****
+.ViaDe - Technical context diagram
 image:TechnicalContextDiagram.png[]
-
 ****
 
 [options="header",cols="1,1"]
@@ -64,4 +52,3 @@ image:TechnicalContextDiagram.png[]
 |SOLID POD (1, 2)|Individual storage unit for one user
 |SOLID (Social Linked Data)|New web ecosystem
 |===
-
