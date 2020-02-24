@@ -4,30 +4,35 @@
 
 
 [role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
+[role="arc42help"]
+****	
+.Contents	
+The most important domain and technical terms that your stakeholders use when discussing the system.	
 
 You can also see the glossary as source for translations if you work in multi-language teams.
 
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
+.Motivation	
+You should clearly define your terms, so that all stakeholders	
+* have an identical understanding of these terms	
 * do not use synonyms and homonyms
 
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
+.Form	
+A table with columns <Term> and <Definition>.	
+Potentially more columns in case you need translations.	
 ****
 
 [options="header"]
 |===
-| Term         | Definition
-| React JS     | Is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies [Official Website: https://reactjs.org]
-| JavaScript     | JavaScript often abbreviated as JS. Is a high-level interpreted programming language, that conforms to the ECMAScript specification
-|Solid           | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles [Official Website: https://solid.mit.edu/]
-|OpenStreetMap API  | OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. OpenStreetMap has an editing API for fetching and saving raw geodata from/to the OpenStreetMap database [Official Website: https://www.openstreetmap.org]
+^.^| Term         ^.^| Definition
+^.^| Asciidoctor ^.^| Is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format supported by a DocBook tool-chain, i.e. PDF, TeX, Unix manpages, e-books, slide presentations, etc.
+[Official Website: https://asciidoctor.org/]
+^.^| Arc 42        ^.^| Template divided in 12 sections for architecture communication and documentation [Official Website: https://arc42.org/]
+^.^| JavaScript   ^.^| JavaScript often abbreviated as JS. Is a high-level interpreted programming language, that conforms to the ECMAScript specification
+^.^| OpenStreetMap API  ^.^| OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. OpenStreetMap has an editing API for fetching and saving raw geodata from/to the OpenStreetMap database [Official Website: https://www.openstreetmap.org]
+^.^| React JS     ^.^| Is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies [Official Website: https://reactjs.org]
+^.^| RDF           ^.^| Resource Description Framework is a specification that defines how metadata, or descriptive information, should be formatted. This means the data can be transmitted in various syntaxes like JSON-LD (JSON with a "context")
+^.^| Solid         ^.^| Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles [Official Website: https://solid.mit.edu/]
+^.^| Solid POD ^.^| Derived from "Personal Online Data", it's user's personal storage space, user decides which things apps and people can see. [Official Website, where you can get a POD: https://solid.inrupt.com/get-a-solid-pod]
+^.^| WebStorm ^.^| Integrated Development Environment created by JetBrains used for JavaScript development.
+^.^| Wikiloc ^.^| Wikiloc is a mashup where geo-referenced outdoor routes and points of interest from around the world can be stored and shared. [Official Website:  https://es.wikiloc.com/]
 |===

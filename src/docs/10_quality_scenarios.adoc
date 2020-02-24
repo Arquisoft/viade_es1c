@@ -19,6 +19,10 @@ concrete and measurable.
 
 === Quality Tree
 
+****
+image:doc10_qualityTree.png[]
+****
+
 [role="arc42help"]
 ****
 .Content
@@ -37,6 +41,29 @@ In any case the tree should include links to the scenarios of the following sect
 ****
 
 === Quality Scenarios
+
+The following quality scenarios are studied in a global way, since as it has not yet entered into details of implementation can not be made more specific yet.
+
+
+|===
+^.^|Quality ^.^|Scenario
+
+^.^|Privacy ^.^|Use a Solid PODs and Solid specifications
+.2+^.^|Security ^.^|Access control, 
+the application must have a strong access control to avoid bad practices ^.^| Data security with Solid PODs
+^.^| Usability ^.^| The application must be easy to use, intuitive for inexperienced users
+^.^|Efficiency ^.^| The application must respond in short times to make it more dynamic.
+.2+^.^|Robustness ^.^| Robustness in terms of the number of users that will operate on it ^.^| Robustness in terms of persistence
+^.^|Accesibility ^.^| The application must be accessible to all people
+.2+^.^|Simplicity ^.^|Application with a simple interface ^.^|
+Easy to use application for the user without prior knowledge
+^.^|Maintainability ^.^|Maintainable and upgradeable, making use of good designs
+^.^|Availability ^.^|The application must be accessible at any time
+^.^|Interoperability ^.^|Interoperability between different route management systems
+^.^|Testability ^.^| Exhaustive tests that verify the perfect operation of the application before being launched
+|===
+
+
 
 [role="arc42help"]
 ****
