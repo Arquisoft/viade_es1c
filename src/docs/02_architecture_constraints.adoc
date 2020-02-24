@@ -50,7 +50,7 @@ Constraints that have to do with team organization.
 ^.^|Work distribution
 ^.^|Labor division in frontend and backend
 ^.^|Team
-^.^|The team will have between 5 and 8 people
+^.^|It will work with a team of 6 people
 ^.^| Language
 ^.^| The documentation must be in English
 ^.^| Free
@@ -71,8 +71,6 @@ Restrictions that have to do with the conventions that the team will agree, for 
 ^.^|All class names, methods, etc., must appear in English
 ^.^|Version control
 ^.^|Version control will be performed using GitHub
-^.^| *ADD MORE IF NECESSARY*
-^.^| *ADD MORE IF NECESSARY*
 |===
 
 
