@@ -1,9 +1,9 @@
 [[section-building-block-view]]
 
 
-== 5. Building Block View
+== Building Block View
 
-=== 5.1 Whitebox Overall System
+=== Whitebox Overall System
 
 _<Check the diagram shown in the point 3 of this documentation.>_
 
