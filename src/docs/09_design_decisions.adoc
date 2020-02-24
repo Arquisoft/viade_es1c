@@ -11,7 +11,10 @@ The design decisions made so far are:
 We base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
 
 .Framework
-React web framework. It is a JavaScript library used to build user interfaces. Therefore the language used is javascript.
+React web framework: JavaScript library used to build user interfaces. Therefore the language used is JavaScript.
+
+.Development Environment
+Visual Studio Code and WebStorm.
 
 .Version Control
 We are using GIT as a distributed version-control.
@@ -23,6 +26,6 @@ We are developing the documentation in arc42.
 The data is saved in PODs (personal online data stores) following the Solid specification.
 
 .Pattern
-TO DO: It has not been decided yet.
+TO DO: it has not been decided yet.
 
 ****
