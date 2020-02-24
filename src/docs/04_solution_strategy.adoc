@@ -1,9 +1,8 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+To develop the project we are going to use React, based on SOLID specifications. 
 
-[role="arc42help"]
-****
 .Decisions
 * TO DO
 
@@ -16,5 +15,9 @@
 
 .How to achive key quality goals
 * Protecting users privacy and security throughtout the development process.
-* Non-complex interfaces. 
+* Non-complex interfaces following a style guide such as Solid style guide. 
 * Taking care of efficiency and concurrency: availability for many users at the same time. 
+* Testing the application.
+
+.Work distribution
+Each component of the team will research about all the technologies and technics. Each week we will distribute the work to be done for next week.

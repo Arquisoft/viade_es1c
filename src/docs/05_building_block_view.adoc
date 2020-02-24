@@ -3,6 +3,48 @@
 
 == Building Block View
 
+=== Whitebox Overall System
+
+_<Check the diagram shown in the point 3 of this documentation.>_
+
+Motivation::
+
+Today's date, the project basically consists on a black box. A user connects to the application (we still don't know anything more about the implementation) and then he can proceed with all the operations available, which at the moment are:
+
+ * Log in in his account
+ * Visualize his previous tracks
+ * Share his new tracks
+
+
+Contained Building Blocks::
+Until now, the diagram is basically a black box. No information about the implementation is considered yet.
+
+Important Interfaces::
+We still don't have any interfaces yet, only general operations such as the ones described above.
+
+Level 1 black boxes explanation::
+As mentioned before, only one big black box is considered yet.
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| _general box_ | _Provide the user all the features mentioneed above_
+|===
+
+
+
+
+
+****
+The documentation ends here. Below this paragraph is the arc42 template that will be used until the end of the development. We haven't removed it for comfort reasons.
+****
+
+
+
+
+
+
+
 [role="arc42help"]
 ****
 .Content
