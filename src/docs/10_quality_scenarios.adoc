@@ -53,14 +53,14 @@ The following quality scenarios are studied in a global way, since as it has not
 the application must have a strong access control to avoid bad practices ^.^| Data security with Solid PODs
 ^.^| Usability ^.^| The application must be easy to use, intuitive for inexperienced users
 ^.^|Efficiency ^.^| The application must respond in short times to make it more dynamic.
+.2+^.^|Robustness ^.^| Robustness in terms of the number of users that will operate on it ^.^| Robustness in terms of persistence
 ^.^|Accesibility ^.^| The application must be accessible to all people
 .2+^.^|Simplicity ^.^|Application with a simple interface ^.^|
 Easy to use application for the user without prior knowledge
-^.^|Testability ^.^| Comprehensive tests that verify the perfect operation of the application before being launched
-.2+^.^|Robustness ^.^| Robustness in terms of the number of users that will operate on it ^.^| Robustness in terms of persistence
 ^.^|Maintainability ^.^|Maintainable and upgradeable, making use of good designs
 ^.^|Availability ^.^|The application must be accessible at any time
 ^.^|Interoperability ^.^|Interoperability between different route management systems
+^.^|Testability ^.^| Comprehensive tests that verify the perfect operation of the application before being launched
 |===
 
 
