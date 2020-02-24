@@ -40,6 +40,7 @@ In any case the tree should include links to the scenarios of the following sect
 
 The following quality scenarios are studied in a global way, since as it has not yet entered into details of implementation can not be made more specific yet.
 
+
 |===
 ^|Quality ^|Scenario
 
@@ -57,6 +58,8 @@ Easy to use application for the user without prior knowledge
 ^|Availability ^|The application must be accessible at any time
 ^|Interoperability ^|Interoperability between different route management systems
 |===
+
+
 
 [role="arc42help"]
 ****
