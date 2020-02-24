@@ -52,7 +52,7 @@ the application must have a strong access control to avoid bad practices ^| Data
 .2+^|Simplicity ^|Application with a simple interface ^|
 Easy to use application for the user without prior knowledge
 ^|Testability ^| Comprehensive tests that verify the perfect operation of the application before being launched
-^|Robustness ^| Robustness in terms of the number of users that will operate on it
+.2+^|Robustness ^| Robustness in terms of the number of users that will operate on it ^| Robustness in terms of persistence
 ^|Maintainability ^|Maintainable and upgradeable, making use of good designs
 ^|Availability ^|The application must be accessible at any time
 ^|Interoperability ^|Interoperability between different route management systems
