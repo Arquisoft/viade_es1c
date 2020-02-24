@@ -46,7 +46,7 @@ The goal of this project is to create Viade. Viade is a decentralized route mana
 
 |*Role/Name* |*Contact* |*Expectations*
 
-|Development Team |Team who creates the applicatio |Creation of a well-functioning app
+|Development Team |Team who creates the application |Creation of a well-functioning app
 
 |Users |People who is going to use the app  |To record, search and share their routes 
 
