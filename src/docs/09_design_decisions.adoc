@@ -3,19 +3,26 @@
 
 
 ****
+
+The list of decisions will increase throughout the development of the project. This section is highly related to section 4 (solution strategy)
+The design decisions made so far are:
+
 .Design Architecture
-We base our implementation on the MVC architecture.
+We base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
 
 .Framework
-React framework
+React web framework. It is a JavaScript library used to build user interfaces. Therefore the language used is javascript.
 
 .Version Control
-We are using GIT as a distributed version-control
+We are using GIT as a distributed version-control.
 
 .Documentation 
-We are developing the documentation in arc42
+We are developing the documentation in arc42.
 
 .Data Storage
-The data is saved in PODs
+The data is saved in PODs (personal online data stores) following the Solid specification.
+
+.Pattern
+TO DO: It has not been decided yet.
 
 ****
