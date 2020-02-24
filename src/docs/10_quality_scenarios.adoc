@@ -60,7 +60,7 @@ Easy to use application for the user without prior knowledge
 ^.^|Maintainability ^.^|Maintainable and upgradeable, making use of good designs
 ^.^|Availability ^.^|The application must be accessible at any time
 ^.^|Interoperability ^.^|Interoperability between different route management systems
-^.^|Testability ^.^| Comprehensive tests that verify the perfect operation of the application before being launched
+^.^|Testability ^.^| Exhaustive tests that verify the perfect operation of the application before being launched
 |===
 
 
