@@ -15,34 +15,40 @@ Viade will have some different interfaces:
 
 === Business Context
 ****
-.Black box diagram
+.ViaDe - Black box diagram
 image:Diagrama_caja_negra.PNG[]
 ****
 ****
-.Black box diagram's legend
+.ViaDe - Black box diagram's keylegend
 image:Leyenda_diagrama_caja_negra.PNG[]
 ****
+[options="header",cols="1,1"]
+|===
+|Action|Description
+|Log in|User has to log in using his *SOLID* credentials
+|Share his tracks|User can upload his new tracks, don't saved in his SOLID POD
+|Visualize tracks|User can watch his track displayed on a map
+|Save new tracks|ViaDe application will *save* user's tracks that he has saved on his *SOLID POD*
+|Load tracks|ViaDe application will *get* user's tracks that he has saved on his *SOLID POD*
+|===
 === Technical Context
-
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
 
 ****
 
 ViaDe is a web based application which relies on the foundation of decentralization. For this to be reached, all data is stored in the users' SOLID PODs. This will be integrated through the use of React JS, which will be the library of JavaScript used to build all the user interfaces of the application. An important key in the interaction and manageability of the web when communicating with the users will be the maps, which will be offered making use of OpenStreetMap API. Users will send their tracks through the application using SOLID POD URLs, meaning it must be connected to the internet.
 
-:!figure-caption:
-image::TechnicalContextDiagram.png[title="Figure: Technical context diagram"]
+****
 
-**<optionally: Explanation of technical interfaces>**
+****
+.ViaDe - Technical context diagram
+image:TechnicalContextDiagram.png[]
+****
 
-**<Mapping Input/Output to Channels>**
+[options="header",cols="1,1"]
+|===
+|Object|Description
+|User (1, 2)|Represents the users of the application
+|ViaDe|Decentralized and web based application
+|SOLID POD (1, 2)|Individual storage unit for one user
+|SOLID (Social Linked Data)|New web ecosystem
+|===

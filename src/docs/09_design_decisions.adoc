@@ -1,26 +1,22 @@
 [[section-design-decisions]]
 == Design Decisions
 
-
-[role="arc42help"]
 ****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
 
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
+The list of decisions will increase throughout the development of the project. This section is highly related to section 4, which is about the solution strategy of the project. The design decisions made so far are:
 
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
+* *Design Architecture*: we base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
 
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
+* *Framework*: React web framework, JavaScript library used to build user interfaces. Therefore the language used is JavaScript.
 
-.Form
-Various options:
+* *Development Environment*: Visual Studio Code and WebStorm.
 
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
+* *Version Control*: we are using GIT as a distributed version-control.
+
+* *Documentation*: we are developing the documentation in arc42.
+
+* *Data Storage*: the data is saved in PODs (personal online data stores) following the Solid specification.
+
+* *Pattern*: TO DO: it has not been decided yet.
+
 ****
