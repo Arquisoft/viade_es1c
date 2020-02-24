@@ -19,6 +19,10 @@ concrete and measurable.
 
 === Quality Tree
 
+****
+image:doc10_qualityTree.png[]
+****
+
 [role="arc42help"]
 ****
 .Content
