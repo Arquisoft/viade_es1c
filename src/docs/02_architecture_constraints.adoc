@@ -15,7 +15,7 @@ We will divide the restrictions into:
 Constraints that have to do with design and implementation decisions
 
 |===
-^.^|Constraint^.^|Explanation
+^.^|Constraint ^.^|Explanation
 
 ^.^|Decentralized system, where data storage will be separated from the application
 ^.^|For this we will use the Solid PODs. Where customer data will be saved
@@ -45,7 +45,7 @@ Google maps use credit card, study the option of using OpenStreetMaps
 Constraints that have to do with team organization.
 
 |===
-^.^|Constraint^.^|Explanation
+^.^|Constraint ^.^|Explanation
 
 ^.^|Work distribution
 ^.^|Labor division in frontend and backend
@@ -63,7 +63,7 @@ Constraints that have to do with team organization.
 Restrictions that have to do with the conventions that the team will agree, for example, programming or versioning guidelines, documentation or naming conventions
 
 |===
-^.^|Constraint^.^|Explanation
+^.^|Constraint ^.^|Explanation
 
 ^.^|Documentation
 ^.^|The documentation will be done using Ascii-Doctor, Ruby, Node and following the Arc42 structure
