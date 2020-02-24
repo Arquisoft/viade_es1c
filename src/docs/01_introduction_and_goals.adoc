@@ -1,14 +1,12 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
 ****
 The goal of this project is to create Viade. Viade is a decentralized route management system based on SOLID specifications and created using the React framework. 
 ****
 
 === Requirements Overview
 
-[role="arc42help"]
 ****
 * Decentralized route management. 
 * Users can store the routes on their own pods. 
@@ -25,7 +23,6 @@ The goal of this project is to create Viade. Viade is a decentralized route mana
 
 === Quality Goals
 
-[role="arc42help"]
 [cols="^,^3"]
 |===
 
@@ -44,7 +41,6 @@ The goal of this project is to create Viade. Viade is a decentralized route mana
 
 === Stakeholders
 
-[role="arc42help"]
 [cols="^,^2,^2"]
 |===
 

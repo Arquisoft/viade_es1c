@@ -4,6 +4,14 @@
 
 # VIADE ES1C
 
+## Contributors
+- Castaño Fonseca, Sandra
+- Fernández Rodríguez, Mario
+- Jove Lafuente, Alberto
+- Ornia Gómez, Miguel
+- Santos Fernández, Raquel
+- Satour El Hammouti, Nourdine
+
 This repository contains a skeleton of the VIADE project.
 
 This project is an assignment for the [Software Architecture course](https://arquisoft.github.io/) following [these requirements](https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/).

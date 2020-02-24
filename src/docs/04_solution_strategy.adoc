@@ -1,9 +1,8 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+To develop the project we are going to use React, based on SOLID specifications. 
 
-[role="arc42help"]
-****
 .Decisions
 * TO DO
 
