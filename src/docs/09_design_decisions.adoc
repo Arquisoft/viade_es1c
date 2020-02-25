@@ -5,18 +5,25 @@
 
 The list of decisions will increase throughout the development of the project. This section is highly related to section 4, which is about the solution strategy of the project. The design decisions made so far are:
 
-* *Design Architecture*: we base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
+[cols="^,^2,^2,^2"]
+|===
 
-* *Framework*: React web framework, JavaScript library used to build user interfaces. Therefore the language used is JavaScript.
+|*Decision* |*Details* |*Advantages* |*Disadvantages*
 
-* *Development Environment*: Visual Studio Code and WebStorm.
+| *Design Architecture*  |We base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. | |
 
-* *Version Control*: we are using GIT as a distributed version-control.
+| *Framework* | React web framework, JavaScript library used to build user interfaces. Therefore the language used is JavaScript. | |
 
-* *Documentation*: we are developing the documentation in arc42.
+| *Development Environment* |Visual Studio Code and WebStorm. | |
 
-* *Data Storage*: the data is saved in PODs (personal online data stores) following the Solid specification.
+| *Version Control* |We are using GIT as a distributed version-control. | |
 
-* *Pattern*: TO DO: it has not been decided yet.
+| *Documentation* |We are developing the documentation in arc42. | |
+
+| *Data Storage* |The data is saved in PODs (personal online data stores) following the Solid specification. | |
+
+| *Pattern* |TO DO: it has not been decided yet. | |
+
+|===
 
 ****
