@@ -39,7 +39,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |===
 
-* Descending order
+*Descending order
 
 
 === Stakeholders
