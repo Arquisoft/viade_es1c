@@ -53,6 +53,6 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Teachers |Teachers of the subject of ASW  |Supervise the project and make sure that the requirements are accomplish 
 
-|Inrup Team |Owners of the idea |Evaluate the result of the final application 
+|Inrupt Team |Owners of the idea |Evaluate the result of the final application 
 
 |===
