@@ -49,7 +49,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Development Team |Team who creates the application |Creation of a well-functioning app
 
-|Users |People who is going to use the app  |To record, search and share their routes 
+.2+|Users |Non-technical users (amateurs) |Basic use of the app |Technical users as hikers  |Use of professional hiking features 
 
 |Teachers |Teachers of the subject of ASW  |Supervise the project and make sure that the requirements are accomplish 
 
