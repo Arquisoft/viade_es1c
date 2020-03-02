@@ -55,4 +55,10 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Inrupt Team |Owners of the idea |Evaluate the result of the final application 
 
+|Solid |    |
+
+|Wikiloc |  |
+
+|OpenStreetMap |Free wiki world map |Allows visualization of maps
+
 |===
