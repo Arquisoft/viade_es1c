@@ -5,18 +5,25 @@
 
 The list of decisions will increase throughout the development of the project. This section is highly related to section 4, which is about the solution strategy of the project. The design decisions made so far are:
 
-* *Design Architecture*: we base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
+[cols="^2,^2,^2,^2,^2,^2"]
+|===
 
-* *Framework*: React web framework, JavaScript library used to build user interfaces. Therefore the language used is JavaScript.
+|*Date* |*Decision* |*Details* |*Advantages* |*Disadvantages* |*Participants*
 
-* *Development Environment*: Visual Studio Code and WebStorm.
+|11/02/2020 | *Design Architecture*  |We base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. |Improves usability  |Need to have an organized code |All the development team
 
-* *Version Control*: we are using GIT as a distributed version-control.
+|11/02/2020 | *Development Environment* |Visual Studio Code and WebStorm. |Simplicity | | 
 
-* *Documentation*: we are developing the documentation in arc42.
+|11/02/2020 | *Maps* |Use of third party applications to display maps. Investigate how to show customer routes on a map |Allow visualization of maps |Google maps use credit card, study the option of using OpenStreetMaps | All the development team
 
-* *Data Storage*: the data is saved in PODs (personal online data stores) following the Solid specification.
+|11/02/2020 |*Parse routes* |The formats must be supporteed by WikiLoc, for example, XML. |Interoperability | |
 
-* *Pattern*: TO DO: it has not been decided yet.
+|11/02/2020 |*Login* |The login must be redirected to Solid in order to obtain the customers' PODs |Improves usability  | |All the development team
+
+|11/02/2020 |*Testing* |Implementation of exhaustive tests at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctyly |Need to invert time on exhaustive tests |All the development team
+
+|04/02/2020 |*Language* |The documentation must be in English |Internationalization |   |All the development team
+
+|===
 
 ****
