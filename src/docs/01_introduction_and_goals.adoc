@@ -23,23 +23,21 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 === Quality Goals
 
-[cols="^,^3"]
+[cols="^,^3,^3"]
 |===
 
-|*Priority* |*Goal*
+|*Ref* |*Goal* |*Priority*
 
-|1 |[.underline]#Security and privacy#: There should be no vulnerable points. 
+|1 |[.underline]#Security and privacy#: There should be no vulnerable points. |Medium, Medium
 
-|2 |[.underline]#Independence online#:  Decentralized architecture in which data is separated from the application 
+|2 |[.underline]#Independence online#:  Decentralized architecture in which data is separated from the application  |High, Medium
 
-|3 |[.underline]#Usability#: Easy to use by begginers and non-technical users. 
+|3 |[.underline]#Usability#: Easy to use by begginers and non-technical users. |High, Low
 
-|4 |[.underline]#Efficiency#: Answer's capacity. 
+|4 |[.underline]#Efficiency#: Answer's capacity. |Medium, Medium
 
 
 |===
-
-*Descending order
 
 
 === Stakeholders
@@ -51,10 +49,16 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Development Team |Team who creates the application |Creation of a well-functioning app
 
-|Users |People who is going to use the app  |To record, search and share their routes 
+.2+|Users |Non-technical users (amateurs) |Basic use of the app |Technical users as hikers  |Use of professional hiking features 
 
 |Teachers |Teachers of the subject of ASW  |Supervise the project and make sure that the requirements are accomplish 
 
 |Inrupt Team |Owners of the idea |Evaluate the result of the final application 
+
+|Solid |  |Follow Solid specifications
+
+|Wikiloc |Application | Interoperability with ViaDe 
+
+|OpenStreetMap |Free wiki world map |Allows visualization of maps
 
 |===
