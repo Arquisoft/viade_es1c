@@ -21,7 +21,7 @@
     "notSharable": "(log in and load a doc on your own pod to give others access)"
   },
   "login": {
-    "title": "Hi! Welcome to ViaDe_ES1C.",
+    "title": "Welcome to ViaDe_ES1C",
     "loginTitle": "Log in",
     "register": "Register for a solid identity",
     "solidHelp": "What is a Solid Identity?",
@@ -39,7 +39,7 @@
     }
   },
   "register": {
-    "title": "Hi! Welcome to ViaDe_ES1C.",
+    "title": "Welcome to ViaDe_ES1C",
     "step1Title": "Select your Provider",
     "whatIsAProvider": "What is a provider, and how should I choose one?",
     "alreadySolid": "I already have a Solid identity",
