@@ -53,8 +53,8 @@ export const Item = styled.li`
 
     &:checked {
       + ${ProviderItemStyle} {
-        border-color: #5361fd;
-        color: #5361fd;
+        border-color: #449df5;
+        color: #449df5;
 
         .checked {
           display: block;
