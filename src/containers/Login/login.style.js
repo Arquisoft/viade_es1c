@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 import { ImageBackground, Panel } from '@util-components';
 
 export const LoginWrapper = styled(ImageBackground)`
@@ -19,6 +20,32 @@ export const PanelBody = styled.div`
       text-align: left !important;
       padding-left: 20px;
     }
+  }
+`;
+
+export const LinkBlue = styled(Link)`
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 34px;
+  &:link {
+    background-color: #04D4F0;
+    text-decoration: none;
+    color: #083575;
+  }
+  &:visited {
+    background-color: #04D4F0;
+    text-decoration: none;
+    color: #083575;
+  }
+  &:hover {
+    background-color: #04D4F0;
+    text-decoration: none;
+    color: #083575;
+  }
+  &:active {
+    background-color: #04D4F0;
+    text-decoration: none;
+    color: #083575;
   }
 `;
 

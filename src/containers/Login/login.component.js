@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ProviderLogin } from '@inrupt/solid-react-components';
-import { LoginWrapper, LoginPanel, PanelBody, LoginTitle } from './login.style';
+import { LoginWrapper, LoginPanel, PanelBody, LoginTitle, LinkBlue } from './login.style';
 import { CenterContainer } from '@util-components';
 import { Provider } from '@services';
 
@@ -15,9 +15,9 @@ const LoginComponent = () => {
         <h1 data-testid="title">{t('login.title')}</h1>
         <LoginPanel className="login-panel">
           <PanelBody className="panel-body">
-            <Link className="ids-link-filled ids-link-filled--primary" to="/register">
+            <LinkBlue className="ids-link-filled ids-link-filled--primary" to="/register">
               {t('login.register')}
-            </Link>
+            </LinkBlue>
             <a
               href="https://solid.inrupt.com/get-a-solid-pod"
               rel="noopener noreferrer"
