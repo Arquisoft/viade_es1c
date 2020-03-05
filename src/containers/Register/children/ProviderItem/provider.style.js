@@ -24,8 +24,8 @@ export const ProviderItemStyle = styled.label`
   }
 
   &:hover {
-    border-color: #5361fd;
-    color: #5361fd;
+    border-color: #449df5;
+    color: #449df5;
   }
 
   &:last-child {
