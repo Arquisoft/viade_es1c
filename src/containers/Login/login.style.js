@@ -28,24 +28,24 @@ export const LinkBlue = styled(Link)`
   font-weight: bold;
   font-size: 34px;
   &:link {
-    background-color: #04D4F0;
+    background-color: #449DF5;
     text-decoration: none;
-    color: #083575;
+    color: #fff;
   }
   &:visited {
-    background-color: #04D4F0;
+    background-color: #449DF5;
     text-decoration: none;
-    color: #083575;
+    color: #fff;
   }
   &:hover {
-    background-color: #04D4F0;
+    background-color: #449DF5;
     text-decoration: none;
-    color: #083575;
+    color: #fff;
   }
   &:active {
-    background-color: #04D4F0;
+    background-color: #449DF5;
     text-decoration: none;
-    color: #083575;
+    color: #fff;
   }
 `;
 

@@ -20,7 +20,7 @@ export const PanelHeader = styled.div`
   h2 {
     position: relative;
     padding: 0;
-    color: #5361fd;
+    color: #449df5;
     font-family: Raleway;
     font-size: 20px;
     font-weight: bold;
@@ -35,7 +35,7 @@ export const PanelHeader = styled.div`
     position: absolute;
     height: 1px;
     width: 100%;
-    background: #5361fd;
+    background: #449df5;
     top: 30px;
   }
 `;
