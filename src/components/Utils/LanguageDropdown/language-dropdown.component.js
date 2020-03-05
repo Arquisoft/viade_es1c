@@ -58,6 +58,7 @@ class LanguageDropdown extends Component<Props> {
     ];
     return (
       <Dropdown actions={profileOpts} hover>
+        <pre>{t('navBar.language')}</pre>
         <div
           className={`flag-icon flag-icon-${
             language && languages[language] ? languages[language].icon : 'us'
