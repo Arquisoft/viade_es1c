@@ -1,6 +1,5 @@
 /* eslint-disable constructor-super */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ProviderLogin } from '@inrupt/solid-react-components';
 import { LoginWrapper, LoginPanel, PanelBody, LoginTitle, LinkBlue } from './login.style';
