@@ -38,7 +38,7 @@ export const LinkBlue = styled(Link)`
     color: #fff;
   }
   &:hover {
-    background-color: #449DF5;
+    background-color: #40D1F5;
     text-decoration: none;
     color: #fff;
   }

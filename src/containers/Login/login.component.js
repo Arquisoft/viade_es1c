@@ -15,7 +15,7 @@ const LoginComponent = () => {
         <h1 data-testid="title">{t('login.title')}</h1>
         <LoginPanel className="login-panel">
           <PanelBody className="panel-body">
-            <LinkBlue className="ids-link-filled ids-link-filled--primary" to="/register">
+            <LinkBlue className="ids-link-filled" to="/register">
               {t('login.register')}
             </LinkBlue>
             <a
