@@ -64,6 +64,7 @@
       "fetchingError": "Error fetching notifications from Pod"
     },
     "tictactoe": "Game",
+    "maps": "My routes",
     "language": "Language: "
   },
   "footer": {

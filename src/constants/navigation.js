@@ -4,28 +4,22 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: '/img/icon/apps.svg',
+    icon: '/img/icon/welcome-icon.png',
     label: 'navBar.welcome',
     to: '/welcome'
   },
   {
     id: 'profile',
-    icon: '/img/people.svg',
+    icon: '/img/icon/user-icon.png',
     label: 'navBar.profile',
     to: '/profile'
   },
   {
-    id: 'tictactoe',
-    icon: '/img/icon/tictactoe.svg',
-    label: 'navBar.tictactoe',
+    id: 'maps',
+    icon: '/img/icon/maps-icon.png',
+    label: 'navBar.maps',
     to: '/tictactoe'
   },
-  {
-    id: 'text-editor',
-    icon: '/img/icon/files.svg',
-    label: 'navBar.text-editor',
-    to: '/text-editor'
-  }
 ];
 
 export const ProfileOptions = [
