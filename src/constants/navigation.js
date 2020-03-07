@@ -20,6 +20,12 @@ export const NavigationItems = [
     label: 'navBar.maps',
     to: '/tictactoe'
   },
+  {
+    id: 'share-files',
+    icon: '/img/icon/share-files.svg',
+    label: 'navBar.share-files',
+    to: '/share-files'
+  }
 ];
 
 export const ProfileOptions = [

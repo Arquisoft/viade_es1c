@@ -4,6 +4,7 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
+import ShareTracks from './ShareTracks';
 import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
@@ -18,5 +19,6 @@ export {
   GameList,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor
+  TextEditor,
+  ShareTracks
 };

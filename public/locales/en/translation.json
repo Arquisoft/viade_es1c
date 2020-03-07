@@ -52,6 +52,7 @@
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Text Editor",
+    "share-files" : "Share tracks",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
@@ -245,5 +246,13 @@
     "load": "Load",
     "save": "Save",
     "grantAccess": "Grant Access"
+  },
+  "share": {
+    "title": "Share my tracks",
+    "createSharePrompt": "Enter a contact and track ID",
+    "idLabel": "Track to share ID",
+    "contactWebIDLabel": "Contact WebID",
+    "shareTrack": "Share",
+    "resetShareForm": "Reset"
   }
 }

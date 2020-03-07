@@ -53,6 +53,7 @@
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
+    "share-files": "Compartir rutas",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
@@ -246,5 +247,13 @@
     "load": "Cargar",
     "save": "Guardar",
     "grantAccess": "Dar Acceso"
+  },
+  "share": {
+    "title": "Compartir mis rutas",
+    "createSharePrompt": "Ingresa un contacto y el ID de la ruta",
+    "idLabel": "ID de la ruta a compartir",
+    "contactWebIDLabel": "WebID del contacto",
+    "shareTrack": "Compartir",
+    "resetShareForm": "Limpiar"
   }
 }
