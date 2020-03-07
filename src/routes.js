@@ -28,7 +28,7 @@ const privateRoutes = [
   },
   {
     id: 'vmap',
-    path: '/tictactoe',
+    path: '/visualize',
     component: VMap
   },
   {

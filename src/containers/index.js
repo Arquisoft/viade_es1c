@@ -4,7 +4,7 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
-import VMap from './TicTacToe';
+import VMap from './VisualizeMap';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
 export {

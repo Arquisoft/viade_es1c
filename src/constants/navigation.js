@@ -18,7 +18,7 @@ export const NavigationItems = [
     id: 'maps',
     icon: '/img/icon/maps-icon.png',
     label: 'navBar.maps',
-    to: '/tictactoe'
+    to: '/visualize'
   },
 ];
 
