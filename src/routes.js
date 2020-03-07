@@ -9,8 +9,7 @@ import {
   Welcome,
   RegistrationSuccess,
   Profile,
-  GameList,
-  GamePage,
+  VMap,
   FormModelConverter,
   FormModelRenderer,
   TextEditor
@@ -28,14 +27,9 @@ const privateRoutes = [
     component: Profile
   },
   {
-    id: 'tictactoe',
+    id: 'vmap',
     path: '/tictactoe',
-    component: GameList
-  },
-  {
-    id: 'tictactoegame',
-    path: '/tictactoe/:gameId',
-    component: GamePage
+    component: VMap
   },
   {
     id: 'text-editor',

@@ -1,18 +1,5 @@
 import styled from 'styled-components';
 
-export const GameStatus = styled.span`
-  background: ${({ theme, status }) =>
-    theme.tictactoe[status] ? theme.tictactoe[status] : '#00a69e'};
-  font-size: 10px;
-  letter-spacing: 2.4px;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  width: fit-content;
-  padding: 0 10px;
-  text-transform: uppercase;
-`;
-
 export const Section = styled.section`
   flex: 1 0 auto;
   background-image: url('/img/background-image.jpg');
@@ -44,6 +31,11 @@ export const Section = styled.section`
     outline: none;
     padding: 0 20px;
   }
+  
+  & .leaflet-container {
+	width: 100%;
+	height: 100vh;
+  }	
 `;
 
 export const Wrapper = styled.div`
@@ -57,3 +49,4 @@ export const Wrapper = styled.div`
   text-align: center;
   padding: 20px 0;
 `;
+
