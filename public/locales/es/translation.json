@@ -78,7 +78,7 @@
   },
   "welcome": {
     "welcome": "Bienvenido",
-    "title": "ViaDe_ES1C",
+    "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas y compartirlas con otros usuarios.",
     "doneMessage": "¿Terminaste?",
     "upload": "Subir foto",
