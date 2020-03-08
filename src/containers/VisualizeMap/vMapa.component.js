@@ -2,8 +2,6 @@ import React from "react";
 import { render } from 'react-dom'
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 class VMapaComponent extends React.Component {
   constructor(){
