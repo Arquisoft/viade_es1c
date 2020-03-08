@@ -1,29 +1,29 @@
 import React from "react";
-import { render } from 'react-dom'
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import 'leaflet/dist/leaflet.css';
+import { Marker, Popup, TileLayer } from "react-leaflet";
+import { Mapa } from './vMap.style';
+
+/**
+ * Component used to display routes on a map
+ */
 
 class VMapaComponent extends React.Component {
   constructor(){
     super();
     this.state = {
-      lat: 51.505,
-      lng: -0.09,
-      zoom: 13
+      lat: 43.354444,
+      lng: -5.85166,
+      zoom: 12
     }
   }
 
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <Map center = {position} zoom = {this.state.zoom} style={{width: '100%',height: '400px'}}>
+      <Mapa center = {position} zoom = {this.state.zoom} >
         <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      </Map>
+      </Mapa>
     );
   }
 }
-  
-
-//render(<VMapaComponent />, document.getElementsById('leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag'))
 
 export default VMapaComponent;
