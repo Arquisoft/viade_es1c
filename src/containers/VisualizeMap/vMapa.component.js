@@ -1,38 +1,29 @@
 import React from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon } from "leaflet";
-//import * as parkData from "./data/skateboard-parks.json";
-//import "./app.css";
+import { Marker, Popup, TileLayer } from "react-leaflet";
+import { Mapa } from './vMap.style';
 
-const styles = {
-  wrapper: { 
-    height: 400, 
-    width: '80%', 
-    margin: '0 auto', 
-    display: 'flex' 
-  },
-  map: {
-    flex: 1
-  } 
-};
+/**
+ * Component used to display routes on a map
+ */
 
-//class VMapaComponent extends Component<Props, State> {
+class VMapaComponent extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      lat: 43.354444,
+      lng: -5.85166,
+      zoom: 12
+    }
+  }
 
-const VMapaComponent = props => {
-  return (
-    <div style={styles.wrapper}>
-      <Map style={styles.map} center={props.center} zoom={props.zoom}>
-        <TileLayer url={props.url} />
-      </Map>
-    </div>
-  );
+  render() {
+    const position = [this.state.lat, this.state.lng];
+    return (
+      <Mapa center = {position} zoom = {this.state.zoom} >
+        <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      </Mapa>
+    );
+  }
 }
-
-VMapaComponent.defaultProps = {
-  center: [27.9361805667694, -15.589599609374998],
-  zoom: 10,
-  url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png'
-};
-
 
 export default VMapaComponent;
