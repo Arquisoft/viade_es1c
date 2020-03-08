@@ -1,38 +1,28 @@
 import React from "react";
+import { render } from 'react-dom'
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon } from "leaflet";
-//import * as parkData from "./data/skateboard-parks.json";
-//import "./app.css";
 
-const styles = {
-  wrapper: { 
-    height: 400, 
-    width: '80%', 
-    margin: '0 auto', 
-    display: 'flex' 
-  },
-  map: {
-    flex: 1
-  } 
-};
+class VMapaComponent extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      lat: 51.505,
+      lng: -0.09,
+      zoom: 13
+    }
+  }
 
-//class VMapaComponent extends Component<Props, State> {
-
-const VMapaComponent = props => {
-  return (
-    <div style={styles.wrapper}>
-      <Map style={styles.map} center={props.center} zoom={props.zoom}>
-        <TileLayer url={props.url} />
+  render() {
+    const position = [this.state.lat, this.state.lng];
+    return (
+      <Map center = {position} zoom = {this.state.zoom}>
+        <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       </Map>
-    </div>
-  );
+    );
+  }
 }
+  
 
-VMapaComponent.defaultProps = {
-  center: [27.9361805667694, -15.589599609374998],
-  zoom: 10,
-  url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png'
-};
-
+//render(<VMapaComponent />, document.getElementsById('leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag'))
 
 export default VMapaComponent;

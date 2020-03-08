@@ -1,5 +1,4 @@
-/**
- * import React from "react";
+import React from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import * as parkData from "./data/skateboard-parks.json";
@@ -77,7 +76,7 @@ export default VMapaComponent;
     // if (webId && webId !== prevProps.webId) this.getProfileData();
   // }
 
-// }*/
+// }
 
 
 
