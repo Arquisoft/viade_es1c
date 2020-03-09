@@ -4,7 +4,7 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
-import VMap from './VisualizeMap';
+import {VMapaComponent,ComboComponent} from './VisualizeMap';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
 export {
@@ -14,7 +14,8 @@ export {
   PageNotFound,
   Welcome,
   Profile,
-  VMap,
+  VMapaComponent,
+  ComboComponent,
   FormModelConverter,
   FormModelRenderer,
   TextEditor
