@@ -122,7 +122,8 @@
     "defaultError": "Error: Field value has wrong format"
   },
   "routes": {
-    "title": "My routes"
+    "title": "My routes",
+    "select": "Choose the route"
   },
   "game": {
     "title": "Tic Tac Toe",

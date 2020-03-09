@@ -123,7 +123,8 @@
     "defaultError": "Error: Formato incorrecto"
   },
   "routes": {
-    "title": "Mis rutas"
+    "title": "Mis rutas",
+    "select": "Seleccione la ruta:"
   },
   "game": {
     "title": "Tres en Línea",
