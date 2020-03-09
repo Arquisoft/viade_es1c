@@ -1,6 +1,4 @@
 import ComboComponent from './Combo';
-import VMapComponent from './vMap.component';
-import VMapaComponent from './Mapa';
+import VMapComponent from './Map';
 
-export { VMapaComponent,ComboComponent};
-export default VMapComponent;
+export { VMapComponent, ComboComponent};
