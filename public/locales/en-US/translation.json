@@ -123,7 +123,7 @@
   },
   "routes": {
     "title": "My routes",
-    "select": "Choose the route"
+    "select": "Choose the route:"
   },
   "game": {
     "title": "Tic Tac Toe",
