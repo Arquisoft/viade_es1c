@@ -10,7 +10,6 @@ import {
   RegistrationSuccess,
   Profile,
   VMapComponent,
-  ComboComponent,
   FormModelConverter,
   FormModelRenderer,
   TextEditor
@@ -30,7 +29,7 @@ const privateRoutes = [
   {
     id: 'vmap',
     path: '/visualize',
-    component: VMapComponent,ComboComponent
+    component: VMapComponent
   },
   {
     id: 'text-editor',
