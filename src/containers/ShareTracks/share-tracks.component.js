@@ -12,6 +12,7 @@ import {
   notification as helperNotification
 } from '@utils';
 import { ShareTrackWrapper, BtnDiv } from './share-tracks.style';
+import { Section } from '../TicTacToe/tic-tac-toe.style';
 
 type Props = {
   webId: String,
@@ -173,45 +174,47 @@ const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => 
   };
 
   return (
-    <ShareTrackWrapper onSubmit={deshabilita} data-testid="game-form">
-      <h1>{t('share.title')}</h1>
-      <hr />
-      <form>
-        <span>{t('share.createSharePrompt')}</span>
-        <div className="input-wrap">
-          <label htmlFor="documentUriInput">
-            {t('share.idLabel')}
-            <input
-              id="documentUriInput"
-              type="text"
-              value={documentUri}
-              onChange={e => setDocumentUri(e.target.value)}
-              data-testid="uri-input"
-            />
-          </label>
-        </div>
-        <div className="input-wrap">
-          <label htmlFor="opponentWebId">
-            {t('share.contactWebIDLabel')}
-            <input
-              id="opponentWebId"
-              type="text"
-              value={contact}
-              onChange={e => setContact(e.target.value)}
-              data-testid="webId"
-            />
-          </label>
-        </div>
-        <BtnDiv>
-          <button type="submit" data-testid="form-submit" >
-            {t('share.shareTrack')}
-          </button>
-          <button type="button" onClick={reset}>
-            {t('share.resetShareForm')}
-          </button>
-        </BtnDiv>
-      </form>
-    </ShareTrackWrapper>
+    <Section>
+      <ShareTrackWrapper onSubmit={deshabilita} data-testid="game-form">
+        <h1>{t('share.title')}</h1>
+        <hr />
+        <form>
+          <span>{t('share.createSharePrompt')}</span>
+          <div className="input-wrap">
+            <label htmlFor="documentUriInput">
+              {t('share.idLabel')}
+              <input
+                id="documentUriInput"
+                type="text"
+                value={documentUri}
+                onChange={e => setDocumentUri(e.target.value)}
+                data-testid="uri-input"
+              />
+            </label>
+          </div>
+          <div className="input-wrap">
+            <label htmlFor="opponentWebId">
+              {t('share.contactWebIDLabel')}
+              <input
+                id="opponentWebId"
+                type="text"
+                value={contact}
+                onChange={e => setContact(e.target.value)}
+                data-testid="webId"
+              />
+            </label>
+          </div>
+          <BtnDiv>
+            <button type="submit" data-testid="form-submit" >
+              {t('share.shareTrack')}
+            </button>
+            <button type="button" onClick={reset}>
+              {t('share.resetShareForm')}
+            </button>
+          </BtnDiv>
+        </form>
+      </ShareTrackWrapper>
+    </Section>
   );
 };
 

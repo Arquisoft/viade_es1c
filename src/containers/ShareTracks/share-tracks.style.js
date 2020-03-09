@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const ShareTrackWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 50%;
   padding: 16px;
+  margin-top: 16px;
   margin-bottom: 12px;
   background: #fff;
   border-radius: 4px;
