@@ -1,5 +1,5 @@
 import React from "react";
-import { Marker, Popup, TileLayer } from "react-leaflet";
+import { Marker, Popup, TileLayer} from "react-leaflet";
 import { Mapa } from './vMap.style';
 
 /**
@@ -13,9 +13,10 @@ class VMapaComponent extends React.Component {
       lat: 43.354444,
       lng: -5.85166,
       zoom: 12
-    }
+    };
+	
   }
-
+  
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
@@ -24,6 +25,7 @@ class VMapaComponent extends React.Component {
       </Mapa>
     );
   }
+
 }
 
 export default VMapaComponent;
