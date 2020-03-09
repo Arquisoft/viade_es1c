@@ -1,6 +1,6 @@
-import VMapaComponent from './vMapa.component';
+import VMapComponent from './vMap.component';
 
-export default VMapaComponent;
+export default VMapComponent;
 
 
 

@@ -76,9 +76,8 @@ export const WelcomePageContent = props => {
       </WelcomeCard>
       <WelcomeCard className="card">
         <WelcomeDetail data-testid="welcome-detail">
-
-        <h1>{t('welcome.title')}</h1>
-        <p>{t('welcome.presentation')}</p>
+          <h1>{t('welcome.title')}</h1>
+          <p>{t('welcome.presentation')}</p>
         </WelcomeDetail>
       </WelcomeCard>
     </WelcomeWrapper>

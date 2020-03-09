@@ -122,6 +122,9 @@
     "minMaxString": "Error: Mínimo y máximo debería ser ",
     "defaultError": "Error: Formato incorrecto"
   },
+  "routes": {
+    "title": "Mis rutas"
+  },
   "game": {
     "title": "Tres en Línea",
     "createGamePrompt": "Ingresa un oponente y un ID para el juego",

@@ -121,6 +121,9 @@
     "minMaxString": "Error: Min and max should be ",
     "defaultError": "Error: Field value has wrong format"
   },
+  "routes": {
+    "title": "My routes"
+  },
   "game": {
     "title": "Tic Tac Toe",
     "createGamePrompt": "Enter an Opponent and a Game ID",
