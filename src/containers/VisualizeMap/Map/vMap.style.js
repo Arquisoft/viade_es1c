@@ -11,17 +11,32 @@ export const MapWrapper = styled.section`
   position: relative;
 `;
 
-export const CenterWrapper = styled.div`
-  width: 100%;
+export const SelectWrapper = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin-left: .9em;
+`;
+
+export const H1 = styled.h1`
+   font-family: "Raleway", sans-serif;
+   font-weight: bold;
+   margin: 0 auto;
+`;
+
+export const H3 = styled.h3`
+   font-family: "Raleway", sans-serif;
+   font-weight: bold;
 `;
 
 export const SelectStyled = styled(Select)`
-   width: 10%;
+   width: 100%;
    background: #fff;
+   margin-top: .9em;
 `;
 
 export const MapStyled = styled(Map)`
-    width: 80%;
-    height: 500px;
-    display: inline-block;
+   width: 83%;
+   height: 500px;
+   float: right;
 `;
