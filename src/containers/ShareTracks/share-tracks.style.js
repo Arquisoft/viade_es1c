@@ -14,9 +14,26 @@ export const ShareTrackWrapper = styled.div`
     margin: 0;
   }
   & > form {
-    & .input-wrap > label {
+    & > div > .lab {
+      width: 80%;
+      font-size: 12px;
+      font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+    }
+    & > div > div > Select{
       width: 100%;
-      font-size: 0.9em;
+      margin-bottom: 2%;
+    }
+    & > div > label {
+      width: 80%;
+      font-size: 12px;
+      font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+    }
+    & > div > label > input {
+      width: 100%;
+      margin-bottom: 3%;
+    }
+    & > .primera {
+      margin-top: 2%;
     }
     & > span {
       font-weight: 700;

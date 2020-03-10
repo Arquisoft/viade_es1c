@@ -11,8 +11,9 @@ import {
   storageHelper,
   notification as helperNotification
 } from '@utils';
-import { ShareTrackWrapper, BtnDiv } from './share-tracks.style';
+import { ShareTrackWrapper, BtnDiv , StyledSelect } from './share-tracks.style';
 import { Section } from '../TicTacToe/tic-tac-toe.style';
+import { Select } from '@util-components';
 
 type Props = {
   webId: String,
@@ -20,6 +21,8 @@ type Props = {
   contact: string,
   setContact: () => void
 };
+
+const data = ['Ruta1', 'Ruta2', 'Ruta3'];
 
 const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => {
   const uniqueIdentifier = Date.now();
@@ -32,7 +35,7 @@ const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => 
   };
 
   const deshabilita = () =>{
-    alert('NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN');
+    alert(t('alert.message'));
   };
 
   /**
@@ -180,19 +183,13 @@ const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => 
         <hr />
         <form>
           <span>{t('share.createSharePrompt')}</span>
-          <div className="input-wrap">
-            <label htmlFor="documentUriInput">
+          <div className="primera">
+            <label className="lab" htmlFor="documentUriInput">
               {t('share.idLabel')}
-              <input
-                id="documentUriInput"
-                type="text"
-                value={documentUri}
-                onChange={e => setDocumentUri(e.target.value)}
-                data-testid="uri-input"
-              />
             </label>
+            <Select className="sel" options = {data}/>
           </div>
-          <div className="input-wrap">
+          <div>
             <label htmlFor="opponentWebId">
               {t('share.contactWebIDLabel')}
               <input

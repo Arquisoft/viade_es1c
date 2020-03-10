@@ -238,10 +238,13 @@
   },
   "share": {
     "title": "Compartir mis rutas",
-    "createSharePrompt": "Ingresa un contacto y el ID de la ruta",
-    "idLabel": "ID de la ruta a compartir",
+    "createSharePrompt": "Ingresa un contacto y la ruta que desea compartir",
+    "idLabel": "Selecciona la ruta a compartir",
     "contactWebIDLabel": "WebID del contacto",
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar"
+  },
+  "alert":{
+    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
   }
 }

@@ -237,10 +237,13 @@
   },
   "share": {
     "title": "Share my tracks",
-    "createSharePrompt": "Enter a contact and track ID",
-    "idLabel": "Track to share ID",
+    "createSharePrompt": "Enter a contact and track that you want to share",
+    "idLabel": "Choose track to share",
     "contactWebIDLabel": "Contact WebID",
     "shareTrack": "Share",
     "resetShareForm": "Reset"
+  },
+  "alert":{
+    "message": "THIS OPTION IS NOT AVAILABLE YET"
   }
 }
