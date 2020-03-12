@@ -46,7 +46,7 @@ export const  VMapComponent = props => {
   function handleSelect(event) {
     event.preventDefault();
     let selectValue = document.getElementById("selectRoute");
-    let routes = routesService.getFormattedRoutes(routesService.getRoute(selectValue.value));
+    routes = routesService.getFormattedRoutes(routesService.getRoute(selectValue.value));
     setOrigin(routes[0]);
     setTarget(routes[routes.length-1]);
     setCenter(routes[0]);
