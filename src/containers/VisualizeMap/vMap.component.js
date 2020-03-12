@@ -26,13 +26,17 @@ export const  VMapComponent = props => {
   // Locales for i18n
   const { t } = useTranslation();
 
-  // Hooks for polyline and map
-  const [zoom, setZoom] = useState(0);
-  const [positions, setPositions] = useState(0);
-  const [center, setCenter] = useState(0);
-  const [origin, setOrigin] = useState(0);
-  const [target, setTarget] = useState(0);
+  // Values
+  let routes = routesService.getFormattedRoutes(routesService.getRoute(data[0]));
   const zoomValue = 11; // Zoom value
+
+  // Hooks for polyline and map
+  const [zoom, setZoom] = useState(zoomValue);
+  const [positions, setPositions] = useState(routes);
+  const [center, setCenter] = useState(routes[0]);
+  const [origin, setOrigin] = useState(routes[0]);
+  const [target, setTarget] = useState(routes[routes.length-1]);
+
 
   /**
    * Function that handles the route change event
