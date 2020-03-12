@@ -4,6 +4,16 @@ import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3, Button} fro
 import { useTranslation } from "react-i18next";
 import SplitPane from 'react-split-pane';
 import { routesService } from "@services";
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Marker's icon
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 
 /**
  * Component used to display routes on a map
@@ -19,6 +29,8 @@ export const  VMapComponent = props => {
   const [zoom, setZoom] = useState(0);
   const [positions, setPositions] = useState(0);
   const [center, setCenter] = useState(0);
+  const [origin, setOrigin] = useState(0);
+  const [target, setTarget] = useState(0);
 
   /**
    * Function that handles the route change event
@@ -29,6 +41,8 @@ export const  VMapComponent = props => {
     event.preventDefault();
     let selectValue = document.getElementById("selectRoute");
     let routes = routesService.getFormattedRoutes(routesService.getRoute(selectValue.value));
+    setOrigin(routes[0]);
+    setTarget(routes[routes.length-1]);
     setCenter(routes[0]);
     setPositions(routes);
     setZoom(13);
@@ -44,14 +58,20 @@ export const  VMapComponent = props => {
               <H3>{t('routes.select')}</H3>
               <SelectStyled id={"selectRoute"} options={data}/>
               <Button className="ids-link-filled" onClick={handleSelect}>
-                {t('editor.load')}
+                {t('routes.button')}
               </Button>
             </SelectWrapper>
             <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
                 <MapStyled center = {center} zoom = {zoom} >
+                  <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                   <Polyline color={'blue'}
                                    positions={positions}/>
-                  <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                  <Marker position={origin}>
+                    <Popup>{t('routes.origin')}</Popup>
+                  </Marker>
+                  <Marker position={target}>
+                    <Popup>{t('routes.target')}</Popup>
+                  </Marker>
                 </MapStyled>
             </SplitPane>
           </SplitPane>

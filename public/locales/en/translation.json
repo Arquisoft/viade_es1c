@@ -122,8 +122,11 @@
     "defaultError": "Error: Field value has wrong format"
   },
   "routes": {
-    "title": "My routes",
-    "select": "Choose the route:"
+    "title": "My tracks",
+    "select": "Choose the track:",
+    "button": "Visualize",
+    "origin": "Origin of the track",
+    "target": "Track destination"
   },
   "game": {
     "title": "Tic Tac Toe",

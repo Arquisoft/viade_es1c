@@ -42,6 +42,5 @@ export const MapStyled = styled(Map)`
 `;
 
 export const Button = styled.button`
-  margin-top: .9em;
-  background-color: #000;
+  background-color: #1751F5;
 `;
