@@ -15,6 +15,12 @@ export const NavigationItems = [
     to: '/profile'
   },
   {
+    id: 'upload',
+    icon: '/img/icon/upload-icon.png',
+    label: 'navBar.upload',
+    to: '/upload'
+  },
+  {
     id: 'maps',
     icon: '/img/icon/maps-icon.png',
     label: 'navBar.maps',

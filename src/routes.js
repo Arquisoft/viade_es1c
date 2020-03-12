@@ -12,7 +12,7 @@ import {
   VMapComponent,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor,
+  UploadComponent,
   ShareTracks
 } from './containers';
 
@@ -28,14 +28,14 @@ const privateRoutes = [
     component: Profile
   },
   {
+    id: 'upload',
+    path: '/upload',
+    component: UploadComponent
+  },
+  {
     id: 'vmap',
     path: '/visualize',
     component: VMapComponent
-  },
-  {
-    id: 'text-editor',
-    path: '/text-editor',
-    component: TextEditor
   },
   {
     id: "share-files",
