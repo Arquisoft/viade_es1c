@@ -20,17 +20,19 @@ L.Icon.Default.mergeOptions({
  */
 
 export const  VMapComponent = props => {
-
   // Sustituir por las rutas del POD
-  const data=['Ruta1','Ruta2','Ruta3'];
+  const data = ['Ruta1', 'Ruta2', 'Ruta3'];
+
   // Locales for i18n
   const { t } = useTranslation();
+
   // Hooks for polyline and map
   const [zoom, setZoom] = useState(0);
   const [positions, setPositions] = useState(0);
   const [center, setCenter] = useState(0);
   const [origin, setOrigin] = useState(0);
   const [target, setTarget] = useState(0);
+  const zoomValue = 11; // Zoom value
 
   /**
    * Function that handles the route change event
@@ -45,7 +47,7 @@ export const  VMapComponent = props => {
     setTarget(routes[routes.length-1]);
     setCenter(routes[0]);
     setPositions(routes);
-    setZoom(13);
+    setZoom(zoomValue);
   }
 
   return (
