@@ -6,7 +6,6 @@ import Profile from './Profile';
 import TextEditor from './TextEditor';
 import VMapComponent from './VisualizeMap';
 import ShareTracks from './ShareTracks';
-import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
 export {
