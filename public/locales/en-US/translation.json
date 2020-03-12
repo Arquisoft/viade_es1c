@@ -52,6 +52,8 @@
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Text Editor",
+    "share-files" : "Share tracks",
+    "upload": "Upload tracks",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
@@ -240,5 +242,16 @@
     "load": "Load",
     "save": "Save",
     "grantAccess": "Grant Access"
+  },
+  "share": {
+    "title": "Share my tracks",
+    "createSharePrompt": "Enter a contact and track that you want to share",
+    "idLabel": "Choose track to share",
+    "contactWebIDLabel": "Contact WebID",
+    "shareTrack": "Share",
+    "resetShareForm": "Reset"
+  },
+  "alert":{
+    "message": "THIS OPTION IS NOT AVAILABLE YET"
   }
 }

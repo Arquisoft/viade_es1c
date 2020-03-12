@@ -53,6 +53,8 @@
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
+    "share-files": "Compartir rutas",
+    "upload": "Subir rutas",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
@@ -241,5 +243,16 @@
     "load": "Cargar",
     "save": "Guardar",
     "grantAccess": "Dar Acceso"
+  },
+  "share": {
+    "title": "Compartir mis rutas",
+    "createSharePrompt": "Ingresa un contacto y la ruta que desea compartir",
+    "idLabel": "Selecciona la ruta a compartir",
+    "contactWebIDLabel": "WebID del contacto",
+    "shareTrack": "Compartir",
+    "resetShareForm": "Limpiar"
+  },
+  "alert":{
+    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
   }
 }
