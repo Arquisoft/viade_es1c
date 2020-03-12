@@ -64,7 +64,7 @@
       "fetchingError": "Error fetching notifications from Pod"
     },
     "tictactoe": "Game",
-    "maps": "My routes",
+    "maps": "My tracks",
     "language": "Language: "
   },
   "footer": {
@@ -120,6 +120,13 @@
     "minMxNumberExclusive": "Error: Min and max value should be ",
     "minMaxString": "Error: Min and max should be ",
     "defaultError": "Error: Field value has wrong format"
+  },
+  "routes": {
+    "title": "My tracks",
+    "select": "Choose the track:",
+    "button": "Visualize",
+    "origin": "Origin of the track",
+    "target": "Track destination"
   },
   "game": {
     "title": "Tic Tac Toe",

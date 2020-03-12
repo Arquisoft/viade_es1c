@@ -4,7 +4,7 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
-import { GamePage, GameList } from './TicTacToe';
+import VMapComponent from './VisualizeMap';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
 export {
@@ -14,8 +14,7 @@ export {
   PageNotFound,
   Welcome,
   Profile,
-  GamePage,
-  GameList,
+  VMapComponent,
   FormModelConverter,
   FormModelRenderer,
   TextEditor
