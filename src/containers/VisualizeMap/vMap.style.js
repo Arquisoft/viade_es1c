@@ -40,3 +40,8 @@ export const MapStyled = styled(Map)`
    height: 500px;
    float: right;
 `;
+
+export const Button = styled.button`
+  margin-top: .9em;
+  background-color: #000;
+`;

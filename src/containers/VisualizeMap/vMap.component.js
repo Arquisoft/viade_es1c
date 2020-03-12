@@ -1,23 +1,38 @@
-import React from "react";
-import { Marker, Popup, TileLayer } from "react-leaflet";
-import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3} from './vMap.style';
+import React, { useState } from "react";
+import { Marker, Popup, TileLayer, Polyline, Map } from "react-leaflet";
+import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3, Button} from './vMap.style';
 import { useTranslation } from "react-i18next";
 import SplitPane from 'react-split-pane';
+import { routesService } from "@services";
 
 /**
  * Component used to display routes on a map
  */
 
 export const  VMapComponent = props => {
-  const state = {
-    lat: 43.354444,
-    lng: -5.85166,
-    zoom: 12
-  }
+
   // Sustituir por las rutas del POD
   const data=['Ruta1','Ruta2','Ruta3'];
+  // Locales for i18n
   const { t } = useTranslation();
-  const position = [state.lat, state.lng];
+  // Hooks for polyline and map
+  const [zoom, setZoom] = useState(0);
+  const [positions, setPositions] = useState(0);
+  const [center, setCenter] = useState(0);
+
+  /**
+   * Function that handles the route change event
+   * @param event
+   */
+
+  function handleSelect(event) {
+    event.preventDefault();
+    let selectValue = document.getElementById("selectRoute");
+    let routes = routesService.getFormattedRoutes(routesService.getRoute(selectValue.value));
+    setCenter(routes[0]);
+    setPositions(routes);
+    setZoom(13);
+  }
 
   return (
     <MapWrapper>
@@ -27,10 +42,15 @@ export const  VMapComponent = props => {
           <SplitPane split="vertical">
             <SelectWrapper>
               <H3>{t('routes.select')}</H3>
-              <SelectStyled options={data}/>
+              <SelectStyled id={"selectRoute"} options={data}/>
+              <Button className="ids-link-filled" onClick={handleSelect}>
+                {t('editor.load')}
+              </Button>
             </SelectWrapper>
             <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
-                <MapStyled center = {position} zoom = {state.zoom} >
+                <MapStyled center = {center} zoom = {zoom} >
+                  <Polyline color={'blue'}
+                                   positions={positions}/>
                   <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 </MapStyled>
             </SplitPane>
