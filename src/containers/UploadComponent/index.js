@@ -1,3 +1,3 @@
-import UploadComponent from './upload-component';
+import UploadComponent from './upload.component';
 
 export default UploadComponent;
