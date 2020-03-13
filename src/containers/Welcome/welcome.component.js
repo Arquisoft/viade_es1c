@@ -1,6 +1,6 @@
 import React from 'react';
 import { Uploader } from '@inrupt/solid-react-components';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
   WelcomeWrapper,
   WelcomeCard,
@@ -76,9 +76,8 @@ export const WelcomePageContent = props => {
       </WelcomeCard>
       <WelcomeCard className="card">
         <WelcomeDetail data-testid="welcome-detail">
-
-        <h1>{t('welcome.title')}</h1>
-        <p>{t('welcome.presentation')}</p>
+          <h1>{t('welcome.title')}</h1>
+          <p>{t('welcome.presentation')}</p>
         </WelcomeDetail>
       </WelcomeCard>
     </WelcomeWrapper>

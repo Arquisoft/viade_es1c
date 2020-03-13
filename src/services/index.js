@@ -1,3 +1,4 @@
 import Provider from './provider';
+import * as routesService from "./routesService";
 
-export { Provider };
+export { Provider, routesService };

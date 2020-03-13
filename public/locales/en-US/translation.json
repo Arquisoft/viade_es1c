@@ -52,6 +52,8 @@
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Text Editor",
+    "share-files" : "Share tracks",
+    "upload": "Upload tracks",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
@@ -64,7 +66,7 @@
       "fetchingError": "Error fetching notifications from Pod"
     },
     "tictactoe": "Game",
-    "maps": "My routes",
+    "maps": "My tracks",
     "language": "Language: "
   },
   "footer": {
@@ -120,6 +122,13 @@
     "minMxNumberExclusive": "Error: Min and max value should be ",
     "minMaxString": "Error: Min and max should be ",
     "defaultError": "Error: Field value has wrong format"
+  },
+  "routes": {
+    "title": "My tracks",
+    "select": "Choose the track:",
+    "button": "Visualize",
+    "origin": "Origin of the track",
+    "target": "Track destination"
   },
   "game": {
     "title": "Tic Tac Toe",
@@ -233,5 +242,19 @@
     "load": "Load",
     "save": "Save",
     "grantAccess": "Grant Access"
+  },
+  "share": {
+    "title": "Share my tracks",
+    "createSharePrompt": "Enter a contact and track that you want to share",
+    "idLabel": "Choose track to share",
+    "contactWebIDLabel": "Contact WebID",
+    "shareTrack": "Share",
+    "resetShareForm": "Reset"
+  },
+  "upload": {
+    "title": "Upload my tracks"
+  },
+  "alert":{
+    "message": "THIS OPTION IS NOT AVAILABLE YET"
   }
 }

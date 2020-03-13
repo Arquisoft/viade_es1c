@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import { BrowserRouter as Router } from 'react-router-dom';
-import TextEditor from './text-editor.component';
+import vMap from './vMap.component';
 
-describe('Text Editor', () => {
+describe('Visualize Map', () => {
   afterAll(cleanup);
 
   const { container } = render(
     <Router>
-      <TextEditor />
+      <vMap />
     </Router>
   );
 

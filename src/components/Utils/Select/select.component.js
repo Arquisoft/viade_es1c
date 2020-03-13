@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Select = props => {
-  const { options, defaultValue, onChange, ...rest } = props;
+  const { id, options, defaultValue, onChange, ...rest } = props;
   return (
     <div className="">
-      <select value={defaultValue} onChange={onChange} {...rest}>
+      <select id={id} value={defaultValue} onChange={onChange} {...rest}>
         {options &&
           options.map(option => (
             <option value={option} key={option}>
