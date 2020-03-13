@@ -1,15 +1,4 @@
-export type Route = {
-  name: String,
-  origin: String,
-  target: String,
-  date: String,
-  points: Array<Point>
-};
+import Route from "./route";
+import Point from "./point";
 
-export type Point = {
-  latitude: String,
-  longitude: String,
-  altitude: String,
-  city: String,
-  description: String
-}
+export {Route, Point};
