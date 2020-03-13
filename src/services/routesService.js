@@ -66,10 +66,10 @@ export const getRoute = (value) => {
     ]
   };
   console.log(value);
-  if (value == route1.name) {
+  if (value === route1.name) {
     return route1;
-  } else if (value == route2.name) {
-    return route1;
+  } else if (value === route2.name) {
+    return route2;
   } else {
     return route3;
   }

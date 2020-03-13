@@ -251,6 +251,9 @@
     "shareTrack": "Share",
     "resetShareForm": "Reset"
   },
+  "upload": {
+    "title": "Upload my tracks"
+  },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
   }

@@ -252,6 +252,9 @@
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar"
   },
+  "upload": {
+    "title": "Subir mis rutas"
+  },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
   }
