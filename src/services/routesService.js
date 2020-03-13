@@ -65,7 +65,6 @@ export const getRoute = (value) => {
       }
     ]
   };
-  console.log(value);
   if (value === route1.name) {
     return route1;
   } else if (value === route2.name) {
@@ -76,7 +75,7 @@ export const getRoute = (value) => {
 }
 
 export const getFormattedRoutes = (route) => {
-    let points = new Array();
+    let points = [];
     for (let i = 0; i < route.points.length; i++) {
       points.push([route.points[i].latitude, route.points[i].longitude]);
     }

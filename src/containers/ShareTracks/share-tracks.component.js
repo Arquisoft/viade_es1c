@@ -11,7 +11,7 @@ import {
   storageHelper,
   notification as helperNotification
 } from '@utils';
-import { ShareTrackWrapper, BtnDiv , StyledSelect, Section } from './share-tracks.style';
+import { ShareTrackWrapper, BtnDiv , Section } from './share-tracks.style';
 import { Select } from '@util-components';
 
 type Props = {
