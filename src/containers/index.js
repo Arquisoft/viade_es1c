@@ -3,10 +3,10 @@ import Register, { RegistrationSuccess } from './Register';
 import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
-import TextEditor from './TextEditor';
+import VMapComponent from './VisualizeMap';
 import ShareTracks from './ShareTracks';
-import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
+import UploadComponent from './UploadComponent';
 
 export {
   Login,
@@ -15,10 +15,9 @@ export {
   PageNotFound,
   Welcome,
   Profile,
-  GamePage,
-  GameList,
+  VMapComponent,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor,
-  ShareTracks
+  ShareTracks,
+  UploadComponent
 };

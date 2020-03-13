@@ -54,6 +54,7 @@
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
     "share-files": "Compartir rutas",
+    "upload": "Subir rutas",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
@@ -122,6 +123,13 @@
     "minMxNumberExclusive": "Error: Mínimo y máximo debería ser ",
     "minMaxString": "Error: Mínimo y máximo debería ser ",
     "defaultError": "Error: Formato incorrecto"
+  },
+  "routes": {
+    "title": "Mis rutas",
+    "select": "Seleccione la ruta:",
+    "button": "Visualizar",
+    "origin": "Origen de la ruta",
+    "target": "Destino de la ruta"
   },
   "game": {
     "title": "Tres en Línea",
@@ -243,6 +251,9 @@
     "contactWebIDLabel": "WebID del contacto",
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar"
+  },
+  "upload": {
+    "title": "Subir mis rutas"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

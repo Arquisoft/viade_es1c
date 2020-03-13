@@ -9,11 +9,10 @@ import {
   Welcome,
   RegistrationSuccess,
   Profile,
-  GameList,
-  GamePage,
+  VMapComponent,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor,
+  UploadComponent,
   ShareTracks
 } from './containers';
 
@@ -29,19 +28,14 @@ const privateRoutes = [
     component: Profile
   },
   {
-    id: 'tictactoe',
-    path: '/tictactoe',
-    component: GameList
+    id: 'upload',
+    path: '/upload',
+    component: UploadComponent
   },
   {
-    id: 'tictactoegame',
-    path: '/tictactoe/:gameId',
-    component: GamePage
-  },
-  {
-    id: 'text-editor',
-    path: '/text-editor',
-    component: TextEditor
+    id: 'vmap',
+    path: '/visualize',
+    component: VMapComponent
   },
   {
     id: "share-files",
