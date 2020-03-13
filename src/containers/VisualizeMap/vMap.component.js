@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Marker, Popup, TileLayer, Polyline, Map } from "react-leaflet";
+import { Marker, Popup, TileLayer, Polyline } from "react-leaflet";
 import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3, Button} from './vMap.style';
 import { useTranslation } from "react-i18next";
 import SplitPane from 'react-split-pane';
