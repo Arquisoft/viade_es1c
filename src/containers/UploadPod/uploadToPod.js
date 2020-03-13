@@ -2,7 +2,7 @@ import React from "react";
 import { UploadWrapper, H1, MyInput,Button } from './upload.style';
 import { useTranslation } from "react-i18next";
 
-class uploadToPost{
+export class UploadToPod{
 	
 	constructor(fetch) {
         this.fetch = fetch;
@@ -10,7 +10,8 @@ class uploadToPost{
 	
 	 executeSPARQLUpdateForUser(url, query) {
         return this.fetch(url, {
-            method: "POST",
+            //method: "POST",
+			method: "PUT",
             body: query,
             headers: {
                 "Content-Type": "text/plain"
@@ -19,4 +20,4 @@ class uploadToPost{
     }
 
 }
-export default UploadComponent;
+export default UploadToPod;
