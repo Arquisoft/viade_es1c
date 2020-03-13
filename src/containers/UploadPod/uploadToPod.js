@@ -10,12 +10,13 @@ export class UploadToPod{
 	
 	 executeSPARQLUpdateForUser(url, query) {
         return this.fetch(url, {
-            //method: "POST",
+            // method: "POST",
 			method: "PUT",
             body: query,
             headers: {
                 "Content-Type": "text/plain"
             }
+			 // method: "DELETE"
         });
     }
 
