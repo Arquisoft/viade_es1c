@@ -7,6 +7,7 @@ import VMapComponent from './VisualizeMap';
 import ShareTracks from './ShareTracks';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 import UploadComponent from './UploadComponent';
+import DownloadComponent from './DownloadComponent';
 
 export {
   Login,
@@ -19,5 +20,6 @@ export {
   FormModelConverter,
   FormModelRenderer,
   ShareTracks,
-  UploadComponent
+  UploadComponent,
+  DownloadComponent
 };
