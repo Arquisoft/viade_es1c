@@ -55,6 +55,7 @@
     "text-editor": "Editor de Textos",
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
+    "download": "Descargar rutas",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
@@ -254,6 +255,9 @@
   },
   "upload": {
     "title": "Subir mis rutas"
+  },
+  "download": {
+    "title": "Descargar ruta del POD"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

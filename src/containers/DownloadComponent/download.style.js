@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UploadWrapper = styled.section`
+export const DownloadWrapper = styled.section`
   width: 100%;
   background-image: url('/img/background-image.jpg');
   background-repeat: repeat;
