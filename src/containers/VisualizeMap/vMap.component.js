@@ -21,21 +21,22 @@ L.Icon.Default.mergeOptions({
 
 export const  VMapComponent = props => {
   // Sustituir por las rutas del POD
-  const data = ['Ruta1', 'Ruta2', 'Ruta3'];
+  const data = ['Ruta1', 'Ruta2', 'Ruta3', 'Ruta4'];
 
   // Locales for i18n
   const { t } = useTranslation();
 
   // Values
-  let routes = routesService.getFormattedRoutes(routesService.getRoute(data[0]));
+  var route = routesService.getRoute(data[0]);
+  var points = routesService.getPointsOfRouteAsArray(route);
   const zoomValue = 11; // Zoom value
 
   // Hooks for polyline and map
   const [zoom, setZoom] = useState(zoomValue);
-  const [positions, setPositions] = useState(routes);
-  const [center, setCenter] = useState(routes[0]);
-  const [origin, setOrigin] = useState(routes[0]);
-  const [target, setTarget] = useState(routes[routes.length-1]);
+  const [positions, setPositions] = useState(points);
+  const [center, setCenter] = useState(points[0]);
+  const [origin, setOrigin] = useState(points[0]);
+  const [target, setTarget] = useState(points[points.length-1]);
 
 
   /**
@@ -45,12 +46,13 @@ export const  VMapComponent = props => {
 
   function handleSelect(event) {
     event.preventDefault();
-    let selectValue = document.getElementById("selectRoute");
-    routes = routesService.getFormattedRoutes(routesService.getRoute(selectValue.value));
-    setOrigin(routes[0]);
-    setTarget(routes[routes.length-1]);
-    setCenter(routes[0]);
-    setPositions(routes);
+    var selectedRoute = document.getElementById("selectRoute");
+    route = routesService.getRoute(selectedRoute.value);
+    points = routesService.getPointsOfRouteAsArray(route);
+    setOrigin(points[0]);
+    setTarget(points[points.length-1]);
+    setCenter(points[0]);
+    setPositions(points);
     setZoom(zoomValue);
   }
 
@@ -86,6 +88,5 @@ export const  VMapComponent = props => {
     </MapWrapper>
   );
 }
-
 
 export default VMapComponent;

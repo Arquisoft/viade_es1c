@@ -9,7 +9,6 @@ export const UploadComponent = props => {
     <UploadWrapper>
       <H1>{t('upload.title')}</H1>
       <MyInput type="file"/>
-      <button type="button">Boton Prueba</button>
     </UploadWrapper>
   );
 }

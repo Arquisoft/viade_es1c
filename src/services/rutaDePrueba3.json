@@ -1,8 +1,8 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Trip",
-	"name": "Ruta por Oviedo",
-	"description": "Trayecto entre la Escuela de Ingeniería Informática y la catedral",
+	"name": "Ruta3",
+	"description": "Descripción de la ruta 3",
 	"itinerary": {
 		"@type": "itemList",
 		"numberOfItems": 2,
@@ -13,9 +13,9 @@
 				"position": 1,
 				"item": {
 					"@type": "GeoCoordinates",
-					"latitude": -5.851667,
-					"longitude": 43.354444,
-					"elevation": "1,000 m"
+					"latitude": 42.3624,
+					"longitude": -5.8433,
+					"elevation": "200 m"
 				}
 			},
 			{
@@ -23,9 +23,9 @@
 				"position": 2,
 				"item": {
 					"@type": "GeoCoordinates",
-					"latitude": -5.843081,
-					"longitude": 43.362583,
-					"elevation": "1,000 m"
+					"latitude": 42.38022,
+					"longitude": -5.86837,
+					"elevation": "200 m"
 				}
 			}
 		]
