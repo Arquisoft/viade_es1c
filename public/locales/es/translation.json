@@ -257,7 +257,9 @@
     "title": "Subir mis rutas"
   },
   "download": {
-    "title": "Descargar ruta del POD"
+    "title": "Descargar ruta del POD",
+    "instruction":"Introduzca la URL del archivo en el POD:",
+    "button":"Descargar ruta"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

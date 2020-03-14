@@ -13,8 +13,18 @@ export const H1 = styled.h1`
    margin: 0 auto;
 `;
 
-export const MyInput = styled.input`
+export const H3 = styled.h3`
    font-family: "Raleway", sans-serif;
    font-weight: bold;
-   
+   margin: 0 auto;
 `;
+
+export const Button = styled.button`
+  background-color: #1751F5;
+`;
+
+export const Input = styled.input`
+   background: #fff;
+   margin-top: .9em;
+`;
+
