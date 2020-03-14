@@ -60,13 +60,7 @@ export const  VMapComponent = props => {
         <H1>{t('routes.title')}</H1>
         <SplitPane split="horizontal" primary="second">
           <SplitPane split="vertical">
-            <SelectWrapper>
-              <H3>{t('routes.select')}</H3>
-              <SelectStyled id={"selectRoute"} options={data}/>
-              <Button className="ids-link-filled" onClick={handleSelect}>
-                {t('routes.button')}
-              </Button>
-            </SelectWrapper>
+            <div></div>
             <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
                 <MapStyled center = {center} zoom = {zoom} >
                   <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -79,6 +73,13 @@ export const  VMapComponent = props => {
                     <Popup>{t('routes.target')}</Popup>
                   </Marker>
                 </MapStyled>
+                <SelectWrapper>
+                  <H3>{t('routes.select')}</H3>
+                  <SelectStyled id={"selectRoute"} options={data}/>
+                  <Button className="ids-link-filled" onClick={handleSelect}>
+                    {t('routes.button')}
+                  </Button>
+                </SelectWrapper>
             </SplitPane>
           </SplitPane>
         </SplitPane>
