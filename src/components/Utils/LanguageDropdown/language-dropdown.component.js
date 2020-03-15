@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dropdown } from '@util-components';
 import { toast } from 'react-toastify';
+import { MyPre } from './language-dropdown.style';
 
 const languages = {
   en: {
@@ -58,11 +59,7 @@ class LanguageDropdown extends Component<Props> {
     ];
     return (
       <Dropdown actions={profileOpts} hover>
-        <div className="top-element-formatting">
-          {t('navBar.language')} {" "}
-          <span className="second-word-formatting"> </span>
-        </div>
-
+        <MyPre>{t('navBar.language') }</MyPre>
         <div
           className={`flag-icon flag-icon-${
             language && languages[language] ? languages[language].icon : 'us'

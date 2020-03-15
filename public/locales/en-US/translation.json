@@ -54,6 +54,7 @@
     "text-editor": "Text Editor",
     "share-files" : "Share tracks",
     "upload": "Upload tracks",
+    "download": "Download tracks",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
@@ -254,6 +255,11 @@
   "upload": {
     "title": "Upload my tracks",
     "button": "Upload"
+  },
+  "download": {
+    "title": "Download track from POD",
+    "instruction":"Enter the URL of the file",
+    "button":"Download track"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
