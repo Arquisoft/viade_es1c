@@ -49,13 +49,6 @@ export const UploadComponent = props => {
     const files = fileInput.files;
     await processArray(files);
   }
-
-  /*async function handleUpload(event, urlRouteInPod, fileContent) {
-    const fc = new FC(auth);
-    alert(urlRouteInPod);
-    await fc.createFile(urlRouteInPod, fileContent, "state", {});
-    alert("se subio");
-  }*/
 	
   return(
     <UploadWrapper>
