@@ -43,7 +43,12 @@ export const ShareTrackWrapper = styled.div`
 export const BtnDiv = styled.div`
   display: flex;
   & > button {
+    text-transform: uppercase;
+    background-color: #1751F5;
+    color: #fff;
     margin: 0 12px 0 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
   }
 `;
 

@@ -2,7 +2,6 @@ import React from "react";
 import { UploadTrackWrapper, H1, MyInput, Button, Section } from "./upload.style";
 import { useTranslation } from "react-i18next";
 import FC from "solid-file-client";
-import { Example } from '@util-components';
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 
@@ -10,12 +9,6 @@ export const UploadComponent = props => {
 
   // Locales for i18n
   const { t } = useTranslation();
-
-  function createNotification() {
-    return () => {
-      NotificationManager.success('Sus rutas han sido subidas', 'Subido con éxito');
-    };
-  }
 
   /**
    * Process the case of an individual item

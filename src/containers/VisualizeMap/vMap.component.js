@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Marker, Popup, TileLayer, Polyline } from "react-leaflet";
-import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3, Button } from './vMap.style';
+import { MapStyled, MapWrapper, SelectWrapper,
+  SelectStyled, H1, H3, Button } from './vMap.style';
 import { useTranslation } from "react-i18next";
 import SplitPane from 'react-split-pane';
-import { routesService } from "@services";
 import 'leaflet/dist/leaflet.css';
-import L, { DomEvent } from 'leaflet';
+import L from 'leaflet';
 import FC from 'solid-file-client';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 
@@ -154,13 +154,13 @@ export const VMapComponent = props => {
                   </Marker>
                 </MapStyled>
                 <SelectWrapper>
+                  <Button className="ids-link-filled" onClick={handleLoad}>
+                    {t('routes.loadButton')}
+                  </Button>
                   <H3>{t('routes.select')}</H3>
                   <SelectStyled id={"selectRoute"} options={data}/>
                   <Button className="ids-link-filled" onClick={handleSelect}>
                     {t('routes.button')}
-                  </Button>
-                  <Button className="ids-link-filled" onClick={handleLoad}>
-                    {t('routes.loadButton')}
                   </Button>
                 </SelectWrapper>
             </SplitPane>

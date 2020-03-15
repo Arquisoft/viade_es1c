@@ -83,6 +83,8 @@
     "welcome": "Bienvenido",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas y compartirlas con otros usuarios.",
+    "documentation": "Enlace a la documentación",
+    "repository": "Enlace al repositorio de GitHub",
     "doneMessage": "¿Terminaste?",
     "upload": "Subir foto",
     "successTitle": "Éxito",
@@ -135,7 +137,7 @@
     "errorMessage": "No se encuentra la ruta",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
-    "loadButton": "Cargar"
+    "loadButton": "Cargar rutas del POD"
   },
   "game": {
     "title": "Tres en Línea",
