@@ -7,6 +7,7 @@ import { routesService } from "@services";
 import 'leaflet/dist/leaflet.css';
 import L, { DomEvent } from 'leaflet';
 import FC from 'solid-file-client';
+import { NotificationContainer, NotificationManager } from "react-notifications";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -87,13 +88,14 @@ export const VMapComponent = props => {
           setZoom(zoomValue);
 
         })
-        .catch(err => console.error(`Error: ${err}`))
+        .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
       }
     })
   }
 
   return (
     <MapWrapper>
+      <NotificationContainer/>
       <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
         <H1>{t('routes.title')}</H1>
         <SplitPane split="horizontal" primary="second">
