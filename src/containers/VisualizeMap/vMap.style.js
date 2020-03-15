@@ -15,7 +15,7 @@ export const SelectWrapper = styled.div`
   justify-content: center;
   align-items: center;
   display: inline-block;
-  margin-left: .9em;
+  margin-right: 500px;
 `;
 
 export const H1 = styled.h1`
@@ -36,9 +36,9 @@ export const SelectStyled = styled(Select)`
 `;
 
 export const MapStyled = styled(Map)`
-   width: 83%;
+   width: 93%;
    height: 500px;
-   float: right;
+   float: center;
 `;
 
 export const Button = styled.button`

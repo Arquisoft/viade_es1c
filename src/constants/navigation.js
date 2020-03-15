@@ -21,6 +21,12 @@ export const NavigationItems = [
     to: '/upload'
   },
   {
+    id: 'download',
+    icon: '/img/icon/download-icon.png',
+    label: 'navBar.download',
+    to: '/download'
+  },
+  {
     id: 'maps',
     icon: '/img/icon/maps-icon.png',
     label: 'navBar.maps',
@@ -39,14 +45,6 @@ export const ProfileOptions = [
     label: 'navBar.profile',
     onClick: 'profileRedirect',
     icon: 'cog'
-  },
-  {
-    label: 'navBar.formModelConvert',
-    onClick: 'formModelConvertRedirect'
-  },
-  {
-    label: 'navBar.formModelRender',
-    onClick: 'formModelRenderRedirect'
   },
   {
     label: 'navBar.logOut',
