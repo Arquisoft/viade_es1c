@@ -129,7 +129,9 @@
     "select": "Choose the track:",
     "button": "Visualize",
     "origin": "Origin of the track",
-    "target": "Track destination"
+    "target": "Track destination",
+    "errorTitle": "Error displaying",
+    "errorMessage": "Not in the POD"
   },
   "game": {
     "title": "Tic Tac Toe",
@@ -254,7 +256,10 @@
   },
   "upload": {
     "title": "Upload my tracks",
-    "button": "Upload"
+    "button": "Upload",
+    "uploadPrompt" : "Choose the files of the routes you want to upload",
+    "successTitle": "Uploaded successfully",
+    "successMessage" : "Your tracks have been uploaded"
   },
   "download": {
     "title": "Download track from POD",

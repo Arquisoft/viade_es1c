@@ -130,7 +130,9 @@
     "select": "Seleccione la ruta:",
     "button": "Visualizar",
     "origin": "Origen de la ruta",
-    "target": "Destino de la ruta"
+    "target": "Destino de la ruta",
+    "errorTitle": "Error al visualizar",
+    "errorMessage": "No se encuentra en el POD"
   },
   "game": {
     "title": "Tres en Línea",
@@ -255,7 +257,10 @@
   },
   "upload": {
     "title": "Subir mis rutas",
-    "button": "Subir"
+    "button": "Subir",
+    "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
+    "successTitle": "Subido con éxito",
+    "successMessage" : "Sus rutas han sido subidas"
   },
   "download": {
     "title": "Descargar ruta del POD",

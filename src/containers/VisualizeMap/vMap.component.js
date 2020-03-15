@@ -7,7 +7,7 @@ import { routesService } from "@services";
 import 'leaflet/dist/leaflet.css';
 import L, { DomEvent } from 'leaflet';
 import FC from 'solid-file-client';
-import auth from 'solid-auth-client';
+import { NotificationContainer, NotificationManager } from "react-notifications";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -46,13 +46,11 @@ export const VMapComponent = props => {
    * @param event
    */
   function handleSelect(event) {
-
     const auth = require('solid-auth-client');
     auth.trackSession(session => {
       if (!session) {
         return;
       } else {
-
         /*
           The webId has the structure: https://uo265308.solid.community/profile/card#me
           We want the structure: https://uo265308.solid.community/public/MyRoutes/
@@ -90,13 +88,14 @@ export const VMapComponent = props => {
           setZoom(zoomValue);
 
         })
-        .catch(err => console.error(`Error: ${err}`))
+        .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
       }
     })
   }
 
   return (
     <MapWrapper>
+      <NotificationContainer/>
       <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
         <H1>{t('routes.title')}</H1>
         <SplitPane split="horizontal" primary="second">
@@ -127,7 +126,6 @@ export const VMapComponent = props => {
       </SplitPane>
     </MapWrapper>
   );
-
 }
 
 export default VMapComponent;
