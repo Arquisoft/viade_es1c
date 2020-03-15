@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Marker, Popup, TileLayer, Polyline } from "react-leaflet";
-import { MapStyled, MapWrapper, SelectWrapper, SelectStyled, H1, H3, Button } from './vMap.style';
+import { MapStyled, MapWrapper, SelectWrapper,
+  SelectStyled, H1, H3, Button } from './vMap.style';
 import { useTranslation } from "react-i18next";
 import SplitPane from 'react-split-pane';
-import { routesService } from "@services";
 import 'leaflet/dist/leaflet.css';
-import L, { DomEvent } from 'leaflet';
+import L from 'leaflet';
 import FC from 'solid-file-client';
-import auth from 'solid-auth-client';
+import { NotificationContainer, NotificationManager } from "react-notifications";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -23,8 +23,8 @@ L.Icon.Default.mergeOptions({
 export const VMapComponent = props => {
 
   // Sustituir por las rutas del POD
-  const data = ['rutaDePrueba1.json', 'rutaDePrueba2.json', 'rutaDePrueba3.json', 'rutaDePrueba4.json'];
-
+  //const data = ['rutaDePrueba1', 'rutaDePrueba2', 'rutaDePrueba3', 'rutaDePrueba4'];
+  const [data, setData] = useState([]);
   // Locales for i18n
   const { t } = useTranslation();
 
@@ -46,39 +46,37 @@ export const VMapComponent = props => {
    * @param event
    */
   function handleSelect(event) {
-
     const auth = require('solid-auth-client');
     auth.trackSession(session => {
       if (!session) {
         return;
       } else {
-
         /*
           The webId has the structure: https://uo265308.solid.community/profile/card#me
           We want the structure: https://uo265308.solid.community/public/MyRoutes/
           
           15 == length("profile/card#me")
         */
-        var webId = session.webId;
-        var urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
+        let webId = session.webId;
+        let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
 
         event.preventDefault();
 
         // We obtain the name of the route from the combobox and build the final URL
-        var selectedRouteName = document.getElementById("selectRoute").value;
+        let selectedRouteName = document.getElementById("selectRoute").value.concat(".json");
         urlRouteInPod = urlRouteInPod.concat(selectedRouteName);
 
         const fc = new FC(auth);
         fc.readFile(urlRouteInPod, null).then((content) => {
 
           // We obtain the JSON file from the pod
-          var route = JSON.parse(content);
+          let route = JSON.parse(content);
 
           // We obtain the points of the route
-          var points = [];
-          for (var i = 0; i < route.itinerary.numberOfItems; i++) {
-            var latitude = route.itinerary.itemListElement[i].item.latitude;
-            var longitude = route.itinerary.itemListElement[i].item.longitude;
+          let points = [];
+          for (let i = 0; i < route.itinerary.numberOfItems; i++) {
+            let latitude = route.itinerary.itemListElement[i].item.latitude;
+            let longitude = route.itinerary.itemListElement[i].item.longitude;
             points.push([latitude, longitude]);
           }
           
@@ -90,13 +88,54 @@ export const VMapComponent = props => {
           setZoom(zoomValue);
 
         })
-        .catch(err => console.error(`Error: ${err}`))
+        .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
+      }
+    })
+  }
+
+  /**
+   * Load the select component with tracks
+   * @param event
+   */
+
+  function handleLoad(event) {
+    const auth = require('solid-auth-client');
+    auth.trackSession(session => {
+      if (!session) {
+        return;
+      } else {
+        /*
+          The webId has the structure: https://uo265308.solid.community/profile/card#me
+          We want the structure: https://uo265308.solid.community/public/MyRoutes/
+
+          15 == length("profile/card#me")
+        */
+        var webId = session.webId;
+        var urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
+
+        event.preventDefault();
+
+        const fc = new FC(auth);
+        let routes = [];
+        fc.readFolder(urlRouteInPod, null).then((content) => {
+          if (content.files.length === 0) {
+            NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000)
+          } else {
+            for (let i = 0; i < content.files.length; i++) {
+              routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+            }
+          }
+          // Hook for select
+          setData(routes);
+        })
+          .catch(err => console.error("Error:" + err))
       }
     })
   }
 
   return (
     <MapWrapper>
+      <NotificationContainer/>
       <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
         <H1>{t('routes.title')}</H1>
         <SplitPane split="horizontal" primary="second">
@@ -115,6 +154,9 @@ export const VMapComponent = props => {
                   </Marker>
                 </MapStyled>
                 <SelectWrapper>
+                  <Button className="ids-link-filled" onClick={handleLoad}>
+                    {t('routes.loadButton')}
+                  </Button>
                   <H3>{t('routes.select')}</H3>
                   <SelectStyled id={"selectRoute"} options={data}/>
                   <Button className="ids-link-filled" onClick={handleSelect}>
@@ -127,7 +169,6 @@ export const VMapComponent = props => {
       </SplitPane>
     </MapWrapper>
   );
-
 }
 
 export default VMapComponent;
