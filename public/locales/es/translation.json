@@ -132,7 +132,10 @@
     "origin": "Origen de la ruta",
     "target": "Destino de la ruta",
     "errorTitle": "Error al visualizar",
-    "errorMessage": "No se encuentra en el POD"
+    "errorMessage": "No se encuentra en el POD",
+    "loadWarningTitle": "Advertencia al cargar",
+    "loadWarningMessage": "No existe ninguna ruta en el POD",
+    "loadButton": "Cargar"
   },
   "game": {
     "title": "Tres en Línea",
