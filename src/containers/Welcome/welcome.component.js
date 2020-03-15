@@ -77,7 +77,11 @@ export const WelcomePageContent = props => {
       <WelcomeCard className="card">
         <WelcomeDetail data-testid="welcome-detail">
           <h1>{t('welcome.title')}</h1>
-          <p>{t('welcome.presentation')}</p>
+          <ul>
+            <li>{t('welcome.presentation')}</li>
+            <li><a href="https://arquisoft.github.io/viade_es1c/docs/">{t('welcome.documentation')}</a></li>
+            <li><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
+          </ul>
         </WelcomeDetail>
       </WelcomeCard>
     </WelcomeWrapper>

@@ -24,7 +24,7 @@ const defaultProfilePhoto = '/img/icon/empty-profile.svg';
  * this means the result will have a better format to read on Javascript.
  * for more information please go to: https://github.com/solid/query-ldflex
  */
-type Props = { webId: String };
+export type Props = { webId: String };
 
 const Profile = ({ webId }: Props) => {
   const { t } = useTranslation();
@@ -72,7 +72,7 @@ const Profile = ({ webId }: Props) => {
             <FormRenderContainer>
               <WebId>
                 <FontAwesomeIcon icon="id-card" />
-                <a href={webId} target="_blank" rel="noopener noreferrer">
+                <a  href={webId} target="_blank" rel="noopener noreferrer">
                   {webId}
                 </a>
               </WebId>
@@ -112,3 +112,4 @@ const Profile = ({ webId }: Props) => {
 };
 
 export default Profile;
+

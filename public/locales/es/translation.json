@@ -55,6 +55,7 @@
     "text-editor": "Editor de Textos",
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
+    "download": "Descargar rutas",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
@@ -82,6 +83,8 @@
     "welcome": "Bienvenido",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas y compartirlas con otros usuarios.",
+    "documentation": "Enlace a la documentación",
+    "repository": "Enlace al repositorio de GitHub",
     "doneMessage": "¿Terminaste?",
     "upload": "Subir foto",
     "successTitle": "Éxito",
@@ -129,7 +132,12 @@
     "select": "Seleccione la ruta:",
     "button": "Visualizar",
     "origin": "Origen de la ruta",
-    "target": "Destino de la ruta"
+    "target": "Destino de la ruta",
+    "errorTitle": "Error al visualizar",
+    "errorMessage": "No se encuentra la ruta",
+    "loadWarningTitle": "Advertencia al cargar",
+    "loadWarningMessage": "No existe ninguna ruta en el POD",
+    "loadButton": "Cargar rutas del POD"
   },
   "game": {
     "title": "Tres en Línea",
@@ -253,7 +261,16 @@
     "resetShareForm": "Limpiar"
   },
   "upload": {
-    "title": "Subir mis rutas"
+    "title": "Subir mis rutas",
+    "button": "Subir",
+    "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
+    "successTitle": "Subido con éxito",
+    "successMessage" : "Sus rutas han sido subidas"
+  },
+  "download": {
+    "title": "Descargar ruta del POD",
+    "instruction":"Introduzca la URL del archivo en el POD:",
+    "button":"Descargar ruta"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

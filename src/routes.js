@@ -13,6 +13,7 @@ import {
   FormModelConverter,
   FormModelRenderer,
   UploadComponent,
+  DownloadComponent,
   ShareTracks
 } from './containers';
 
@@ -31,6 +32,11 @@ const privateRoutes = [
     id: 'upload',
     path: '/upload',
     component: UploadComponent
+  },
+  {
+    id: 'download',
+    path: '/download',
+    component: DownloadComponent
   },
   {
     id: 'vmap',

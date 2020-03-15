@@ -12,33 +12,38 @@ export const MapWrapper = styled.section`
 `;
 
 export const SelectWrapper = styled.div`
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
   justify-content: center;
   align-items: center;
   display: inline-block;
-  margin-left: .9em;
+  margin-right: 50px;
 `;
 
 export const H1 = styled.h1`
    font-family: "Raleway", sans-serif;
    font-weight: bold;
    margin: 0 auto;
+   margin-top: .3em;
 `;
 
 export const H3 = styled.h3`
    font-family: "Raleway", sans-serif;
    font-weight: bold;
+   margin-top: 3em;
 `;
 
 export const SelectStyled = styled(Select)`
    width: 100%;
    background: #fff;
-   margin-top: .9em;
+   text-align:left;
+   margin-bottom: 2em;
 `;
 
 export const MapStyled = styled(Map)`
-   width: 83%;
+   width: 93%;
    height: 500px;
-   float: right;
+   float: center;
 `;
 
 export const Button = styled.button`
