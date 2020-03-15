@@ -13,17 +13,16 @@ export async function downloadRoutes(url){
   var routes = new Array();
   //console.log(routes);
   urlFolder.then(function(result, routes){
-    //var i;
-    //for(i=0; i<result.files.length;i++){
-    //  console.log(result.files[i]);
-    //  console.log(result.files[i]);
-    //}
-      //console.log(result.files[1]);
-      console.log(result.files[1].url);
-      var urlR=fc.readFile(result.files[1].url);
+    var i;
+    for(i=0; i<result.files.length;i++){
+      var urlR=fc.readFile(result.files[i].url);
       urlR.then(function(txt){
         console.log(txt);
       });
+    }
+      //console.log(result.files[1]);
+      //
+      
   }
   );
 }
