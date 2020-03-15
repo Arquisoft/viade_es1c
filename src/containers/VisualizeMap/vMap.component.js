@@ -23,7 +23,7 @@ L.Icon.Default.mergeOptions({
 export const VMapComponent = props => {
 
   // Sustituir por las rutas del POD
-  const data = ['rutaDePrueba1.json', 'rutaDePrueba2.json', 'rutaDePrueba3.json', 'rutaDePrueba4.json'];
+  const data = ['rutaDePrueba1', 'rutaDePrueba2', 'rutaDePrueba3', 'rutaDePrueba4'];
 
   // Locales for i18n
   const { t } = useTranslation();
@@ -63,7 +63,7 @@ export const VMapComponent = props => {
         event.preventDefault();
 
         // We obtain the name of the route from the combobox and build the final URL
-        var selectedRouteName = document.getElementById("selectRoute").value;
+        var selectedRouteName = document.getElementById("selectRoute").value.concat(".json");
         urlRouteInPod = urlRouteInPod.concat(selectedRouteName);
 
         const fc = new FC(auth);

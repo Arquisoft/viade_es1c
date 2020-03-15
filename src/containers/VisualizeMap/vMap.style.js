@@ -33,6 +33,7 @@ export const SelectStyled = styled(Select)`
    width: 100%;
    background: #fff;
    margin-top: .9em;
+   text-align:left;
 `;
 
 export const MapStyled = styled(Map)`
