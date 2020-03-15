@@ -66,5 +66,10 @@ export const MyInput = styled.input`
 export const Button = styled.button`
   display: flex;
   margin-top: 3em;
+  background-color: #1751F5;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 `;
 

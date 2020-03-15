@@ -83,6 +83,8 @@
     "doneMessage": "All done ?",
     "title": "What is ViaDe_ES1C?",
     "presentation": "ViaDe is a decentralized application for route management. It is developed in the Solid web ecosystem. It allows us to visualize our routes and share them with other users.",
+    "documentation": "Link to documentation",
+    "repository": "Link to GitHub repository",
     "upload": "Upload New Photo",
     "successTitle": "Success",
     "uploadSuccess": "Profile Image was updated",
@@ -131,7 +133,10 @@
     "origin": "Origin of the track",
     "target": "Track destination",
     "errorTitle": "Error displaying",
-    "errorMessage": "Not in the POD"
+    "errorMessage": "Track not found",
+    "loadWarningTitle": "Warning when loading",
+    "loadWarningMessage": "There is no route in the POD",
+    "loadButton": "Load tracks from POD"
   },
   "game": {
     "title": "Tic Tac Toe",
