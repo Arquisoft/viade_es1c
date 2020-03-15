@@ -1,40 +1,71 @@
 import React from "react";
 import { UploadWrapper, H1, MyInput,Button } from './upload.style';
 import { useTranslation } from "react-i18next";
-
-import UploadToPod from '../UploadPod/uploadToPod';
-import {SolidFileClient} from "solid-file-client";
-
-const auth = require("solid-auth-client");
- const file=require("solid-file-client");
+import FC from 'solid-file-client';
+import auth from 'solid-auth-client';
 
 export const UploadComponent = props => {
+
   const { t } = useTranslation();
-  const userWebId="https://raquel.solid.community/profile/card#me";
-  const uploader = new UploadToPod(auth.fetch);
 
-	//const fileC=new SolidFileClient(file.fe);
+  async function processItem(item){
+    var reader = new FileReader();
+      var nameFile = item.name;
+      reader.onload = function(event){
+        var fileContent = reader.result;
+        const auth = require('solid-auth-client');
+        auth.trackSession(session => {
+          if (!session) {
+            return;
+          } else {
+            /*
+              15 == length("profile/card#me")
+            */
+            var webId = session.webId;
+            var urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(nameFile);
 
-  return(
-     <UploadWrapper>
-       <H1>{t('upload.title')}</H1>
-       <MyInput type="file"/>
-	            
-	<Button className="ids-link-filled" onClick={
-		SolidFileClient.createFile("https://raquel.solid.community/private/n2.txt",
-		"Esto es una prueba de ASW",
-		'text/plain', 'LINKS.INCLUDE')
-		
-	}>
-				{t("Añadir al pod")}
-     </Button>
-     </UploadWrapper>
+            event.preventDefault();
+
+            const fc = new FC(auth);
+
+            fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then((content) => {
+              alert("se subio");
+            })
+            .catch(err => console.error(`Error: ${err}`))
+          }
+        });
+      }
+      reader.readAsText(item);
+  }
+
+  async function processArray(array) {
+    array.forEach(async (item) => {
+      await processItem(item);
+    })
+  }
+
+  async function upload(){
+    const fileInput = document.getElementById('fileArea');
+    const files = fileInput.files;
+    await processArray(files);
+  }
+
+  /*async function handleUpload(event, urlRouteInPod, fileContent) {
+    const fc = new FC(auth);
+    alert(urlRouteInPod);
+    await fc.createFile(urlRouteInPod, fileContent, "state", {});
+    alert("se subio");
+  }*/
 	
-	 
-	 
+  return(
+    <UploadWrapper>
+      <H1>{t('upload.title')}</H1>
+      <MyInput type="file" id="fileArea" multiple/>     
+        <Button className="ids-link-filled" onClick={upload}>
+        {t('upload.button')}
+        </Button>
+    </UploadWrapper>
   );
 }
-
-
 
 export default UploadComponent;

@@ -253,7 +253,8 @@
     "resetShareForm": "Limpiar"
   },
   "upload": {
-    "title": "Subir mis rutas"
+    "title": "Subir mis rutas",
+    "button": "Subir"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
