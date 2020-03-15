@@ -253,7 +253,8 @@
     "resetShareForm": "Reset"
   },
   "upload": {
-    "title": "Upload my tracks"
+    "title": "Upload my tracks",
+    "button": "Upload"
   },
   "download": {
     "title": "Download track from POD",

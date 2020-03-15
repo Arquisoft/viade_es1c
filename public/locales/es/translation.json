@@ -254,7 +254,8 @@
     "resetShareForm": "Limpiar"
   },
   "upload": {
-    "title": "Subir mis rutas"
+    "title": "Subir mis rutas",
+    "button": "Subir"
   },
   "download": {
     "title": "Descargar ruta del POD",
