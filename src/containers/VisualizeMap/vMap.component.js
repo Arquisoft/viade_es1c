@@ -7,7 +7,6 @@ import { routesService } from "@services";
 import 'leaflet/dist/leaflet.css';
 import L, { DomEvent } from 'leaflet';
 import FC from 'solid-file-client';
-import auth from 'solid-auth-client';
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -46,13 +45,11 @@ export const VMapComponent = props => {
    * @param event
    */
   function handleSelect(event) {
-
     const auth = require('solid-auth-client');
     auth.trackSession(session => {
       if (!session) {
         return;
       } else {
-
         /*
           The webId has the structure: https://uo265308.solid.community/profile/card#me
           We want the structure: https://uo265308.solid.community/public/MyRoutes/
@@ -127,7 +124,6 @@ export const VMapComponent = props => {
       </SplitPane>
     </MapWrapper>
   );
-
 }
 
 export default VMapComponent;

@@ -255,7 +255,10 @@
   },
   "upload": {
     "title": "Subir mis rutas",
-    "button": "Subir"
+    "button": "Subir",
+    "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
+    "successTitle": "Subido con éxito",
+    "successMessage" : "Sus rutas han sido subidas"
   },
   "download": {
     "title": "Descargar ruta del POD",

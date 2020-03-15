@@ -254,7 +254,10 @@
   },
   "upload": {
     "title": "Upload my tracks",
-    "button": "Upload"
+    "button": "Upload",
+    "uploadPrompt" : "Choose the files of the routes you want to upload",
+    "successTitle": "Uploaded successfully",
+    "successMessage" : "Your tracks have been uploaded"
   },
   "download": {
     "title": "Download track from POD",
