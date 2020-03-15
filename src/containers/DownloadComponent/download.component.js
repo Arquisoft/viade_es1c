@@ -19,12 +19,8 @@ export async function downloadRoutes(url){
       urlR.then(function(txt){
         console.log(txt);
       });
-    }
-      //console.log(result.files[1]);
-      //
-      
-  }
-  );
+    } 
+  });
 }
 
 function getUrl(){
