@@ -29,8 +29,9 @@ const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => 
   const { t } = useTranslation();
 
   const reset = () => {
+    deshabilita();
     setDocumentUri('');
-    setContact('');
+    //setContact('');
   };
 
   const deshabilita = () =>{
