@@ -23,7 +23,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 === Quality Goals
 
-[cols="^,^3,^3"]
+[cols=",3,3"]
 |===
 
 |*Ref* |*Goal* |*Priority*
@@ -42,7 +42,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 === Stakeholders
 
-[cols="^,^2,^2"]
+[cols=",2,2"]
 |===
 
 |*Role/Name* |*Contact* |*Expectations*

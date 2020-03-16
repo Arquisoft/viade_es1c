@@ -5,7 +5,7 @@
 
 The list of decisions will increase throughout the development of the project. This section is highly related to section 4, which is about the solution strategy of the project. The design decisions made so far are:
 
-[cols="^2,^2,^2,^2,^2,^2"]
+[cols=",2,2,2,2,2"]
 |===
 
 |*Date* |*Decision* |*Details* |*Advantages* |*Disadvantages* |*Participants*
