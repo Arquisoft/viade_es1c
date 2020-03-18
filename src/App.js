@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Routes from "./components/routes/Routes";
 import VisualizeTrack from "./components/containers/visualizeTracks/VisualizeTrack";
 
 
