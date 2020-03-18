@@ -7,9 +7,7 @@ describe('Visualize Map', () => {
   afterAll(cleanup);
 
   const { container } = render(
-    <Router>
-      <Select />
-    </Router>
+    <Select />
   );
 
   test('App renders without crashing', () => {
