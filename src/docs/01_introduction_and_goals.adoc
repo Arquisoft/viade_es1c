@@ -23,7 +23,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 === Quality Goals
 
-[cols="^,^3,^3"]
+[cols=",3,3"]
 |===
 
 |*Ref* |*Goal* |*Priority*
@@ -42,7 +42,7 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 === Stakeholders
 
-[cols="^,^2,^2"]
+[cols=",2,2"]
 |===
 
 |*Role/Name* |*Contact* |*Expectations*
@@ -53,6 +53,12 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Teachers |Teachers of the subject of ASW  |Supervise the project and make sure that the requirements are accomplish 
 
-|Inrup Team |Owners of the idea |Evaluate the result of the final application 
+|Inrupt Team |Owners of the idea |Evaluate the result of the final application 
+
+|Solid |  |Follow Solid specifications
+
+|Wikiloc |Application | Interoperability with ViaDe 
+
+|OpenStreetMap |Free wiki world map |Allows visualization of maps
 
 |===

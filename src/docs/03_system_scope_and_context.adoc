@@ -15,21 +15,17 @@ Viade will have some different interfaces:
 
 === Business Context
 ****
-.ViaDe - Black box diagram
-image:Diagrama_caja_negra.PNG[]
-****
-****
-.ViaDe - Black box diagram's keylegend
-image:Leyenda_diagrama_caja_negra.PNG[]
+.ViaDe - Black box diagram and keylegend
+image:Black_Box_Diagram.png[]
 ****
 [options="header",cols="1,1"]
 |===
-^.^|Action ^.^|Description
-^.^|Log in ^.^|User has to log in using his *SOLID* credentials
-^.^|Share his tracks ^.^|User can upload his new tracks, don't saved in his SOLID POD
-^.^|Visualize tracks ^.^|User can watch his track displayed on a map
-^.^|Save new tracks ^.^|ViaDe application will *save* user's tracks that he has saved on his *SOLID POD*
-^.^|Load tracks ^.^|ViaDe application will *get* user's tracks that he has saved on his *SOLID POD*
+|Action |Description
+|Log in |User has to log in using his *SOLID* credentials
+|Share his tracks |User can upload his new tracks, don't saved in his SOLID POD
+|Visualize tracks |User can watch his track displayed on a map
+|Save new tracks |ViaDe application will *save* user's tracks that he has saved on his *SOLID POD*
+|Load tracks |ViaDe application will *get* user's tracks that he has saved on his *SOLID POD*
 |===
 === Technical Context
 
@@ -46,9 +42,9 @@ image:TechnicalContextDiagram.png[]
 
 [options="header",cols="1,1"]
 |===
-^.^|Object ^.^|Description
-^.^|User (1, 2) ^.^|Represents the users of the application
-^.^|ViaDe ^.^|Decentralized and web based application
-^.^|SOLID POD (1, 2) ^.^|Individual storage unit for one user
-^.^|SOLID (Social Linked Data) ^.^|New web ecosystem
+|Object |Description
+|User (A, B) |Represents the users of the application
+|ViaDe |Decentralized and web based application
+|SOLID POD (1, 2) |Individual storage unit for one user
+|SOLID (Social Linked Data) |New web ecosystem
 |===
