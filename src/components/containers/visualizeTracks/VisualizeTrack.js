@@ -6,8 +6,12 @@ import L from 'leaflet';
 import FC from 'solid-file-client';
 import { Select } from '../../utils/select/Select';
 import { NotificationContainer, NotificationManager } from "react-notifications";
+// CSS imports
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTracks.css";
+import 'react-notifications/lib/notifications.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -152,14 +156,14 @@ export const VisualizeTrack = (props) => {
                                 </Marker>
                             </Map>
                             <div className="selectWrapper">
-                                <button className="ids-link-filled" onClick={handleLoad}>
+                                <Button variant="primary" onClick={handleLoad}>
                                     {t('routes.loadButton')}
-                                </button>
+                                </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <button className="ids-link-filled" onClick={handleSelect}>
+                                <Button className="ids-link-filled" onClick={handleSelect}>
                                     {t('routes.button')}
-                                </button>
+                                </Button>
                             </div>
                         </SplitPane>
                     </SplitPane>
