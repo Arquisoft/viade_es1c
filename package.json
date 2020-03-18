@@ -28,6 +28,8 @@
     "solid-file-client": "^1.0.2"
   },
   "scripts": {
+	"predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
@@ -50,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "shx": "^0.3.2"
   }
 }
