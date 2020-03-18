@@ -1,12 +1,9 @@
-section {
-    width: 100%;
-    background-image: url('/img/background-image.jpg');
+.mapWrapper {
+    background-image: url("/img/background-image.jpg");
     background-repeat: repeat;
-    text-align:center;
-    position: relative;
 }
 
-div {
+.selectWrapper {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
     justify-content: center;
@@ -35,7 +32,7 @@ Select {
     margin-bottom: 2em;
 }
 
-Map {
+.map {
     width: 93%;
     height: 500px;
     float: center;

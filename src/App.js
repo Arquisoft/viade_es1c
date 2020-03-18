@@ -7,7 +7,7 @@ import VisualizeTrack from "./components/containers/visualizeTracks/VisualizeTra
 function App() {
   return (
     <div className="App">
-      <VisualizeTrack/>
+        <VisualizeTrack></VisualizeTrack>
     </div>
   );
 }

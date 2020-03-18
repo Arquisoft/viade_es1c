@@ -20,7 +20,7 @@ L.Icon.Default.mergeOptions({
 /**
  * Component used to display routes on a map
  */
-export const VisualizeTrack = props => {
+export const VisualizeTrack = (props) => {
 
     const [data, setData] = useState([]);
     // Locales for i18n
@@ -132,28 +132,39 @@ export const VisualizeTrack = props => {
     }
 
     return (
-        <section>
-            <Map center = {center} zoom = {zoom} >
-                <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Polyline color={'blue'}
-                          positions={positions}/>
-                <Marker position={origin}>
-                    <Popup>{t('routes.origin')}</Popup>
-                </Marker>
-                <Marker position={target}>
-                    <Popup>{t('routes.target')}</Popup>
-                </Marker>
-            </Map>
-            <div>
-                <button className="ids-link-filled" onClick={handleLoad}>
-                    {t('routes.loadButton')}
-                </button>
-                <h3>{t('routes.select')}</h3>
-                <Select id={"selectRoute"} options={data}/>
-                <button className="ids-link-filled" onClick={handleSelect}>
-                    {t('routes.button')}
-                </button>
-            </div>
+        <section className="mapWrapper">
+            <NotificationContainer/>
+            <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
+                <h1>{t('routes.title')}</h1>
+                <SplitPane split="horizontal" primary="second">
+                    <SplitPane split="vertical">
+                        <div></div>
+                        <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
+                            <Map className="map" center = {center} zoom = {zoom} >
+                                <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                                <Polyline color={'blue'}
+                                          positions={positions}/>
+                                <Marker position={origin}>
+                                    <Popup>{t('routes.origin')}</Popup>
+                                </Marker>
+                                <Marker position={target}>
+                                    <Popup>{t('routes.target')}</Popup>
+                                </Marker>
+                            </Map>
+                            <div className="selectWrapper">
+                                <button className="ids-link-filled" onClick={handleLoad}>
+                                    {t('routes.loadButton')}
+                                </button>
+                                <h3>{t('routes.select')}</h3>
+                                <Select id={"selectRoute"} options={data}/>
+                                <button className="ids-link-filled" onClick={handleSelect}>
+                                    {t('routes.button')}
+                                </button>
+                            </div>
+                        </SplitPane>
+                    </SplitPane>
+                </SplitPane>
+            </SplitPane>
         </section>
     );
 }
