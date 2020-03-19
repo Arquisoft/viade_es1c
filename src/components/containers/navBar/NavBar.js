@@ -18,6 +18,9 @@ const MyNavBar = props => {
                 <a className="navbar-link a-bar" href="/upload">
                     <img src="/img/icon/upload-icon.png" width="40" height="40" alt="Upload track"/>
                 </a>
+                <a className="navbar-link a-bar" href="/download">
+                    <img src="/img/icon/download-icon.png" width="31" height="32" alt="Upload track"/>
+                </a>
             </Nav>
         </Navbar>
     );
