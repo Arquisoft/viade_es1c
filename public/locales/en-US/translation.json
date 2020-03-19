@@ -148,9 +148,9 @@
     "successMessage" : "Your tracks have been uploaded"
   },
   "download": {
-    "title": "Download track from POD",
-    "instruction":"Enter the URL of the file",
-    "button":"Download track"
+    "title": "Download track",
+    "instruction":"Enter the URL of the file:",
+    "button":"Download"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

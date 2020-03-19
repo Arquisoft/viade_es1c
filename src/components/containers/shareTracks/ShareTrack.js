@@ -4,6 +4,8 @@ import {Select} from '../../utils/select/Select';
 import {Button} from "react-bootstrap";
 import {NotificationContainer} from "react-notifications";
 import "./ShareTrack.css";
+import {LoggedIn, LoggedOut} from "@solid/react";
+import { Redirect } from "react-router-dom";
 
 type
 Props = {
@@ -51,47 +53,51 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
 
     return (
         <section>
-            <div className="modal-dialog">
-                <div onSubmit={deshabilita} className="modal-content">
-                    <div className="modal-header">
-                        <h2>{t('share.title')}</h2>
-                        <hr/>
+            <LoggedIn>
+                <div className="modal-dialog">
+                    <div onSubmit={deshabilita} className="modal-content">
+                        <div className="modal-header">
+                            <h2>{t('share.title')}</h2>
+                            <hr/>
+                        </div>
+                        <form className="modal-body">
+                            <span>{t('share.createSharePrompt')}</span>
+                            <div className="primera">
+                                <label className="lab" htmlFor="documentUriInput">
+                                    {t('share.idLabel')}
+                                </label>
+                                <Select className="sel" options={data}/>
+                            </div>
+                            <div>
+                                <label>
+                                    {t('share.contactWebIDLabel')}
+                                    <input className="correct-margin"
+                                           id="opponentWebId"
+                                           type="text"
+                                           value={contact}
+                                           onChange={e => setContact(e.target.value)}
+                                           data-testid="webId"
+                                    />
+                                </label>
+                            </div>
+                            <div>
+                                <Button className="correct-margin" type="submit" data-testid="form-submit">
+                                    {t('share.shareTrack')}
+                                </Button>
+                                <Button className="correct-margin" onClick={reset}>
+                                    {t('share.resetShareForm')}
+                                </Button>
+                            </div>
+                        </form>
                     </div>
-                    <form className="modal-body">
-                        <span>{t('share.createSharePrompt')}</span>
-                        <div className="primera">
-                            <label className="lab" htmlFor="documentUriInput">
-                                {t('share.idLabel')}
-                            </label>
-                            <Select className="sel" options={data}/>
-                        </div>
-                        <div>
-                            <label>
-                                {t('share.contactWebIDLabel')}
-                                <input className="correct-margin"
-                                    id="opponentWebId"
-                                    type="text"
-                                    value={contact}
-                                    onChange={e => setContact(e.target.value)}
-                                    data-testid="webId"
-                                />
-                            </label>
-                        </div>
-                        <div>
-                            <Button className="correct-margin" type="submit" data-testid="form-submit">
-                                {t('share.shareTrack')}
-                            </Button>
-                            <Button className="correct-margin" onClick={reset}>
-                                {t('share.resetShareForm')}
-                            </Button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-            <NotificationContainer/>
+                <NotificationContainer/>
+            </LoggedIn>
+            <LoggedOut>
+                <Redirect to="/"></Redirect>
+            </LoggedOut>
         </section>
-    )
-        ;
+    );
 };
 
 export default ShareTrack;

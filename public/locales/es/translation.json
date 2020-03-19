@@ -149,9 +149,9 @@
     "successMessage" : "Sus rutas han sido subidas"
   },
   "download": {
-    "title": "Descargar ruta del POD",
+    "title": "Descargar ruta",
     "instruction":"Introduzca la URL del archivo en el POD:",
-    "button":"Descargar ruta"
+    "button":"Descargar"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

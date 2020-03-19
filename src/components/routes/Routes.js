@@ -2,10 +2,11 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import VisualizeTrack from '../containers/visualizeTracks/VisualizeTrack';
 import UploadTrack from "../containers/uploadTracks/UploadTrack";
-import MyNavBar from "../containers/navBar/NavBar";
+import MyNavBar from "../navBar/NavBar";
 import ShareTrack from "../containers/shareTracks/ShareTrack";
 import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
+import Login from "../containers/login/Login";
 
 export default function Routes(props) {
     return (
@@ -25,8 +26,14 @@ export default function Routes(props) {
                     <Route path="/download">
                         <DownloadTrack />
                     </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/welcome">
+                        <Welcome />
+                    </Route>
                     <Route exact path="/">
-                        <Welcome/>
+                        <Login/>
                     </Route>
                 </Switch>
             </div>
