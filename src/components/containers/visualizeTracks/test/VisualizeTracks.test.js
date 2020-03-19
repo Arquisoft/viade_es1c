@@ -6,7 +6,7 @@ describe('Visualize Map', () => {
   afterAll(cleanup);
 
   const { container } = render(
-      <VisualizeTrack></VisualizeTrack>
+      
   );
 
   test('App renders without crashing', () => {
