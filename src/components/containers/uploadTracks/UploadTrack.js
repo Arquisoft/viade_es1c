@@ -73,8 +73,7 @@ export const UploadTrack = props => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1>{t("upload.title")}</h1>
-                        <hr/>
+                        <h2>{t("upload.title")}</h2>
                     </div>
                     <div className="modal-body">
                         <span>{t("upload.uploadPrompt")}</span>

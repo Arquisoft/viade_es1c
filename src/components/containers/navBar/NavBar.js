@@ -12,7 +12,7 @@ const MyNavBar = props => {
                 <a className="navbar-link a-bar" href="/visualize">
                     <img src="/img/icon/maps-icon.png" width="40" height="40" alt="My tracks"/>
                 </a>
-                <a className="navbar-link a-bar" href="/share-files">
+                <a className="navbar-link a-bar" href="/share">
                     <img src="/img/icon/share-files.svg" width="25" height="50" alt="Share files"/>
                 </a>
                 <a className="navbar-link a-bar" href="/upload">
