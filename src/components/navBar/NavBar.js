@@ -2,8 +2,12 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
+import {Button} from 'react-bootstrap';
+import {useTranslation} from "react-i18next";
+import {LogoutButton} from "@solid/react";
 
 const MyNavBar = props => {
+    const {t} = useTranslation();
     return (
         <section>
             <LoggedIn>
@@ -24,6 +28,7 @@ const MyNavBar = props => {
                         <a className="navbar-link a-bar" href="/download">
                             <img src="/img/icon/download-icon.png" width="31" height="32" alt="Upload track"/>
                         </a>
+                        <LogoutButton className="logout">{t("logout.button")}</LogoutButton>
                     </Nav>
                 </Navbar>
             </LoggedIn>

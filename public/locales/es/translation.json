@@ -155,5 +155,8 @@
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
+  },
+  "logout": {
+    "button": "Cerrar sesión"
   }
 }

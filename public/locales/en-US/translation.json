@@ -154,5 +154,8 @@
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
+  },
+  "logout": {
+    "button": "Logout"
   }
 }

@@ -3,3 +3,11 @@
     margin-right: 1em;
     margin-left: 1em;
 }
+
+.logout {
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+    margin-top: .2em;
+    border-radius: 25px;
+}
