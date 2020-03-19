@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Marker, Popup, TileLayer, Polyline, Map } from "react-leaflet";
 import { useTranslation } from "react-i18next";
-import SplitPane from 'react-split-pane';
 import L from 'leaflet';
 import FC from 'solid-file-client';
 import { Select } from '../../utils/select/Select';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
-import "./VisualizeTracks.css";
+import "./VisualizeTrack.css";
 import 'react-notifications/lib/notifications.css';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Row, Container } from 'react-bootstrap';
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -135,40 +134,39 @@ export const VisualizeTrack = (props) => {
     }
 
     return (
-        <section className="mapWrapper">
-            <NotificationContainer/>
-            <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
+        <Container>
+            <Row>
                 <h1>{t('routes.title')}</h1>
-                <SplitPane split="horizontal" primary="second">
-                    <SplitPane split="vertical">
-                        <div></div>
-                        <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
-                            <Map className="map" center = {center} zoom = {zoom} >
-                                <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                <Polyline color={'blue'}
-                                          positions={positions}/>
-                                <Marker position={origin}>
-                                    <Popup>{t('routes.origin')}</Popup>
-                                </Marker>
-                                <Marker position={target}>
-                                    <Popup>{t('routes.target')}</Popup>
-                                </Marker>
-                            </Map>
-                            <div className="selectWrapper">
-                                <Button variant="primary" onClick={handleLoad}>
-                                    {t('routes.loadButton')}
-                                </Button>
-                                <h3>{t('routes.select')}</h3>
-                                <Select id={"selectRoute"} options={data}/>
-                                <Button onClick={handleSelect}>
-                                    {t('routes.button')}
-                                </Button>
-                            </div>
-                        </SplitPane>
-                    </SplitPane>
-                </SplitPane>
-            </SplitPane>
-        </section>
+            </Row>
+            <Row>
+                <Col sm={10}>
+                    <Map className="map" center = {center} zoom = {zoom} >
+                        <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                        <Polyline color={'blue'}
+                                  positions={positions}/>
+                        <Marker position={origin}>
+                            <Popup>{t('routes.origin')}</Popup>
+                        </Marker>
+                        <Marker position={target}>
+                            <Popup>{t('routes.target')}</Popup>
+                        </Marker>
+                    </Map>
+                </Col>
+                <Col>
+                    <div>
+                        <Button variant="primary" onClick={handleLoad}>
+                            {t('routes.loadButton')}
+                        </Button>
+                        <h3>{t('routes.select')}</h3>
+                        <Select id={"selectRoute"} options={data}/>
+                        <Button onClick={handleSelect}>
+                            {t('routes.button')}
+                        </Button>
+                    </div>
+                </Col>
+            </Row>
+            <NotificationContainer/>
+        </Container>
     );
 }
 

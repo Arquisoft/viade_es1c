@@ -4,6 +4,7 @@ import FC from "solid-file-client";
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Button } from 'react-bootstrap';
+import "./UploadTrack.css";
 
 export const UploadTrack = props => {
 
@@ -68,10 +69,11 @@ export const UploadTrack = props => {
     }
 
     return (
-            <div className="modal-dialog" role="document">
+        <section>
+            <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h2>{t("upload.title")}</h2>
+                        <h1>{t("upload.title")}</h1>
                         <hr/>
                     </div>
                     <div className="modal-body">
@@ -86,6 +88,7 @@ export const UploadTrack = props => {
                 </div>
                 <NotificationContainer/>
             </div>
+        </section>
     );
 };
 

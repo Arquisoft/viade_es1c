@@ -1,8 +1,3 @@
-.mapWrapper {
-    background-image: url("/img/background-image.jpg");
-    background-repeat: repeat;
-}
-
 .selectWrapper {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
@@ -10,13 +5,13 @@
     align-items: center;
     display: inline-block;
     margin-right: 50px;
-    margin-top: 4em;
+    margin-top: 5em;
 }
 
 h1 {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
-    margin-top: 2em;
+    margin-top: .5em;
     margin-left: 3em;
 }
 
@@ -24,6 +19,7 @@ h3 {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
     margin-top: 3em;
+    margin-bottom: 1em;
 }
 
 Select {
@@ -34,8 +30,16 @@ Select {
 }
 
 .map {
-    margin-top: 4em;
-    width: 93%;
+    margin-top: 3em;
+    width: 95%;
     height: 400px;
-    float: center;
+}
+
+.popup {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+Button {
+    margin-top: 2.2em;
 }
