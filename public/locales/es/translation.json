@@ -22,15 +22,8 @@
   },
   "login": {
     "title": "Bienvenido a ViaDe_ES1C",
-    "loginTitle": "Iniciar sesión",
-    "register": "Registrarse por una identidad Solid",
-    "solidHelp": "Qué es una identidad Solid?",
-    "providerPlaceholder": "Proveedor de ID",
-    "selectPlaceholder": "Seleccione su Proveedor",
-    "inputPlaholder": "WebID",
+    "loginTitle": "Para iniciar sesión pulse aquí:",
     "formButtonText": "Iniciar sesión",
-    "btnTxtWebId": "Iniciar sesión con WebID",
-    "btnTxtProvider": "Iniciar sesión con Proveedor",
     "errors": {
       "unknown": "Algo ha salido mal, por favor inténtelo de nuevo. Si el problema persiste, inténtelo más tarde....",
       "webIdNotValid": "El WebId no es válido",

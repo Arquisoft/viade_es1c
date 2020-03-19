@@ -22,15 +22,9 @@
   },
   "login": {
     "title": "Welcome to ViaDe_ES1C",
-    "loginTitle": "Log in",
+    "loginTitle": "To log in click here",
     "register": "Register for a solid identity",
-    "solidHelp": "What is a Solid Identity?",
-    "providerPlaceholder": "Select ID Provider",
-    "selectPlaceholder": "Select ID Provider",
-    "inputPlaholder": "WebID",
     "formButtonText": "Log In",
-    "btnTxtWebId": "Log In with WebId",
-    "btnTxtProvider": "Log In with Provider",
     "errors": {
       "unknown": "Something is wrong, please try again...",
       "webIdNotValid": "WebID is not valid",

@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
- }
+}
 
 @media all and (min-width: 480px) {
     .Login {

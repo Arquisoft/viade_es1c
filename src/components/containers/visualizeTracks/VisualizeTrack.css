@@ -8,6 +8,10 @@
     margin-top: 5em;
 }
 
+section {
+    background: linear-gradient(#fff, #b6e8fe, #fff);
+}
+
 .myH1 {
     margin-top: .5em;
     margin-left: 3em;

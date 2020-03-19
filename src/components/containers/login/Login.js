@@ -1,35 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import {useTranslation} from "react-i18next";
-import {LoggedOut, LoggedIn } from '@solid/react';
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import {LoggedOut, LoggedIn, LoginButton } from '@solid/react';
 import {Redirect} from "react-router-dom";
 import "./Login.css";
 
 export const Login = props => {
     const {t} = useTranslation();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
     return (
         <div className="login-div">
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>
-                    <form onSubmit={handleSubmit}>
-                        <Button>
-                            {t("login.register")}
-                        </Button>
+                    <form>
                         <h3>{t("login.loginTitle")}</h3>
-                        <Button variant="light">
+                        <LoginButton className="btn btn-primary" popup="https://solid.community/common/popup.html">
                             {t("login.formButtonText")}
-                        </Button>
+                        </LoginButton>
                     </form>
                 </div>
             </LoggedOut>
