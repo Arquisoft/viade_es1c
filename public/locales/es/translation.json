@@ -22,7 +22,6 @@
   },
   "login": {
     "title": "Bienvenido a ViaDe_ES1C",
-    "loginTitle": "Para iniciar sesión pulse aquí:",
     "formButtonText": "Iniciar sesión",
     "errors": {
       "unknown": "Algo ha salido mal, por favor inténtelo de nuevo. Si el problema persiste, inténtelo más tarde....",

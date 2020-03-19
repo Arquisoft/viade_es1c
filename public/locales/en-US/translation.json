@@ -22,7 +22,6 @@
   },
   "login": {
     "title": "Welcome to ViaDe_ES1C",
-    "loginTitle": "To log in click here",
     "register": "Register for a solid identity",
     "formButtonText": "Log In",
     "errors": {
