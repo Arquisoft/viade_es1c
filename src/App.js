@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from "./components/routes/Routes";
-import VisualizeTrack from "./components/containers/visualizeTracks/VisualizeTrack";
-
+import MyNavBar from "./components/containers/navBar/NavBar";
 
 function App() {
   return (
     <div className="App">
-        <VisualizeTrack></VisualizeTrack>
+        <MyNavBar></MyNavBar>
+        <Routes/>
     </div>
   );
 }

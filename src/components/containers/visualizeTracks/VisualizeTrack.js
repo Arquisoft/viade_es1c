@@ -10,8 +10,7 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTracks.css";
 import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -161,7 +160,7 @@ export const VisualizeTrack = (props) => {
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button className="ids-link-filled" onClick={handleSelect}>
+                                <Button onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
