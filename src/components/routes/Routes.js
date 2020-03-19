@@ -5,6 +5,7 @@ import UploadTrack from "../containers/uploadTracks/UploadTrack";
 import MyNavBar from "../containers/navBar/NavBar";
 import ShareTrack from "../containers/shareTracks/ShareTrack";
 import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
+import Welcome from "../containers/welcome/Welcome";
 
 export default function Routes(props) {
     return (
@@ -23,6 +24,9 @@ export default function Routes(props) {
                     </Route>
                     <Route path="/download">
                         <DownloadTrack />
+                    </Route>
+                    <Route exact path="/">
+                        <Welcome/>
                     </Route>
                 </Switch>
             </div>

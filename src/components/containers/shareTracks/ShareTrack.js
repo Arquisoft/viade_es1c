@@ -17,7 +17,7 @@ const data = ['Ruta1', 'Ruta2', 'Ruta3'];
 
 const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
     const uniqueIdentifier = Date.now();
-    const [documentUri, setDocumentUri] = useState(`${uniqueIdentifier}.ttl`);
+    const [setDocumentUri] = useState(`${uniqueIdentifier}.ttl`);
     const {t} = useTranslation();
 
     const reset = () => {
@@ -33,7 +33,7 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
     /**
      * --- NEED TO BE CHANGE ---
      */
-    const onSubmit = async e => {
+    /* const onSubmit = async e => {
         try {
             e.preventDefault();
 
@@ -47,7 +47,7 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
 
         } catch (e) {
         }
-    };
+    }; */
 
     return (
         <section>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Marker, Popup, TileLayer, Polyline, Map } from "react-leaflet";
+import { Button, Col, Row, Container } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import L from 'leaflet';
 import FC from 'solid-file-client';
@@ -9,7 +10,6 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
 import 'react-notifications/lib/notifications.css';
-import { Button, Col, Row, Container } from 'react-bootstrap';
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -136,7 +136,7 @@ export const VisualizeTrack = (props) => {
     return (
         <Container>
             <Row>
-                <h1>{t('routes.title')}</h1>
+                <h1 className="myH1">{t('routes.title')}</h1>
             </Row>
             <Row>
                 <Col sm={10}>

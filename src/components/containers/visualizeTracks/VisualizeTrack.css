@@ -8,16 +8,12 @@
     margin-top: 5em;
 }
 
-h1 {
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;
+.myH1 {
     margin-top: .5em;
     margin-left: 3em;
 }
 
 h3 {
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;
     margin-top: 3em;
     margin-bottom: 1em;
 }
