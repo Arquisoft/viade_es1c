@@ -17,4 +17,5 @@
 | WebStorm | Integrated Development Environment created by JetBrains used for JavaScript development.
 | Wikiloc | Wikiloc is a mashup where geo-referenced outdoor routes and points of interest from around the world can be stored and shared. [Official Website:  https://es.wikiloc.com/]
 |Leaflet | Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps. [Official Website: https://leafletjs.com/]
+|Jest | Jest is a JavaScript Testing Framework. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue, etc. [Official Website: https://jestjs.io/]
 |===

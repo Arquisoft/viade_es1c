@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Marker, Popup, TileLayer, Polyline, Map } from "react-leaflet";
-import { useTranslation } from "react-i18next";
-import SplitPane from 'react-split-pane';
+import React, {useState} from "react";
+import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
+import {Button, Col, Row, Container} from 'react-bootstrap';
+import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import FC from 'solid-file-client';
-import { Select } from '../../utils/select/Select';
-import { NotificationContainer, NotificationManager } from "react-notifications";
+import {Select} from '../../utils/select/Select';
+import {NotificationContainer, NotificationManager} from "react-notifications";
+import { Redirect } from "react-router-dom";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
-import "./VisualizeTracks.css";
+import "./VisualizeTrack.css";
 import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import {LoggedIn, LoggedOut} from "@solid/react";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -28,7 +28,7 @@ export const VisualizeTrack = (props) => {
 
     const [data, setData] = useState([]);
     // Locales for i18n
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     // Hooks for polyline and map
     const zoomValue = 11;
@@ -136,16 +136,16 @@ export const VisualizeTrack = (props) => {
     }
 
     return (
-        <section className="mapWrapper">
-            <NotificationContainer/>
-            <SplitPane split="horizontal" minSize={50} maxSize={300} defaultSize={100}>
-                <h1>{t('routes.title')}</h1>
-                <SplitPane split="horizontal" primary="second">
-                    <SplitPane split="vertical">
-                        <div></div>
-                        <SplitPane split="vertical" primary="second" defaultSize={200} maxSize={400} minSize={100}>
-                            <Map className="map" center = {center} zoom = {zoom} >
-                                <TileLayer url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <section>
+            <LoggedIn>
+                <Container>
+                    <Row>
+                        <h1 className="myH1">{t('routes.title')}</h1>
+                    </Row>
+                    <Row>
+                        <Col sm={10}>
+                            <Map className="map" center={center} zoom={zoom}>
+                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                                 <Polyline color={'blue'}
                                           positions={positions}/>
                                 <Marker position={origin}>
@@ -155,20 +155,26 @@ export const VisualizeTrack = (props) => {
                                     <Popup>{t('routes.target')}</Popup>
                                 </Marker>
                             </Map>
-                            <div className="selectWrapper">
+                        </Col>
+                        <Col>
+                            <div>
                                 <Button variant="primary" onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button className="ids-link-filled" onClick={handleSelect}>
+                                <Button onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
-                        </SplitPane>
-                    </SplitPane>
-                </SplitPane>
-            </SplitPane>
+                        </Col>
+                    </Row>
+                    <NotificationContainer/>
+                </Container>
+            </LoggedIn>
+            <LoggedOut>
+                <Redirect to="/"></Redirect>
+            </LoggedOut>
         </section>
     );
 }

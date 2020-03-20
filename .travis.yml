@@ -4,7 +4,6 @@ node_js:
 cache:
   directories:
   - node_modules
-warnings_are_errors: false
 before_install:
   - sudo apt-get update
   - sudo apt-get -y install ruby openjdk-8-jre
@@ -13,7 +12,6 @@ script:
   - npm install -g codecov
   - npm test && codecov
   - npm run build
-  - CI=false npm run build
   - npm run docs
 deploy:
   provider: pages

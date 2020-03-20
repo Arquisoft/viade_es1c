@@ -1,0 +1,45 @@
+.selectWrapper {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 5em;
+}
+
+section {
+    background: linear-gradient(#fff, #b6e8fe, #fff);
+}
+
+.myH1 {
+    margin-top: .5em;
+    margin-left: 3em;
+}
+
+h3 {
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+
+Select {
+    width: 100%;
+    background: #fff;
+    text-align:left;
+    margin-bottom: 3em;
+}
+
+.map {
+    margin-top: 3em;
+    width: 95%;
+    height: 400px;
+}
+
+.popup {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+Button {
+    margin-top: 2.2em;
+}
