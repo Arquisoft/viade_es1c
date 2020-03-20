@@ -1,5 +1,5 @@
 .myH2 {
-    margin-top: 1.4em;
+    margin-top: 1.5em;
 }
 
 .h1-welcome {
@@ -9,4 +9,9 @@
 ul {
     margin-top: 2em;
     text-align: left;
+}
+
+.myImg {
+    height: 122px;
+    width: 152px;
 }

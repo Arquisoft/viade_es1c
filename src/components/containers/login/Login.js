@@ -12,11 +12,19 @@ export const Login = props => {
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>
-                    <form>
-                        <LoginButton className="btn btn-primary" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
+                    <form >
+                        <LoginButton className="btn btn-primary a-solid" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
                             {t("login.formButtonText")}
                         </LoginButton>
                     </form>
+                    <a
+                        href="https://solid.inrupt.com/get-a-solid-pod"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        className="link"
+                    >
+                        {t('login.solidHelp')}
+                    </a>
                 </div>
             </LoggedOut>
             <LoggedIn>

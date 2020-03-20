@@ -23,6 +23,7 @@
   "login": {
     "title": "Welcome to ViaDe_ES1C",
     "register": "Register for a solid identity",
+    "solidHelp": "What is a Solid Identity?",
     "formButtonText": "Log In",
     "errors": {
       "unknown": "Something is wrong, please try again...",

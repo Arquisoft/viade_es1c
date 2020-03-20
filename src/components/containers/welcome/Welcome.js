@@ -15,8 +15,7 @@ export const Welcome = props => {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
-                            <img className="myImg" src="img/logoViaDe.svg" alt="Logo ViaDe" height="120"
-                                 width="150"></img>
+                            <img className="myImg" src="img/logoViaDe.svg" alt="Logo ViaDe"></img>
                         </div>
                         <div className="col-sm">
                             <h1 className="h1-welcome">{t('welcome.welcome')}</h1>

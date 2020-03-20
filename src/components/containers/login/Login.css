@@ -8,6 +8,10 @@
     background-size: cover;
 }
 
+.a-solid {
+    margin-bottom: 2em;
+}
+
 @media all and (min-width: 480px) {
     .Login {
         padding: 60px 0;

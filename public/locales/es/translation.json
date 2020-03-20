@@ -23,6 +23,7 @@
   "login": {
     "title": "Bienvenido a ViaDe_ES1C",
     "formButtonText": "Iniciar sesión",
+    "solidHelp": "¿Qué es una identidad Solid?",
     "errors": {
       "unknown": "Algo ha salido mal, por favor inténtelo de nuevo. Si el problema persiste, inténtelo más tarde....",
       "webIdNotValid": "El WebId no es válido",
