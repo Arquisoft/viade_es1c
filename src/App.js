@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from "./components/routes/Routes";
-import VisualizeTrack from "./components/containers/visualizeTracks/VisualizeTrack";
-
 
 function App() {
   return (
     <div className="App">
-        <VisualizeTrack></VisualizeTrack>
+        <Routes/>
     </div>
   );
 }
