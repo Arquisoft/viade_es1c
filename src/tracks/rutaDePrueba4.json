@@ -1,0 +1,33 @@
+{
+	"@context": "http://schema.org",
+	"@type": "Trip",
+	"name": "Ruta4",
+	"description": "Descripción de la ruta 4",
+	"itinerary": {
+		"@type": "itemList",
+		"numberOfItems": 2,
+		"itemListOrder": "ItemListOrderDescending",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 43.354444,
+					"longitude": -5.851667,
+					"elevation": "200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 43.362583,
+					"longitude": -5.843081,
+					"elevation": "200 m"
+				}
+			}
+		]
+	}
+}
