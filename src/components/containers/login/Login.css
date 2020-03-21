@@ -1,13 +1,3 @@
-.login-div {
-    align: center;
-    background-image: url("/img/background-image.jpg");
-    height: 100vh;
-    width: 100vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .a-solid {
     margin-bottom: 2em;
 }

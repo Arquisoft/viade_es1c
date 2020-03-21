@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import VisualizeTrack from '../containers/visualizeTracks/VisualizeTrack';
 import UploadTrack from "../containers/uploadTracks/UploadTrack";
 import MyNavBar from "../navBar/NavBar";
@@ -8,36 +8,19 @@ import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
 import Login from "../containers/login/Login";
 
-export default function Routes(props) {
+export default function Routes() {
     return (
-        <Router>
-            <div>
+        <HashRouter>
                 <MyNavBar/>
                 <Switch>
-                    <Route path="/visualize">
-                        <VisualizeTrack />
-                    </Route>
-                    <Route path="/upload">
-                        <UploadTrack />
-                    </Route>
-                    <Route path="/share">
-                        <ShareTrack />
-                    </Route>
-                    <Route path="/download">
-                        <DownloadTrack />
-                    </Route>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                    <Route path="/welcome">
-                        <Welcome />
-                    </Route>
-                    <Route exact path="/">
-                        <Login/>
-                    </Route>
-                    <Redirect to="/" />
+                    <Route exact path="/welcome" component={Welcome}/>
+                    <Route exact path="/visualize" component={VisualizeTrack}/>
+                    <Route exact path="/upload" component={UploadTrack}/>
+                    <Route exact path="/share" component={ShareTrack}/>
+                    <Route exact path="/download" component={DownloadTrack}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/" component={Login}/>
                 </Switch>
-            </div>
-        </Router>
+        </HashRouter>
     );
 }

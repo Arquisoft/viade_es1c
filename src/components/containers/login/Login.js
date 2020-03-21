@@ -8,7 +8,9 @@ export const Login = props => {
     const {t} = useTranslation();
 
     return (
-        <div className="login-div">
+        <div style={{ background: 'url(' + process.env.PUBLIC_URL +`/img/background-image.jpg` + ')'
+            , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
+            , backgroundPosition: 'center', backgroundSize: 'cover' }}>
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>

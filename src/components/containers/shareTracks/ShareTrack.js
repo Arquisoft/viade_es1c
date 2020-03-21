@@ -72,9 +72,7 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
                                 <label>
                                     {t('share.contactWebIDLabel')}
                                     <input className="correct-margin"
-                                           id="opponentWebId"
                                            type="text"
-                                           value={contact}
                                            onChange={e => setContact(e.target.value)}
                                            data-testid="webId"
                                     />
