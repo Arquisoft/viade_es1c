@@ -25,7 +25,7 @@ const MyNavBar = props => {
                             <img src="/img/icon/upload-icon.png" width="40" height="40" alt="Upload track"/>
                         </a>
                         <a className="navbar-link a-bar a-download" href="/download">
-                            <img src="/img/icon/download-icon.svg" width="31" height="25" alt="Upload track"/>
+                            <img src="/img/icon/download-icon.svg" width="31" height="25" alt="Download track"/>
                         </a>
                         <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
                     </Nav>
