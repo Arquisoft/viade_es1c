@@ -30,7 +30,8 @@ export const VisualizeTrack = (props) => {
     // Locales for i18n
     const {t} = useTranslation();
 
-    // Hooks for polyline and map
+    // Hooks for polyline, map, histogram
+    // Setting default values
     const zoomValue = 11;
     const [zoom, setZoom] = useState(zoomValue);
     const [positions, setPositions] = useState();
@@ -127,14 +128,18 @@ export const VisualizeTrack = (props) => {
                 let routes = [];
                 fc.readFolder(urlRouteInPod, null).then((content) => {
                     if (content.files.length === 0) {
-                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000)
+                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
                     } else {
                         for (let i = 0; i < content.files.length; i++) {
-                            routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                            let extension = content.files[i].name.split(".");
+                            if (!extension[1].localeCompare("json")) {
+                                routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                            }
                         }
+                        NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
+                        // Hook for select
+                        setData(routes);
                     }
-                    // Hook for select
-                    setData(routes);
                 })
                     .catch(err => console.error("Error:" + err))
             }
