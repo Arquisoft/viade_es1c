@@ -26,13 +26,13 @@ Select {
     width: 100%;
     background: #fff;
     text-align:left;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 
 .map {
-    margin-top: 3em;
-    width: 95%;
-    height: 400px;
+    margin-top: 2.5em;
+    width: 90%;
+    height: 300px;
 }
 
 .popup {
@@ -41,5 +41,5 @@ Select {
 }
 
 Button {
-    margin-top: 2.2em;
+    margin-top: 2em;
 }

@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
+import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
+import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
@@ -11,7 +13,6 @@ import { Redirect } from "react-router-dom";
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
 import 'react-notifications/lib/notifications.css';
-import {LoggedIn, LoggedOut} from "@solid/react";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -26,7 +27,6 @@ L.Icon.Default.mergeOptions({
  */
 export const VisualizeTrack = (props) => {
 
-    const [data, setData] = useState([]);
     // Locales for i18n
     const {t} = useTranslation();
 
@@ -37,6 +37,9 @@ export const VisualizeTrack = (props) => {
     const [center, setCenter] = useState(0);
     const [origin, setOrigin] = useState(0);
     const [target, setTarget] = useState(0);
+    const [data, setData] = useState([]);
+    const [elevation, setElevation] = useState(0);
+    const [showChart, setShowChart] = useState(false);
 
     /**
      * This function is invoked when the user selects a route in the combobox. It's function
@@ -76,19 +79,22 @@ export const VisualizeTrack = (props) => {
 
                     // We obtain the points of the route
                     let points = [];
+                    let elevationsValues = [];
                     for (let i = 0; i < route.itinerary.numberOfItems; i++) {
                         let latitude = route.itinerary.itemListElement[i].item.latitude;
                         let longitude = route.itinerary.itemListElement[i].item.longitude;
+                        let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
+                        elevationsValues.push({ x: 'Point '.concat(i+1), y: parseInt(elevationValue[0], 10)});
                         points.push([latitude, longitude]);
                     }
-
                     // We show the points of the route in the map
                     setOrigin(points[0]);
                     setTarget(points[points.length - 1]);
                     setCenter(points[0]);
                     setPositions(points);
                     setZoom(zoomValue);
-
+                    setElevation(elevationsValues);
+                    setShowChart(true);
                 })
                     .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
             }
@@ -144,17 +150,30 @@ export const VisualizeTrack = (props) => {
                     </Row>
                     <Row>
                         <Col sm={10}>
-                            <Map className="map" center={center} zoom={zoom}>
-                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                                <Polyline color={'blue'}
-                                          positions={positions}/>
-                                <Marker position={origin}>
-                                    <Popup>{t('routes.origin')}</Popup>
-                                </Marker>
-                                <Marker position={target}>
-                                    <Popup>{t('routes.target')}</Popup>
-                                </Marker>
-                            </Map>
+                            <Row>
+                                <Map className="map" center={center} zoom={zoom}>
+                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                                    <Polyline color={'blue'}
+                                              positions={positions}/>
+                                    <Marker position={origin}>
+                                        <Popup>{t('routes.origin')}</Popup>
+                                    </Marker>
+                                    <Marker position={target}>
+                                        <Popup>{t('routes.target')}</Popup>
+                                    </Marker>
+                                </Map>
+                            </Row>
+                            <Row>
+                                {showChart && (
+                                    <VictoryChart style={{ parent: { maxWidth: "30%" }}}
+                                                  domainPadding={10}
+                                                  theme={VictoryTheme.material}>
+                                        <VictoryStack colorScale={"cool"}>
+                                            <VictoryArea data={elevation}/>
+                                        </VictoryStack>
+                                    </VictoryChart>
+                                )}
+                            </Row>
                         </Col>
                         <Col>
                             <div>
