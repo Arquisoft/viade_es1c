@@ -13,6 +13,7 @@ export const UploadTrack = props => {
 
     // Locales for i18n
     const { t } = useTranslation();
+    let times = 0; // For success message
 
     /**
      * Process the case of an individual item
@@ -38,8 +39,11 @@ export const UploadTrack = props => {
                     event.preventDefault();
                     const fc = new FC(auth);
                     fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then((content) => {
-
-                        NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"));
+                        if (times === 0) {
+                            NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"));
+                            document.getElementById("fileArea").value = ""; // Clear input file
+                            times++;
+                        }
                     })
                         .catch(err => console.error(`Error: ${err}`));
                 }
