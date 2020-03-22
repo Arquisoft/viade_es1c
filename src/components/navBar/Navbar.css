@@ -1,0 +1,25 @@
+.a-bar {
+    margin-top: .2em;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.a-download {
+    margin-top: .5em;
+}
+
+.logout {
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+    margin-top: .2em;
+}
+
+.nav-color {
+    background: #5faadb;
+}
+
+.a-logo {
+    margin-bottom: .5em;
+    margin-right: 2.1em;
+}
