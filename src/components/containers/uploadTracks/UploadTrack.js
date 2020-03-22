@@ -40,7 +40,7 @@ export const UploadTrack = props => {
                     const fc = new FC(auth);
                     fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then((content) => {
                         if (times === 0) {
-                            NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"));
+                            NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
                             document.getElementById("fileArea").value = ""; // Clear input file
                             times++;
                         }
