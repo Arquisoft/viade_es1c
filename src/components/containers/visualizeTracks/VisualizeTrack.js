@@ -32,14 +32,14 @@ export const VisualizeTrack = (props) => {
 
     // Hooks for polyline and map
     const zoomValue = 11;
-    const [zoom, setZoom] = useState(0);
-    const [positions, setPositions] = useState(0);
-    const [center, setCenter] = useState(0);
+    const [zoom, setZoom] = useState(zoomValue);
+    const [positions, setPositions] = useState();
+    const [center, setCenter] = useState([43.354444, -5.851667]);
     const [origin, setOrigin] = useState(0);
     const [target, setTarget] = useState(0);
     const [data, setData] = useState([]);
     const [elevation, setElevation] = useState([]);
-    const [showChart, setShowChart] = useState(false);
+    const [showElements, setShowElements] = useState(false);
 
     /**
      * This function is invoked when the user selects a route in the combobox. It's function
@@ -94,9 +94,9 @@ export const VisualizeTrack = (props) => {
                     setPositions(points);
                     setZoom(zoomValue);
                     setElevation(elevationsValues);
-                    setShowChart(true);
+                    setShowElements(true);
                 })
-                    .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
+                    .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000))
             }
         })
     }
@@ -127,7 +127,7 @@ export const VisualizeTrack = (props) => {
                 let routes = [];
                 fc.readFolder(urlRouteInPod, null).then((content) => {
                     if (content.files.length === 0) {
-                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000)
+                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000)
                     } else {
                         for (let i = 0; i < content.files.length; i++) {
                             routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
@@ -153,18 +153,22 @@ export const VisualizeTrack = (props) => {
                             <Row>
                                 <Map className="map" center={center} zoom={zoom}>
                                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                                    <Polyline color={'blue'}
-                                              positions={positions}/>
-                                    <Marker position={origin}>
-                                        <Popup>{t('routes.origin')}</Popup>
-                                    </Marker>
-                                    <Marker position={target}>
-                                        <Popup>{t('routes.target')}</Popup>
-                                    </Marker>
+                                    {showElements && (
+                                        <div>
+                                            <Polyline color={'blue'}
+                                                      positions={positions}/>
+                                            <Marker position={origin}>
+                                                <Popup>{t('routes.origin')}</Popup>
+                                            </Marker>
+                                            <Marker position={target}>
+                                                <Popup>{t('routes.target')}</Popup>
+                                            </Marker>
+                                        </div>
+                                        )}
                                 </Map>
                             </Row>
                             <Row>
-                                {showChart && (
+                                {showElements && (
                                     <VictoryChart style={{ parent: { maxWidth: "35%" }}}
                                                   domainPadding={10}
                                                   theme={VictoryTheme.material}>
