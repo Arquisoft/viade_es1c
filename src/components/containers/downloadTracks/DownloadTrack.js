@@ -3,6 +3,36 @@ import { useTranslation } from "react-i18next";
 import { Button } from 'react-bootstrap';
 import {LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
+import FC from 'solid-file-client';
+import auth from 'solid-auth-client';
+
+const fc = new FC(auth);
+
+
+export async function downloadRoutes(url){
+  var urlFolder = fc.readFolder(url);
+  var routes = new Array();
+  //console.log(routes);
+  urlFolder.then(function(result, routes){
+    var i;
+    for(i=0; i<result.files.length;i++){
+      var urlR=fc.readFile(result.files[i].url);
+      urlR.then(function(txt){
+        console.log(txt);
+      });
+    } 
+  });
+}
+
+function getUrl(){
+  var txt = document.getElementById("txtUrl");
+  return txt.value;
+}
+
+async function searchRoute() {
+  var url = getUrl();
+  downloadRoutes(url);
+}
 
 export const DownloadTrack = props => {
     const { t } = useTranslation();
@@ -16,10 +46,10 @@ export const DownloadTrack = props => {
                         </div>
                         <div className="modal-body">
                             <h4>{t('download.instruction')}</h4>
-                            <input type="text"></input>
+                            <input id = "txtUrl" type="text"></input>
                         </div>
                         <div className="modal-footer">
-                            <Button> {t('download.button')}</Button>
+                            <Button onClick={searchRoute} > {t('download.button')}</Button>
                         </div>
                     </div>
                 </div>
