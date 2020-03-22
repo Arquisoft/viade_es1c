@@ -10,18 +10,20 @@ const fc = new FC(auth);
 
 
 export async function downloadRoutes(url){
-  var urlFolder = fc.readFolder(url);
-  var routes = new Array();
-  //console.log(routes);
-  urlFolder.then(function(result, routes){
-    var i;
-    for(i=0; i<result.files.length;i++){
-      var urlR=fc.readFile(result.files[i].url);
-      urlR.then(function(txt){
-        console.log(txt);
-      });
-    } 
-  });
+    var urlFolder = fc.readFolder(url);
+
+     var routes = urlFolder.then(function(result){
+        var i;
+        var r = new Array();
+        for(i=0; i<result.files.length;i++){
+            var urlR = fc.readFile(result.files[i].url);
+            r[i] = urlR.then(function(txt){
+                return txt;
+            }); 
+        }
+        return r;
+    });
+    return routes;
 }
 
 function getUrl(){
@@ -29,9 +31,14 @@ function getUrl(){
   return txt.value;
 }
 
+function writeToFile(routes){
+    
+}
+
 async function searchRoute() {
   var url = getUrl();
-  downloadRoutes(url);
+  var routes = downloadRoutes(url);
+  writeToFile(routes);
 }
 
 export const DownloadTrack = props => {
