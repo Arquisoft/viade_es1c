@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import VisualizeTrack from '../containers/visualizeTracks/VisualizeTrack';
 import UploadTrack from "../containers/uploadTracks/UploadTrack";
 import MyNavBar from "../navBar/NavBar";
@@ -20,6 +20,7 @@ export default function Routes() {
                     <Route exact path="/download" component={DownloadTrack}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/" component={Login}/>
+                    <Redirect to="/"></Redirect>
                 </Switch>
         </HashRouter>
     );
