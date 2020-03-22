@@ -5,7 +5,7 @@
 	"description": "Descripción de la ruta 3",
 	"itinerary": {
 		"@type": "itemList",
-		"numberOfItems": 4,
+		"numberOfItems": 9,
 		"itemListOrder": "ItemListOrderDescending",
 		"itemListElement": [
 			{
@@ -46,6 +46,56 @@
 					"latitude": 42.3808,
 					"longitude": -5.8998,
 					"elevation": "1200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 5,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -6.8998,
+					"elevation": "1700 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 6,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -7.8998,
+					"elevation": "200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 7,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -8.8998,
+					"elevation": "1200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 8,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 44.3808,
+					"longitude": -6.8998,
+					"elevation": "100 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 9,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 45.3808,
+					"longitude": -8.8998,
+					"elevation": "1000 m"
 				}
 			}
 		]

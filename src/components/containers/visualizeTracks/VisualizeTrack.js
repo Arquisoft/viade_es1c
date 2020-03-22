@@ -38,7 +38,7 @@ export const VisualizeTrack = (props) => {
     const [origin, setOrigin] = useState(0);
     const [target, setTarget] = useState(0);
     const [data, setData] = useState([]);
-    const [elevation, setElevation] = useState(0);
+    const [elevation, setElevation] = useState([]);
     const [showChart, setShowChart] = useState(false);
 
     /**
@@ -84,7 +84,7 @@ export const VisualizeTrack = (props) => {
                         let latitude = route.itinerary.itemListElement[i].item.latitude;
                         let longitude = route.itinerary.itemListElement[i].item.longitude;
                         let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
-                        elevationsValues.push({ x: 'Point '.concat(i+1), y: parseInt(elevationValue[0], 10)});
+                        elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevationValue[0], 10)});
                         points.push([latitude, longitude]);
                     }
                     // We show the points of the route in the map
@@ -165,7 +165,7 @@ export const VisualizeTrack = (props) => {
                             </Row>
                             <Row>
                                 {showChart && (
-                                    <VictoryChart style={{ parent: { maxWidth: "30%" }}}
+                                    <VictoryChart style={{ parent: { maxWidth: "35%" }}}
                                                   domainPadding={10}
                                                   theme={VictoryTheme.material}>
                                         <VictoryStack colorScale={"cool"}>
