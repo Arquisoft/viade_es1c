@@ -15,7 +15,7 @@
 					"@type": "GeoCoordinates",
 					"latitude": 40.6643,
 					"longitude": -74.0059700,
-					"elevation": "200 m"
+					"elevation": "300 m"
 				}
 			},
 			{
@@ -25,7 +25,7 @@
 					"@type": "GeoCoordinates",
 					"latitude": 40.6643,
 					"longitude": -79.0059700,
-					"elevation": "200 m"
+					"elevation": "600 m"
 				}
 			}
 		]

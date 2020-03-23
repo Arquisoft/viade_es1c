@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
+import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
+import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
@@ -11,7 +13,6 @@ import { Redirect } from "react-router-dom";
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
 import 'react-notifications/lib/notifications.css';
-import {LoggedIn, LoggedOut} from "@solid/react";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -26,17 +27,20 @@ L.Icon.Default.mergeOptions({
  */
 export const VisualizeTrack = (props) => {
 
-    const [data, setData] = useState([]);
     // Locales for i18n
     const {t} = useTranslation();
 
-    // Hooks for polyline and map
+    // Hooks for polyline, map, histogram
+    // Setting default values
     const zoomValue = 11;
-    const [zoom, setZoom] = useState(0);
-    const [positions, setPositions] = useState(0);
-    const [center, setCenter] = useState(0);
+    const [zoom, setZoom] = useState(zoomValue);
+    const [positions, setPositions] = useState();
+    const [center, setCenter] = useState([43.354444, -5.851667]);
     const [origin, setOrigin] = useState(0);
     const [target, setTarget] = useState(0);
+    const [data, setData] = useState([]);
+    const [elevation, setElevation] = useState([]);
+    const [showElements, setShowElements] = useState(false);
 
     /**
      * This function is invoked when the user selects a route in the combobox. It's function
@@ -76,21 +80,24 @@ export const VisualizeTrack = (props) => {
 
                     // We obtain the points of the route
                     let points = [];
+                    let elevationsValues = [];
                     for (let i = 0; i < route.itinerary.numberOfItems; i++) {
                         let latitude = route.itinerary.itemListElement[i].item.latitude;
                         let longitude = route.itinerary.itemListElement[i].item.longitude;
+                        let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
+                        elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevationValue[0], 10)});
                         points.push([latitude, longitude]);
                     }
-
                     // We show the points of the route in the map
                     setOrigin(points[0]);
                     setTarget(points[points.length - 1]);
                     setCenter(points[0]);
                     setPositions(points);
                     setZoom(zoomValue);
-
+                    setElevation(elevationsValues);
+                    setShowElements(true);
                 })
-                    .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000))
+                    .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000))
             }
         })
     }
@@ -121,14 +128,18 @@ export const VisualizeTrack = (props) => {
                 let routes = [];
                 fc.readFolder(urlRouteInPod, null).then((content) => {
                     if (content.files.length === 0) {
-                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000)
+                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
                     } else {
                         for (let i = 0; i < content.files.length; i++) {
-                            routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                            let extension = content.files[i].name.split(".");
+                            if (!extension[1].localeCompare("json")) {
+                                routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                            }
                         }
+                        NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
+                        // Hook for select
+                        setData(routes);
                     }
-                    // Hook for select
-                    setData(routes);
                 })
                     .catch(err => console.error("Error:" + err))
             }
@@ -144,26 +155,43 @@ export const VisualizeTrack = (props) => {
                     </Row>
                     <Row>
                         <Col sm={10}>
-                            <Map className="map" center={center} zoom={zoom}>
-                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                                <Polyline color={'blue'}
-                                          positions={positions}/>
-                                <Marker position={origin}>
-                                    <Popup>{t('routes.origin')}</Popup>
-                                </Marker>
-                                <Marker position={target}>
-                                    <Popup>{t('routes.target')}</Popup>
-                                </Marker>
-                            </Map>
+                            <Row>
+                                <Map className="map" center={center} zoom={zoom}>
+                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                                    {showElements && (
+                                        <div>
+                                            <Polyline color={'blue'}
+                                                      positions={positions}/>
+                                            <Marker position={origin}>
+                                                <Popup>{t('routes.origin')}</Popup>
+                                            </Marker>
+                                            <Marker position={target}>
+                                                <Popup>{t('routes.target')}</Popup>
+                                            </Marker>
+                                        </div>
+                                        )}
+                                </Map>
+                            </Row>
+                            <Row>
+                                {showElements && (
+                                    <VictoryChart style={{ parent: { maxWidth: "35%" }}}
+                                                  domainPadding={10}
+                                                  theme={VictoryTheme.material}>
+                                        <VictoryStack colorScale={"cool"}>
+                                            <VictoryArea data={elevation}/>
+                                        </VictoryStack>
+                                    </VictoryChart>
+                                )}
+                            </Row>
                         </Col>
                         <Col>
                             <div>
-                                <Button variant="primary" onClick={handleLoad}>
+                                <Button className="visualizeButton" variant="primary" onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
