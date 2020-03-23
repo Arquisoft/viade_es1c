@@ -27,6 +27,7 @@ export async function getRoutes(url){
     var d = document.getElementById("downFile");
     d.href= URL.createObjectURL(blob);
     d.download="prueba.json";
+    d.click();
     console.log(d);
 }
 
@@ -56,7 +57,7 @@ export const DownloadTrack = props => {
                             <input id = "txtUrl" type="text"></input>
                         </div>
                         <div className="modal-footer">
-                            <a href="" id="downFile">Descargar</a>
+                            <a href="" id="downFile"></a>
                             <Button onClick={searchRoute} > {t('download.button')}</Button>
                         </div>
                     </div>
