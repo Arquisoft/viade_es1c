@@ -5,45 +5,51 @@ import {LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
 import FC from 'solid-file-client';
 import auth from 'solid-auth-client';
-
-const fc = new FC(auth);
-
-var urlGlobal="";
-
-function setGlobal(newUrl){
-    urlGlobal = newUrl;
-}
-
-export async function downloadRoute(name){
-    var file = await fc.readFile(urlGlobal);
-    var blob = new Blob([file], {type: 'application/json'});
-    console.log(file);
-    var link = document.getElementById("downFile");
-    link.href= URL.createObjectURL(blob);
-    link.download=name+".json";
-    link.click();
-
-}
+import {NotificationContainer, NotificationManager} from "react-notifications";
 
 
-async function searchRoute() {
-    const auth = require('solid-auth-client');
-    auth.trackSession(session => {
-        if (!session) {
-            return;
-        } else {
-            var txt = document.getElementById("txtUrl").value;
-
-            let webId = session.webId;
-            let urlRoute = webId.slice(0, webId.length - 15).concat("public/MyRoutes/"+ txt +".json");
-            setGlobal(urlRoute);
-            downloadRoute(txt);
-        }
-    }); 
-}
 
 export const DownloadTrack = props => {
+
     const { t } = useTranslation();
+
+    const fc = new FC(auth);
+
+    var urlGlobal="";
+    function setGlobal(newUrl){
+        urlGlobal = newUrl;
+    }
+
+    async function downloadRoute(name){
+        var file = await fc.readFile(urlGlobal);
+        var blob = new Blob([file], {type: 'application/json'});
+        console.log(file);
+        var link = document.getElementById("downFile");
+        link.href= URL.createObjectURL(blob);
+        link.download=name+".json";
+        link.click();
+
+    }
+
+
+    async function searchRoute() {
+        const auth = require('solid-auth-client');
+        auth.trackSession(session => {
+            if (!session) {
+                return;
+            } else {
+                var txt = document.getElementById("txtUrl").value;
+
+                let webId = session.webId;
+                let urlRoute = webId.slice(0, webId.length - 15).concat("public/MyRoutes/"+ txt +".json");
+                setGlobal(urlRoute);
+                downloadRoute(txt)
+                .catch(err => NotificationManager.error(t('download.errorMessage'), t('download.errorTitle'), 5500));
+            }
+        }); 
+    }
+
+
     return(
         <section>
             <LoggedIn>
@@ -62,6 +68,7 @@ export const DownloadTrack = props => {
                         </div>
                     </div>
                 </div>
+                <NotificationContainer/>
             </LoggedIn>
             <LoggedOut>
                 <Redirect to="/"></Redirect>
