@@ -9,21 +9,25 @@ import auth from 'solid-auth-client';
 const fc = new FC(auth);
 
 
-export async function downloadRoutes(url){
-    var urlFolder = fc.readFolder(url);
+export async function getRoutes(url){
+    var folder = await fc.readFolder(url);
+    //console.log(folder);
+    var files = new Array();
+    var i;
+    for(i=0;i<folder.files.length;i++)
+    {
+        //console.log(folder.files[i]);
+        files[i]=folder.files[i];
+    }
+    var file = await fc.readFile(files[0].url);
+    console.log(file);
+    var blob = new Blob([file], {type: 'application/json'});
+    console.log(blob)
 
-     var routes = urlFolder.then(function(result){
-        var i;
-        var r = new Array();
-        for(i=0; i<result.files.length;i++){
-            var urlR = fc.readFile(result.files[i].url);
-            r[i] = urlR.then(function(txt){
-                return txt;
-            }); 
-        }
-        return r;
-    });
-    return routes;
+    var d = document.getElementById("downFile");
+    d.href= URL.createObjectURL(blob);
+    d.download="prueba.json";
+    console.log(d);
 }
 
 function getUrl(){
@@ -31,14 +35,10 @@ function getUrl(){
   return txt.value;
 }
 
-function writeToFile(routes){
-    
-}
-
 async function searchRoute() {
   var url = getUrl();
-  var routes = downloadRoutes(url);
-  writeToFile(routes);
+  var routes = getRoutes(url);
+  //downloadRoutes(url,routes);
 }
 
 export const DownloadTrack = props => {
@@ -56,6 +56,7 @@ export const DownloadTrack = props => {
                             <input id = "txtUrl" type="text"></input>
                         </div>
                         <div className="modal-footer">
+                            <a href="" id="downFile">Descargar</a>
                             <Button onClick={searchRoute} > {t('download.button')}</Button>
                         </div>
                     </div>
