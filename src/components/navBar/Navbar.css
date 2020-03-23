@@ -15,6 +15,12 @@
     margin-top: .2em;
 }
 
+.i18nMenu {
+    position: absolute;
+    right: 75px;
+    margin-top: .2em;
+}
+
 .nav-color {
     background: #5faadb;
 }
