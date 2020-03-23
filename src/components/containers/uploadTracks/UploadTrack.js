@@ -51,6 +51,7 @@ export const UploadTrack = props => {
                     } else {
                         NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 2000);
                     }
+                    times = 0;
                 }
             });
         };
