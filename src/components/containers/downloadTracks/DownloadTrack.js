@@ -14,32 +14,15 @@ function setGlobal(newUrl){
     urlGlobal = newUrl;
 }
 
-export async function downloadRoute(){
-    console.log(urlGlobal);
-    //var folder = await fc.readFolder(url);
-    //console.log(folder);
-    //var files = new Array();
-    //var i;
-    //for(i=0;i<folder.files.length;i++)
-    //{
-    //    //console.log(folder.files[i]);
-    //    files[i]=folder.files[i];
-    //}
-    //for(i=0;i<files.length;i++)
-    //{
-    //    files[i]=folder.files[i];
-    //}
-    //console.log(files);
+export async function downloadRoute(name){
     var file = await fc.readFile(urlGlobal);
-    console.log(file);
     var blob = new Blob([file], {type: 'application/json'});
-    console.log(blob)
-//
-    var d = document.getElementById("downFile");
-    d.href= URL.createObjectURL(blob);
-    d.download="prueba.json";
-    d.click();
-    console.log(d);
+    console.log(file);
+    var link = document.getElementById("downFile");
+    link.href= URL.createObjectURL(blob);
+    link.download=name+".json";
+    link.click();
+
 }
 
 
@@ -54,7 +37,7 @@ async function searchRoute() {
             let webId = session.webId;
             let urlRoute = webId.slice(0, webId.length - 15).concat("public/MyRoutes/"+ txt +".json");
             setGlobal(urlRoute);
-            downloadRoute();
+            downloadRoute(txt);
         }
     }); 
 }
