@@ -19,7 +19,12 @@ export async function getRoutes(url){
         //console.log(folder.files[i]);
         files[i]=folder.files[i];
     }
-    var file = await fc.readFile(files[0].url);
+    for(i=0;i<files.length;i++)
+    {
+        files[i]=folder.files[i];
+    }
+    console.log(files);
+    var file = await fc.readFile(files[1].url);
     console.log(file);
     var blob = new Blob([file], {type: 'application/json'});
     console.log(blob)
