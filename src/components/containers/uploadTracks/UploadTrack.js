@@ -13,6 +13,7 @@ export const UploadTrack = props => {
 
     // Locales for i18n
     const { t } = useTranslation();
+    let times = 0; // For success message
 
     /**
      * Process the case of an individual item
@@ -37,11 +38,19 @@ export const UploadTrack = props => {
                     let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(nameFile);
                     event.preventDefault();
                     const fc = new FC(auth);
-                    fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then((content) => {
-
-                        NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"));
-                    })
-                        .catch(err => console.error(`Error: ${err}`));
+                    let extension = nameFile.split(".");
+                    if (!extension[1].localeCompare("json")) {
+                        fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then((content) => {
+                            if (times === 0) {
+                                NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
+                                document.getElementById("fileArea").value = ""; // Clear input file
+                                times++;
+                            }
+                        })
+                          .catch(err => console.error(`Error: ${err}`));
+                    } else {
+                        NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 2000);
+                    }
                 }
             });
         };
