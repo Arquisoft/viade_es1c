@@ -186,12 +186,12 @@ export const VisualizeTrack = (props) => {
                         </Col>
                         <Col>
                             <div>
-                                <Button variant="primary" onClick={handleLoad}>
+                                <Button className="visualizeButton" variant="primary" onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
                             </div>

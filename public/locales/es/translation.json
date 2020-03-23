@@ -153,5 +153,8 @@
   },
   "logout": {
     "button": "Cerrar sesión"
+  },
+  "nav": {
+    "language": "Idioma"
   }
 }

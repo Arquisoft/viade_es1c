@@ -40,6 +40,6 @@ Select {
     font-weight: bold;
 }
 
-Button {
+.visualizeButton {
     margin-top: 2em;
 }
