@@ -61,6 +61,7 @@ export const DownloadTrack = props => {
                         <div className="modal-body">
                             <h4>{t('download.instruction')}</h4>
                             <input id = "txtUrl" type="text"></input>
+							<p>{t('download.especificacion')}</p>
                         </div>
                         <div className="modal-footer">
                             <a href="" id="downFile"> </a>
