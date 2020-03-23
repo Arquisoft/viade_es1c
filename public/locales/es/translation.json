@@ -143,10 +143,11 @@
   },
   "download": {
     "title": "Descargar ruta",
-    "instruction":"Introduzca la URL del archivo en el POD:",
+    "instruction":"Introduzca el nombre del archivo:",
     "button":"Descargar",
     "errorMessage" : "Aseguresé de que la ruta introducida existe en el Pod y de que la escribe correctamente",
-    "errorTitle" : "Ruta inexistente en el Pod"
+    "errorTitle": "Ruta inexistente en el Pod",
+    "especificacion": "* No incluir extensión"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
