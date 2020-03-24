@@ -141,7 +141,9 @@
     "button": "Upload",
     "uploadPrompt" : "Choose the files of the routes you want to upload",
     "successTitle": "Uploaded successfully",
-    "successMessage" : "Your tracks have been uploaded"
+    "successMessage" : "Your tracks have been uploaded",
+    "errorTitle" : "Upload error",
+    "errorMessage": "You must upload a file with extension \".json\""
   },
   "download": {
     "title": "Download track",
