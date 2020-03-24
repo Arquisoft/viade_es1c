@@ -5,10 +5,10 @@ import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
-import FC from 'solid-file-client';
 import {Select} from '../../utils/select/Select';
-import {NotificationContainer, NotificationManager} from "react-notifications";
+import {NotificationContainer} from "react-notifications";
 import { Redirect } from "react-router-dom";
+import * as Service from "../../../services/PodService";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
@@ -41,110 +41,6 @@ export const VisualizeTrack = (props) => {
     const [data, setData] = useState([]);
     const [elevation, setElevation] = useState([]);
     const [showElements, setShowElements] = useState(false);
-
-    /**
-     * This function is invoked when the user selects a route in the combobox. It's function
-     * is to show on the map the selected route. To do so:
-     *  1. We obtain the user's webID
-     *  2. We search in the user's pod for the specified route
-     *  3. We display the new route on the map
-     *
-     * @param event
-     */
-    function handleSelect(event) {
-        const auth = require('solid-auth-client');
-        auth.trackSession(session => {
-            if (!session) {
-                return;
-            } else {
-                /*
-                  The webId has the structure: https://uo265308.solid.community/profile/card#me
-                  We want the structure: https://uo265308.solid.community/public/MyRoutes/
-
-                  15 == length("profile/card#me")
-                */
-                let webId = session.webId;
-                let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
-
-                event.preventDefault();
-
-                // We obtain the name of the route from the combobox and build the final URL
-                let selectedRouteName = document.getElementById("selectRoute").value.concat(".json");
-                urlRouteInPod = urlRouteInPod.concat(selectedRouteName);
-
-                const fc = new FC(auth);
-                fc.readFile(urlRouteInPod, null).then((content) => {
-
-                    // We obtain the JSON file from the pod
-                    let route = JSON.parse(content);
-
-                    // We obtain the points of the route
-                    let points = [];
-                    let elevationsValues = [];
-                    for (let i = 0; i < route.itinerary.numberOfItems; i++) {
-                        let latitude = route.itinerary.itemListElement[i].item.latitude;
-                        let longitude = route.itinerary.itemListElement[i].item.longitude;
-                        let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
-                        elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevationValue[0], 10)});
-                        points.push([latitude, longitude]);
-                    }
-                    // We show the points of the route in the map
-                    setOrigin(points[0]);
-                    setTarget(points[points.length - 1]);
-                    setCenter(points[0]);
-                    setPositions(points);
-                    setZoom(zoomValue);
-                    setElevation(elevationsValues);
-                    setShowElements(true);
-                })
-                    .catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000))
-            }
-        })
-    }
-
-    /**
-     * Load the select component with tracks
-     * @param event
-     */
-
-    function handleLoad(event) {
-        const auth = require('solid-auth-client');
-        auth.trackSession(session => {
-            if (!session) {
-                return;
-            } else {
-                /*
-                  The webId has the structure: https://uo265308.solid.community/profile/card#me
-                  We want the structure: https://uo265308.solid.community/public/MyRoutes/
-
-                  15 == length("profile/card#me")
-                */
-                var webId = session.webId;
-                var urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
-
-                event.preventDefault();
-
-                const fc = new FC(auth);
-                let routes = [];
-                fc.readFolder(urlRouteInPod, null).then((content) => {
-                    if (content.files.length === 0) {
-                        NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
-                    } else {
-                        for (let i = 0; i < content.files.length; i++) {
-                            let extension = content.files[i].name.split(".");
-                            if (!extension[1].localeCompare("json")) {
-                                routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
-                            }
-                        }
-                        NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
-                        // Hook for select
-                        setData(routes);
-                    }
-                })
-                    .catch(err => console.error("Error:" + err))
-            }
-        })
-    }
 
     return (
         <section>
@@ -186,12 +82,14 @@ export const VisualizeTrack = (props) => {
                         </Col>
                         <Col>
                             <div>
-                                <Button className="visualizeButton" variant="primary" onClick={handleLoad}>
+                                <Button className="visualizeButton" variant="primary"
+                                        onClick={async () => {await Service.handleLoad(t, setData);}}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={async () => {await Service.handleSelect(t, setOrigin, setTarget, setCenter
+                                  , setPositions, setZoom, setElevation, setShowElements);}}>
                                     {t('routes.button')}
                                 </Button>
                             </div>

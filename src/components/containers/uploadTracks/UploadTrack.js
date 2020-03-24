@@ -7,7 +7,7 @@ import "./UploadTrack.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
 import LoggedOut from "@solid/react/module/components/LoggedOut";
 import { Redirect } from "react-router-dom";
-import * as Service from "../../../services/PodService";
+import * as PodService from "../../../services/PodService";
 
 export const UploadTrack = (props) => {
     // Locales for i18n
@@ -26,7 +26,7 @@ export const UploadTrack = (props) => {
                         <input type="file" id="fileArea" multiple/>
                     </div>
                     <div className="modal-footer">
-                        <Button onClick={async () => {await Service.upload(t);}}>
+                        <Button onClick={async () => {await PodService.handleUpload(t);}}>
                             {t("upload.button")}
                         </Button>
                     </div>
