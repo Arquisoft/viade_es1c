@@ -2,6 +2,10 @@
     margin-bottom: 2em;
 }
 
+.button-login {
+    margin-top: 2em;
+}
+
 @media all and (min-width: 480px) {
     .Login {
         padding: 60px 0;

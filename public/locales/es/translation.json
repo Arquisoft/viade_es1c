@@ -124,7 +124,9 @@
     "errorMessage": "No se encuentra la ruta",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
-    "loadButton": "Cargar rutas del POD"
+    "loadButton": "Cargar rutas del POD",
+    "successLoadTitle": "Cargado con éxito",
+    "successLoadMessage": "Sus rutas han sido cargadas"
   },
   "share": {
     "title": "Compartir mis rutas",
@@ -153,5 +155,8 @@
   },
   "logout": {
     "button": "Cerrar sesión"
+  },
+  "nav": {
+    "language": "Idioma"
   }
 }

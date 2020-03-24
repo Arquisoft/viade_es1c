@@ -5,7 +5,7 @@
 	"description": "Descripción de la ruta 3",
 	"itinerary": {
 		"@type": "itemList",
-		"numberOfItems": 2,
+		"numberOfItems": 9,
 		"itemListOrder": "ItemListOrderDescending",
 		"itemListElement": [
 			{
@@ -15,7 +15,7 @@
 					"@type": "GeoCoordinates",
 					"latitude": 42.3624,
 					"longitude": -5.8433,
-					"elevation": "200 m"
+					"elevation": "400 m"
 				}
 			},
 			{
@@ -25,7 +25,77 @@
 					"@type": "GeoCoordinates",
 					"latitude": 42.38022,
 					"longitude": -5.86837,
+					"elevation": "900 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.39022,
+					"longitude": -5.87831,
+					"elevation": "670 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 4,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -5.8998,
+					"elevation": "1200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 5,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -6.8998,
+					"elevation": "1700 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 6,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -7.8998,
 					"elevation": "200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 7,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 42.3808,
+					"longitude": -8.8998,
+					"elevation": "1200 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 8,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 44.3808,
+					"longitude": -6.8998,
+					"elevation": "100 m"
+				}
+			},
+			{
+				"@type": "ListItem",
+				"position": 9,
+				"item": {
+					"@type": "GeoCoordinates",
+					"latitude": 45.3808,
+					"longitude": -8.8998,
+					"elevation": "1000 m"
 				}
 			}
 		]

@@ -66,8 +66,107 @@ async function processMultipleTrack(tracks, t) {
  * @returns {Promise<void>}
  */
 
-export async function upload(t) {
+export async function handleUpload(t) {
   const fileInput = document.getElementById("fileArea");
   const tracks = fileInput.files;
   await processMultipleTrack(tracks, t);
+}
+
+/**
+ * This function is invoked when the user selects a route in the combobox. It's function
+ * is to show on the map the selected route. To do so:
+ *  1. We obtain the user's webID
+ *  2. We search in the user's pod for the specified route
+ *  3. We display the new route on the map
+ *
+ * @param t - Translation hook for message
+ * @param hooks for the map and histogram (setOrigin, setTarget, setCenter,
+ * setPositions, setZoom, setElevation, setShowElements)
+ * @returns {Promise<void>}
+ */
+
+export async function handleSelect(t, setOrigin, setTarget, setCenter, setPositions, setZoom, setElevation, setShowElements) {
+  const auth = require('solid-auth-client');
+  auth.trackSession(session => {
+    if (!session) {
+      return;
+    } else {
+      /*
+        The webId has the structure: https://uo265308.solid.community/profile/card#me
+        We want the structure: https://uo265308.solid.community/public/MyRoutes/
+
+        15 == length("profile/card#me")
+      */
+      let webId = session.webId;
+      let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
+      // We obtain the name of the route from the combobox and build the final URL
+      let selectedRouteName = document.getElementById("selectRoute").value.concat(".json");
+      urlRouteInPod = urlRouteInPod.concat(selectedRouteName);
+      const fc = new FC(auth);
+      fc.readFile(urlRouteInPod, null).then((content) => {
+        // We obtain the JSON file from the pod
+        let route = JSON.parse(content);
+        // We obtain the points of the route
+        let points = [];
+        let elevationsValues = [];
+        for (let i = 0; i < route.itinerary.numberOfItems; i++) {
+          let latitude = route.itinerary.itemListElement[i].item.latitude;
+          let longitude = route.itinerary.itemListElement[i].item.longitude;
+          let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
+          elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevationValue[0], 10)});
+          points.push([latitude, longitude]);
+        }
+        // Hooks for the points
+        setOrigin(points[0]);
+        setTarget(points[points.length - 1]);
+        setCenter(points[0]);
+        setPositions(points);
+        setZoom(11);
+        setElevation(elevationsValues);
+        setShowElements(true);
+      }).catch(err => NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000))
+    }
+  })
+}
+
+/**
+ * Load the select hook (data) with tracks
+ * @param t - Translation hook for message
+ * @param setData - hook for select
+ * @returns {Promise<void>}
+ */
+
+export async function handleLoad(t, setData) {
+  const auth = require('solid-auth-client');
+  auth.trackSession(session => {
+    if (!session) {
+      return;
+    } else {
+      /*
+        The webId has the structure: https://uo265308.solid.community/profile/card#me
+        We want the structure: https://uo265308.solid.community/public/MyRoutes/
+
+        15 == length("profile/card#me")
+      */
+      let webId = session.webId;
+      let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
+      const fc = new FC(auth);
+      let routes = [];
+      fc.readFolder(urlRouteInPod, null).then((content) => {
+        if (content.files.length === 0) {
+          NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
+        } else {
+          for (let i = 0; i < content.files.length; i++) {
+            let extension = content.files[i].name.split(".");
+            if (!extension[1].localeCompare("json")) {
+              routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+            }
+          }
+          NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
+          // Hook for select
+          setData(routes);
+        }
+      }).catch(err => console.error("Error:" + err))
+    }
+  })
 }
