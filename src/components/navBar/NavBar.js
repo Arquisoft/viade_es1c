@@ -4,7 +4,9 @@ import "./Navbar.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
+import ReactTooltip from 'react-tooltip'
 import i18n from 'i18next';
+
 
 const MyNavBar = props => {
 
@@ -17,16 +19,16 @@ const MyNavBar = props => {
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
                     </a>
                     <Nav className="mr-auto">
-                        <a className="navbar-link a-bar" href="#/visualize">
+                        <a data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize">
                             <img src={process.env.PUBLIC_URL + "/img/icon/maps-icon.png"} width="40" height="40" alt="My tracks"/>
                         </a>
-                        <a className="navbar-link a-bar" href="#/share">
+						 <a data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
                             <img src={process.env.PUBLIC_URL + "/img/icon/share-files.svg"} width="27" height="49" alt="Share files"/>
                         </a>
-                        <a className="navbar-link a-bar" href="#/upload">
+                        <a data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
                             <img src={process.env.PUBLIC_URL + "/img/icon/upload-icon.png"} width="40" height="40" alt="Upload track"/>
                         </a>
-                        <a className="navbar-link a-bar a-download" href="#/download">
+                        <a data-tip={t('navBar.download')} className="navbar-link a-bar a-download" href="#/download">
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">
@@ -40,7 +42,8 @@ const MyNavBar = props => {
                             </DropdownButton>
                         </div>
                         <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
-                    </Nav>
+						<ReactTooltip place="bottom" type="dark" effect="solid"/>
+					</Nav>
                 </Navbar>
             </LoggedIn>
         </section>
