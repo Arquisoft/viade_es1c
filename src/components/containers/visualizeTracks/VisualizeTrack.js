@@ -140,7 +140,7 @@ export const VisualizeTrack = (props) => {
             <LoggedIn>
                 <Container>
                     <Row>
-                        <h1 className="myH1">{t('routes.title')}</h1>
+                        <h1 className="myH1" id="MisRutas">{t('routes.title')}</h1>
                     </Row>
                     <Row>
                         <Col sm={10}>

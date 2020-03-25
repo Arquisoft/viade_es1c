@@ -4,32 +4,26 @@ const feature = loadFeature('./e2e/features/loadCombo.feature');
 defineFeature(feature, test => {
 	
 	beforeEach(async () => {
-		await page.goto('http://localhost:3000');
+		await page.goto('http://localhost:3000/#/visualize');
 	})
 	
-
   test('There are some routes on the POD', ({ given, when, then, and }) => {
-    let email;
-    given('A POD with routes in it', () => {
-        //email = "foo@test.com"
+
+    given('The Visualize page', async() => {
+        await expect(page).toMatchElement('h2', { id: 'MisRutas' })
     });
 
     when('I press the button Cargar rutas del POD', async () => {
-        // await expect(page).toFillForm('form[name="register"]', {
-          //       // email: email,
-          //       // remail: email,
-          //     // })
-           await expect(page).toClick('button', { name: 'btnCargar' })
+          await expect(page).toClick('button', { name: 'btnCargar' })
     });
 
     then('I expect the comboBox to be filled', async () => {
-        //await expect(page).toMatchElement('span', { text: 'ERROR: User '+email+' is already registered!' })
+      await expect(page).toMatchElement('button', { id: 'rutaDePrueba1' }) 
     });
 
     and('I expect the comboBox to have the same amount of routes as the POD', async() => {
 
     });
-  });
-  
+  }); 
 
 });
