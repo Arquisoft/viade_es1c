@@ -6,7 +6,7 @@ import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
-import {NotificationContainer} from "react-notifications";
+import {NotificationContainer, NotificationManager} from "react-notifications";
 import { Redirect } from "react-router-dom";
 import VisualizeService from "../../../services/VisualizeService";
 // CSS imports
@@ -122,7 +122,7 @@ export const VisualizeTrack = (props) => {
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={async () => {handleSelect}}>
+                                <Button className="visualizeButton" onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
