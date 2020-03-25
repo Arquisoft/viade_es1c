@@ -124,7 +124,9 @@
     "errorMessage": "No se encuentra la ruta",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
-    "loadButton": "Cargar rutas del POD"
+    "loadButton": "Cargar rutas del POD",
+    "successLoadTitle": "Cargado con éxito",
+    "successLoadMessage": "Sus rutas han sido cargadas"
   },
   "share": {
     "title": "Compartir mis rutas",
@@ -139,7 +141,9 @@
     "button": "Subir",
     "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
     "successTitle": "Subido con éxito",
-    "successMessage" : "Sus rutas han sido subidas"
+    "successMessage" : "Sus rutas han sido subidas",
+    "errorTitle" : "Error en la subida",
+    "errorMessage": "Debe subir un archivo con extensión \".json\""
   },
   "download": {
     "title": "Descargar ruta",
@@ -151,5 +155,8 @@
   },
   "logout": {
     "button": "Cerrar sesión"
+  },
+  "nav": {
+    "language": "Idioma"
   }
 }

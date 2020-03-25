@@ -1,11 +1,13 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, DropdownButton, DropdownItem } from "react-bootstrap";
 import "./Navbar.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
+import i18n from 'i18next';
 
 const MyNavBar = props => {
+
     const {t} = useTranslation();
     return (
         <section>
@@ -27,6 +29,16 @@ const MyNavBar = props => {
                         <a className="navbar-link a-bar a-download" href="#/download">
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
+                        <div className="i18nMenu">
+                            <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
+                                <DropdownItem>
+                                    <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <div onClick={() => i18n.changeLanguage("es")}> ESP </div>
+                                </DropdownItem>
+                            </DropdownButton>
+                        </div>
                         <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
                     </Nav>
                 </Navbar>

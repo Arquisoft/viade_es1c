@@ -124,7 +124,9 @@
     "errorMessage": "Track not found",
     "loadWarningTitle": "Warning when loading",
     "loadWarningMessage": "There is no route in the POD",
-    "loadButton": "Load tracks from POD"
+    "loadButton": "Load tracks from POD",
+    "successLoadTitle": "Loaded successfully",
+    "successLoadMessage": "Their routes have been loaded"
   },
   "share": {
     "title": "Share my tracks",
@@ -139,7 +141,9 @@
     "button": "Upload",
     "uploadPrompt" : "Choose the files of the routes you want to upload",
     "successTitle": "Uploaded successfully",
-    "successMessage" : "Your tracks have been uploaded"
+    "successMessage" : "Your tracks have been uploaded",
+    "errorTitle" : "Upload error",
+    "errorMessage": "You must upload a file with extension \".json\""
   },
   "download": {
     "title": "Download track",
@@ -151,5 +155,8 @@
   },
   "logout": {
     "button": "Logout"
+  },
+  "nav": {
+    "language": "Language"
   }
 }
