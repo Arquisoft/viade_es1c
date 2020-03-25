@@ -8,7 +8,7 @@ import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer} from "react-notifications";
 import { Redirect } from "react-router-dom";
-import * as Service from "../../../services/PodService";
+import VisualizeService from "../../../services/VisualizeService";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
@@ -30,6 +30,7 @@ export const VisualizeTrack = (props) => {
     // Locales for i18n
     const {t} = useTranslation();
 
+
     // Hooks for polyline, map, histogram
     // Setting default values
     const zoomValue = 11;
@@ -41,6 +42,39 @@ export const VisualizeTrack = (props) => {
     const [data, setData] = useState([]);
     const [elevation, setElevation] = useState([]);
     const [showElements, setShowElements] = useState(false);
+
+    async function handleLoad(event){
+        let vService = new VisualizeService();
+        await vService.getRoutesFromPod();
+        if (vService.warning != null){
+            NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
+        } else {
+            NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
+        }
+        event.preventDefault();
+        setData(vService.routes);
+    }
+
+    async function handleSelect(event){
+        let vService = new VisualizeService();
+        await vService.fillMap(document.getElementById("selectRoute"));
+        if (vService.error != null){
+            NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000);
+        } else {
+            event.preventDefault();
+            let points = vService.points;
+            let elevationsValues = vService.elevationsValues;
+            console.log(vService.error);
+            // We show the points of the route in the map
+            setOrigin(points[0]);
+            setTarget(points[points.length - 1]);
+            setCenter(points[0]);
+            setPositions(points);
+            setZoom(zoomValue);
+            setElevation(elevationsValues);
+            setShowElements(true);
+        }
+    } 
 
     return (
         <section>
@@ -83,13 +117,12 @@ export const VisualizeTrack = (props) => {
                         <Col>
                             <div>
                                 <Button className="visualizeButton" variant="primary"
-                                        onClick={async () => {await Service.handleLoad(t, setData);}}>
+                                        onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={async () => {await Service.handleSelect(t, setOrigin, setTarget, setCenter
-                                  , setPositions, setZoom, setElevation, setShowElements);}}>
+                                <Button className="visualizeButton" onClick={async () => {handleSelect}}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
