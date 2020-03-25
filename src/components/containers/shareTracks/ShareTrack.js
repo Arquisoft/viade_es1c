@@ -6,6 +6,7 @@ import {NotificationContainer} from "react-notifications";
 import "./ShareTrack.css";
 import {LoggedIn, LoggedOut} from "@solid/react";
 import { Redirect } from "react-router-dom";
+import PodService from '../../../services/PodService';
 
 type
 Props = {
@@ -30,6 +31,9 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
 
     const deshabilita = () => {
         alert(t('alert.message'));
+        let pService = new PodService();
+        console.log("Nombre del usuario: " + pService.user);
+        console.log("Amigos que tiene el usuario: " + pService.friends.length);
     };
 
     /**
