@@ -67,7 +67,7 @@
     "redirectButton": "Llevarme a la página principal"
   },
   "welcome": {
-    "welcome": "Bienvenido",
+    "welcome": "Bienvenido,",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas y compartirlas con otros usuarios.",
     "documentation": "Enlace a la documentación",
@@ -134,7 +134,8 @@
     "idLabel": "Selecciona la ruta a compartir",
     "contactWebIDLabel": "WebID del contacto:",
     "shareTrack": "Compartir",
-    "resetShareForm": "Limpiar"
+    "resetShareForm": "Limpiar",
+    "friends": "Lista de amigos:"
   },
   "upload": {
     "title": "Subir mis rutas",

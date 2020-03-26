@@ -70,7 +70,7 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
                                 <Select className="select-share" options={data}/>
                             </div>
                             <div className="list-friends">
-                                <h4 className="h4-format">Lista de amigos:</h4>
+                                <h4 className="h4-format">{t("share.friends")}</h4>
                                 <List src="user.friends"></List>
                             </div>
                             <div>
