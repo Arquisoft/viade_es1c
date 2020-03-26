@@ -2,7 +2,7 @@ import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 
 export default class VisualizeService{
-    constructor(){
+    constructor(HTMLElement){
         this.points = [];
         this.elevationsValues = [];
         this.urlRouteInPod = null;
@@ -12,17 +12,17 @@ export default class VisualizeService{
         this.warning = null;
         this.success = null;
         this.error = null;
+        this.HTMLElement = HTMLElement;
     }
 
     /**
      * Aux method that returns the route to tracks upload in the pod.
      * @param {} webId 
-     * @param {*} HTMLElement 
      */
-    async getPodRoute(webId, HTMLElement){
+    async getPodRoute(webId){
         this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
-        if (HTMLElement != null){
-            let selectedRouteName = HTMLElement.value.concat(".json");
+        if (this.HTMLElement != null){
+            let selectedRouteName = this.HTMLElement.value.concat(".json");
             this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
         }
         //await getPodRoute(urlRouteInPod);
@@ -30,19 +30,17 @@ export default class VisualizeService{
 
     /**
      * Aux method that return the webId of the user who is logged in.
-     * @param {} session 
-     * @param {*} HTMLElement 
+     * @param {current session} session 
      */
-    async getSessionId(session, HTMLElement){
+    async getSessionId(session){
         let webId = session.webId;
-        await this.getPodRoute(webId, HTMLElement);
+        await this.getPodRoute(webId);
     }
 
     /**
      * Aux method to return the session with it's logged in.
-     * @param {*} HTMLElement 
      */
-    async getSession(HTMLElement){
+    async getSession(){
         await auth.trackSession(session => {
             if (!session){
                 return;
@@ -50,7 +48,7 @@ export default class VisualizeService{
                 this.session = session;
             }
         })
-        await this.getSessionId(this.session, HTMLElement);
+        await this.getSessionId(this.session);
     }
 
     /**
@@ -101,10 +99,9 @@ export default class VisualizeService{
 
     /**
      * Method that assign the points to print the track in the map
-     * @param {route selected at combo} HTMLElement 
      */
-    async fillMap(HTMLElement){
-        await this.getSession(HTMLElement);
+    async fillMap(){
+        await this.getSession();
         const fc = new FC(auth);
         try{
             this.content = await fc.readFile(this.urlRouteInPod, null);
