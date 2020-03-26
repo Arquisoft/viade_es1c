@@ -1,4 +1,3 @@
-import auth from "solid-auth-client";
 import FC from "solid-file-client";
 
 export default class UploadService {
@@ -6,75 +5,37 @@ export default class UploadService {
   constructor() {
     this.error = null;
     this.success = null;
-    this.urlRouteInPod = null;
-    this.nameFile = null;
   }
 
   /**
-   * Aux method that returns the route to tracks upload in the pod.
-   * @param {} webId
-   * @param {*} HTMLElement
-   */
-  async getPodRoute(webId, HTMLElement) {
-    /*
-       15 == length("profile/card#me")
-     */
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(this.nameFile);
-  }
-
-  /**
-   * Aux method that return the webId of the user who is logged in.
-   * @param {} session
-   * @param {*} HTMLElement
-   */
-  async getSessionId(session, HTMLElement) {
-    let webId = session.webId;
-    await this.getPodRoute(webId, HTMLElement);
-  }
-
-  /**
-   * Aux method to return the session with it's logged in.
-   * @param {*} HTMLElement
-   */
-  async getSession(HTMLElement) {
-    await auth.trackSession(session => {
-      if (!session) {
-        return;
-      } else {
-        this.session = session;
-      }
-    });
-    await this.getSessionId(this.session, HTMLElement);
-  }
-
-  /**
-   * Aux method to process the track file
-   * @param times
-   * @param extension
-   * @param fc
-   * @param urlInPod
-   * @param track
+   * Aux method to process the track file.
+   * Obtain the content and upload the file to the Solid
+   * POD
+   * @param nameFile - File's name
+   * @param track - The track to upload
    * @returns {Promise<*>}
    */
 
-  async processFile(extension, fc, urlInPod, track) {
-    let times = 0; // For success message upload
+  async processFile(track, nameFile) {
     let reader = new FileReader();
-    let fileContent = null;
     reader.onload = function() {
-      fileContent = reader.result;
-      if (!extension[1].localeCompare("json")) {
-        fc.createFile(urlInPod, fileContent, "text/turtle", {}).then(() => {
-          if (times === 0) {
-            this.success = "Subido con exito";
-            times++;
-          }
-        }).catch(err => alert(err));
-      } else {
-        this.error = "Error";
-      }
-    }
-    times = 0; // Restart times
+      let fileContent = reader.result;
+      const auth = require("solid-auth-client");
+      auth.trackSession(session => {
+        if (!session) {
+          return;
+        } else {
+          /*
+            15 == length("profile/card#me")
+          */
+          let webId = session.webId;
+          let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(nameFile);
+          const fc = new FC(auth);
+          fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
+          ).catch(err => this.error = "Error ".concat(err));
+        }
+      });
+    };
     reader.readAsText(track);
   }
 
@@ -85,17 +46,24 @@ export default class UploadService {
    */
 
   async processTrack(track) {
-    this.nameFile = track.name;
-    await this.getSession(null);
-    const fc = new FC(auth);
-    let extension = this.nameFile.split(".");
-    await this.processFile(extension, fc, this.urlRouteInPod, track);
+    let times = 0;  // To avoid too much success message
+    let nameFile = track.name;
+    let extension = nameFile.split(".");
+    if (!extension[1].localeCompare("json")) {
+      if (times === 0) {
+        this.success = "Subido con exito";
+        times++;
+      }
+      await this.processFile(track, nameFile);
+    } else {
+      this.error = "Error";
+    }
   }
 
   /**
    * Process the case of multiple tracks
-   * to upload
-   * @param tracks - Tracks
+   * to upload.
+   * @param tracks - Track array
    * @returns {Promise<void>}
    */
 
@@ -106,7 +74,8 @@ export default class UploadService {
   }
 
   /**
-   * Perform multiple upload
+   * Perform multiple upload of tracks
+   * @param {*} HTMLElement {input file}
    * @returns {Promise<void>}
    */
 
