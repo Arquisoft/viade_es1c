@@ -6,6 +6,7 @@ import {NotificationContainer} from "react-notifications";
 import "./ShareTrack.css";
 import {LoggedIn, LoggedOut} from "@solid/react";
 import { Redirect } from "react-router-dom";
+import {List} from "@solid/react";
 
 type
 Props = {
@@ -66,7 +67,11 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
                                 <label className="lab" htmlFor="documentUriInput">
                                     {t('share.idLabel')}
                                 </label>
-                                <Select className="sel" options={data}/>
+                                <Select className="select-share" options={data}/>
+                            </div>
+                            <div className="list-friends">
+                                <h4 className="h4-format">Lista de amigos:</h4>
+                                <List src="user.friends"></List>
                             </div>
                             <div>
                                 <label>
@@ -91,10 +96,6 @@ const ShareTrack = ({webId, sendNotification, contact, setContact}: Props) => {
                 </div>
                 <NotificationContainer/>
             </LoggedIn>
-            <div>
-                <h3>Lista de amigos</h3>
-                <span></span>
-            </div>
             <LoggedOut>
                 <Redirect to="/"></Redirect>
             </LoggedOut>

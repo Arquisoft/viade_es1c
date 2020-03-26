@@ -1,3 +1,15 @@
 .correct-margin {
     margin-left: 2em;
 }
+
+.select-share {
+    width: 100%;
+    background: #fff;
+    text-align:left;
+    margin-bottom: .5em;
+}
+
+.list-friends {
+    border: solid black 1px;
+    margin-bottom: .5em;
+}
