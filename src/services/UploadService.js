@@ -1,12 +1,13 @@
-import auth from 'solid-auth-client';
-import FC from 'solid-file-client';
+import auth from "solid-auth-client";
+import FC from "solid-file-client";
 
 export default class UploadService {
 
   constructor() {
-    this.times = 0; // For success message upload
     this.error = null;
     this.success = null;
+    this.urlRouteInPod = null;
+    this.nameFile = null;
   }
 
   /**
@@ -14,13 +15,11 @@ export default class UploadService {
    * @param {} webId
    * @param {*} HTMLElement
    */
-  async getPodRoute(webId, HTMLElement){
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
-    if (HTMLElement != null){
-      let selectedRouteName = HTMLElement.value.concat(".json");
-      this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
-    }
-    //await getPodRoute(urlRouteInPod);
+  async getPodRoute(webId, HTMLElement) {
+    /*
+       15 == length("profile/card#me")
+     */
+    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(this.nameFile);
   }
 
   /**
@@ -28,7 +27,7 @@ export default class UploadService {
    * @param {} session
    * @param {*} HTMLElement
    */
-  async getSessionId(session, HTMLElement){
+  async getSessionId(session, HTMLElement) {
     let webId = session.webId;
     await this.getPodRoute(webId, HTMLElement);
   }
@@ -37,64 +36,66 @@ export default class UploadService {
    * Aux method to return the session with it's logged in.
    * @param {*} HTMLElement
    */
-  async getSession(HTMLElement){
+  async getSession(HTMLElement) {
     await auth.trackSession(session => {
-      if (!session){
+      if (!session) {
         return;
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session, HTMLElement);
+  }
+
+  /**
+   * Aux method to process the track file
+   * @param times
+   * @param extension
+   * @param fc
+   * @param urlInPod
+   * @param track
+   * @returns {Promise<*>}
+   */
+
+  async processFile(extension, fc, urlInPod, track) {
+    let times = 0; // For success message upload
+    let reader = new FileReader();
+    let fileContent = null;
+    reader.onload = function() {
+      fileContent = reader.result;
+      if (!extension[1].localeCompare("json")) {
+        fc.createFile(urlInPod, fileContent, "text/turtle", {}).then(() => {
+          if (times === 0) {
+            this.success = "Subido con exito";
+            times++;
+          }
+        }).catch(err => alert(err));
+      } else {
+        this.error = "Error";
+      }
+    }
+    times = 0; // Restart times
+    reader.readAsText(track);
   }
 
   /**
    * Process the case of an individual track to upload
    * @param track - Track to upload
-   * @param t - Translation hook for message
    * @returns {Promise<void>}
    */
 
   async processTrack(track) {
-    let reader = new FileReader();
-    let nameFile = track.name;
-    reader.onload = function(event) {
-      let fileContent = reader.result;
-      const auth = require("solid-auth-client");
-      auth.trackSession(session => {
-        if (!session) {
-          return;
-        } else {
-          /*
-            15 == length("profile/card#me")
-          */
-          let webId = session.webId;
-          let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(nameFile);
-          event.preventDefault();
-          const fc = new FC(auth);
-          let extension = nameFile.split(".");
-          if (!extension[1].localeCompare("json")) {
-            fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {
-              if (this.times === 0) {
-                this.success = "Subido con exito";
-                this.times++;
-              }
-            }).catch(err => console.error(`Error: ${err}`));
-          } else {
-            this.error = "Error";
-          }
-          this.times = 0; // Restart times
-        }
-      });
-    };
-    reader.readAsText(track);
+    this.nameFile = track.name;
+    await this.getSession(null);
+    const fc = new FC(auth);
+    let extension = this.nameFile.split(".");
+    await this.processFile(extension, fc, this.urlRouteInPod, track);
   }
 
   /**
    * Process the case of multiple tracks
    * to upload
    * @param tracks - Tracks
-   * @param t - Translation hook for message
    * @returns {Promise<void>}
    */
 
@@ -106,7 +107,6 @@ export default class UploadService {
 
   /**
    * Perform multiple upload
-   * @param t - Translation hook for message
    * @returns {Promise<void>}
    */
 
