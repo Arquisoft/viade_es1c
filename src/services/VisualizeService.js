@@ -17,7 +17,7 @@ export default class VisualizeService{
 
     /**
      * Aux method that returns the route to tracks upload in the pod.
-     * @param {} webId 
+     * @param {logged in user's webId} webId 
      */
     async getPodRoute(webId){
         this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
