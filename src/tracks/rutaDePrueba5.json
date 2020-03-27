@@ -72,59 +72,14 @@
     "name": "Route test 1",
     "points": [
         {
-            "latitude": 45.123,
-            "longitude": 34.121,
-			"elevation": 50
+            "latitude": 43.354444,
+            "longitude": -5.851667,
+			"elevation": 800
         },
         {
-            "latitude": 46.123,
-            "longitude": 34.121,
-			"elevation": 100
-        },
-        {
-            "latitude": 47.123,
-            "longitude": 34.121,
-			"elevation": 150
-        },
-        {
-            "latitude": 48.123,
-            "longitude": 32.121,
-			"elevation": 200
-        },
-        {
-            "latitude": 49.123,
-            "longitude": 34.121,
-			"elevation": 250
-        },
-        {
-            "latitude": 40.123,
-            "longitude": 32.121,
-			"elevation": 300
-        },
-        {
-            "latitude": 50.123,
-            "longitude": 33.121,
-			"elevation": 350
-        },
-        {
-            "latitude": 53.123,
-            "longitude": 34.121,
-			"elevation": 400
-        },
-        {
-            "latitude": 54.123,
-            "longitude": 34.121,
-			"elevation": 450
-        },
-        {
-            "latitude": 55.123,
-            "longitude": 35.121,
+            "latitude": 43.362583,
+            "longitude": -5.843081,
 			"elevation": 500
-        },
-        {
-            "latitude": 55.123,
-            "longitude": 34.121,
-			"elevation": 550
         }
     ]
 }
