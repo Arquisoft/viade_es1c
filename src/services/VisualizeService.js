@@ -1,6 +1,14 @@
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
+
 export default class VisualizeService{
     constructor(){
         this.points = [];
@@ -15,36 +23,22 @@ export default class VisualizeService{
     }
 
     /**
-     * Aux method that returns the route to tracks upload in the pod.
-     * @param {} webId 
-     * @param {*} HTMLElement 
+     * Method that returns tracks stored in pod
      */
-    async getPodRoute(webId, HTMLElement){
-        this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
-        if (HTMLElement != null){
-            let selectedRouteName = HTMLElement.value.concat(".json");
-            this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
-        }
-        //await getPodRoute(urlRouteInPod);
-    }
-
-    /**
-     * Aux method that return the webId of the user who is logged in.
-     * @param {} session 
-     * @param {*} HTMLElement 
-     */
-    async getSessionId(session, HTMLElement){
-        let webId = session.webId;
-        await this.getPodRoute(webId, HTMLElement);
+    async getRoutesFromPod() {
+        await this.getSession(null);
+        const fc = new FC(auth);
+        this.content = await fc.readFolder(this.urlRouteInPod, null);
+        await this.getRoutesNames(this.content);
     }
 
     /**
      * Aux method to return the session with it's logged in.
      * @param {*} HTMLElement 
      */
-    async getSession(HTMLElement){
+    async getSession(HTMLElement) {
         await auth.trackSession(session => {
-            if (!session){
+            if (!session) {
                 return;
             } else {
                 this.session = session;
@@ -54,16 +48,44 @@ export default class VisualizeService{
     }
 
     /**
+     * Aux method that return the webId of the user who is logged in.
+     * @param {} session 
+     * @param {*} HTMLElement 
+     */
+    async getSessionId(session, HTMLElement) {
+        let webId = session.webId;
+        await this.getPodRoute(webId, HTMLElement);
+    }
+
+    /**
+     * Aux method that returns the route to tracks upload in the pod.
+     * @param {} webId 
+     * @param {*} HTMLElement 
+     */
+    async getPodRoute(webId, HTMLElement) {
+        /*
+            15 == length("profile/card#me")
+            "viade/routes/" == folder where the routes are stored
+        */
+        this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/");
+        if (HTMLElement != null) {
+            let selectedRouteName = HTMLElement.value.concat(".json");
+            this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
+        }
+    }
+
+    /**
      * Aux method that extracts track's name without extension
      * @param {content of readFile} content 
      */
-    async getRoutesNames(content){
+    async getRoutesNames(content) {
         if (content.files.length === 0) {
             this.warning = "No hay contenido";
         } else {
             for (let i = 0; i < content.files.length; i++) {
                 this.extension = content.files[i].name.split(".");
                 if (!this.extension[1].localeCompare("json")) {
+                    // 5 == length(".json")
                     this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
                 }
             }
@@ -72,38 +94,10 @@ export default class VisualizeService{
     }
 
     /**
-     * Method that returns tracks stored in pod
-     */
-    async getRoutesFromPod(){
-        await this.getSession(null);
-        const fc = new FC(auth);
-        this.content = await fc.readFolder(this.urlRouteInPod, null);
-        await this.getRoutesNames(this.content);
-    }
-
-    /**
-     * Aux method to extract points and elevations from track
-     * @param {track's content} content 
-     */
-    async getPointsToPrint(content){
-        // We obtain the JSON file from the pod
-        let route = JSON.parse(content);
-    
-        // We obtain the points of the route
-        for (let i = 0; i < route.itinerary.numberOfItems; i++) {
-            let latitude = route.itinerary.itemListElement[i].item.latitude;
-            let longitude = route.itinerary.itemListElement[i].item.longitude;
-            let elevationValue = route.itinerary.itemListElement[i].item.elevation.split(" ");
-            this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevationValue[0], 10)});
-            this.points.push([latitude, longitude]);
-        }
-    }
-
-    /**
      * Method that assign the points to print the track in the map
      * @param {route selected at combo} HTMLElement 
      */
-    async fillMap(HTMLElement){
+    async fillMap(HTMLElement) {
         await this.getSession(HTMLElement);
         const fc = new FC(auth);
         try{
@@ -112,6 +106,26 @@ export default class VisualizeService{
             await this.getPointsToPrint(this.content); 
         } catch (SFCFetchError){
             this.error = "Error al pillar datos";
+        }
+    }
+
+    /**
+     * Aux method to extract points and elevations from track
+     * @param {track's content} content 
+     */
+    async getPointsToPrint(content) {
+        let route = JSON.parse(content);
+    
+        // We obtain the points of the route
+        let numberOfPoints = route.points.length;
+        for (let i = 0; i < numberOfPoints; i++) {
+
+            let latitude = route.points[i].latitude;
+            let longitude = route.points[i].longitude;
+            this.points.push([latitude, longitude]);
+
+            let elevation = route.points[i].elevation;
+            this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
         }
     }
 }
