@@ -70,7 +70,7 @@
     "welcome": "Welcome,",
     "doneMessage": "All done ?",
     "title": "What is ViaDe_ES1C?",
-    "presentation": "ViaDe is a decentralized application for route management. It is developed in the Solid web ecosystem. It allows us to visualize our routes and share them with other users.",
+    "presentation": "ViaDe is a decentralized application for route management. It is developed in the Solid web ecosystem. It allows us to visualize our tracks, share them with our friends, download and upload them.",
     "documentation": "Link to documentation",
     "repository": "Link to GitHub repository",
     "upload": "Upload New Photo",
@@ -130,9 +130,8 @@
   },
   "share": {
     "title": "Share my tracks",
-    "createSharePrompt": "Enter a contact and track that you want to share",
-    "idLabel": "Choose track to share",
-    "contactWebIDLabel": "Contact WebID:",
+    "createSharePrompt": "Choose the friends and the track you want to share with them",
+    "idLabel": "Choose track to share:",
     "shareTrack": "Share",
     "resetShareForm": "Reset",
     "friends": "Friend list:"

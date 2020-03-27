@@ -10,6 +10,7 @@
 }
 
 .list-friends {
-    border: solid black 1px;
+    border: solid #cbcbcb 1px;
     margin-bottom: .5em;
+    border-radius: .2em;
 }
