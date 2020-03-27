@@ -1,81 +1,60 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from 'react-bootstrap';
-import {LoggedIn, LoggedOut } from "@solid/react";
+import { Button } from "react-bootstrap";
+import { LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
-import FC from 'solid-file-client';
-import auth from 'solid-auth-client';
-import {NotificationContainer, NotificationManager} from "react-notifications";
+import { NotificationContainer, NotificationManager } from "react-notifications";
+import DownloadService from "../../../services/DownloadService";
 
-
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
 
 export const DownloadTrack = props => {
 
-    const { t } = useTranslation();
+  // Locales for i18n
+  const { t } = useTranslation();
 
-    const fc = new FC(auth);
-
-    var urlGlobal="";
-    function setGlobal(newUrl){
-        urlGlobal = newUrl;
+  async function handleDownload() {
+    let dService = new DownloadService(document.getElementById("downFile"),
+      document.getElementById("txtUrl").value);
+    await dService.searchTrack();
+    if (dService.error != null) {
+      NotificationManager.error(t("download.errorMessage"), t("download.errorTitle"), 5500)
     }
+  }
 
-    async function downloadRoute(name){
-        var file = await fc.readFile(urlGlobal);
-        var blob = new Blob([file], {type: 'application/json'});
-        console.log(file);
-        var link = document.getElementById("downFile");
-        link.href= URL.createObjectURL(blob);
-        link.download=name+".json";
-        link.click();
-
-    }
-
-
-    async function searchRoute() {
-        const auth = require('solid-auth-client');
-        auth.trackSession(session => {
-            if (!session) {
-                return;
-            } else {
-                var txt = document.getElementById("txtUrl").value;
-
-                let webId = session.webId;
-                let urlRoute = webId.slice(0, webId.length - 15).concat("public/MyRoutes/"+ txt +".json");
-                setGlobal(urlRoute);
-                downloadRoute(txt)
-                .catch(err => NotificationManager.error(t('download.errorMessage'), t('download.errorTitle'), 5500));
-            }
-        }); 
-    }
-
-
-    return(
-        <section>
-            <LoggedIn>
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h2>{t('download.title')}</h2>
-                        </div>
-                        <div className="modal-body">
-                            <h4>{t('download.instruction')}</h4>
-                            <input id = "txtUrl" type="text"></input>
-							<p>{t('download.especificacion')}</p>
-                        </div>
-                        <div className="modal-footer">
-                            <a href="" id="downFile"> </a>
-                            <Button onClick={searchRoute} > {t('download.button')}</Button>
-                        </div>
-                    </div>
-                </div>
-                <NotificationContainer/>
-            </LoggedIn>
-            <LoggedOut>
-                <Redirect to="/"></Redirect>
-            </LoggedOut>
-        </section>
-    );
-}
+  return (
+    <section>
+      <LoggedIn>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2>{t("download.title")}</h2>
+            </div>
+            <div className="modal-body">
+              <h4>{t("download.instruction")}</h4>
+              <input id="txtUrl" type="text"></input>
+              <br/>
+              <i>{t("download.especificacion")}</i>
+            </div>
+            <div className="modal-footer">
+              <a href="/download" id="downFile"> </a>
+              <Button onClick={handleDownload}> {t("download.button")}</Button>
+            </div>
+          </div>
+        </div>
+        <NotificationContainer/>
+      </LoggedIn>
+      <LoggedOut>
+        <Redirect to="/"></Redirect>
+      </LoggedOut>
+    </section>
+  );
+};
 
 export default DownloadTrack;

@@ -1,13 +1,13 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut, useWebId} from '@solid/react';
+import {LoggedOut} from '@solid/react';
 import "./Welcome.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
 import { Redirect } from "react-router-dom";
+import {Value} from "@solid/react";
 
 export const Welcome = props => {
     const {t} = useTranslation();
-    const webId = useWebId();
 
     return (
         <section>
@@ -17,9 +17,9 @@ export const Welcome = props => {
                         <div className="col-sm">
                             <img className="myImg" src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} alt="Logo ViaDe"></img>
                         </div>
-                        <div className="col-sm">
+                        <div className="col-sm value-format">
                             <h1 className="h1-welcome">{t('welcome.welcome')}</h1>
-                            <span>{webId}</span>
+                            <Value src="user.name"></Value>
                         </div>
                         <div className="col-sm">
                             <h2 className="myH2">{t('welcome.title')}</h2>

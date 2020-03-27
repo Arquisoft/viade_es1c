@@ -4,7 +4,7 @@ import "./Navbar.css";
 import LoggedIn from "@solid/react/module/components/LoggedIn";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 import i18n from 'i18next';
 
 
