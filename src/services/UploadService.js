@@ -1,5 +1,13 @@
 import FC from "solid-file-client";
 
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
+
 export default class UploadService {
 
   constructor() {
@@ -27,9 +35,10 @@ export default class UploadService {
         } else {
           /*
             15 == length("profile/card#me")
+            "viade/routes/" == folder where the routes are stored
           */
           let webId = session.webId;
-          let urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/").concat(nameFile);
+          let urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/").concat(nameFile);
           const fc = new FC(auth);
           fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
           ).catch(err => this.error = "Error ".concat(err));
