@@ -15,3 +15,8 @@ ul {
     height: 122px;
     width: 152px;
 }
+
+.value-format {
+    font-weight: bold;
+    font-size: 1.5em;
+}
