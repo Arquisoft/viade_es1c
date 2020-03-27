@@ -7,7 +7,13 @@ import FC from 'solid-file-client';
 import auth from 'solid-auth-client';
 import {NotificationContainer, NotificationManager} from "react-notifications";
 
-
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
 
 export const DownloadTrack = props => {
 
@@ -41,7 +47,11 @@ export const DownloadTrack = props => {
                 var txt = document.getElementById("txtUrl").value;
 
                 let webId = session.webId;
-                let urlRoute = webId.slice(0, webId.length - 15).concat("public/MyRoutes/"+ txt +".json");
+                /*
+                    15 == length("profile/card#me")
+                    "viade/routes/" == folder where the routes are stored
+                */
+                let urlRoute = webId.slice(0, webId.length - 15).concat("viade/routes/"+ txt +".json");
                 setGlobal(urlRoute);
                 downloadRoute(txt)
                 .catch(err => NotificationManager.error(t('download.errorMessage'), t('download.errorTitle'), 5500));

@@ -1,103 +1,85 @@
 {
-	"@context": "http://schema.org",
-	"@type": "Trip",
-	"name": "Ruta3",
-	"description": "Descripción de la ruta 3",
-	"itinerary": {
-		"@type": "itemList",
-		"numberOfItems": 9,
-		"itemListOrder": "ItemListOrderDescending",
-		"itemListElement": [
-			{
-				"@type": "ListItem",
-				"position": 1,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.3624,
-					"longitude": -5.8433,
-					"elevation": "400 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 2,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.38022,
-					"longitude": -5.86837,
-					"elevation": "900 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 3,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.39022,
-					"longitude": -5.87831,
-					"elevation": "670 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 4,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.3808,
-					"longitude": -5.8998,
-					"elevation": "1200 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 5,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.3808,
-					"longitude": -6.8998,
-					"elevation": "1700 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 6,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.3808,
-					"longitude": -7.8998,
-					"elevation": "200 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 7,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 42.3808,
-					"longitude": -8.8998,
-					"elevation": "1200 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 8,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 44.3808,
-					"longitude": -6.8998,
-					"elevation": "100 m"
-				}
-			},
-			{
-				"@type": "ListItem",
-				"position": 9,
-				"item": {
-					"@type": "GeoCoordinates",
-					"latitude": 45.3808,
-					"longitude": -8.8998,
-					"elevation": "1000 m"
-				}
-			}
-		]
-	}
+    "@context": {
+        "@version": 1.1,
+        "comments": {
+            "@container": "@list",
+            "@id": "viade:comments"
+        },
+        "description": {
+            "@id": "schema:description",
+            "@type": "xs:string"
+        },
+        "media": {
+            "@container": "@list",
+            "@id": "viade:media"
+        },
+        "name": {
+            "@id": "schema:name",
+            "@type": "xs:string"
+        },
+        "points": {
+            "@container": "@list",
+            "@id": "viade:points"
+        },
+        "latitude": {
+            "@id": "schema:latitude",
+            "@type": "xs:double"
+        },
+        "longitude": {
+            "@id": "schema:longitude",
+            "@type": "xs:double"
+        },
+		"elevation": {
+            "@id": "schema:elevation",
+            "@type": "xs:decimal"
+        },
+
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "viade": "http://arquisoft.github.io/viadeSpec/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "comments": [
+        {
+            "@id": "http://inrupt.luispc1998/routeComments/comment1.txt"
+        },
+        {
+            "@id": "http://inrupt.angelixus/routeComments/comment2.txt"
+        },
+        {
+            "@id": "http://inrupt.raupemol/routeComments/comment3.txt"
+        },
+        {
+            "@id": "http://inrupt.luispc1998/routeComments/comment4.txt"
+        }
+    ],
+    "description": "This is a test to see the output of the JsonLDConversor",
+    "media": [
+        {
+            "@id": "http://inrupt.luispc1998/routeMedia/image/imagen.jpg"
+        },
+        {
+            "@id": "http://inrupt.angelixus/routeMedia/image/video.mp4"
+        },
+        {
+            "@id": "http://inrupt.raupemol/routeMedia/video/foto.png"
+        },
+        {
+            "@id": "http://inrupt.luispc1998/routeMedia/video/video3.mp4"
+        }
+    ],
+    "name": "Route test 1",
+    "points": [
+        {
+            "latitude": 43.3624,
+            "longitude": -5.8433,
+			"elevation": 100
+        },
+        {
+            "latitude": 43.38022,
+            "longitude": -5.86837,
+			"elevation": 900
+        }
+    ]
 }
