@@ -67,9 +67,9 @@
     "redirectButton": "Llevarme a la página principal"
   },
   "welcome": {
-    "welcome": "Bienvenido",
+    "welcome": "Bienvenido,",
     "title": "¿Qué es ViaDe_ES1C?",
-    "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas y compartirlas con otros usuarios.",
+    "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas, compartirlas con nuestros amigos, descargarlas y subirlas.",
     "documentation": "Enlace a la documentación",
     "repository": "Enlace al repositorio de GitHub",
     "doneMessage": "¿Terminaste?",
@@ -124,22 +124,26 @@
     "errorMessage": "No se encuentra la ruta",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
-    "loadButton": "Cargar rutas del POD"
+    "loadButton": "Cargar rutas del POD",
+    "successLoadTitle": "Cargado con éxito",
+    "successLoadMessage": "Sus rutas han sido cargadas"
   },
   "share": {
     "title": "Compartir mis rutas",
-    "createSharePrompt": "Ingresa un contacto y la ruta que desea compartir",
-    "idLabel": "Selecciona la ruta a compartir",
-    "contactWebIDLabel": "WebID del contacto:",
+    "createSharePrompt": "Seleccione los amigos y la ruta que desea compartir con ellos",
+    "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
-    "resetShareForm": "Limpiar"
+    "resetShareForm": "Limpiar",
+    "friends": "Lista de amigos:"
   },
   "upload": {
     "title": "Subir mis rutas",
     "button": "Subir",
     "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
     "successTitle": "Subido con éxito",
-    "successMessage" : "Sus rutas han sido subidas"
+    "successMessage" : "Sus rutas han sido subidas",
+    "errorTitle" : "Error en la subida",
+    "errorMessage": "Debe subir un archivo con extensión \".json\""
   },
   "download": {
     "title": "Descargar ruta",
@@ -154,5 +158,8 @@
   },
   "logout": {
     "button": "Cerrar sesión"
+  },
+  "nav": {
+    "language": "Idioma"
   }
 }
