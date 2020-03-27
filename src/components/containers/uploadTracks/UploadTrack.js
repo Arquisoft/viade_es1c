@@ -11,19 +11,18 @@ import UploadService from "../../../services/UploadService";
 
 
 export const UploadTrack = (props) => {
-    // Locales for i18n
-    const { t } = useTranslation();
+  // Locales for i18n
+  const { t } = useTranslation();
 
-  async function handleUpload(event){
+  async function handleUpload(){
     let uService = new UploadService();
     await uService.handleUpload(document.getElementById("fileArea"));
     if (uService.success != null) {
       NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
+      document.getElementById("fileArea").value = ""; // Clear input file
     } else if (uService.error != null) {
       NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 2000);
-      document.getElementById("fileArea").value = ""; // Clear input file
     }
-    event.preventDefault();
   }
 
   return (
