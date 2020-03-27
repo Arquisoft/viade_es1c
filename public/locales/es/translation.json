@@ -149,7 +149,7 @@
     "title": "Descargar ruta",
     "instruction":"Introduzca el nombre del archivo:",
     "button":"Descargar",
-    "errorMessage" : "Aseguresé de que la ruta introducida existe en el Pod y de que la escribe correctamente",
+    "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
   },
