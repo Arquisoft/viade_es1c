@@ -44,7 +44,7 @@ export const VisualizeTrack = (props) => {
     const [showElements, setShowElements] = useState(false);
 
     async function handleLoad(event){
-        let vService = new VisualizeService();
+        let vService = new VisualizeService(null);
         await vService.getRoutesFromPod();
         if (vService.warning != null){
             NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
@@ -56,8 +56,8 @@ export const VisualizeTrack = (props) => {
     }
 
     async function handleSelect(event){
-        let vService = new VisualizeService();
-        await vService.fillMap(document.getElementById("selectRoute"));
+        let vService = new VisualizeService(document.getElementById("selectRoute"));
+        await vService.fillMap();
         if (vService.error != null){
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000);
         } else {
@@ -121,7 +121,7 @@ export const VisualizeTrack = (props) => {
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
-                                <Select id={"selectRoute"} options={data}/>
+                                <Select className="select-format" id={"selectRoute"} options={data}/>
                                 <Button className="visualizeButton" onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
