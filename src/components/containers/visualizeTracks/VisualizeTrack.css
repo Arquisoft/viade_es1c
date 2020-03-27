@@ -22,7 +22,7 @@ h3 {
     margin-bottom: 1em;
 }
 
-Select {
+.select-format {
     width: 100%;
     background: #fff;
     text-align:left;
