@@ -147,8 +147,11 @@
   },
   "download": {
     "title": "Download track",
-    "instruction":"Enter the URL of the file:",
-    "button":"Download"
+    "instruction": "Enter the file name:",
+    "button": "Download",
+    "errorMessage": "Make sure the entered route exists in the Pod and that you type it correctly",
+    "errorTitle": "Non-existent route in the Pod",
+    "especificacion": "* Do not include extension"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
