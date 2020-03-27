@@ -121,7 +121,7 @@ export const VisualizeTrack = (props) => {
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
-                                <Select id={"selectRoute"} options={data}/>
+                                <Select className="select-format" id={"selectRoute"} options={data}/>
                                 <Button className="visualizeButton" onClick={handleSelect}>
                                     {t('routes.button')}
                                 </Button>
