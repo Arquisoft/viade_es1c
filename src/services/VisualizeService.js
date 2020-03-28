@@ -114,7 +114,7 @@ export default class VisualizeService{
      */
     async readPermission(url) {
         const fc = new FC(auth);
-        await fc.readFile(url).then((body) => {
+        await fc.readFile(url).then(() => {
             this.permissions = true;
         }, err => console.log(err));
         return this.permissions;
@@ -138,6 +138,15 @@ export default class VisualizeService{
             let elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
         }
+        await this.getImages(route);
+    }
+
+    /**
+     * Aux method to obtain images from track
+     * @param route - track
+     * @returns {Promise<void>}
+     */
+    async getImages(route) {
         // We obtain the images of the track
         let numberOfImages = route.media.length;
         if (numberOfImages > 0) {
@@ -146,9 +155,14 @@ export default class VisualizeService{
                 let obtainImage = media.split(":");
                 let image = obtainImage[1].concat(":".concat(obtainImage[2]));
                 let routeImage = image.slice(1, image.length - 2);
-                let permissionRoute = routeImage.replace("/routeMedia/image/*", "/card#me");
-                if (await this.readPermission(permissionRoute)) {
-                    this.images.push(routeImage);
+                let extensionRoute = routeImage.split(".");
+                let extensionWithPoint = extensionRoute[extensionRoute.length - 1].concat(".");
+                let extension = extensionWithPoint.slice(0, extensionWithPoint.length - 2);
+                if (extension.localeCompare(".jpg") || extension.localeCompare(".png")) {
+                    let permissionRoute = routeImage.replace("/routeMedia/image/*", "/card#me");
+                    if (await this.readPermission(permissionRoute)) {
+                        this.images.push(routeImage);
+                    }
                 }
             }
         }

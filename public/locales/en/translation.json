@@ -128,7 +128,7 @@
     "successLoadTitle": "Loaded successfully",
     "successLoadMessage": "Their routes have been loaded",
     "permissionsErrorTitle": "Error displaying multimedia",
-    "permissionsErrorMessage": "There are no permissions to access the multimedia"
+    "permissionsErrorMessage": "There are no permissions to access the multimedia or are not found"
   },
   "share": {
     "title": "Share my tracks",

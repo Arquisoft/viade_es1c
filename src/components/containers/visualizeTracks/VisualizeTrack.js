@@ -94,7 +94,7 @@ export const VisualizeTrack = (props) => {
             } else {
                 setShowImage(false);
                 if (!vService.permissions) {
-                    NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 2000);
+                    NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 3000);
                 }
             }
         }

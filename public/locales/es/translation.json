@@ -128,7 +128,7 @@
     "successLoadTitle": "Cargado con éxito",
     "successLoadMessage": "Sus rutas han sido cargadas",
     "permissionsErrorTitle": "Error al mostrar multimedia",
-    "permissionsErrorMessage": "No hay permisos para acceder al multimedia"
+    "permissionsErrorMessage": "No hay permisos para acceder al multimedia o no se encuentran"
   },
   "share": {
     "title": "Compartir mis rutas",
