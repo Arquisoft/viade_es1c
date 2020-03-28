@@ -25,6 +25,7 @@ export default class VisualizeService{
         this.permissionsImage = false;
         this.permissionsVideo = false;
         this.videos = [];
+        this.permission = null;
     }
 
     /**
@@ -86,7 +87,7 @@ export default class VisualizeService{
         } else {
             for (let i = 0; i < content.files.length; i++) {
                 this.extension = content.files[i].name.split(".");
-                if (!this.extension[1].localeCompare("json")) {
+                if (this.extension[1].localeCompare("json") === 0) {
                     // 5 == length(".json")
                     this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
                 }
@@ -110,16 +111,13 @@ export default class VisualizeService{
     }
 
     /**
-     * Aux method to read permissions
+     * Aux method to check read permissions
      * @returns {Promise<boolean>}
      */
-    async readPermission(url) {
-        let perm = false;
-        const fc = new FC(auth);
-        await fc.readFile(url).then(() => {
-            perm = true;
-        }, err => console.log(err));
-        return perm;
+    readPermission(url) {
+        let req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
     }
 
     /**
@@ -156,19 +154,17 @@ export default class VisualizeService{
                 let extensionRoute = routeMedia.split(".");
                 let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
                 if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
-                    /**let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
-                    this.permissionsImage = await this.readPermission(permissionRoute);
-                    if (this.permissionsImage) {
+                    try {
+                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                        await this.readPermission(permissionRoute);
                         this.images.push(routeMedia);
-                    } **/
-                    this.images.push(routeMedia);
+                    } catch (e) {}
                 } else if (extension.localeCompare(".mp4") === 0) {
-                    /**let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
-                    this.permissionsVideo = await this.readPermission(permissionRoute);
-                    if (this.permissionsVideo) {
+                    try {
+                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                        await this.readPermission(permissionRoute);
                         this.videos.push(routeMedia);
-                    }**/
-                    this.videos.push(routeMedia);
+                    } catch (e) {}
                 }
             }
         }

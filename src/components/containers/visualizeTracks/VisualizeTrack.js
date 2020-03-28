@@ -118,7 +118,6 @@ export const VisualizeTrack = (props) => {
                 NotificationManager.error(t('routes.videoErrorMessage'), t('routes.videoErrorTitle'), 3000);
             }
         }
-        //alert(document.getElementById("0").n);
     }
 
     function handlePowerOff() {
