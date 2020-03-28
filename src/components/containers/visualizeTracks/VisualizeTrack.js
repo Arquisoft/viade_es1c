@@ -11,6 +11,7 @@ import { Redirect } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
 import VisualizeService from "../../../services/VisualizeService";
+
 // CSS imports
 import 'leaflet/dist/leaflet.css';
 import "./VisualizeTrack.css";
@@ -24,28 +25,13 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-let actualIndexVideo = 0;
+let actualIndexVideo = 0;   // For actual index video
 /**
  * Component used to display routes on a map
  */
-export const VisualizeTrack = (props) => {
-
+export const VisualizeTrack = () => {
     // Locales for i18n
     const {t} = useTranslation();
-
-    const [currentImage, setCurrentImage] = useState(0);
-    const [isViewerOpen, setIsViewerOpen] = useState(false);
-    const [images, setImages] = useState([]);
-
-    const openImageViewer = useCallback((index) => {
-        setCurrentImage(index);
-        setIsViewerOpen(true);
-    }, []);
-
-    const closeImageViewer = () => {
-        setCurrentImage(0);
-        setIsViewerOpen(false);
-    };
 
     // Hooks for polyline, map, histogram
     // Setting default values
@@ -59,13 +45,30 @@ export const VisualizeTrack = (props) => {
     const [elevation, setElevation] = useState([]);
     const [showElements, setShowElements] = useState(false);
 
-    // Hooks for multimedia
+    // Hooks for images
     const [showImage, setShowImage] = useState(false);
+    const [currentImage, setCurrentImage] = useState(0);
+    const [isViewerOpen, setIsViewerOpen] = useState(false);
+    const [images, setImages] = useState([]);
+    const openImageViewer = useCallback((index) => {
+        setCurrentImage(index);
+        setIsViewerOpen(true);
+    }, []);
+    const closeImageViewer = () => {
+        setCurrentImage(0);
+        setIsViewerOpen(false);
+    };
+
+    // Hooks for video
     const [showVideo, setShowVideo] = useState(false);
     const [playingVideo, setPlayingVideo] = useState(false);
     const [videos, setVideos] = useState([]);
     const [actualVideo, setActualVideo] = useState("");
 
+    /**
+     * Fuction to handle load select event
+     * @returns {Promise<void>}
+     */
     async function handleLoad(){
         let vService = new VisualizeService(null);
         await vService.getRoutesFromPod();
@@ -77,6 +80,10 @@ export const VisualizeTrack = (props) => {
         setData(vService.routes);
     }
 
+    /**
+     * Funcion to handle display map, histogram and multimedia event
+     * @returns {Promise<void>}
+     */
     async function handleSelect(){
         let vService = new VisualizeService(document.getElementById("selectRoute"));
         await vService.fillMap();
@@ -97,6 +104,10 @@ export const VisualizeTrack = (props) => {
         }
     }
 
+    /**
+     * Fuction to handle multimedia hooks and advices
+     * @param vService
+     */
     function handleMultimedia(vService) {
         setShowVideo(false);
         setShowImage(false);
@@ -120,21 +131,34 @@ export const VisualizeTrack = (props) => {
         }
     }
 
+    /**
+     * Fuction to set power off the video player
+     */
     function handlePowerOff() {
         setPlayingVideo(false);
     }
 
+    /**
+     * Fuction to set power on the video player
+     */
     function handlePowerOn() {
         setPlayingVideo(true);
     }
 
+    /**
+     * Fuction to set next video
+     * CHECK THIS FUNCTION
+     */
     function handleNext() {
-        if (actualIndexVideo < videos.length - 1) {
+        if ((actualIndexVideo + 1 <= (videos.length - 1)) && (videos.length > 1)) {
             actualIndexVideo++;
             setActualVideo(videos[actualIndexVideo]);
         }
     }
 
+    /**
+     * Fuction to set previous video
+     */
     function handlePrevious() {
         if (actualIndexVideo > 0) {
             actualIndexVideo--;
@@ -173,34 +197,44 @@ export const VisualizeTrack = (props) => {
                             <Row>
                                 {showElements && (
                                   <Col>
-                                    <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
-                                        <VictoryStack colorScale={"cool"}>
-                                            <VictoryArea data={elevation}/>
-                                        </VictoryStack>
-                                    </VictoryChart>
+                                      <Row>
+                                          <h4 className="h4-format">{t('routes.histogram')}</h4>
+                                      </Row>
+                                      <Row>
+                                          <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
+                                              <VictoryStack colorScale={"cool"}>
+                                                  <VictoryArea data={elevation}/>
+                                              </VictoryStack>
+                                          </VictoryChart>
+                                      </Row>
                                   </Col>
                                 )}
                                 <Col>
                                     {showImage && (
-                                      <Row>
-                                          <div className="img_viewer">
-                                              {images.map((src, index) => (
-                                                <img className="my_Img" src={src} onClick={() => openImageViewer(index)} width="80" id={"" + index} key={index}/>
-                                              ))}
-                                              {isViewerOpen && (
+                                      <div>
+                                          <Row>
+                                              <h4 className="h4-format">{t('routes.multimedia')}</h4>
+                                          </Row>
+                                          <Row>
+                                              <div className="img_viewer formal-div">
+                                                  {images.map((src, index) => (
+                                                    <img className="my_Img" src={src} onClick={() => openImageViewer(index)} width="90" id={"" + index} key={index} alt=""/>
+                                                  ))}
+                                                  {isViewerOpen && (
                                                     <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
-                                              )}
-                                          </div>
-                                      </Row>
+                                                  )}
+                                              </div>
+                                          </Row>
+                                      </div>
                                     )}
                                     {showVideo && (
                                       <Row>
-                                          <div>
+                                          <div className="formal-div">
                                               <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
-                                              <Button className="button-margin" onClick={handlePowerOn}>Play</Button>
-                                              <Button className="button-margin" onClick={handlePowerOff}>Stop</Button>
-                                              <Button className="button-margin" onClick={handleNext}>Next</Button>
-                                              <Button className="button-margin" onClick={handlePrevious}>Previous</Button>
+                                              <Button className="button-margin" onClick={handlePowerOn}>{t('routes.play')}</Button>
+                                              <Button className="button-margin" onClick={handlePowerOff}>{t('routes.stop')}</Button>
+                                              <Button className="button-margin" onClick={handleNext}>{t('routes.next')}</Button>
+                                              <Button className="button-margin" onClick={handlePrevious}>{t('routes.previous')}</Button>
                                           </div>
                                       </Row>
                                     )}

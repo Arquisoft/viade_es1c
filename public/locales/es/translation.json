@@ -130,7 +130,13 @@
     "imageErrorTitle": "Error al mostrar las imágenes",
     "imageErrorMessage": "No hay permisos para acceder a las imágenes o no se encuentran",
     "videoErrorTitle": "Error al mostrar los vídeos",
-    "videoErrorMessage": "No hay permisos para acceder a los vídeos o no se encuentran"
+    "videoErrorMessage": "No hay permisos para acceder a los vídeos o no se encuentran",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "play": "Reproducir",
+    "stop": "Parar",
+    "histogram": "Histograma:",
+    "multimedia": "Multimedia:"
   },
   "share": {
     "title": "Compartir mis rutas",

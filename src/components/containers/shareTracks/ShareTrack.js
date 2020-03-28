@@ -53,7 +53,7 @@ const ShareTrack = ({ webId, sendNotification, contact, setContact }: Props) => 
             </div>
             <form className="modal-body">
               <span>{t("share.createSharePrompt")}</span>
-              <div className="primera">
+              <div>
                 <label className="lab" htmlFor="documentUriInput">
                   {t("share.idLabel")}
                 </label>
