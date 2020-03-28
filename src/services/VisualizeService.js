@@ -21,6 +21,7 @@ export default class VisualizeService{
         this.success = null;
         this.error = null;
         this.HTMLElement = HTMLElement;
+        this.images = [];
     }
 
     /**
@@ -123,6 +124,12 @@ export default class VisualizeService{
 
             let elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
+
+            let media = JSON.stringify(route.media[i]);
+            let obtainImage = media.split(":");
+            let image = obtainImage[1].concat(":".concat(obtainImage[2]));
+            let routeImage = image.slice(1, image.length - 2);
+            this.images.push(routeImage);
         }
     }
 }

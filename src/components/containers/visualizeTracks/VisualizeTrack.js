@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
 import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
 import {LoggedIn, LoggedOut} from "@solid/react";
@@ -8,6 +8,7 @@ import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
 import { Redirect } from "react-router-dom";
+import ImageViewer from 'react-simple-image-viewer';
 import VisualizeService from "../../../services/VisualizeService";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -30,6 +31,19 @@ export const VisualizeTrack = (props) => {
     // Locales for i18n
     const {t} = useTranslation();
 
+    const [currentImage, setCurrentImage] = useState(0);
+    const [isViewerOpen, setIsViewerOpen] = useState(false);
+    const [images, setImages] = useState([]);
+
+    const openImageViewer = useCallback((index) => {
+        setCurrentImage(index);
+        setIsViewerOpen(true);
+    }, []);
+
+    const closeImageViewer = () => {
+        setCurrentImage(0);
+        setIsViewerOpen(false);
+    };
 
     // Hooks for polyline, map, histogram
     // Setting default values
@@ -73,6 +87,7 @@ export const VisualizeTrack = (props) => {
             setZoom(zoomValue);
             setElevation(elevationsValues);
             setShowElements(true);
+            setImages(vService.images);
         }
     } 
 
@@ -86,31 +101,41 @@ export const VisualizeTrack = (props) => {
                     <Row>
                         <Col sm={10}>
                             <Row>
-                                <Map className="map" center={center} zoom={zoom}>
-                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                                    {showElements && (
-                                        <div>
-                                            <Polyline color={'blue'}
-                                                      positions={positions}/>
-                                            <Marker position={origin}>
-                                                <Popup>{t('routes.origin')}</Popup>
-                                            </Marker>
-                                            <Marker position={target}>
-                                                <Popup>{t('routes.target')}</Popup>
-                                            </Marker>
-                                        </div>
+                                {!isViewerOpen && (
+                                    <Map className="map" center={center} zoom={zoom}>
+                                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                                        {showElements && (
+                                          <div>
+                                              <Polyline color={'blue'}
+                                                        positions={positions}/>
+                                              <Marker position={origin}>
+                                                  <Popup>{t('routes.origin')}</Popup>
+                                              </Marker>
+                                              <Marker position={target}>
+                                                  <Popup>{t('routes.target')}</Popup>
+                                              </Marker>
+                                          </div>
                                         )}
-                                </Map>
+                                    </Map>
+                                )}
                             </Row>
                             <Row>
                                 {showElements && (
-                                    <VictoryChart style={{ parent: { maxWidth: "35%" }}}
-                                                  domainPadding={10}
-                                                  theme={VictoryTheme.material}>
+                                    <VictoryChart style={{ parent: { maxWidth: "35%" }}} domainPadding={10} theme={VictoryTheme.material}>
                                         <VictoryStack colorScale={"cool"}>
                                             <VictoryArea data={elevation}/>
                                         </VictoryStack>
                                     </VictoryChart>
+                                )}
+                                {showElements && (
+                                  <div className="img_viewer">
+                                      {images.map((src, index) => (
+                                        <img className="my_Img" src={ src } onClick={ () => openImageViewer(index) } width="50" key={index}/>
+                                      ))}
+                                      {isViewerOpen && (
+                                        <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
+                                      )}
+                                  </div>
                                 )}
                             </Row>
                         </Col>
