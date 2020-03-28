@@ -61,9 +61,10 @@ export default class ShareService {
    * or not
    */
   async readPermission(url) {
+    //let urlp = url.replace("/card#me", "");
     let perm = false;
     const fc = new FC(auth);
-    await fc.readFile(url, null).then((content) => {
+    await fc.readFile(url).then((content) => {
       perm = true;
     }, err => this.error = "Error en el permission".concat(err));
     return perm;
@@ -100,14 +101,18 @@ export default class ShareService {
 
   async upload(fc){
     //this.urlRouteInOtherPod = this.webId.slice(0, this.webId.length - 15).concat("share/");
-    this.urlRouteInOtherPod = "https://miguelornia.solid.community/share/";
-    let selectedRouteName = this.HTMLElement.value.concat(".json");
-    this.urlRouteInOtherPod = this.urlRouteInOtherPod.concat(selectedRouteName);
-    try{
-      await this.readPermission(this.urlRouteInOtherPod);
-      await fc.createFile(this.urlRouteInOtherPod, this.content, "text/turtle", {});
-    } catch (SFCFetchErrorr){
-      this.error = "Error en el create";
+    this.urlRouteInOtherPod = "https://miguelornia.solid.community/profile/card#me";
+    let permisos = await this.readPermission(this.urlRouteInOtherPod);
+    if (permisos === true){
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.replace("profile/card#me", "");
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.concat("share/");
+      let selectedRouteName = this.HTMLElement.value.concat(".json");
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.concat(selectedRouteName);
+      try{
+        await fc.createFile(this.urlRouteInOtherPod, this.content, "text/turtle", {});
+      } catch (SFCFetchErrorr){
+        this.error = "Error en el create";
+      }
     }
     /*fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
     ).catch(err => );*/
