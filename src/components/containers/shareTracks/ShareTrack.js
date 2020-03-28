@@ -27,9 +27,6 @@ export const ShareTrack = (props) => {
   async function handleUpload(){
     let sService = new ShareService(document.getElementById("selectRoute"));
     await sService.shareTrack();
-    if (sService.error != null){
-      console.log(sService.error);
-    }
   }
 
   async function handleLoad(){
