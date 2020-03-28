@@ -126,7 +126,9 @@
     "loadWarningMessage": "No existe ninguna ruta en el POD",
     "loadButton": "Cargar rutas del POD",
     "successLoadTitle": "Cargado con éxito",
-    "successLoadMessage": "Sus rutas han sido cargadas"
+    "successLoadMessage": "Sus rutas han sido cargadas",
+    "permissionsErrorTitle": "Error al mostrar multimedia",
+    "permissionsErrorMessage": "No hay permisos para acceder al multimedia"
   },
   "share": {
     "title": "Compartir mis rutas",

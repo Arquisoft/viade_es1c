@@ -56,6 +56,7 @@ export const VisualizeTrack = (props) => {
     const [data, setData] = useState([]);
     const [elevation, setElevation] = useState([]);
     const [showElements, setShowElements] = useState(false);
+    const [showImage, setShowImage] = useState(false);
 
     async function handleLoad(event){
         let vService = new VisualizeService(null);
@@ -87,7 +88,15 @@ export const VisualizeTrack = (props) => {
             setZoom(zoomValue);
             setElevation(elevationsValues);
             setShowElements(true);
-            setImages(vService.images);
+            if (vService.images.length > 0) {
+                setShowImage(true);
+                setImages(vService.images);
+            } else {
+                setShowImage(false);
+                if (!vService.permissions) {
+                    NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 2000);
+                }
+            }
         }
     } 
 
@@ -127,7 +136,7 @@ export const VisualizeTrack = (props) => {
                                         </VictoryStack>
                                     </VictoryChart>
                                 )}
-                                {showElements && (
+                                {showImage && (
                                   <div className="img_viewer">
                                       {images.map((src, index) => (
                                         <img className="my_Img" src={ src } onClick={ () => openImageViewer(index) } width="50" key={index}/>

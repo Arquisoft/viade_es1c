@@ -126,7 +126,9 @@
     "loadWarningMessage": "There is no route in the POD",
     "loadButton": "Load tracks from POD",
     "successLoadTitle": "Loaded successfully",
-    "successLoadMessage": "Their routes have been loaded"
+    "successLoadMessage": "Their routes have been loaded",
+    "permissionsErrorTitle": "Error displaying multimedia",
+    "permissionsErrorMessage": "There are no permissions to access the multimedia"
   },
   "share": {
     "title": "Share my tracks",

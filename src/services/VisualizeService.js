@@ -22,6 +22,7 @@ export default class VisualizeService{
         this.error = null;
         this.HTMLElement = HTMLElement;
         this.images = [];
+        this.permissions = false;
     }
 
     /**
@@ -108,6 +109,18 @@ export default class VisualizeService{
     }
 
     /**
+     * Aux method to read permissions
+     * @returns {Promise<boolean>}
+     */
+    async readPermission(url) {
+        const fc = new FC(auth);
+        await fc.readFile(url).then((body) => {
+            this.permissions = true;
+        }, err => console.log(err));
+        return this.permissions;
+    }
+
+    /**
      * Aux method to extract points and elevations from track
      * @param {track's content} content 
      */
@@ -124,12 +137,20 @@ export default class VisualizeService{
 
             let elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
-
-            let media = JSON.stringify(route.media[i]);
-            let obtainImage = media.split(":");
-            let image = obtainImage[1].concat(":".concat(obtainImage[2]));
-            let routeImage = image.slice(1, image.length - 2);
-            this.images.push(routeImage);
+        }
+        // We obtain the images of the track
+        let numberOfImages = route.media.length;
+        if (numberOfImages > 0) {
+            for (let i = 0; i < numberOfImages; i++) {
+                let media = JSON.stringify(route.media[i]);
+                let obtainImage = media.split(":");
+                let image = obtainImage[1].concat(":".concat(obtainImage[2]));
+                let routeImage = image.slice(1, image.length - 2);
+                let permissionRoute = routeImage.replace("/routeMedia/image/*", "/card#me");
+                if (await this.readPermission(permissionRoute)) {
+                    this.images.push(routeImage);
+                }
+            }
         }
     }
 }
