@@ -22,7 +22,8 @@ export default class VisualizeService{
         this.error = null;
         this.HTMLElement = HTMLElement;
         this.images = [];
-        this.permissions = false;
+        this.permissionsImage = false;
+        this.permissionsVideo = false;
         this.videos = [];
     }
 
@@ -102,7 +103,6 @@ export default class VisualizeService{
         const fc = new FC(auth);
         try{
             this.content = await fc.readFile(this.urlRouteInPod, null);
-            console.log(this.content);
             await this.getPointsToPrint(this.content); 
         } catch (SFCFetchError){
             this.error = "Error al pillar datos";
@@ -114,11 +114,12 @@ export default class VisualizeService{
      * @returns {Promise<boolean>}
      */
     async readPermission(url) {
+        let perm = false;
         const fc = new FC(auth);
         await fc.readFile(url).then(() => {
-            this.permissions = true;
+            perm = true;
         }, err => console.log(err));
-        return this.permissions;
+        return perm;
     }
 
     /**
@@ -139,8 +140,7 @@ export default class VisualizeService{
             let elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
         }
-        await this.getImages(route);
-        await this.getVideos(route);
+        await this.getMultimedia(route);
     }
 
     /**
@@ -148,50 +148,27 @@ export default class VisualizeService{
      * @param route - track
      * @returns {Promise<void>}
      */
-    async getImages(route) {
+    async getMultimedia(route) {
         // We obtain the images of the track
-        let numberOfImages = route.media.length;
-        if (numberOfImages > 0) {
-            for (let i = 0; i < numberOfImages; i++) {
-                let media = JSON.stringify(route.media[i]);
-                let obtainImage = media.split(":");
-                let image = obtainImage[1].concat(":".concat(obtainImage[2]));
-                let routeImage = image.slice(1, image.length - 2);
-                let extensionRoute = routeImage.split(".");
-                let extensionWithPoint = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                let extension = extensionWithPoint.slice(0, extensionWithPoint.length);
+        if (route.media.length > 0) {
+            for (let media in route.media) {
+                let routeMedia = route.media[media]["@id"];
+                let extensionRoute = routeMedia.split(".");
+                let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
                 if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
-                    let permissionRoute = routeImage.replace("/routeMedia/image/*", "/card#me");
-                    if (await this.readPermission(permissionRoute)) {
-                        this.images.push(routeImage);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Aux method to obtain images from track
-     * @param route - track
-     * @returns {Promise<void>}
-     */
-    async getVideos(route) {
-        // We obtain the videos of the track
-        let numberOfVideos = route.media.length;
-        if (numberOfVideos > 0) {
-            for (let i = 0; i < numberOfVideos; i++) {
-                let media = JSON.stringify(route.media[i]);
-                let obtainVideo = media.split(":");
-                let video = obtainVideo[1].concat(":".concat(obtainVideo[2]));
-                let routeVideo = video.slice(1, video.length - 2);
-                let extensionRoute = routeVideo.split(".");
-                let extensionWithPoint = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                let extension = extensionWithPoint.slice(0, extensionWithPoint.length);
-                if (extension.localeCompare(".mp4") === 0) {
-                    let permissionRoute = routeVideo.replace("/routeMedia/image/*", "/card#me");
-                    if (await this.readPermission(permissionRoute)) {
-                        this.videos.push(routeVideo);
-                    }
+                    /**let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                    this.permissionsImage = await this.readPermission(permissionRoute);
+                    if (this.permissionsImage) {
+                        this.images.push(routeMedia);
+                    } **/
+                    this.images.push(routeMedia);
+                } else if (extension.localeCompare(".mp4") === 0) {
+                    /**let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                    this.permissionsVideo = await this.readPermission(permissionRoute);
+                    if (this.permissionsVideo) {
+                        this.videos.push(routeMedia);
+                    }**/
+                    this.videos.push(routeMedia);
                 }
             }
         }

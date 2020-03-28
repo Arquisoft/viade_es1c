@@ -127,8 +127,10 @@
     "loadButton": "Cargar rutas del POD",
     "successLoadTitle": "Cargado con éxito",
     "successLoadMessage": "Sus rutas han sido cargadas",
-    "permissionsErrorTitle": "Error al mostrar multimedia",
-    "permissionsErrorMessage": "No hay permisos para acceder al multimedia o no se encuentran"
+    "imageErrorTitle": "Error al mostrar las imágenes",
+    "imageErrorMessage": "No hay permisos para acceder a las imágenes o no se encuentran",
+    "videoErrorTitle": "Error al mostrar los vídeos",
+    "videoErrorMessage": "No hay permisos para acceder a los vídeos o no se encuentran"
   },
   "share": {
     "title": "Compartir mis rutas",

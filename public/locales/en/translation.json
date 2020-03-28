@@ -127,8 +127,10 @@
     "loadButton": "Load tracks from POD",
     "successLoadTitle": "Loaded successfully",
     "successLoadMessage": "Their routes have been loaded",
-    "permissionsErrorTitle": "Error displaying multimedia",
-    "permissionsErrorMessage": "There are no permissions to access the multimedia or are not found"
+    "imageErrorTitle": "Error displaying images",
+    "imageErrorMessage": "There are no permissions to access to images or are not found",
+    "videoErrorTitle": "Error displaying videos",
+    "videoErrorMessage": "There are no permissions to access to videos or are not found"
   },
   "share": {
     "title": "Share my tracks",

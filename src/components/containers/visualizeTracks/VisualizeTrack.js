@@ -9,7 +9,7 @@ import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
 import { Redirect } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 import VisualizeService from "../../../services/VisualizeService";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -66,7 +66,7 @@ export const VisualizeTrack = (props) => {
     const [videos, setVideos] = useState([]);
     const [actualVideo, setActualVideo] = useState("");
 
-    async function handleLoad(event){
+    async function handleLoad(){
         let vService = new VisualizeService(null);
         await vService.getRoutesFromPod();
         if (vService.warning != null){
@@ -74,20 +74,17 @@ export const VisualizeTrack = (props) => {
         } else {
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
-        event.preventDefault();
         setData(vService.routes);
     }
 
-    async function handleSelect(event){
+    async function handleSelect(){
         let vService = new VisualizeService(document.getElementById("selectRoute"));
         await vService.fillMap();
         if (vService.error != null){
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000);
         } else {
-            event.preventDefault();
             let points = vService.points;
             let elevationsValues = vService.elevationsValues;
-            console.log(vService.error);
             // We show the points of the route in the map
             setOrigin(points[0]);
             setTarget(points[points.length - 1]);
@@ -96,7 +93,7 @@ export const VisualizeTrack = (props) => {
             setZoom(zoomValue);
             setElevation(elevationsValues);
             setShowElements(true);
-            handleMultimedia(vService)
+            handleMultimedia(vService);
         }
     }
 
@@ -114,10 +111,14 @@ export const VisualizeTrack = (props) => {
         } else {
             setShowImage(false);
             setShowVideo(false);
-            if (!vService.permissions) {
-                NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 3000);
+            if (!vService.permissionsImage) {
+                NotificationManager.error(t('routes.imageErrorMessage'), t('routes.imageErrorTitle'), 3000);
+            }
+            if (!vService.permissionsVideo) {
+                NotificationManager.error(t('routes.videoErrorMessage'), t('routes.videoErrorTitle'), 3000);
             }
         }
+        //alert(document.getElementById("0").n);
     }
 
     function handlePowerOff() {
@@ -185,7 +186,7 @@ export const VisualizeTrack = (props) => {
                                       <Row>
                                           <div className="img_viewer">
                                               {images.map((src, index) => (
-                                                <img className="my_Img" src={ src } onClick={ () => openImageViewer(index) } width="80" key={index}/>
+                                                <img className="my_Img" src={src} onClick={() => openImageViewer(index)} width="80" id={"" + index} key={index}/>
                                               ))}
                                               {isViewerOpen && (
                                                     <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
