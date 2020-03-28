@@ -14,7 +14,7 @@ export const Login = props => {
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>
-                    <div >
+                    <div>
                         <LoginButton className="btn btn-primary a-solid" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
                             {t("login.formButtonText")}
                         </LoginButton>
