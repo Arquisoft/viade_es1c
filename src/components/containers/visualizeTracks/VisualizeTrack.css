@@ -52,3 +52,13 @@ h3 {
 .my_Img {
     margin: 3px;
 }
+
+.player-format {
+    margin-top: 2em;
+}
+
+.button-margin {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

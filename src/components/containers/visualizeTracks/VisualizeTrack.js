@@ -9,6 +9,7 @@ import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
 import { Redirect } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
+import ReactPlayer from 'react-player'
 import VisualizeService from "../../../services/VisualizeService";
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -23,6 +24,7 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
+let actualIndexVideo = 0;
 /**
  * Component used to display routes on a map
  */
@@ -56,7 +58,13 @@ export const VisualizeTrack = (props) => {
     const [data, setData] = useState([]);
     const [elevation, setElevation] = useState([]);
     const [showElements, setShowElements] = useState(false);
+
+    // Hooks for multimedia
     const [showImage, setShowImage] = useState(false);
+    const [showVideo, setShowVideo] = useState(false);
+    const [playingVideo, setPlayingVideo] = useState(false);
+    const [videos, setVideos] = useState([]);
+    const [actualVideo, setActualVideo] = useState("");
 
     async function handleLoad(event){
         let vService = new VisualizeService(null);
@@ -88,17 +96,51 @@ export const VisualizeTrack = (props) => {
             setZoom(zoomValue);
             setElevation(elevationsValues);
             setShowElements(true);
-            if (vService.images.length > 0) {
-                setShowImage(true);
-                setImages(vService.images);
-            } else {
-                setShowImage(false);
-                if (!vService.permissions) {
-                    NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 3000);
-                }
+            handleMultimedia(vService)
+        }
+    }
+
+    function handleMultimedia(vService) {
+        setShowVideo(false);
+        setShowImage(false);
+        if (vService.videos.length > 0) {
+            setShowVideo(true);
+            setVideos(vService.videos);
+            setActualVideo(vService.videos[actualIndexVideo]);
+        }
+        if (vService.images.length > 0) {
+            setShowImage(true);
+            setImages(vService.images);
+        } else {
+            setShowImage(false);
+            setShowVideo(false);
+            if (!vService.permissions) {
+                NotificationManager.error(t('routes.permissionsErrorMessage'), t('routes.permissionsErrorTitle'), 3000);
             }
         }
-    } 
+    }
+
+    function handlePowerOff() {
+        setPlayingVideo(false);
+    }
+
+    function handlePowerOn() {
+        setPlayingVideo(true);
+    }
+
+    function handleNext() {
+        if (actualIndexVideo < videos.length - 1) {
+            actualIndexVideo++;
+            setActualVideo(videos[actualIndexVideo]);
+        }
+    }
+
+    function handlePrevious() {
+        if (actualIndexVideo > 0) {
+            actualIndexVideo--;
+            setActualVideo(videos[actualIndexVideo]);
+        }
+    }
 
     return (
         <section>
@@ -130,22 +172,39 @@ export const VisualizeTrack = (props) => {
                             </Row>
                             <Row>
                                 {showElements && (
-                                    <VictoryChart style={{ parent: { maxWidth: "35%" }}} domainPadding={10} theme={VictoryTheme.material}>
+                                  <Col>
+                                    <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
                                         <VictoryStack colorScale={"cool"}>
                                             <VictoryArea data={elevation}/>
                                         </VictoryStack>
                                     </VictoryChart>
+                                  </Col>
                                 )}
-                                {showImage && (
-                                  <div className="img_viewer">
-                                      {images.map((src, index) => (
-                                        <img className="my_Img" src={ src } onClick={ () => openImageViewer(index) } width="50" key={index}/>
-                                      ))}
-                                      {isViewerOpen && (
-                                        <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
-                                      )}
-                                  </div>
-                                )}
+                                <Col>
+                                    {showImage && (
+                                      <Row>
+                                          <div className="img_viewer">
+                                              {images.map((src, index) => (
+                                                <img className="my_Img" src={ src } onClick={ () => openImageViewer(index) } width="80" key={index}/>
+                                              ))}
+                                              {isViewerOpen && (
+                                                    <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
+                                              )}
+                                          </div>
+                                      </Row>
+                                    )}
+                                    {showVideo && (
+                                      <Row>
+                                          <div>
+                                              <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
+                                              <Button className="button-margin" onClick={handlePowerOn}>Play</Button>
+                                              <Button className="button-margin" onClick={handlePowerOff}>Stop</Button>
+                                              <Button className="button-margin" onClick={handleNext}>Next</Button>
+                                              <Button className="button-margin" onClick={handlePrevious}>Previous</Button>
+                                          </div>
+                                      </Row>
+                                    )}
+                                </Col>
                             </Row>
                         </Col>
                         <Col>

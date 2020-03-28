@@ -23,6 +23,7 @@ export default class VisualizeService{
         this.HTMLElement = HTMLElement;
         this.images = [];
         this.permissions = false;
+        this.videos = [];
     }
 
     /**
@@ -139,6 +140,7 @@ export default class VisualizeService{
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getImages(route);
+        await this.getVideos(route);
     }
 
     /**
@@ -156,12 +158,39 @@ export default class VisualizeService{
                 let image = obtainImage[1].concat(":".concat(obtainImage[2]));
                 let routeImage = image.slice(1, image.length - 2);
                 let extensionRoute = routeImage.split(".");
-                let extensionWithPoint = extensionRoute[extensionRoute.length - 1].concat(".");
-                let extension = extensionWithPoint.slice(0, extensionWithPoint.length - 2);
-                if (extension.localeCompare(".jpg") || extension.localeCompare(".png")) {
+                let extensionWithPoint = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                let extension = extensionWithPoint.slice(0, extensionWithPoint.length);
+                if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
                     let permissionRoute = routeImage.replace("/routeMedia/image/*", "/card#me");
                     if (await this.readPermission(permissionRoute)) {
                         this.images.push(routeImage);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Aux method to obtain images from track
+     * @param route - track
+     * @returns {Promise<void>}
+     */
+    async getVideos(route) {
+        // We obtain the videos of the track
+        let numberOfVideos = route.media.length;
+        if (numberOfVideos > 0) {
+            for (let i = 0; i < numberOfVideos; i++) {
+                let media = JSON.stringify(route.media[i]);
+                let obtainVideo = media.split(":");
+                let video = obtainVideo[1].concat(":".concat(obtainVideo[2]));
+                let routeVideo = video.slice(1, video.length - 2);
+                let extensionRoute = routeVideo.split(".");
+                let extensionWithPoint = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                let extension = extensionWithPoint.slice(0, extensionWithPoint.length);
+                if (extension.localeCompare(".mp4") === 0) {
+                    let permissionRoute = routeVideo.replace("/routeMedia/image/*", "/card#me");
+                    if (await this.readPermission(permissionRoute)) {
+                        this.videos.push(routeVideo);
                     }
                 }
             }

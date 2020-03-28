@@ -57,10 +57,10 @@
     "description": "This is a test to see the output of the JsonLDConversor",
     "media": [
         {
-            "@id": "https://miguelornia.solid.community/routeMedia/image/83357_2880_1800.jpg"
+            "@id": "https://miguelornia.solid.community/routeMedia/image/video.mp4"
         },
         {
-            "@id": "https://miguelornia.solid.community/routeMedia/image/logo192.png"
+            "@id": "https://miguelornia.solid.community/routeMedia/image/video1.mp4"
         },
         {
             "@id": "https://miguelornia.solid.community/routeMedia/image/83357_2880_1800.jpg"
