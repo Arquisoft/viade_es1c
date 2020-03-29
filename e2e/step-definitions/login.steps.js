@@ -9,8 +9,8 @@ defineFeature(feature, test => {
 	})
 	
   test('We want to login into Viade', ({ given, when, then, and }) => {
-
     given('The login page', async() => {
+      
       await expect(page).toMatchElement('h2', { text: 'Welcome to ViaDe_ES1C' })
 
     });
