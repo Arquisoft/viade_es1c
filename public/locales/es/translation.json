@@ -43,9 +43,7 @@
     "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
     "profile": "Perfil",
-    "formModelRender": "Form Model Render",
-    "formModelConvert": "Form Model Convert",
-    "text-editor": "Editor de Textos",
+    "friends": "Mis amigos",
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
     "download": "Descargar rutas",
@@ -152,6 +150,17 @@
     "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
+  },
+  "friends": {
+    "title": "Mis amigos",
+    "addTitle": "Introduzca el WebId del amigo a añadir",
+    "add" : "Añadir",
+    "deleteTitle": "Seleccione el amigo que desea eliminar",
+    "delete": "Borrar",
+    "deleteErrorTitle": "Error al borrar amigo",
+    "deleteErrorMessage": "El WebId seleccionado no es válido",
+    "addErrorTitle": "Error al añadir amigo",
+    "addErrorMessage": "El WebId introducido no es válido"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
