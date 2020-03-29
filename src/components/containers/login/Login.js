@@ -6,16 +6,17 @@ import "./Login.css";
 
 export const Login = props => {
     const {t} = useTranslation();
+    const publicUrl = 'url('.concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(')');
 
     return (
-        <div style={{ background: 'url(' + process.env.PUBLIC_URL +`/img/background-image.jpg` + ')'
-            , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
-            , backgroundPosition: 'center', backgroundSize: 'cover' }}>
+      <div style={{ background: publicUrl
+              , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
+              , backgroundPosition: 'center', backgroundSize: 'cover' }}>
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>
-                    <div>
-                        <LoginButton className="btn btn-primary a-solid" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
+                    <div >
+                        <LoginButton className="btn btn-primary a-solid button-login" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
                             {t("login.formButtonText")}
                         </LoginButton>
                     </div>

@@ -18,21 +18,21 @@ section {
 }
 
 h3 {
-    margin-top: 3em;
+    margin-top: 2em;
     margin-bottom: 1em;
 }
 
-Select {
+.select-format {
     width: 100%;
     background: #fff;
     text-align:left;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 
 .map {
-    margin-top: 3em;
-    width: 95%;
-    height: 400px;
+    margin-top: 2em;
+    width: 90%;
+    height: 300px;
 }
 
 .popup {
@@ -40,6 +40,6 @@ Select {
     font-weight: bold;
 }
 
-Button {
-    margin-top: 2.2em;
+.visualizeButton {
+    margin-top: 2em;
 }
