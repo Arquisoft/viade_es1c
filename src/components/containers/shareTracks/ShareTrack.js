@@ -48,7 +48,7 @@ export const ShareTrack = (props) => {
             </div>
             <form className="modal-body">
               <span>{t("share.createSharePrompt")}</span>
-              <div className="primera">
+              <div>
                 <label className="lab" htmlFor="documentUriInput">
                   {t("share.idLabel")}
                 </label>

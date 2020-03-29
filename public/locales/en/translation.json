@@ -124,7 +124,17 @@
     "loadWarningMessage": "There is no route in the POD",
     "loadButton": "Load tracks from POD",
     "successLoadTitle": "Loaded successfully",
-    "successLoadMessage": "Their routes have been loaded"
+    "successLoadMessage": "Their routes have been loaded",
+    "imageErrorTitle": "Error displaying images",
+    "imageErrorMessage": "There are no permissions to access to images or are not found",
+    "videoErrorTitle": "Error displaying videos",
+    "videoErrorMessage": "There are no permissions to access to videos or are not found",
+    "next": "Next",
+    "previous": "Previous",
+    "play": "Play",
+    "stop": "Stop",
+    "histogram": "Histogram:",
+    "multimedia": "Multimedia:"
   },
   "share": {
     "title": "Share my tracks",
