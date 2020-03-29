@@ -10,7 +10,7 @@ defineFeature(feature, test => {
   test('There are some routes on the POD', ({ given, when, then, and }) => {
 
     given('The Visualize page', async() => {
-        await expect(page).toMatchElement('h2', { id: 'MisRutas' })
+        await expect(page).toMatchElement('h2', { text: 'Welcome to ViaDe_ES1C' })
     });
 
     when('I press the button Cargar rutas del POD', async () => {
