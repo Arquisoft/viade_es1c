@@ -14,3 +14,15 @@
     margin-bottom: .5em;
     border-radius: .2em;
 }
+
+.modal-appearance{
+    background: #fff;
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
+}
+
+.modal-div {
+    margin-left: 22em;
+    margin-right: 22em;
+    margin-top: 2em;
+}

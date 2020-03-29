@@ -40,7 +40,7 @@ export const ShareTrack = (props) => {
   return (
     <section>
       <LoggedIn>
-        <div className="modal-dialog">
+        <div className="modal-div">
           <div onSubmit={handleUpload} className="modal-content">
             <div className="modal-header">
               <h2>{t("share.title")}</h2>

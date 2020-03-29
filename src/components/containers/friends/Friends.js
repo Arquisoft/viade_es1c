@@ -54,8 +54,8 @@ export const Friends = () => {
   return (
     <section>
       <LoggedIn>
-        <div className="modal-dialog">
-          <div className="modal-content">
+        <div className="modal-div">
+          <div className="modal-appearance">
             <div className="modal-header">
               <h2>{t("friends.title")}</h2>
               <hr/>
