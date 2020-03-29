@@ -30,12 +30,19 @@ defineFeature(feature, test => {
       await expect(popup.title()).resolves.toMatch('Select your Identity Provider');
       
       await expect(popup).toMatch("Solid Community", { timeout: 1000 });
+      await expect(popup).toMatch("Inrupt", { timeout: 1000 });
+      await expect(popup).toMatch("solid.github.io", { timeout: 1000 });
 
-      //await expect(popup).toMatchElement('button', { text: "Go" }, { timeout: 6000 });
+      //await expect(popup).toClick("div > div > div > button",{ text: "Solid Community" }, {delay: 5000});
+
+      //await expect(popup).toMatch("Login", { timeout: 5000 });
+      
+      
+      //await expect(popup).toMatchElement('div > div > form > button', { text: "Go" });
 
       //await expect(popup).toClick("div > div > div > button",{ text: "Solid Community" });
       
-      //await expect(popup).toMatch("Login", { timeout: 5000 });
+      
       //Hasta aqui bien 
 
       
