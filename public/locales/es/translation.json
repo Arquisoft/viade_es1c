@@ -170,7 +170,8 @@
     "deleteErrorTitle": "Error al borrar amigo",
     "deleteErrorMessage": "El WebId seleccionado no es válido",
     "addErrorTitle": "Error al añadir amigo",
-    "addErrorMessage": "El WebId introducido no es válido"
+    "addErrorMessage": "El WebId introducido no es válido",
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

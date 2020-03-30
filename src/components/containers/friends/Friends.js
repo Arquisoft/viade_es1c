@@ -21,11 +21,16 @@ export const Friends = () => {
   async function addFriend() {
     let fService = new FriendsService();
     let friendWebId = document.getElementById("friendId").value;
-    if (await fService.check(friendWebId) && friendWebId.localeCompare("") !== 0) {
-      await fService.add(friendWebId);
-      window.location.reload(true);
-    } else {
-      NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 2000);
+    let checkFriend = await fService.check(friendWebId);
+    if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
+      if (checkFriend) {
+        NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
+      } else {
+        await fService.add(friendWebId);
+        window.location.reload(true);
+      }
+    } else  {
+      NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
     }
   }
 
@@ -43,11 +48,11 @@ export const Friends = () => {
         friendWebId = friends[i].innerText;
       }
     }
-    if (await fService.check(friendWebId) && friendWebId.localeCompare("") !== 0) {
+    if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
       await fService.delete(friendWebId);
       window.location.reload(true);
     } else {
-      NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 2000);
+      NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
     }
   }
 

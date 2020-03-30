@@ -170,7 +170,8 @@
     "deleteErrorTitle": "Error deleting friend",
     "deleteErrorMessage": "The selected WebId is invalid",
     "addErrorTitle": "Error adding friend",
-    "addErrorMessage": "The entered WebId is not valid"
+    "addErrorMessage": "The entered WebId is not valid",
+    "checkErrorMessage": "The friend to add is already a friend"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

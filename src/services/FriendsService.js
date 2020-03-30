@@ -43,11 +43,33 @@ export default class FriendsService {
   }
 
   /**
-   * Method that check if a friend exists
+   * Method that check if it's already a friend
    * @param friendWebId
    * @returns {Promise<void>}
    */
   async check(friendWebId) {
+    const auth = require("solid-auth-client");
+    await auth.trackSession(session => {
+      if (!session) {
+        return;
+      } else {
+        this.webId = session.webId;
+      }
+    });
+    for await (const friend of ldflex[this.webId].friends) {
+      if (String(friend).localeCompare(String(friendWebId)) === 0) {
+        return await true;
+      }
+    }
+    return await false;
+  }
+
+  /**
+   * Method that check if a friend exists
+   * @param friendWebId
+   * @returns {Promise<void>}
+   */
+  async exists(friendWebId) {
     return await this.checkOrigin(friendWebId);
   }
 
