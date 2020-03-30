@@ -12,6 +12,9 @@ export default class ShareService {
     this.routes = [];
     this.content = null;
     this.HTMLElement = HTMLElement;
+    this.session = null;
+    this.webId = null;
+    this.urlRouteInOtherPod = null;
   }
 
   /**
@@ -19,7 +22,7 @@ export default class ShareService {
    * @param {logged in user's webId} webId
    */
   async getPodRoute(webId){
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("public/MyRoutes/");
+    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/");
     if (this.HTMLElement != null){
       let selectedRouteName = this.HTMLElement.value.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
@@ -32,8 +35,8 @@ export default class ShareService {
    * @param {current session} session
    */
   async getSessionId(session){
-    let webId = session.webId;
-    await this.getPodRoute(webId);
+    this.webId = session.webId;
+    await this.getPodRoute(this.webId);
   }
 
   /**
@@ -58,28 +61,29 @@ export default class ShareService {
    * or not
    */
   async readPermission(url) {
-    let urlp = url.replace("/card#me", "");
+    //let urlp = url.replace("/card#me", "");
     let perm = false;
     const fc = new FC(auth);
-    await fc.readFile(url, null).then((content) => {
+    await fc.readFile(url).then((content) => {
       perm = true;
-    }, err => this.error = "Error ".concat(err));
+    }, err => this.error = "Error en el permission".concat(err));
     return perm;
   }
 
   /**
    * Aux method that extracts track's name without extension
-   * @param {content of readFile} content
+   * @param {content of readFile} content 
    */
   async getRoutesNames(content) {
     if (content.files.length === 0) {
-      this.warning = "No hay contenido";
+        this.warning = "No hay contenido";
     } else {
       for (let i = 0; i < content.files.length; i++) {
-        this.extension = content.files[i].name.split(".");
-        if (!this.extension[1].localeCompare("json")) {
-          this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
-        }
+          this.extension = content.files[i].name.split(".");
+          if (!this.extension[1].localeCompare("json")) {
+              // 5 == length(".json")
+              this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+          }
       }
       this.success = "Cargo rutas";
     }
@@ -89,9 +93,39 @@ export default class ShareService {
    * Method that returns tracks stored in pod
    */
   async getRoutesFromPod() {
-    await this.getSession(null);
+    await this.getSession();
     const fc = new FC(auth);
     this.content = await fc.readFolder(this.urlRouteInPod, null);
     await this.getRoutesNames(this.content);
+  }
+
+  async upload(fc){
+    this.urlRouteInOtherPod = "https://miguelornia.solid.community/profile/card#me";
+    let permisos = await this.readPermission(this.urlRouteInOtherPod);
+    if (permisos === true){
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.replace("profile/card#me", "");
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.concat("public/");
+      let selectedRouteName = this.HTMLElement.value.concat(".json");
+      this.urlRouteInOtherPod = this.urlRouteInOtherPod.concat(selectedRouteName);
+      console.log(this.urlRouteInOtherPod);
+      try{
+        await fc.createFile(this.urlRouteInOtherPod, this.content, "text/turtle", {});
+        console.log("no tuvo problemas en crear");
+      } catch (SFCFetchErrorr){
+        this.error = "Error en el create";
+      }
+    }
+    /*fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
+    ).catch(err => );*/
+  }
+
+  /**
+   * Method that shares the track on the other user pod
+   */
+  async shareTrack() {
+    await this.getSession();
+    const fc = new FC(auth);
+    this.content = await fc.readFile(this.urlRouteInPod, null);
+    await this.upload(fc);
   }
 }
