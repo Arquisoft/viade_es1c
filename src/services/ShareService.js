@@ -100,7 +100,7 @@ export default class ShareService {
   }
 
   async upload(fc){
-    this.urlRouteInOtherPod = "https://miguelornia.solid.community/profile/card#me";
+    this.urlRouteInOtherPod = "https://albertojove.solid.community/profile/card#me";
     let permisos = await this.readPermission(this.urlRouteInOtherPod);
     if (permisos === true){
       this.urlRouteInOtherPod = this.urlRouteInOtherPod.replace("profile/card#me", "");
