@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Select } from "../../utils/select/Select";
 import { Button } from "react-bootstrap";
-import { NotificationContainer } from "react-notifications";
+import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
 import FriendList from "./children/FriendList";
 import ShareService from "../../../services/ShareService";
+import ldflex from "@solid/query-ldflex";
 
 
 export const ShareTrack = (props) => {
@@ -25,8 +26,38 @@ export const ShareTrack = (props) => {
   }
 
   async function handleUpload(){
-    let sService = new ShareService(document.getElementById("selectRoute"));
-    await sService.shareTrack();
+    let friends = document.getElementsByName("friendlist");
+    let buttons = document.getElementsByName("friend");
+    let friendsWebIds = [];
+    for (let i = 0; i < buttons.length; i++){
+      if (buttons[i].checked){
+        friendsWebIds.push(friends[i].innerText);
+      }
+    }
+    let HTMLElement = document.getElementById("selectRoute");
+    if (friendsWebIds.length > 0){
+      for (let i=0 ; i < friendsWebIds.length; i++){
+        let userWebId = friendsWebIds[i];
+        let name = await ldflex[userWebId].name;
+        let sService = new ShareService(friendsWebIds[i], HTMLElement);
+        await sService.shareTrack();
+        if (sService.successShare === true){
+          NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
+        } else if (sService.warning === true){
+          NotificationManager.warning(t("share.warningShareMessage").concat(name), t("share.warningShareTitle"), 5000);
+        } else {
+          if (sService.error === "Error en el create"){
+            NotificationManager.error(t("share.errorCreateMessage"), t("share.errorCreateTitle"), 5000);
+          } else if(sService.error === "Permisos denegados"){
+            NotificationManager.error(t("share.errorPermissionMessage"), t("share.errorPermissionTitle"), 5000);
+          } else {
+            NotificationManager.warning(t("share.warningDeleteMessage").concat(name), t("share.warningDeleteTitle"), 5000);
+          }
+        }
+      }
+    } else {
+      NotificationManager.error(t("share.errorFriends"), t("share.errorFriendsTitle") , 5000);
+    }
   }
 
   async function handleLoad(){

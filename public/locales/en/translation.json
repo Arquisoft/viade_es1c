@@ -134,7 +134,19 @@
     "idLabel": "Choose track to share:",
     "shareTrack": "Share",
     "resetShareForm": "Reset",
-    "friends": "Friend list:"
+    "friends": "Friend list:",
+    "errorFriends" : "There's no friend selected to share",
+    "successShareMessage" : "Your tracks have been shared",
+    "successShareTitle" : "Share successfully",
+    "errorCreateMessage" : "Something was wrong",
+    "errorCreateTitle" : "Share unsuccessfully",
+    "warningShareMessage" : "Track has been alredy shared with ",
+    "warningShareTitle" : "Tracks duplicated",
+    "errorPermissionMessage" : "You are not allowed to access to this folder",
+    "errorPermissionTitle" : "Share unsuccessfully",
+    "warningDeleteMessage" : "Track's copy has not been removed correctly",
+    "warningDeleteTitle" : "Minor problem",
+    "errorFriendsTitle" : "Input error"
   },
   "upload": {
     "title": "Upload my tracks",

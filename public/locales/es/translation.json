@@ -134,7 +134,19 @@
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar",
-    "friends": "Lista de amigos:"
+    "friends": "Lista de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas",
+    "successShareTitle" : "Compartido con éxito",
+    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateTitle" : "Compartido sin éxito",
+    "warningShareMessage" : "Ya se ha compartido la ruta con ",
+    "warningShareTitle" : "Duplicidad de rutas",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionTitle" : "Compartido sin éxito",
+    "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
+    "warningDeleteTitle" : "Problema secundario",
+    "errorFriendsTitle" : "Error de entrada"
   },
   "upload": {
     "title": "Subir mis rutas",
