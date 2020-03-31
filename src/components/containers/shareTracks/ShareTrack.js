@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Select } from "../../utils/select/Select";
 import { Button } from "react-bootstrap";
-import { NotificationContainer, NotificationManager } from "react-notifications";
+import { NotificationContainer } from "react-notifications";
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
@@ -20,10 +20,14 @@ export const ShareTrack = (props) => {
     deshabilita();
   };
 
-  // De momento
-  const deshabilita = () => {
-    alert("No esta disponible");
-  };
+  function deshabilita(){
+    alert("no disponible");
+  }
+
+  async function handleUpload(){
+    let sService = new ShareService(document.getElementById("selectRoute"));
+    await sService.shareTrack();
+  }
 
   async function handleLoad(){
     let sService = new ShareService(null);
@@ -36,19 +40,19 @@ export const ShareTrack = (props) => {
   return (
     <section>
       <LoggedIn>
-        <div className="modal-dialog">
-          <div onSubmit={deshabilita} className="modal-content">
+        <div className="modal-div">
+          <div onSubmit={handleUpload} className="modal-content">
             <div className="modal-header">
               <h2>{t("share.title")}</h2>
               <hr/>
             </div>
             <form className="modal-body">
               <span>{t("share.createSharePrompt")}</span>
-              <div className="primera">
+              <div>
                 <label className="lab" htmlFor="documentUriInput">
                   {t("share.idLabel")}
                 </label>
-                <Select className="select-share" options={data}/>
+                <Select className="select-share" id={"selectRoute"} options={data}/>
               </div>
               <div className="list-friends">
                 <h4 className="h4-format">{t("share.friends")}</h4>

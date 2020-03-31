@@ -43,9 +43,7 @@
     "welcome": "Welcome",
     "logOut": "Log out",
     "profile": "Profile",
-    "formModelRender": "Form Model Render",
-    "formModelConvert": "Form Model Convert",
-    "text-editor": "Text Editor",
+    "friends": "My friends",
     "share-files" : "Share tracks",
     "upload": "Upload tracks",
     "download": "Download tracks",
@@ -126,7 +124,17 @@
     "loadWarningMessage": "There is no route in the POD",
     "loadButton": "Load tracks from POD",
     "successLoadTitle": "Loaded successfully",
-    "successLoadMessage": "Their routes have been loaded"
+    "successLoadMessage": "Their routes have been loaded",
+    "imageErrorTitle": "Error displaying images",
+    "imageErrorMessage": "There are no permissions to access to images or are not found",
+    "videoErrorTitle": "Error displaying videos",
+    "videoErrorMessage": "There are no permissions to access to videos or are not found",
+    "next": "Next",
+    "previous": "Previous",
+    "play": "Play",
+    "stop": "Stop",
+    "histogram": "Histogram:",
+    "multimedia": "Multimedia:"
   },
   "share": {
     "title": "Share my tracks",
@@ -152,6 +160,18 @@
     "errorMessage": "Make sure the entered route exists in the Pod and that you type it correctly",
     "errorTitle": "Non-existent route in the Pod",
     "especificacion": "* Do not include extension"
+  },
+  "friends": {
+    "title": "My friends",
+    "addTitle": "Enter the WebID of the new friend",
+    "add" : "Add",
+    "deleteTitle": "Choose the friend you want to delete",
+    "delete": "Delete",
+    "deleteErrorTitle": "Error deleting friend",
+    "deleteErrorMessage": "The selected WebId is invalid",
+    "addErrorTitle": "Error adding friend",
+    "addErrorMessage": "The entered WebId is not valid",
+    "checkErrorMessage": "The friend to add is already a friend"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
