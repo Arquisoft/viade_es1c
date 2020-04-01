@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import FriendList from "./children/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
+import { useNotification, useWebId } from '@inrupt/solid-react-components';
 
 
 export const ShareTrack = (props) => {
@@ -17,14 +18,39 @@ export const ShareTrack = (props) => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
 
-  const reset = () => {
-    deshabilita();
+  const webId = useWebId();
+  const { createNotification, discoverInbox } = useNotification(
+    webId
+  );
+
+  /**
+   * Send a notification to the receiver of the track
+   * @param userWebId - WebId of the receiver
+   * @returns {Promise<void>}
+   */
+  const sendNotification = async (userWebId) => {
+    try {
+      const inboxUrl = await discoverInbox(userWebId);
+      if (!inboxUrl) {
+        throw new Error('Inbox not found');
+      }
+      createNotification(
+        {
+          title: 'Share notification',
+          summary: 'Your friend '.concat(webId).concat(', shared a track with you'),
+          actor: webId
+        },
+        inboxUrl
+      );
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 
-  function deshabilita(){
-    alert("no disponible");
-  }
-
+  /**
+   * Upload the share track and send a notification to the receiver
+   * @returns {Promise<void>}
+   */
   async function handleUpload(){
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friend");
@@ -43,6 +69,7 @@ export const ShareTrack = (props) => {
         await sService.shareTrack();
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
+          await sendNotification(userWebId);
         } else if (sService.warning === true){
           NotificationManager.warning(t("share.warningShareMessage").concat(name), t("share.warningShareTitle"), 5000);
         } else {
@@ -60,6 +87,10 @@ export const ShareTrack = (props) => {
     }
   }
 
+  /**
+   * Load tracks to select component
+   * @returns {Promise<void>}
+   */
   async function handleLoad(){
     let sService = new ShareService(null);
     await sService.getRoutesFromPod();
@@ -93,7 +124,7 @@ export const ShareTrack = (props) => {
                 <Button className="correct-margin" type="submit" data-testid="form-submit">
                   {t("share.shareTrack")}
                 </Button>
-                <Button className="correct-margin" onClick={reset}>
+                <Button className="correct-margin">
                   {t("share.resetShareForm")}
                 </Button>
               </div>
