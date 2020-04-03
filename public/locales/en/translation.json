@@ -47,14 +47,11 @@
     "share-files" : "Share tracks",
     "upload": "Upload tracks",
     "download": "Download tracks",
+    "notifications": "My notifications",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"
-    },
-    "notifications": {
-      "global": "Global",
-      "fetchingError": "Error fetching notifications from Pod"
     },
     "maps": "My tracks",
     "language": "Language: "
@@ -142,7 +139,19 @@
     "idLabel": "Choose track to share:",
     "shareTrack": "Share",
     "resetShareForm": "Reset",
-    "friends": "Friend list:"
+    "friends": "Friend list:",
+    "errorFriends" : "There's no friend selected to share",
+    "successShareMessage" : "Your tracks have been shared",
+    "successShareTitle" : "Share successfully",
+    "errorCreateMessage" : "Something was wrong",
+    "errorCreateTitle" : "Share unsuccessfully",
+    "warningShareMessage" : "Track has been alredy shared with ",
+    "warningShareTitle" : "Tracks duplicated",
+    "errorPermissionMessage" : "You are not allowed to access to this folder",
+    "errorPermissionTitle" : "Share unsuccessfully",
+    "warningDeleteMessage" : "Track's copy has not been removed correctly",
+    "warningDeleteTitle" : "Minor problem",
+    "errorFriendsTitle" : "Input error"
   },
   "upload": {
     "title": "Upload my tracks",
@@ -161,6 +170,7 @@
     "errorTitle": "Non-existent route in the Pod",
     "especificacion": "* Do not include extension"
   },
+<<<<<<< HEAD
   "friends": {
     "title": "My friends",
     "addTitle": "Enter the WebID of the new friend",
@@ -172,6 +182,11 @@
     "addErrorTitle": "Error adding friend",
     "addErrorMessage": "The entered WebId is not valid",
     "checkErrorMessage": "The friend to add is already a friend"
+=======
+  "notifications": {
+    "title" : "My notifications",
+    "value": "Notification"
+>>>>>>> feature_share
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

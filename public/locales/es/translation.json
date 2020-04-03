@@ -47,14 +47,11 @@
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
     "download": "Descargar rutas",
+    "notifications": "Mis notificaciones",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
-    },
-    "notifications": {
-      "global": "Global",
-      "fetchingError": "Error en las notificaciones"
     },
     "maps": "Mis rutas",
     "language": "Idioma: "
@@ -142,7 +139,19 @@
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar",
-    "friends": "Lista de amigos:"
+    "friends": "Lista de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas",
+    "successShareTitle" : "Compartido con éxito",
+    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateTitle" : "Compartido sin éxito",
+    "warningShareMessage" : "Ya se ha compartido la ruta con ",
+    "warningShareTitle" : "Duplicidad de rutas",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionTitle" : "Compartido sin éxito",
+    "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
+    "warningDeleteTitle" : "Problema secundario",
+    "errorFriendsTitle" : "Error de entrada"
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -161,6 +170,7 @@
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
   },
+<<<<<<< HEAD
   "friends": {
     "title": "Mis amigos",
     "addTitle": "Introduzca el WebId del amigo a añadir",
@@ -172,6 +182,11 @@
     "addErrorTitle": "Error al añadir amigo",
     "addErrorMessage": "El WebId introducido no es válido",
     "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+=======
+  "notifications": {
+    "title" : "Mis notificaciones",
+    "value" : "Notificación"
+>>>>>>> feature_share
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
