@@ -49,14 +49,11 @@
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
     "download": "Descargar rutas",
+    "notifications": "Mis notificaciones",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
-    },
-    "notifications": {
-      "global": "Global",
-      "fetchingError": "Error en las notificaciones"
     },
     "maps": "Mis rutas",
     "language": "Idioma: "
@@ -164,6 +161,10 @@
     "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
+  },
+  "notifications": {
+    "title" : "Mis notificaciones",
+    "value" : "Notificación"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

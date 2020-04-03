@@ -49,14 +49,11 @@
     "share-files" : "Share tracks",
     "upload": "Upload tracks",
     "download": "Download tracks",
+    "notifications": "My notifications",
     "changeLanguage": "Change Language",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"
-    },
-    "notifications": {
-      "global": "Global",
-      "fetchingError": "Error fetching notifications from Pod"
     },
     "maps": "My tracks",
     "language": "Language: "
@@ -164,6 +161,10 @@
     "errorMessage": "Make sure the entered route exists in the Pod and that you type it correctly",
     "errorTitle": "Non-existent route in the Pod",
     "especificacion": "* Do not include extension"
+  },
+  "notifications": {
+    "title" : "My notifications",
+    "value": "Notification"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

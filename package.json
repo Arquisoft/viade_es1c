@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@inrupt/solid-react-components": "^0.5.0",
+    "@material-ui/core": "^4.9.8",
     "@solid/query-ldflex": "2.6.0",
     "@solid/react": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -20,6 +21,7 @@
     "react-dom": "^16.12.0",
     "react-i18next": "^10.1.2",
     "react-leaflet": "^2.6.1",
+    "react-loading": "^2.0.3",
     "react-notifications": "^1.5.0-beta.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
