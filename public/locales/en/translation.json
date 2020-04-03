@@ -170,11 +170,10 @@
     "errorTitle": "Non-existent route in the Pod",
     "especificacion": "* Do not include extension"
   },
-<<<<<<< HEAD
   "friends": {
     "title": "My friends",
     "addTitle": "Enter the WebID of the new friend",
-    "add" : "Add",
+    "add": "Add",
     "deleteTitle": "Choose the friend you want to delete",
     "delete": "Delete",
     "deleteErrorTitle": "Error deleting friend",
@@ -182,11 +181,10 @@
     "addErrorTitle": "Error adding friend",
     "addErrorMessage": "The entered WebId is not valid",
     "checkErrorMessage": "The friend to add is already a friend"
-=======
+  },
   "notifications": {
     "title" : "My notifications",
     "value": "Notification"
->>>>>>> feature_share
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

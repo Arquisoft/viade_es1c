@@ -170,11 +170,10 @@
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
   },
-<<<<<<< HEAD
   "friends": {
     "title": "Mis amigos",
     "addTitle": "Introduzca el WebId del amigo a añadir",
-    "add" : "Añadir",
+    "add": "Añadir",
     "deleteTitle": "Seleccione el amigo que desea eliminar",
     "delete": "Borrar",
     "deleteErrorTitle": "Error al borrar amigo",
@@ -182,11 +181,10 @@
     "addErrorTitle": "Error al añadir amigo",
     "addErrorMessage": "El WebId introducido no es válido",
     "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
-=======
+  },
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación"
->>>>>>> feature_share
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

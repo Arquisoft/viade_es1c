@@ -7,11 +7,8 @@ import ShareTrack from "../containers/shareTracks/ShareTrack";
 import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
 import Login from "../containers/login/Login";
-<<<<<<< HEAD
 import Friends from "../containers/friends/Friends";
-=======
 import VisualizeNotification from "../containers/visualizeNotifications/VisualizeNotification";
->>>>>>> feature_share
 
 export default function Routes() {
     return (
