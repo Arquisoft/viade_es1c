@@ -5,14 +5,19 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import "./Friends.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
-import MyFriends from "./children/MyFriends";
+import MyFriends from "./children/myFriends/MyFriends";
 import FriendsService from "../../../services/FriendsService";
+import { useNotification, useWebId } from "@inrupt/solid-react-components";
 
 
 export const Friends = () => {
 
   // i18n locales
   const { t } = useTranslation();
+  const webId = useWebId();
+  const { createNotification, discoverInbox } = useNotification(
+    webId
+  );
 
   /**
    * Add a new friend
@@ -27,12 +32,38 @@ export const Friends = () => {
         NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
       } else {
         await fService.add(friendWebId);
+        let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
+        await sendNotification(friendWebId, text);
         window.location.reload(true);
       }
     } else  {
       NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
     }
   }
+
+  /**
+   * Send a notification to the added / deleted user
+   * @param userWebId - WebId of the receiver
+   * @returns {Promise<void>}
+   */
+  const sendNotification = async (userWebId, summary) => {
+    try {
+      const inboxUrl = await discoverInbox(userWebId);
+      if (!inboxUrl) {
+        throw new Error('Inbox not found');
+      }
+      createNotification(
+        {
+          title: 'Friend notification',
+          summary: summary,
+          actor: webId
+        },
+        inboxUrl
+      );
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
   /**
    * Delete the selected friend
@@ -50,6 +81,8 @@ export const Friends = () => {
     }
     if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
       await fService.delete(friendWebId);
+      let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
+      await sendNotification(friendWebId, text);
       window.location.reload(true);
     } else {
       NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);

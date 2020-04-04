@@ -160,7 +160,8 @@
     "successTitle": "Subido con éxito",
     "successMessage" : "Sus rutas han sido subidas",
     "errorTitle" : "Error en la subida",
-    "errorMessage": "Debe subir un archivo con extensión \".json\""
+    "errorMessage": "Debe subir un archivo con extensión \".json\"",
+    "errorEmptyMessage": "Debes subir algún archivo"
   },
   "download": {
     "title": "Descargar ruta",
@@ -186,7 +187,9 @@
     "title" : "Mis notificaciones",
     "value" : "Notificación",
     "read": "Leído",
-    "mark" : "Marcar"
+    "mark" : "Marcar",
+    "errorTitle": "Error al marcar como leído",
+    "errorMessage": "No hay ninguna notificación marcada"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

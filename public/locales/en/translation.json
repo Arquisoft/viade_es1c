@@ -160,7 +160,8 @@
     "successTitle": "Uploaded successfully",
     "successMessage" : "Your tracks have been uploaded",
     "errorTitle" : "Upload error",
-    "errorMessage": "You must upload a file with extension \".json\""
+    "errorMessage": "You must upload a file with extension \".json\"",
+    "errorEmptyMessage": "You must upload a file"
   },
   "download": {
     "title": "Download track",
@@ -186,7 +187,9 @@
     "title" : "My notifications",
     "value": "Notification",
     "read": "Read",
-    "mark" : "Mark"
+    "mark" : "Mark",
+    "errorTitle": "Error marking as read",
+    "errorMessage": "No notification marked"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
