@@ -7,6 +7,7 @@ import ShareTrack from "../containers/shareTracks/ShareTrack";
 import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
 import Login from "../containers/login/Login";
+import Friends from "../containers/friends/Friends";
 import VisualizeNotification from "../containers/visualizeNotifications/VisualizeNotification";
 
 export default function Routes() {
@@ -18,6 +19,7 @@ export default function Routes() {
                     <Route exact path="/visualize" component={VisualizeTrack}/>
                     <Route exact path="/upload" component={UploadTrack}/>
                     <Route exact path="/share" component={ShareTrack}/>
+                    <Route exact path="/friends" component={Friends}/>
                     <Route exact path="/download" component={DownloadTrack}/>
                     <Route exact path="/notifications" component={VisualizeNotification}/>
                     <Route exact path="/login" component={Login}/>

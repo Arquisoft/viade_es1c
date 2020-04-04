@@ -100,12 +100,26 @@ export const ShareTrack = (props) => {
     setData(sService.routes);
   }
 
+  /**
+   * Clean all selected items
+   */
+  function handleClean() {
+    let selected = document.getElementById("selectRoute");
+    selected.selectedIndex = 0;
+    let buttons = document.getElementsByName("friend");
+    for (let i = 0; i < buttons.length; i++){
+      if (buttons[i].checked){
+        buttons[i].checked = false;
+      }
+    }
+  }
+
   handleLoad(); // To upload tracks to select component
 
   return (
     <section>
       <LoggedIn>
-        <div className="modal-dialog">
+        <div className="modal-div">
           <div onSubmit={handleUpload} className="modal-content">
             <div className="modal-header">
               <h2>{t("share.title")}</h2>
@@ -113,7 +127,7 @@ export const ShareTrack = (props) => {
             </div>
             <form className="modal-body">
               <span>{t("share.createSharePrompt")}</span>
-              <div className="primera">
+              <div>
                 <label className="lab" htmlFor="documentUriInput">
                   {t("share.idLabel")}
                 </label>
@@ -127,7 +141,7 @@ export const ShareTrack = (props) => {
                 <Button className="correct-margin" type="submit" data-testid="form-submit">
                   {t("share.shareTrack")}
                 </Button>
-                <Button className="correct-margin">
+                <Button className="correct-margin" onClick={handleClean}>
                   {t("share.resetShareForm")}
                 </Button>
               </div>
