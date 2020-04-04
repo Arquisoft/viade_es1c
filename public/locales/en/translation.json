@@ -164,7 +164,9 @@
   },
   "notifications": {
     "title" : "My notifications",
-    "value": "Notification"
+    "value": "Notification",
+    "read": "Read",
+    "mark" : "Mark"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"

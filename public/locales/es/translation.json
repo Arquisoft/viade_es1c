@@ -164,7 +164,9 @@
   },
   "notifications": {
     "title" : "Mis notificaciones",
-    "value" : "Notificación"
+    "value" : "Notificación",
+    "read": "Leído",
+    "mark" : "Marcar"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
