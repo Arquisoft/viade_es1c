@@ -4,7 +4,9 @@
   "homepage": "https://arquisoft.github.io/viade_es1c/",
   "private": true,
   "dependencies": {
-    "@solid/query-ldflex": "^2.10.0",
+    "@inrupt/solid-react-components": "^0.5.0",
+    "@material-ui/core": "^4.9.8",
+    "@solid/query-ldflex": "2.6.0",
     "@solid/react": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -13,12 +15,14 @@
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
+    "ldflex": "^2.8.0",
     "leaflet": "^1.6.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.12.0",
     "react-i18next": "^10.1.2",
     "react-leaflet": "^2.6.1",
+    "react-loading": "^2.0.3",
     "react-notifications": "^1.5.0-beta.0",
     "react-player": "^1.15.3",
     "react-router-dom": "^5.1.2",
@@ -27,6 +31,7 @@
     "react-tooltip": "^4.1.2",
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
+    "styled-components": "^5.0.1",
     "victory": "^34.1.3"
   },
   "scripts": {

@@ -25,6 +25,12 @@ const MyNavBar = props => {
                         <a data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
                             <img src={process.env.PUBLIC_URL + "/img/icon/share-files.svg"} width="27" height="49" alt="Share files"/>
                         </a>
+                        <a data-tip={t('navBar.friends')} className="navbar-link a-bar" href="#/friends">
+                            <img src={process.env.PUBLIC_URL + "/img/icon/friends-icon.png"} width="38" height="40" alt="My friends"/>
+                        </a>
+                        <a data-tip={t('navBar.notifications')} className="navbar-link a-bar" href="#/notifications">
+                            <img src={process.env.PUBLIC_URL + "/img/icon/notification-icon.svg"} width="26" height="44" alt="Notifications"/>
+                        </a>
                         <a data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
                             <img src={process.env.PUBLIC_URL + "/img/icon/upload-icon.png"} width="40" height="40" alt="Upload track"/>
                         </a>
@@ -42,8 +48,8 @@ const MyNavBar = props => {
                             </DropdownButton>
                         </div>
                         <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
-						            <ReactTooltip place="bottom" type="dark" effect="solid"/>
-					          </Nav>
+                        <ReactTooltip place="bottom" type="dark" effect="solid"/>
+                      </Nav>
                 </Navbar>
             </LoggedIn>
         </section>
