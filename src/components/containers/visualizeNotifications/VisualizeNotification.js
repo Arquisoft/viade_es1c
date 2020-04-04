@@ -1,9 +1,8 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut} from '@solid/react';
-import LoggedIn from "@solid/react/module/components/LoggedIn";
+import {LoggedOut, LoggedIn} from '@solid/react';
 import { Redirect } from "react-router-dom";
-import NotificationsTable  from "./children/NotificationsTable";
+import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
 
 export const VisualizeNotification = (props) => {

@@ -6,7 +6,7 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
 import { Redirect } from "react-router-dom";
-import FriendList from "./children/FriendList";
+import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
 import { useNotification, useWebId } from '@inrupt/solid-react-components';
@@ -34,10 +34,13 @@ export const ShareTrack = (props) => {
       if (!inboxUrl) {
         throw new Error('Inbox not found');
       }
+      let HTMLElement = document.getElementById("selectRoute");
       createNotification(
         {
           title: 'Share notification',
-          summary: 'Your friend '.concat(webId).concat(', shared a track with you'),
+          summary: 'Your friend: '.concat(webId)
+            .concat(', shared this track with you: ')
+            .concat(HTMLElement.value),
           actor: webId
         },
         inboxUrl
