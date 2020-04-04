@@ -15,11 +15,11 @@ defineFeature(feature, test => {
         });
 
         when('The user press the boton Language or Idioma (depending on the language you have selected) and select the other language', async () => {
-            //const linkHandlers = await page.$x("//li[contains(text(), 'Link to documentation')]");
-            //console.log(linkHandlers);
-            //await linkHandlers[0].click();
             await expect(page).toMatchElement('a', { href: 'https://arquisoft.github.io/viade_es1c/docs/'});
             await expect(page).toClick('a', { href: 'https://arquisoft.github.io/viade_es1c/docs/'});
+            
+
+            
 
         });
   
