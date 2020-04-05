@@ -101,7 +101,6 @@ export const ShareTrack = (props) => {
     await sService.getRoutesFromPod();
     if (sService.errorLoad === null) {
       setData(sService.routes);
-      timesLoad = 0;
     } else if (timesLoad === 0) {
       NotificationManager.warning(t("share.warningLoadMessage"), t("share.warningLoadTitle"), 3000);
       timesLoad++;
@@ -128,7 +127,7 @@ export const ShareTrack = (props) => {
     <section>
       <LoggedIn>
         <div className="modal-div">
-          <div onSubmit={handleUpload} className="modal-content">
+          <div className="modal-content">
             <div className="modal-header">
               <h2>{t("share.title")}</h2>
               <hr/>
@@ -146,7 +145,7 @@ export const ShareTrack = (props) => {
                 <FriendList src="user.friends"></FriendList>
               </div>
               <div>
-                <Button className="correct-margin" type="submit" data-testid="form-submit">
+                <Button className="correct-margin" onClick={handleUpload}>
                   {t("share.shareTrack")}
                 </Button>
                 <Button className="correct-margin" onClick={handleClean}>
