@@ -12,6 +12,8 @@ import ldflex from "@solid/query-ldflex";
 import { useNotification, useWebId } from '@inrupt/solid-react-components';
 
 
+let timesLoad = 0; // For handleLoad()
+
 export const ShareTrack = (props) => {
 
   // i18n locales
@@ -97,7 +99,13 @@ export const ShareTrack = (props) => {
   async function handleLoad(){
     let sService = new ShareService(null);
     await sService.getRoutesFromPod();
-    setData(sService.routes);
+    if (sService.errorLoad === null && timesLoad === 0) {
+      setData(sService.routes);
+      timesLoad++;
+    } else if (timesLoad === 0) {
+      NotificationManager.warning(t("share.warningLoadMessage"), t("share.warningLoadTitle"), 3000);
+      timesLoad++;
+    }
   }
 
   /**
