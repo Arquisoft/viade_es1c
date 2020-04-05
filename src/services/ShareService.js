@@ -7,6 +7,7 @@ export default class ShareService {
     this.user = null;
     this.friends = [];
     this.error = null;
+    this.errorLoad = null;
     this.successShare = false;
     this.warning = false;
     this.success = null;
@@ -101,8 +102,12 @@ export default class ShareService {
   async getRoutesFromPod() {
     await this.getSession();
     const fc = new FC(auth);
-    this.content = await fc.readFolder(this.urlRouteInPod, null);
-    await this.getRoutesNames(this.content);
+    try {
+      this.content = await fc.readFolder(this.urlRouteInPod, null);
+      await this.getRoutesNames(this.content);
+    } catch (SFCFetchError) {
+      this.errorLoad = "Error al cargar combo";
+    }
   }
 
   async upload(fc, urlFriendPod){
