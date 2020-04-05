@@ -21,6 +21,9 @@ export default class VisualizeService{
         this.success = null;
         this.error = null;
         this.errorLoad = null;
+        this.existsMultimedia = true;
+        this.existsVideo = false;
+        this.existsImage = false;
         this.HTMLElement = HTMLElement;
         this.images = [];
         this.permissionsImage = false;
@@ -153,25 +156,35 @@ export default class VisualizeService{
      */
     async getMultimedia(route) {
         // We obtain the images of the track
-        if (route.media.length > 0) {
-            for (let media in route.media) {
-                let routeMedia = route.media[media]["@id"];
-                let extensionRoute = routeMedia.split(".");
-                let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
-                    try {
-                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
-                        await this.readPermission(permissionRoute);
-                        this.images.push(routeMedia);
-                    } catch (e) {}
-                } else if (extension.localeCompare(".mp4") === 0) {
-                    try {
-                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
-                        await this.readPermission(permissionRoute);
-                        this.videos.push(routeMedia);
-                    } catch (e) {}
+        if (route.media !== undefined && route.media.length > 0) {
+                for (let media in route.media) {
+                    let routeMedia = route.media[media]["@id"];
+                    let extensionRoute = routeMedia.split(".");
+                    let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                    if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
+                        try {
+                            this.existsImage = true;
+                            let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                            await this.readPermission(permissionRoute);
+                            this.permissionsImage = true;
+                            this.images.push(routeMedia);
+                        } catch (e) {
+                            this.permissionsImage = false;
+                        }
+                    } else if (extension.localeCompare(".mp4") === 0) {
+                        try {
+                            this.existsVideo = true;
+                            let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                            await this.readPermission(permissionRoute);
+                            this.permissionsVideo = true;
+                            this.videos.push(routeMedia);
+                        } catch (e) {
+                            this.permissionsVideo = false;
+                        }
+                    }
                 }
-            }
+        } else {
+            this.existsMultimedia = false;
         }
     }
 }
