@@ -99,9 +99,9 @@ export const ShareTrack = (props) => {
   async function handleLoad(){
     let sService = new ShareService(null);
     await sService.getRoutesFromPod();
-    if (sService.errorLoad === null && timesLoad === 0) {
+    if (sService.errorLoad === null) {
       setData(sService.routes);
-      timesLoad++;
+      timesLoad = 0;
     } else if (timesLoad === 0) {
       NotificationManager.warning(t("share.warningLoadMessage"), t("share.warningLoadTitle"), 3000);
       timesLoad++;
