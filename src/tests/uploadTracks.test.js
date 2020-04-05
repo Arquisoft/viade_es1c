@@ -1,23 +1,34 @@
 import React from 'react'
 import { render, fireEvent } from "@testing-library/react";
-
+import archivo from '../tracks/rutaDePrueba3';
 import UploadTrack from "./../components/containers/uploadTracks/UploadTrack.js";
+import { Button } from 'react-bootstrap';
 
 test('Prueba', async () => {
 
-  expect(2+2).toBe(4);
-  
-  //const correctValues = { email: 'test@example.org', remail: 'test@example.org' };
+  const div=document.createElement("div");
 
-  //const { getByLabelText, getByText, container } = render(<EmailForm/>);
-  //
-  //const inputEmail = getByLabelText('email-input');
-  //const inputRemail = getByLabelText('remail-input');
+  var file = new File([archivo], "rutaPrueba.json", {
+    type: "application/json",
+  });
 
-  //fireEvent.change(inputEmail, { target: { value: correctValues.email }});
-  //expect(getByText(/Submit/i).closest('button')).toHaveAttribute('disabled');
-  //
-  //fireEvent.change(inputRemail, { target: { value: correctValues.remail }});
-  //expect(getByText(/Submit/i).closest('button')).not.toHaveAttribute('disabled');
+  render(<Button id='btnPrueba' onClick={() =>{
+    //handleUploadTest(file);
+	
+	//async function handleUploadTest(file){
+    // let uService = new UploadService();
+    // await uService.processTrack(file);
+    // if (uService.success != null) {
+      // NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
+      // document.getElementById("fileArea").value = ""; // Clear input file
+    // } else if (uService.error != null) {
+      // NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 3000);
+    // } else if (document.getElementById("fileArea").value === "") {
+      // NotificationManager.error(t("upload.errorEmptyMessage"), t("upload.errorTitle"), 3000);
+    // }
+  // }
+  }}>Prueba</Button>,div);
+
+  document.getElementById("btnPrueba").click();
   
 });
