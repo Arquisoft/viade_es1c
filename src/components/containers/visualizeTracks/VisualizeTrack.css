@@ -31,8 +31,8 @@ h3 {
 
 .map {
     margin-top: 2em;
-    width: 90%;
-    height: 300px;
+    width: 95%;
+    height: 350px;
 }
 
 .popup {
@@ -42,4 +42,36 @@ h3 {
 
 .visualizeButton {
     margin-top: 2em;
+}
+
+.img_viewer {
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.my_Img {
+    margin: 3px;
+}
+
+.player-format {
+    margin-top: 2em;
+}
+
+.button-margin {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+.formal-div {
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
+    background: #fff;
+}
+
+.h4-format {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

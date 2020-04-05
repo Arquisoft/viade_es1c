@@ -20,7 +20,13 @@ export default class VisualizeService{
         this.warning = null;
         this.success = null;
         this.error = null;
+        this.errorLoad = null;
         this.HTMLElement = HTMLElement;
+        this.images = [];
+        this.permissionsImage = false;
+        this.permissionsVideo = false;
+        this.videos = [];
+        this.permission = null;
     }
 
     /**
@@ -29,8 +35,12 @@ export default class VisualizeService{
     async getRoutesFromPod() {
         await this.getSession();
         const fc = new FC(auth);
-        this.content = await fc.readFolder(this.urlRouteInPod, null);
-        await this.getRoutesNames(this.content);
+        try {
+            this.content = await fc.readFolder(this.urlRouteInPod, null);
+            await this.getRoutesNames(this.content);
+        } catch (SFCFetchError) {
+            this.errorLoad = "Error al cargar combo";
+        }
     }
 
     /**
@@ -82,7 +92,7 @@ export default class VisualizeService{
         } else {
             for (let i = 0; i < content.files.length; i++) {
                 this.extension = content.files[i].name.split(".");
-                if (!this.extension[1].localeCompare("json")) {
+                if (this.extension[1].localeCompare("json") === 0) {
                     // 5 == length(".json")
                     this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
                 }
@@ -99,11 +109,20 @@ export default class VisualizeService{
         const fc = new FC(auth);
         try{
             this.content = await fc.readFile(this.urlRouteInPod, null);
-            console.log(this.content);
             await this.getPointsToPrint(this.content); 
         } catch (SFCFetchError){
             this.error = "Error al pillar datos";
         }
+    }
+
+    /**
+     * Aux method to check read permissions
+     * @returns {Promise<boolean>}
+     */
+    readPermission(url) {
+        let req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
     }
 
     /**
@@ -123,6 +142,36 @@ export default class VisualizeService{
 
             let elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
+        }
+        await this.getMultimedia(route);
+    }
+
+    /**
+     * Aux method to obtain images from track
+     * @param route - track
+     * @returns {Promise<void>}
+     */
+    async getMultimedia(route) {
+        // We obtain the images of the track
+        if (route.media.length > 0) {
+            for (let media in route.media) {
+                let routeMedia = route.media[media]["@id"];
+                let extensionRoute = routeMedia.split(".");
+                let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
+                    try {
+                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                        await this.readPermission(permissionRoute);
+                        this.images.push(routeMedia);
+                    } catch (e) {}
+                } else if (extension.localeCompare(".mp4") === 0) {
+                    try {
+                        let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                        await this.readPermission(permissionRoute);
+                        this.videos.push(routeMedia);
+                    } catch (e) {}
+                }
+            }
         }
     }
 }

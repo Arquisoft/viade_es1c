@@ -43,20 +43,15 @@
     "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
     "profile": "Perfil",
-    "formModelRender": "Form Model Render",
-    "formModelConvert": "Form Model Convert",
-    "text-editor": "Editor de Textos",
+    "friends": "Mis amigos",
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
     "download": "Descargar rutas",
+    "notifications": "Mis notificaciones",
     "changeLanguage": "Cambiar Lenguaje",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
-    },
-    "notifications": {
-      "global": "Global",
-      "fetchingError": "Error en las notificaciones"
     },
     "maps": "Mis rutas",
     "language": "Idioma: "
@@ -126,7 +121,17 @@
     "loadWarningMessage": "No existe ninguna ruta en el POD",
     "loadButton": "Cargar rutas del POD",
     "successLoadTitle": "Cargado con éxito",
-    "successLoadMessage": "Sus rutas han sido cargadas"
+    "successLoadMessage": "Sus rutas han sido cargadas",
+    "imageErrorTitle": "Error al mostrar las imágenes",
+    "imageErrorMessage": "No hay permisos para acceder a las imágenes o no se encuentran",
+    "videoErrorTitle": "Error al mostrar los vídeos",
+    "videoErrorMessage": "No hay permisos para acceder a los vídeos o no se encuentran",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "play": "Reproducir",
+    "stop": "Parar",
+    "histogram": "Histograma:",
+    "multimedia": "Multimedia:"
   },
   "share": {
     "title": "Compartir mis rutas",
@@ -134,7 +139,21 @@
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar",
-    "friends": "Lista de amigos:"
+    "friends": "Lista de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas",
+    "successShareTitle" : "Compartido con éxito",
+    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateTitle" : "Compartido sin éxito",
+    "warningShareMessage" : "Ya se ha compartido la ruta con ",
+    "warningShareTitle" : "Duplicidad de rutas",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionTitle" : "Compartido sin éxito",
+    "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
+    "warningDeleteTitle" : "Problema secundario",
+    "errorFriendsTitle" : "Error de entrada",
+    "warningLoadTitle" : "Advertencia al cargar rutas",
+    "warningLoadMessage" : "No hay rutas para compartir"
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -143,7 +162,8 @@
     "successTitle": "Subido con éxito",
     "successMessage" : "Sus rutas han sido subidas",
     "errorTitle" : "Error en la subida",
-    "errorMessage": "Debe subir un archivo con extensión \".json\""
+    "errorMessage": "Debe subir un archivo con extensión \".json\"",
+    "errorEmptyMessage": "Debes subir algún archivo"
   },
   "download": {
     "title": "Descargar ruta",
@@ -152,6 +172,26 @@
     "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
     "errorTitle": "Ruta inexistente en el Pod",
     "especificacion": "* No incluir extensión"
+  },
+  "friends": {
+    "title": "Mis amigos",
+    "addTitle": "Introduzca el WebId del amigo a añadir",
+    "add": "Añadir",
+    "deleteTitle": "Seleccione el amigo que desea eliminar",
+    "delete": "Borrar",
+    "deleteErrorTitle": "Error al borrar amigo",
+    "deleteErrorMessage": "El WebId seleccionado no es válido",
+    "addErrorTitle": "Error al añadir amigo",
+    "addErrorMessage": "El WebId introducido no es válido",
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+  },
+  "notifications": {
+    "title" : "Mis notificaciones",
+    "value" : "Notificación",
+    "read": "Leído",
+    "mark" : "Marcar",
+    "errorTitle": "Error al marcar como leído",
+    "errorMessage": "No hay ninguna notificación marcada"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
