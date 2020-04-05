@@ -151,7 +151,9 @@
     "errorPermissionTitle" : "Share unsuccessfully",
     "warningDeleteMessage" : "Track's copy has not been removed correctly",
     "warningDeleteTitle" : "Minor problem",
-    "errorFriendsTitle" : "Input error"
+    "errorFriendsTitle" : "Input error",
+    "warningLoadTitle" : "Warning when loading routes",
+    "warningLoadMessage" : "There are no tracks to share"
   },
   "upload": {
     "title": "Upload my tracks",

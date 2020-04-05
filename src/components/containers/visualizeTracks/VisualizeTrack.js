@@ -73,8 +73,11 @@ export const VisualizeTrack = () => {
         let vService = new VisualizeService(null);
         await vService.getRoutesFromPod();
         if (vService.warning != null){
-            NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 2000);
-        } else {
+            NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
+        } else if (vService.errorLoad)  {
+            NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
+        }
+        else {
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
         setData(vService.routes);
@@ -88,7 +91,7 @@ export const VisualizeTrack = () => {
         let vService = new VisualizeService(document.getElementById("selectRoute"));
         await vService.fillMap();
         if (vService.error != null){
-            NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 2000);
+            NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
         } else {
             let points = vService.points;
             let elevationsValues = vService.elevationsValues;

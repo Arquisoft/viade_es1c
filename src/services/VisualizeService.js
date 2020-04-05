@@ -20,6 +20,7 @@ export default class VisualizeService{
         this.warning = null;
         this.success = null;
         this.error = null;
+        this.errorLoad = null;
         this.HTMLElement = HTMLElement;
         this.images = [];
         this.permissionsImage = false;
@@ -34,8 +35,12 @@ export default class VisualizeService{
     async getRoutesFromPod() {
         await this.getSession();
         const fc = new FC(auth);
-        this.content = await fc.readFolder(this.urlRouteInPod, null);
-        await this.getRoutesNames(this.content);
+        try {
+            this.content = await fc.readFolder(this.urlRouteInPod, null);
+            await this.getRoutesNames(this.content);
+        } catch (SFCFetchError) {
+            this.errorLoad = "Error al cargar combo";
+        }
     }
 
     /**
