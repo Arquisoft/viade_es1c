@@ -110,7 +110,7 @@
     "defaultError": "Error: Formato incorrecto"
   },
   "routes": {
-    "title": "Mis rutas",
+    "title": "Visualizar rutas",
     "select": "Seleccione la ruta:",
     "button": "Visualizar",
     "origin": "Origen de la ruta",
@@ -131,7 +131,9 @@
     "play": "Reproducir",
     "stop": "Parar",
     "histogram": "Perfil de elevación:",
-    "multimedia": "Multimedia:"
+    "multimedia": "Multimedia:",
+    "myTracks": "Mis rutas",
+    "shared": "Compartidas"
   },
   "share": {
     "title": "Compartir mis rutas",

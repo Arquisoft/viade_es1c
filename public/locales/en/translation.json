@@ -110,7 +110,7 @@
     "defaultError": "Error: Field value has wrong format"
   },
   "routes": {
-    "title": "My tracks",
+    "title": "Visualize tracks",
     "select": "Choose the track:",
     "button": "Visualize",
     "origin": "Origin of the track",
@@ -131,7 +131,9 @@
     "play": "Play",
     "stop": "Stop",
     "histogram": "Elevation profile:",
-    "multimedia": "Multimedia:"
+    "multimedia": "Multimedia:",
+    "myTracks": "My tracks",
+    "shared": "Shared"
   },
   "share": {
     "title": "Share my tracks",
