@@ -193,7 +193,10 @@
     "read": "Leído",
     "mark" : "Marcar",
     "errorTitle": "Error al marcar como leído",
-    "errorMessage": "No hay ninguna notificación marcada"
+    "errorMessage": "No hay ninguna notificación marcada",
+    "infoTitle": "Notificaciones actuales",
+    "infoMessage1": "Tiene ",
+    "infoMessage2": " notificaciones sin leer"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

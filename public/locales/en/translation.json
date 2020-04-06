@@ -193,7 +193,10 @@
     "read": "Read",
     "mark" : "Mark",
     "errorTitle": "Error marking as read",
-    "errorMessage": "No notification marked"
+    "errorMessage": "No notification marked",
+    "infoTitle": "Current notifications",
+    "infoMessage1": "You have ",
+    "infoMessage2": " unread notifications"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
