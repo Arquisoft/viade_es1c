@@ -26,6 +26,7 @@ L.Icon.Default.mergeOptions({
 });
 
 let actualIndexVideo = 0;   // For actual index video
+let selectedFilter; // For actual filter
 /**
  * Component used to display routes on a map
  */
@@ -65,16 +66,30 @@ export const VisualizeTrack = () => {
     const [videos, setVideos] = useState([]);
     const [actualVideo, setActualVideo] = useState("");
 
+    // For tracks filter
+    const myTracks = "Mis rutas";
+    const shared = "Compartidas";
+
     /**
      * Fuction to handle load select event
      * @returns {Promise<void>}
      */
     async function handleLoad(){
         let vService = new VisualizeService(null);
-        await vService.getRoutesFromPod();
+        let buttons = document.getElementsByName("filter-radio");
+        let labels = document.getElementsByName("filter-label");
+        for (let i = 0; i < buttons.length; i++){
+            if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.myTracks')) === 0){
+                selectedFilter = myTracks;
+                await vService.getMyRoutesFromPod();
+            } else if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.shared')) === 0){
+                selectedFilter = shared;
+                await vService.getSharedRoutesFromPod();
+            }
+        }
         if (vService.warning != null){
             NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
-        } else if (vService.errorLoad)  {
+        } else if (vService.errorLoad || selectedFilter === undefined)  {
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
         }
         else {
@@ -89,7 +104,7 @@ export const VisualizeTrack = () => {
      */
     async function handleSelect(){
         let vService = new VisualizeService(document.getElementById("selectRoute"));
-        await vService.fillMap();
+        await vService.fillMap(selectedFilter);
         if (vService.error != null){
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
         } else {
@@ -103,7 +118,9 @@ export const VisualizeTrack = () => {
             setZoom(zoomValue);
             setElevation(elevationsValues);
             setShowElements(true);
-            handleMultimedia(vService);
+            if (vService.existsMultimedia === true) {
+                handleMultimedia(vService);
+            }
         }
     }
 
@@ -114,21 +131,23 @@ export const VisualizeTrack = () => {
     function handleMultimedia(vService) {
         setShowVideo(false);
         setShowImage(false);
-        if (vService.videos.length > 0) {
-            setShowVideo(true);
-            setVideos(vService.videos);
-            setActualVideo(vService.videos[actualIndexVideo]);
-        }
-        if (vService.images.length > 0) {
-            setShowImage(true);
-            setImages(vService.images);
+        if (vService.videos.length > 0 || vService.images.length > 0) {
+            if (vService.images.length > 0) {
+                setShowImage(true);
+                setImages(vService.images);
+            }
+            if (vService.videos.length > 0) {
+                setShowVideo(true);
+                setVideos(vService.videos);
+                setActualVideo(vService.videos[actualIndexVideo]);
+            }
         } else {
             setShowImage(false);
             setShowVideo(false);
-            if (!vService.permissionsImage) {
+            if (!vService.permissionsImage && vService.existsImage === true) {
                 NotificationManager.error(t('routes.imageErrorMessage'), t('routes.imageErrorTitle'), 3000);
             }
-            if (!vService.permissionsVideo) {
+            if (!vService.permissionsVideo && vService.existsVideo === true) {
                 NotificationManager.error(t('routes.videoErrorMessage'), t('routes.videoErrorTitle'), 3000);
             }
         }
@@ -213,11 +232,13 @@ export const VisualizeTrack = () => {
                                   </Col>
                                 )}
                                 <Col>
+                                    {(showImage || showVideo) && (
+                                      <Row>
+                                          <h4 className="h4-format">{t('routes.multimedia')}</h4>
+                                      </Row>
+                                    )}
                                     {showImage && (
                                       <div>
-                                          <Row>
-                                              <h4 className="h4-format">{t('routes.multimedia')}</h4>
-                                          </Row>
                                           <Row>
                                               <div className="img_viewer formal-div">
                                                   {images.map((src, index) => (
@@ -246,6 +267,10 @@ export const VisualizeTrack = () => {
                         </Col>
                         <Col>
                             <div>
+                                <Row>
+                                    <label className="radio-format" name="filter-label"><input name="filter-radio" type="radio"/>{t('routes.myTracks')}</label>
+                                    <label className="radio-format" name="filter-label"><input name="filter-radio" type="radio"/>{t('routes.shared')}</label>
+                                </Row>
                                 <Button className="visualizeButton" variant="primary"
                                         onClick={handleLoad}>
                                     {t('routes.loadButton')}
