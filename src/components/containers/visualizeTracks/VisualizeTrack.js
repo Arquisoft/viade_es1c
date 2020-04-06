@@ -96,10 +96,22 @@ export const VisualizeTrack = () => {
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
         setData(vService.routes);
+        handleFilter();
     }
 
     /**
-     * Funcion to handle display map, histogram and multimedia event
+     * Function that handle select radioButton
+     */
+    function handleFilter() {
+        if (selectedFilter.localeCompare(shared) === 0) {
+            document.getElementById("radio-2").checked = true;
+        } else if (selectedFilter.localeCompare(myTracks) === 0) {
+            document.getElementById("radio-1").checked = true;
+        }
+    }
+
+    /**
+     * Function to handle display map, histogram and multimedia event
      * @returns {Promise<void>}
      */
     async function handleSelect(){
@@ -122,6 +134,7 @@ export const VisualizeTrack = () => {
                 handleMultimedia(vService);
             }
         }
+        handleFilter();
     }
 
     /**
@@ -268,8 +281,14 @@ export const VisualizeTrack = () => {
                         <Col>
                             <div>
                                 <Row>
-                                    <label className="radio-format" name="filter-label"><input name="filter-radio" type="radio"/>{t('routes.myTracks')}</label>
-                                    <label className="radio-format" name="filter-label"><input name="filter-radio" type="radio"/>{t('routes.shared')}</label>
+                                    <label className="radio-format" name="filter-label">
+                                        <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
+                                        {t('routes.myTracks')}
+                                    </label>
+                                    <label className="radio-format" name="filter-label">
+                                        <input name="filter-radio" id="radio-2" type="radio"/>
+                                        {t('routes.shared')}
+                                    </label>
                                 </Row>
                                 <Button className="visualizeButton" variant="primary"
                                         onClick={handleLoad}>
