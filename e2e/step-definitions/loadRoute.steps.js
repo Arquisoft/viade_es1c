@@ -7,14 +7,19 @@ defineFeature(feature, test => {
 		await page.goto('http://localhost:3000');
 	})
 	
-  test('We want lo load route files into the POD', ({ given, when, then, and }) => {
+  test('We want to load route files into the POD', ({ given, when, then, and }) => {
 
-    given('We have some routes in our computer that we want to load into de POD', async() => {
-		
+    given('The loadRoutes page', async() => {
+      await page.goto('http://localhost:3000/upload');
     });
 
-    when('I am on the loadRoutes page and choose the files', async () => {
-
+    when('I select route files from my computer and I press the button upload', async () => {
+      
+      await expect(page).toClick('h2', { id: 'titleUpload' });
+      //Select files
+      
+      //Press button
+      await expect(page).toClick('button', { id: 'uploadButton' });
     });
 
     then('I expect a message to be shown', async () => {

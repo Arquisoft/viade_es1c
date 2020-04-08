@@ -13,9 +13,7 @@ defineFeature(feature, test => {
     let popup;
 
     given('The login page', async() => {
-      
       await expect(page).toMatchElement('h2', { text: 'Welcome to ViaDe_ES1C' })
-
     });
 
     when('We press Iniciar Sesion', async () => {
