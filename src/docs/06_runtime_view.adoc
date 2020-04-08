@@ -1,3 +1,26 @@
 [[section-runtime-view]]
 == Runtime View
-*TO BE DONE*
+=== Main Scenario
+==== First Scenario: Login
+===== Login flowchart
+****
+image:Login_flowchart.png[]
+****
+===== Login runtime in detail
+
+*Although it's a basic scenario, it's one of the most important scenarios due to, if a user is not logged in, he could not use the app.*
+
+. User opens the app at any browser. And there are two possibilities:
+.. User is already logged in, so he can use de app.
+.. User is not logged in, he can just click on Login and a popup will appear.
+... If user has a solid account, he can select which provider does he want to use to log in and fill the login form, introducing his solid credentials.
+... If user has not a solid account, he can register and create a personal POD. Then he will be able to log in introducing the entered information in the register form.
+.. User will be redirected to the main UI, where he can see some of his data and a slight introduction to our app.
+
+==== Second Scenario: Visualize tracks and media
+==== Third Scenario: Share tracks
+==== Fourth Scenario: Friends
+==== Fifth Scenario: Notifications
+==== Sixth Scenario: Upload tracks
+==== Seventh Scenario: Download tracks 
+
