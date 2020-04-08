@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, DropdownButton, DropdownItem } from "react-bootstrap";
 import "./Navbar.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
+import LoggedIn from "@solid/react";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
 import ReactTooltip from 'react-tooltip';
