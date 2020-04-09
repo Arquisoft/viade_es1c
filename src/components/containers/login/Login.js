@@ -30,7 +30,7 @@ export const Login = props => {
                     </a>
                 </div>
             </LoggedOut>
-            <LoggedIn>
+            <LoggedIn data-testid="loggedInPane">
                 <Redirect to="/welcome"></Redirect>
             </LoggedIn>
         </div>

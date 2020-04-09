@@ -4,8 +4,7 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Button } from 'react-bootstrap';
 import "./UploadTrack.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
-import LoggedOut from "@solid/react/module/components/LoggedOut";
+import {LoggedIn,LoggedOut} from "@solid/react";
 import { Redirect } from "react-router-dom";
 import UploadService from "../../../services/UploadService";
 
