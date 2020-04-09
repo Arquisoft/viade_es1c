@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
+    "jest-dom": "^4.0.0",
     "jest-puppeteer": "^4.4.0",
     "shx": "^0.3.2"
   },

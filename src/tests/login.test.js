@@ -1,11 +1,15 @@
 import React from 'react';
-import { render, queryByTestId, act } from '@testing-library/react';
-import Login from '../components/containers/login/Login';
 import ReactDOM from 'react-dom';
+import Login from '../components/containers/login/Login';
+import { render } from '@testing-library/react';
+import "@testing-library/jest-dom/extend-expect";
 
-test('Prueba de visualize',()=>{
-  const div=document.createElement("div");
-  ReactDOM.render(<Login/>,div);
-  expect(<Login/>).toBeTruthy();
-});
+it("renders without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<Login></Login>, div);
+})
 
+it("renders button correctly", () => {
+    const {getByTestId} = render(<Login></Login>);
+    expect(getByTestId('loginButton'));
+})

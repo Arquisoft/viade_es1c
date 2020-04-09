@@ -1,8 +1,7 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut} from '@solid/react';
+import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
 import { Redirect } from "react-router-dom";
 import {Value} from "@solid/react";
 
