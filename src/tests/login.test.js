@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Login from '../components/containers/login/Login';
-import { render } from '@testing-library/react';
+import React from "react";
+import ReactDOM from "react-dom";
+import Login from "../components/containers/login/Login";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 it("renders without crashing",() => {
@@ -11,5 +11,5 @@ it("renders without crashing",() => {
 
 it("renders button correctly", () => {
     const {getByTestId} = render(<Login></Login>);
-    expect(getByTestId('loginButton'));
-})
+    expect(getByTestId("loginButton"));
+});
