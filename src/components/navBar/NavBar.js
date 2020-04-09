@@ -35,7 +35,7 @@ const MyNavBar = props => {
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">
-                            <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
+                            <DropdownButton id = "btnLanguage" className="i18nMenu" variant="light" title={t("nav.language")}>
                                 <DropdownItem>
                                     <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
