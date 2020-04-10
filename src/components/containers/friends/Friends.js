@@ -95,14 +95,14 @@ export const Friends = () => {
         <div className="modal-div">
           <div className="modal-appearance">
             <div className="modal-header">
-              <h2>{t("friends.title")}</h2>
+              <h2 id="friendsTitle">{t("friends.title")}</h2>
               <hr/>
             </div>
             <div className="modal-body">
               <span className="span-friends">{t("friends.addTitle")}</span>
               <div className="add-friends">
                 <input className="input-add" id="friendId" type="text"></input>
-                <Button className="correct-margin" onClick={addFriend}>
+                <Button id="add" className="correct-margin" onClick={addFriend}>
                   {t("friends.add")}
                 </Button>
               </div>
