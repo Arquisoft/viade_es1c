@@ -12,7 +12,7 @@ export const Welcome = props => {
 
     return (
         <section data-testid="welcomeTest">
-            <LoggedIn>
+            <LoggedIn className = "loggedInPane" >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
@@ -24,18 +24,18 @@ export const Welcome = props => {
                         </div>
                         <div className="col-sm">
                             <h2 className="myH2">{t('welcome.title')}</h2>
-                            <ul>
+                            <ul className = "welcomeLinks" >
                                 <li>{t('welcome.presentation')}</li>
-                                <li><a
+                                <li className = "welcomeLinkDocs"><a
                                     href="https://arquisoft.github.io/viade_es1c/docs/">{t('welcome.documentation')}</a>
-                                </li>
-                                <li><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
+                                </li >
+                                <li className = "welcomeLinksViade" ><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </LoggedIn>
-            <LoggedOut>
+            <LoggedOut className = "loggedOutPane">
                <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>
         </section>
