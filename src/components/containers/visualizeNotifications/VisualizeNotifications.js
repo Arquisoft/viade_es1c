@@ -6,7 +6,7 @@ import NotificationsTable  from "./children/notificationsTable/NotificationsTabl
 import "./VisualizeNotifications.css";
 import {HashRouter} from "react-router-dom";
 
-export const VisualizeNotification = (props) => {
+export const VisualizeNotifications = (props) => {
   // Hook for i18n
   const {t} = useTranslation();
 
@@ -31,4 +31,4 @@ export const VisualizeNotification = (props) => {
   );
 }
 
-export default VisualizeNotification;
+export default VisualizeNotifications;

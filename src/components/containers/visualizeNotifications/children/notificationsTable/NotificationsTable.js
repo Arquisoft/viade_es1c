@@ -7,6 +7,8 @@ import ReactLoading from 'react-loading';
 import {Button} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from "react-notifications";
 
+let times = 0; // Shows no read notifications
+
 export const NotificationsTable = (props) => {
 
   // Hook for i18n
@@ -60,6 +62,11 @@ export const NotificationsTable = (props) => {
           }
           setRows(rows);
           setShowTable(true);
+          if (times === 0) {
+            times++;
+            NotificationManager.info(t('notifications.infoMessage1').concat(rows.length).concat(t('notifications.infoMessage2'))
+              , t('notifications.infoTitle'), 3000);
+          }
         }
       }
   }
