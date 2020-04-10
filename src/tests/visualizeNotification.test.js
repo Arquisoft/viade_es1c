@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import VisualizeNotification from "../components/containers/visualizeNotifications/VisualizeNotification";
+import VisualizeNotification from "../components/containers/visualizeNotifications/VisualizeNotifications";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
