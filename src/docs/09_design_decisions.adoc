@@ -20,9 +20,12 @@ The list of decisions will increase throughout the development of the project. T
 
 |11/02/2020 |*Login* |The login redirects to a Solid popup in order to connect with the customers' PODs |Improves usability | |All the development team
 
-|11/02/2020 |*Testing* |Implementation of exhaustive tests at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctyly |Need to invert time on exhaustive tests |All the development team
+|11/02/2020 |*Testing* |Implementation of exhaustive Test-driven development (TDD) at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctly |Need to invert time on exhaustive tests |All the development team
 
 |04/02/2020 |*Language* |The documentation is in English, and the hole application is interationalized into English too |Internationalization |Need to translate |All the development team
+
+|17/03/2020 |*Acceptance tests* |Implementation of Behaviour-Driven Development (BDD) tests using Cucumber.
+|They can be run in front of the client |Time to make them and write the 'User Stories' |All the development team
 
 |===
 
