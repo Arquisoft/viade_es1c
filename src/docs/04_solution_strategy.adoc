@@ -4,7 +4,8 @@
 To develop the project we are going to use React, based on SOLID specifications. 
 
 .Decisions
-
+* Structure: ...
+* ViaDe specification: ...
 
 .Use of technology
 * React 
@@ -20,4 +21,4 @@ To develop the project we are going to use React, based on SOLID specifications.
 * Testing the application.
 
 .Work distribution
-Each component of the team will research about all the technologies and technics. Each week we will distribute the work to be done for next week.
+Each component of the team has research about all the technologies and technics. Every week we distributed the work to to for the next class among the components of the group. Furthermore, we have also tried to help each other in difficult tasks or those that raise doubts.
