@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, DropdownButton, DropdownItem } from "react-bootstrap";
 import "./Navbar.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
+import {LoggedIn} from "@solid/react";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
 import ReactTooltip from 'react-tooltip';
@@ -27,6 +27,9 @@ const MyNavBar = props => {
                         </a>
                         <a data-tip={t('navBar.friends')} className="navbar-link a-bar" href="#/friends">
                             <img src={process.env.PUBLIC_URL + "/img/icon/friends-icon.png"} width="38" height="40" alt="My friends"/>
+                        </a>
+                        <a data-tip={t('navBar.notifications')} className="navbar-link a-bar" href="#/notifications">
+                            <img src={process.env.PUBLIC_URL + "/img/icon/notification-icon.svg"} width="26" height="44" alt="Notifications"/>
                         </a>
                         <a data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
                             <img src={process.env.PUBLIC_URL + "/img/icon/upload-icon.png"} width="40" height="40" alt="Upload track"/>

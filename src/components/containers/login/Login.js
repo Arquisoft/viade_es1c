@@ -9,14 +9,14 @@ export const Login = props => {
     const publicUrl = 'url('.concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(')');
 
     return (
-      <div style={{ background: publicUrl
+      <div data-testid="loginButton" style={{ background: publicUrl
               , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
               , backgroundPosition: 'center', backgroundSize: 'cover' }}>
             <LoggedOut>
                 <div className="Login">
                     <h2>{t("login.title")}</h2>
                     <div >
-                        <LoginButton className="btn btn-primary a-solid button-login" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
+                        <LoginButton  className="btn btn-primary a-solid button-login" popup="https://solid.github.io/solid-auth-client/dist/popup.html">
                             {t("login.formButtonText")}
                         </LoginButton>
                     </div>
@@ -30,7 +30,7 @@ export const Login = props => {
                     </a>
                 </div>
             </LoggedOut>
-            <LoggedIn>
+            <LoggedIn data-testid="loggedInPane">
                 <Redirect to="/welcome"></Redirect>
             </LoggedIn>
         </div>

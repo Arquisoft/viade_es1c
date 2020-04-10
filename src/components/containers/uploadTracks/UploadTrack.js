@@ -4,8 +4,7 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Button } from 'react-bootstrap';
 import "./UploadTrack.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
-import LoggedOut from "@solid/react/module/components/LoggedOut";
+import {LoggedIn,LoggedOut} from "@solid/react";
 import { Redirect } from "react-router-dom";
 import UploadService from "../../../services/UploadService";
 
@@ -21,7 +20,9 @@ export const UploadTrack = (props) => {
       NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
       document.getElementById("fileArea").value = ""; // Clear input file
     } else if (uService.error != null) {
-      NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 2000);
+      NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 3000);
+    } else if (document.getElementById("fileArea").value === "") {
+      NotificationManager.error(t("upload.errorEmptyMessage"), t("upload.errorTitle"), 3000);
     }
   }
 
