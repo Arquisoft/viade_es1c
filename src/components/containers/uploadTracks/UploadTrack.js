@@ -5,8 +5,9 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import { Button } from 'react-bootstrap';
 import "./UploadTrack.css";
 import {LoggedIn,LoggedOut} from "@solid/react";
-import { Redirect } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import UploadService from "../../../services/UploadService";
+import {HashRouter} from "react-router-dom";
 
 
 export const UploadTrack = (props) => {
@@ -27,7 +28,7 @@ export const UploadTrack = (props) => {
   }
 
   return (
-        <section>
+        <section data-testid="uploadTrackTest">
             <LoggedIn>
             <div className="modal-dialog">
                 <div className="modal-content">
@@ -48,7 +49,7 @@ export const UploadTrack = (props) => {
             </div>
             </LoggedIn>
             <LoggedOut>
-                <Redirect to="/"></Redirect>
+                <HashRouter><Redirect to="/"></Redirect></HashRouter>
             </LoggedOut>
         </section>
     );

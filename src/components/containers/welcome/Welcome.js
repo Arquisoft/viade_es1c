@@ -4,12 +4,14 @@ import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
 import { Redirect } from "react-router-dom";
 import {Value} from "@solid/react";
+import {HashRouter} from "react-router-dom";
+
 
 export const Welcome = props => {
     const {t} = useTranslation();
 
     return (
-        <section>
+        <section data-testid="welcomeTest">
             <LoggedIn>
                 <div className="container">
                     <div className="row">
@@ -34,7 +36,7 @@ export const Welcome = props => {
                 </div>
             </LoggedIn>
             <LoggedOut>
-                <Redirect to="/"></Redirect>
+               <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>
         </section>
     );

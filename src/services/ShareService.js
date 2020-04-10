@@ -42,8 +42,12 @@ export default class ShareService {
    * @param {current session} session
    */
   async getSessionId(session){
-    this.webId = session.webId;
-    await this.getPodRoute(this.webId);
+    if (session != null) {
+      this.webId = session.webId;
+      await this.getPodRoute(this.webId);
+    }
+    //Si session es null, significa que no existe un contexto, es decir, se está
+    //cargando únicamente este componente => test unitarios
   }
 
   /**
