@@ -9,7 +9,7 @@ import "@testing-library/jest-dom/extend-expect";
 it("Welcome -> renders without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<Welcome></Welcome>, div);
-})
+});
 
 it("Welcome -> renders Welcome correctly", () => {
     const {container,getByTestId} =render(
