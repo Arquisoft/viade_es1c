@@ -1,0 +1,205 @@
+{
+  "appPermission": {
+    "message": "La aplicacion necesita todos los permisos para funcionar.",
+    "link": {
+      "label": "Saber más",
+      "href": "https://solidsdk.inrupt.net/public/general/es/app-permissions.html"
+    }
+  },
+  "notifications": {
+    "success": "Éxito",
+    "error": "Error",
+    "unknownError": "Ha occurido un error desconocido",
+    "404": "Editando un documento nuevo.",
+    "errorLoading": "Había un error al cargar tu documento. Por favor, intenta de nuevo.",
+    "errorSaving": "Había un error al guardar tu documento. Por favor, intenta de nuevo.",
+    "errorFetching": "Error recogiendo fichero.",
+    "accessGranted": "Collaborador ahora tiene acceso de leer y escribir.",
+    "errorGrantingAccess": "Había un error al dar acceso a tu documento. Por favor, intenta de nuevo.",
+    "saved": "Tu documento ha sido guardado al pod.",
+    "notEditable": "(no editable)",
+    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)"
+  },
+  "login": {
+    "title": "Bienvenido a ViaDe_ES1C",
+    "formButtonText": "Iniciar sesión",
+    "solidHelp": "¿Qué es una identidad Solid?",
+    "errors": {
+      "unknown": "Algo ha salido mal, por favor inténtelo de nuevo. Si el problema persiste, inténtelo más tarde....",
+      "webIdNotValid": "El WebId no es válido",
+      "emptyProvider": "El proveedor de Solid es requerido",
+      "emptyWebId": "Un WebId válido es requerido"
+    }
+  },
+  "register": {
+    "title": "Bienvenido a ViaDe_ES1C",
+    "step1Title": "Selecciona tu Proveedor",
+    "whatIsAProvider": "Qué es un Proveedor, cómo escoger uno?",
+    "alreadySolid": "Ya tengo una identidad Solid",
+    "next": "Siguiente"
+  },
+  "navBar": {
+    "welcome": "Bienvenida",
+    "formModel": "Form Model",
+    "logOut": "Cerrar Sesión",
+    "profile": "Perfil",
+    "friends": "Mis amigos",
+    "share-files": "Compartir rutas",
+    "upload": "Subir rutas",
+    "download": "Descargar rutas",
+    "notifications": "Mis notificaciones",
+    "changeLanguage": "Cambiar Lenguaje",
+    "languages": {
+      "en": "English (Inglés)",
+      "es": "Español (Español)"
+    },
+    "maps": "Mis rutas",
+    "language": "Idioma: "
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. O la página que buscaste ha sido movida o eliminada",
+    "redirectButton": "Llevarme a la página principal"
+  },
+  "welcome": {
+    "welcome": "Bienvenido,",
+    "title": "¿Qué es ViaDe_ES1C?",
+    "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas, compartirlas con nuestros amigos, descargarlas y subirlas.",
+    "documentation": "Enlace a la documentación",
+    "repository": "Enlace al repositorio de GitHub",
+    "doneMessage": "¿Terminaste?",
+    "upload": "Subir foto",
+    "successTitle": "Éxito",
+    "uploadSuccess": "Imagen de perfil actualizada correctamente",
+    "uploadingText": "Subiendo",
+    "errorTitle": "Error",
+    "errors": {
+      "sizeLimit": "El tamaño del archivo supera el límite permitido ({{limit}})",
+      "unsupported": "Formato no soportado",
+      "maximumFiles": "Disculpe, has excedido la cantidad máxima de archivos permitidos por subida"
+    }
+  },
+  "profile": {
+    "successCallback": "Pod actualizado satisfactoriamente",
+    "successTitle": "Éxito",
+    "errorCallback": "Ha ocurrido un error al enviar el formulario",
+    "errorTitle": "Error",
+    "saveBtn": "Guardar",
+    "resetBtn": "Limpiar",
+    "addBtn": "+ Agregar ",
+    "deleteBtn": "Eliminar",
+    "dropdownDefaultText": "- Seleccionar -",
+    "upload": "Subir foto",
+    "uploadSuccess": "Imagen de perfil actualizada correctamente",
+    "uploadingText": "Subiendo",
+    "updateSuccess": "Perfil actualizado correctamente",
+    "nameRequired": "Nombre es un campo obligatorio",
+    "errors": {
+      "default": "Algo está mal, intente nuevamente...",
+      "406": "Por favor asegúrese de que el formulario sea válido",
+      "500": "Ha ocurrido un error en el servidor",
+      "sizeLimit": "El tamaño del archivo supera el límite permitido ({{limit}})",
+      "unsupported": "Formato no soportado",
+      "maximumFiles": "Disculpe, has excedido la cantidad máxima de archivos permitidos por subida"
+    },
+    "autosaveNotification": "Cambios realizados en el Perfil son guardados automáticamente. No se puede deshacer.",
+    "warningResolution": "El valor del campo se ha actualizado a ",
+    "minMxNumberInclusive": "Error: Mínimo y máximo debería ser ",
+    "minMxNumberExclusive": "Error: Mínimo y máximo debería ser ",
+    "minMaxString": "Error: Mínimo y máximo debería ser ",
+    "defaultError": "Error: Formato incorrecto"
+  },
+  "routes": {
+    "title": "Mis rutas",
+    "select": "Seleccione la ruta:",
+    "button": "Visualizar",
+    "origin": "Origen de la ruta",
+    "target": "Destino de la ruta",
+    "errorTitle": "Error al visualizar",
+    "errorMessage": "No se encuentra la ruta",
+    "loadWarningTitle": "Advertencia al cargar",
+    "loadWarningMessage": "No existe ninguna ruta en el POD",
+    "loadButton": "Cargar rutas del POD",
+    "successLoadTitle": "Cargado con éxito",
+    "successLoadMessage": "Sus rutas han sido cargadas",
+    "imageErrorTitle": "Error al mostrar las imágenes",
+    "imageErrorMessage": "No hay permisos para acceder a las imágenes o no se encuentran",
+    "videoErrorTitle": "Error al mostrar los vídeos",
+    "videoErrorMessage": "No hay permisos para acceder a los vídeos o no se encuentran",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "play": "Reproducir",
+    "stop": "Parar",
+    "histogram": "Perfil de elevación:",
+    "multimedia": "Multimedia:"
+  },
+  "share": {
+    "title": "Compartir mis rutas",
+    "createSharePrompt": "Seleccione los amigos y la ruta que desea compartir con ellos",
+    "idLabel": "Seleccione la ruta a compartir:",
+    "shareTrack": "Compartir",
+    "resetShareForm": "Limpiar",
+    "friends": "Lista de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas",
+    "successShareTitle" : "Compartido con éxito",
+    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateTitle" : "Compartido sin éxito",
+    "warningShareMessage" : "Ya se ha compartido la ruta con ",
+    "warningShareTitle" : "Duplicidad de rutas",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionTitle" : "Compartido sin éxito",
+    "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
+    "warningDeleteTitle" : "Problema secundario",
+    "errorFriendsTitle" : "Error de entrada",
+    "warningLoadTitle" : "Advertencia al cargar rutas",
+    "warningLoadMessage" : "No hay rutas para compartir"
+  },
+  "upload": {
+    "title": "Subir mis rutas",
+    "button": "Subir",
+    "uploadPrompt" : "Escoja los archivos de las rutas que desea subir",
+    "successTitle": "Subido con éxito",
+    "successMessage" : "Sus rutas han sido subidas",
+    "errorTitle" : "Error en la subida",
+    "errorMessage": "Debe subir un archivo con extensión \".json\"",
+    "errorEmptyMessage": "Debes subir algún archivo"
+  },
+  "download": {
+    "title": "Descargar ruta",
+    "instruction":"Introduzca el nombre del archivo:",
+    "button":"Descargar",
+    "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
+    "errorTitle": "Ruta inexistente en el Pod",
+    "especificacion": "* No incluir extensión"
+  },
+  "friends": {
+    "title": "Mis amigos",
+    "addTitle": "Introduzca el WebId del amigo a añadir",
+    "add": "Añadir",
+    "deleteTitle": "Seleccione el amigo que desea eliminar",
+    "delete": "Borrar",
+    "deleteErrorTitle": "Error al borrar amigo",
+    "deleteErrorMessage": "El WebId seleccionado no es válido",
+    "addErrorTitle": "Error al añadir amigo",
+    "addErrorMessage": "El WebId introducido no es válido",
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+  },
+  "notifications": {
+    "title" : "Mis notificaciones",
+    "value" : "Notificación",
+    "read": "Leído",
+    "mark" : "Marcar",
+    "errorTitle": "Error al marcar como leído",
+    "errorMessage": "No hay ninguna notificación marcada"
+  },
+  "alert":{
+    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
+  },
+  "logout": {
+    "button": "Cerrar sesión"
+  },
+  "nav": {
+    "language": "Idioma"
+  }
+}

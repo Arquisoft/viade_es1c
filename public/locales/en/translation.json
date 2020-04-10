@@ -1,0 +1,205 @@
+{
+  "appPermission": {
+    "message": "The application permissions are not properly set. Please add additional permissions and try again",
+    "link": {
+      "label": "Learn more",
+      "href": "https://solidsdk.inrupt.net/public/general/en/app-permissions.html"
+    }
+  },
+  "notifications": {
+    "success": "Success",
+    "error": "Error",
+    "unknownError": "An unknown error has occurred",
+    "404": "Editing a new document.",
+    "errorLoading": "There was an error loading your file, please try again.",
+    "errorSaving": "There was an error saving your file, please try again.",
+    "errorFetching": "Error fetching document.",
+    "accessGranted": "Co-editor now has read/write access.",
+    "errorGrantingAccess": "There was an error giving access to your file, please try again.",
+    "saved": "Your file was saved successfully.",
+    "notEditable": "(not editable)",
+    "notSharable": "(log in and load a doc on your own pod to give others access)"
+  },
+  "login": {
+    "title": "Welcome to ViaDe_ES1C",
+    "register": "Register for a solid identity",
+    "solidHelp": "What is a Solid Identity?",
+    "formButtonText": "Log In",
+    "errors": {
+      "unknown": "Something is wrong, please try again...",
+      "webIdNotValid": "WebID is not valid",
+      "emptyProvider": "Solid Provider is required",
+      "emptyWebId": "Valid WebID is required"
+    }
+  },
+  "register": {
+    "title": "Welcome to ViaDe_ES1C",
+    "step1Title": "Select your Provider",
+    "whatIsAProvider": "What is a provider, and how should I choose one?",
+    "alreadySolid": "I already have a Solid identity",
+    "next": "Next"
+  },
+  "navBar": {
+    "welcome": "Welcome",
+    "logOut": "Log out",
+    "profile": "Profile",
+    "friends": "My friends",
+    "share-files" : "Share tracks",
+    "upload": "Upload tracks",
+    "download": "Download tracks",
+    "notifications": "My notifications",
+    "changeLanguage": "Change Language",
+    "languages": {
+      "en": "English (English)",
+      "es": "Español (Spanish)"
+    },
+    "maps": "My tracks",
+    "language": "Language: "
+  },
+  "notFound": {
+    "title": "Page not found",
+    "content": "There may be an error in the URL entered into your web browser. Please check the URL and try again. Or the page you're looking for has been moved or deleted",
+    "redirectButton": "Take me back to the welcome page"
+  },
+  "welcome": {
+    "welcome": "Welcome,",
+    "doneMessage": "All done ?",
+    "title": "What is ViaDe_ES1C?",
+    "presentation": "ViaDe is a decentralized application for route management. It is developed in the Solid web ecosystem. It allows us to visualize our tracks, share them with our friends, download and upload them.",
+    "documentation": "Link to documentation",
+    "repository": "Link to GitHub repository",
+    "upload": "Upload New Photo",
+    "successTitle": "Success",
+    "uploadSuccess": "Profile Image was updated",
+    "uploadingText": "Uploading",
+    "errorTitle": "Error",
+    "errors": {
+      "sizeLimit": "File size exceeds the allowable limit ({{limit}})",
+      "unsupported": "Unsupported media type",
+      "maximumFiles": "Sorry, you have exceeded the maximum number of files allowed per upload"
+    }
+  },
+  "profile": {
+    "successCallback": "Pod updated successfully",
+    "successTitle": "Success",
+    "errorCallback": "Error submitting form",
+    "errorTitle": "Error",
+    "saveBtn": "Save",
+    "resetBtn": "Reset",
+    "addBtn": "+ Add new ",
+    "deleteBtn": "Remove",
+    "dropdownDefaultText": "- Select -",
+    "upload": "Upload New Photo",
+    "uploadSuccess": "Profile Image was updated",
+    "uploadingText": "Uploading",
+    "updateSuccess": "Profile was updated successfully",
+    "nameRequired": "Name is required",
+    "errors": {
+      "default": "Something is wrong, please try again...",
+      "406": "Please ensure the form is valid",
+      "500": "An error has occurred in the server",
+      "sizeLimit": "File size exceeds the allowable limit ({{limit}})",
+      "unsupported": "Unsupported media type",
+      "maximumFiles": "Sorry, you have exceeded the maximum number of files allowed per upload"
+    },
+    "autosaveNotification": "Profile changes are saved immediately. There is no undo.",
+    "warningResolution": "Field value has been updated to:",
+    "minMxNumberInclusive": "Error: Min and max should be ",
+    "minMxNumberExclusive": "Error: Min and max value should be ",
+    "minMaxString": "Error: Min and max should be ",
+    "defaultError": "Error: Field value has wrong format"
+  },
+  "routes": {
+    "title": "My tracks",
+    "select": "Choose the track:",
+    "button": "Visualize",
+    "origin": "Origin of the track",
+    "target": "Track destination",
+    "errorTitle": "Error displaying",
+    "errorMessage": "Track not found",
+    "loadWarningTitle": "Warning when loading",
+    "loadWarningMessage": "There is no route in the POD",
+    "loadButton": "Load tracks from POD",
+    "successLoadTitle": "Loaded successfully",
+    "successLoadMessage": "Their routes have been loaded",
+    "imageErrorTitle": "Error displaying images",
+    "imageErrorMessage": "There are no permissions to access to images or are not found",
+    "videoErrorTitle": "Error displaying videos",
+    "videoErrorMessage": "There are no permissions to access to videos or are not found",
+    "next": "Next",
+    "previous": "Previous",
+    "play": "Play",
+    "stop": "Stop",
+    "histogram": "Elevation profile:",
+    "multimedia": "Multimedia:"
+  },
+  "share": {
+    "title": "Share my tracks",
+    "createSharePrompt": "Choose the friends and the track you want to share with them",
+    "idLabel": "Choose track to share:",
+    "shareTrack": "Share",
+    "resetShareForm": "Reset",
+    "friends": "Friend list:",
+    "errorFriends" : "There's no friend selected to share",
+    "successShareMessage" : "Your tracks have been shared",
+    "successShareTitle" : "Share successfully",
+    "errorCreateMessage" : "Something was wrong",
+    "errorCreateTitle" : "Share unsuccessfully",
+    "warningShareMessage" : "Track has been alredy shared with ",
+    "warningShareTitle" : "Tracks duplicated",
+    "errorPermissionMessage" : "You are not allowed to access to this folder",
+    "errorPermissionTitle" : "Share unsuccessfully",
+    "warningDeleteMessage" : "Track's copy has not been removed correctly",
+    "warningDeleteTitle" : "Minor problem",
+    "errorFriendsTitle" : "Input error",
+    "warningLoadTitle" : "Warning when loading routes",
+    "warningLoadMessage" : "There are no tracks to share"
+  },
+  "upload": {
+    "title": "Upload my tracks",
+    "button": "Upload",
+    "uploadPrompt" : "Choose the files of the routes you want to upload",
+    "successTitle": "Uploaded successfully",
+    "successMessage" : "Your tracks have been uploaded",
+    "errorTitle" : "Upload error",
+    "errorMessage": "You must upload a file with extension \".json\"",
+    "errorEmptyMessage": "You must upload a file"
+  },
+  "download": {
+    "title": "Download track",
+    "instruction": "Enter the file name:",
+    "button": "Download",
+    "errorMessage": "Make sure the entered route exists in the Pod and that you type it correctly",
+    "errorTitle": "Non-existent route in the Pod",
+    "especificacion": "* Do not include extension"
+  },
+  "friends": {
+    "title": "My friends",
+    "addTitle": "Enter the WebID of the new friend",
+    "add": "Add",
+    "deleteTitle": "Choose the friend you want to delete",
+    "delete": "Delete",
+    "deleteErrorTitle": "Error deleting friend",
+    "deleteErrorMessage": "The selected WebId is invalid",
+    "addErrorTitle": "Error adding friend",
+    "addErrorMessage": "The entered WebId is not valid",
+    "checkErrorMessage": "The friend to add is already a friend"
+  },
+  "notifications": {
+    "title" : "My notifications",
+    "value": "Notification",
+    "read": "Read",
+    "mark" : "Mark",
+    "errorTitle": "Error marking as read",
+    "errorMessage": "No notification marked"
+  },
+  "alert":{
+    "message": "THIS OPTION IS NOT AVAILABLE YET"
+  },
+  "logout": {
+    "button": "Logout"
+  },
+  "nav": {
+    "language": "Language"
+  }
+}
