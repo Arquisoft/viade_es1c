@@ -3,10 +3,6 @@
 
 To develop the project we are going to use React, based on SOLID specifications. 
 
-.Decisions
-* Structure: ...
-* ViaDe specification: ...
-
 .Use of technology
 * React 
 * SOLID 
@@ -22,3 +18,11 @@ To develop the project we are going to use React, based on SOLID specifications.
 
 .Work distribution
 Each component of the team has research about all the technologies and technics. Every week we distributed the work to to for the next class among the components of the group. Furthermore, we have also tried to help each other in difficult tasks or those that raise doubts.
+
+.Decisions
+* Structure: at first we used an inrupt template but later we decided to remove it to improve the structure, in this way, we developed a more decoupled application.
+On the one hand components and on the other functionalities.
+
+* ViaDe Specification: since the specification was not done at the beginning, we decided to make our own folder structure in the POD and the JSON structure.
+Later, when the specification advanced we adapted it to our application (version 1.1).
+Finally, the application is adapted to the latest version of the specification (more polished version).
