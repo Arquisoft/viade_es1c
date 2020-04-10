@@ -12,7 +12,7 @@ const MyNavBar = props => {
 
     const {t} = useTranslation();
     return (
-        <section>
+        <section data-testid="navTest">
             <LoggedIn>
                 <Navbar className="nav-color">
                     <a className="navbar-brand a-bar a-logo" href="#/">

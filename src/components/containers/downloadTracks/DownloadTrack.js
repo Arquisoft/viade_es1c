@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
+import { Redirect,BrowserRouter as Router } from "react-router-dom";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import DownloadService from "../../../services/DownloadService";
 
@@ -29,9 +29,9 @@ export const DownloadTrack = props => {
   }
 
   return (
-    <section>
+    <section data-testid="downloadComp">
       <LoggedIn>
-        <div className="modal-dialog">
+        <div className="modal-dialog" >
           <div className="modal-content">
             <div className="modal-header">
               <h2>{t("download.title")}</h2>
@@ -51,7 +51,7 @@ export const DownloadTrack = props => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Redirect to="/"></Redirect>
+        <Router><Redirect to="/"></Redirect></Router>
       </LoggedOut>
     </section>
   );

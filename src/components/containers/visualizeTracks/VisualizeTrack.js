@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import { Redirect } from "react-router-dom";
+import { Redirect,BrowserRouter as Router } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
 import VisualizeService from "../../../services/VisualizeService";
@@ -174,7 +174,7 @@ export const VisualizeTrack = () => {
     }
 
     return (
-        <section>
+        <section data-testid="visualizeTest">
             <LoggedIn>
                 <Container>
                     <Row>
@@ -268,7 +268,7 @@ export const VisualizeTrack = () => {
                 </Container>
             </LoggedIn>
             <LoggedOut>
-                <Redirect to="/"></Redirect>
+               <Router> <Redirect to="/"></Redirect></Router>
             </LoggedOut>
         </section>
     );

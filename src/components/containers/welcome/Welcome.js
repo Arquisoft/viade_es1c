@@ -2,14 +2,15 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
-import { Redirect } from "react-router-dom";
+import { Redirect,BrowserRouter as Router } from "react-router-dom";
 import {Value} from "@solid/react";
+
 
 export const Welcome = props => {
     const {t} = useTranslation();
 
     return (
-        <section>
+        <section data-testid="welcomeTest">
             <LoggedIn>
                 <div className="container">
                     <div className="row">
@@ -34,7 +35,7 @@ export const Welcome = props => {
                 </div>
             </LoggedIn>
             <LoggedOut>
-                <Redirect to="/"></Redirect>
+               <Router> <Redirect to="/"></Redirect> </Router>
             </LoggedOut>
         </section>
     );

@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
+import { Redirect, BrowserRouter as Router } from "react-router-dom";
 import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
@@ -124,7 +124,7 @@ export const ShareTrack = (props) => {
   handleLoad(); // To upload tracks to select component
 
   return (
-    <section>
+    <section data-testid="shareTrackTest">
       <LoggedIn>
         <div className="modal-div">
           <div className="modal-content">
@@ -158,7 +158,7 @@ export const ShareTrack = (props) => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Redirect to="/"></Redirect>
+        <Router>	<Redirect to="/"></Redirect>	</Router>
       </LoggedOut>
     </section>
   );

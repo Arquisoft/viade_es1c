@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
 import {LoggedOut, LoggedIn} from '@solid/react';
-import { Redirect } from "react-router-dom";
+import { Redirect, BrowserRouter as Router } from "react-router-dom";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
 
@@ -10,7 +10,7 @@ export const VisualizeNotification = (props) => {
   const {t} = useTranslation();
 
   return (
-    <section>
+    <section data-testid="visualizeNotificationTest">
       <LoggedIn>
         <div className="modal-div">
           <div className="modal-appearance">
@@ -24,7 +24,7 @@ export const VisualizeNotification = (props) => {
         </div>
       </LoggedIn>
       <LoggedOut>
-        <Redirect to="/"></Redirect>
+        <Router> <Redirect to="/"></Redirect> </Router>
       </LoggedOut>
     </section>
   );

@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Login from "../components/containers/login/Login";
+import VisualizeTrack from "../components/containers/visualizeTracks/VisualizeTrack";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 it("renders without crashing",() => {
     const div = document.createElement("div");
-    ReactDOM.render(<Login></Login>, div);
+    ReactDOM.render(<VisualizeTrack></VisualizeTrack>, div);
 })
 
 it("renders button correctly", () => {
-    const {getByTestId} =render(<Login></Login>);
-    expect(getByTestId("loginButton"));
+    const {getByTestId} =render(<VisualizeTrack></VisualizeTrack>);
+    expect(getByTestId("visualizeTest"));
 });
