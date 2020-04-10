@@ -17,19 +17,19 @@ describe('Login tests', () => {
     });
 
     test("renders LoggedIn", () => {
-        expect(document.getElementsByClassName('.loggedInPane')).toBeTruthy();
+        expect(document.getElementsByClassName('loggedInPane')).toBeTruthy();
     });
     
     test("renders LoggedOut", () => {
-        expect(document.getElementsByClassName('.loggedOutPane')).toBeTruthy();
+        expect(document.getElementsByClassName('loggedOutPane')).toBeTruthy();
     });
 
     test("renders LogginButton", () => {
-        expect(document.getElementsByClassName('.btn btn-primary a-solid button-login')).toBeTruthy();
+        expect(document.getElementsByClassName('btn btn-primary a-solid button-login')).toBeTruthy();
     });
 
     test("renders LogginTitle", () => {
-        expect(document.getElementsByClassName('.btn btn-primary a-solid button-login')).toBeTruthy();
+        expect(document.getElementsByClassName('loginTitle')).toBeTruthy();
     });
 
     test("render Login", () => {
