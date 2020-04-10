@@ -7,7 +7,7 @@ import "@testing-library/jest-dom/extend-expect";
 it("renders without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<VisualizeNotification></VisualizeNotification>, div);
-})
+});
 
 it("renders button correctly", () => {
     const {getByTestId} =render(<VisualizeNotification></VisualizeNotification>);
