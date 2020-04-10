@@ -5,11 +5,12 @@ import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect, BrowserRouter as Router } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
 import { useNotification, useWebId } from '@inrupt/solid-react-components';
+import {HashRouter} from "react-router-dom";
 
 
 let timesLoad = 0; // For handleLoad()
@@ -158,7 +159,7 @@ export const ShareTrack = (props) => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Router>	<Redirect to="/"></Redirect>	</Router>
+        <HashRouter>	<Redirect to="/"></Redirect>	</HashRouter>
       </LoggedOut>
     </section>
   );

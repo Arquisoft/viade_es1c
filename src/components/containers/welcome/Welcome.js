@@ -2,8 +2,9 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
-import { Redirect,BrowserRouter as Router } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {Value} from "@solid/react";
+import {HashRouter} from "react-router-dom";
 
 
 export const Welcome = props => {
@@ -35,7 +36,7 @@ export const Welcome = props => {
                 </div>
             </LoggedIn>
             <LoggedOut>
-               <Router> <Redirect to="/"></Redirect> </Router>
+               <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>
         </section>
     );

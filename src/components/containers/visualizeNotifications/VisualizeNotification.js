@@ -1,9 +1,10 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
 import {LoggedOut, LoggedIn} from '@solid/react';
-import { Redirect, BrowserRouter as Router } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
+import {HashRouter} from "react-router-dom";
 
 export const VisualizeNotification = (props) => {
   // Hook for i18n
@@ -24,7 +25,7 @@ export const VisualizeNotification = (props) => {
         </div>
       </LoggedIn>
       <LoggedOut>
-        <Router> <Redirect to="/"></Redirect> </Router>
+        <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
       </LoggedOut>
     </section>
   );

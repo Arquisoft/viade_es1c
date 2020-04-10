@@ -7,10 +7,11 @@ import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import { Redirect,BrowserRouter as Router } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
 import VisualizeService from "../../../services/VisualizeService";
+import {HashRouter} from "react-router-dom";
 
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -268,7 +269,7 @@ export const VisualizeTrack = () => {
                 </Container>
             </LoggedIn>
             <LoggedOut>
-               <Router> <Redirect to="/"></Redirect></Router>
+               <HashRouter> <Redirect to="/"></Redirect></HashRouter>
             </LoggedOut>
         </section>
     );

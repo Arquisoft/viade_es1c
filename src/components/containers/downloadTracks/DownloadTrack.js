@@ -2,9 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect,BrowserRouter as Router } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import DownloadService from "../../../services/DownloadService";
+import {HashRouter} from "react-router-dom";
 
 /*
     *****************************************
@@ -51,7 +52,7 @@ export const DownloadTrack = props => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Router><Redirect to="/"></Redirect></Router>
+        <HashRouter><Redirect to="/"></Redirect></HashRouter>
       </LoggedOut>
     </section>
   );
