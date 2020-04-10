@@ -38,12 +38,12 @@ const MyNavBar = props => {
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">
-                            <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
+                            <DropdownButton data-testid = "dropDownButtonLanguage" className="i18nMenu" variant="light" title={t("nav.language")}>
                                 <DropdownItem>
-                                    <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
+                                    <div id = "btnEng" onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
                                 <DropdownItem>
-                                    <div onClick={() => i18n.changeLanguage("es")}> ESP </div>
+                                    <div id = "btnEsp" onClick={() => i18n.changeLanguage("es")}> ESP </div>
                                 </DropdownItem>
                             </DropdownButton>
                         </div>
