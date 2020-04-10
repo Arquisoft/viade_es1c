@@ -5,11 +5,9 @@ defineFeature(feature, test => {
 	
 	beforeEach(async () => {
     await page.goto('http://localhost:3000');
-    
 	})
 	
   test('We want to login into Viade', ({ given, when, then, and }) => {
-
     let popup;
 
     given('The login page', async() => {
@@ -20,7 +18,6 @@ defineFeature(feature, test => {
       const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));	
       await expect(page).toClick('button', { text: 'Log In' });
       popup = await newPagePromise;
-      
       //console.log(popup.url()); 
     });
 
@@ -39,35 +36,20 @@ defineFeature(feature, test => {
       //await expect(popup).toMatchElement('div > div > form > button', { text: "Go" });
 
       //await expect(popup).toClick("div > div > div > button",{ text: "Solid Community" });
-      
-      
-      //Hasta aqui bien 
 
-      
-      //await expect(popup).toMatchElement('div > div > h1', { text: "Login" });
+      //await page.waitForSelector("[id='username']", {visible: true});
+      //await page.type("[id='username']", "es1c");
 
-      //const newPagePromise2 = new Promise(x => browser.once('targetcreated', target => x(target.page())));	
-      //await expect(popup).toClick('form > button', { text: "Go" });
-      
-     
-      // await expect(popup).toClick('form > button', { text: 'Log In' });
-      // const popup = await newPagePromise;
-      // console.log(popup.url());
-
-      // await expect(popup.title()).resolves.toMatch('Login');
-      // await expect(page).toFillForm('form[name="formIniciar"]', {
-      //     email: email,
-      // })
-      // await expect(page).toClick('button', { text: 'Submit' })
-
-      //await expect(popup).toMatchElement('form > button', { text: "Solid Community" });
-
+      // await page.waitFor(500);
+      // await page.waitForSelector("[id='password']", {visible: true});
+      // await page.type("[id='password']", "Viade_es1c", {visible: true});
+    
       //await expect(popup).toClick('button', { text: 'Solid Community' })
       //await expect(page).toMatchElement('h1', { text: "Log in to" })
     });
 
     and('After introducing the solidCommunity user to be loged in', async() => {
-
+      //await expect(page).toMatch("Welcome", { timeout: 500 });
     });
   }); 
 
