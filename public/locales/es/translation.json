@@ -133,7 +133,8 @@
     "histogram": "Perfil de elevación:",
     "multimedia": "Multimedia:",
     "myTracks": "Mis rutas",
-    "shared": "Compartidas"
+    "shared": "Compartidas",
+    "loading": "Cargando las rutas..."
   },
   "share": {
     "title": "Compartir mis rutas",

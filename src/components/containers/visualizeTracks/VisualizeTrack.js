@@ -10,6 +10,7 @@ import {NotificationContainer, NotificationManager} from "react-notifications";
 import { Redirect } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
+import LoadingOverlay from 'react-loading-overlay';
 import VisualizeService from "../../../services/VisualizeService";
 
 // CSS imports
@@ -70,6 +71,9 @@ export const VisualizeTrack = () => {
     const myTracks = "Mis rutas";
     const shared = "Compartidas";
 
+    // Loading
+    const [loading, setLoading] = useState(false);
+
     /**
      * Fuction to handle load select event
      * @returns {Promise<void>}
@@ -115,6 +119,7 @@ export const VisualizeTrack = () => {
      * @returns {Promise<void>}
      */
     async function handleSelect(){
+        setLoading(true);
         let vService = new VisualizeService(document.getElementById("selectRoute"));
         await vService.fillMap(selectedFilter);
         if (vService.error != null){
@@ -134,6 +139,7 @@ export const VisualizeTrack = () => {
                 handleMultimedia(vService);
             }
         }
+        setLoading(false)
         handleFilter();
     }
 
@@ -204,6 +210,7 @@ export const VisualizeTrack = () => {
     return (
         <section>
             <LoggedIn>
+                <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
                         <h1 className="myH1">{t('routes.title')}</h1>
@@ -304,6 +311,7 @@ export const VisualizeTrack = () => {
                     </Row>
                     <NotificationContainer/>
                 </Container>
+                </LoadingOverlay>
             </LoggedIn>
             <LoggedOut>
                 <Redirect to="/"></Redirect>

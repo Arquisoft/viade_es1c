@@ -133,7 +133,8 @@
     "histogram": "Elevation profile:",
     "multimedia": "Multimedia:",
     "myTracks": "My tracks",
-    "shared": "Shared"
+    "shared": "Shared",
+    "loading": "Loading your tracks..."
   },
   "share": {
     "title": "Share my tracks",
