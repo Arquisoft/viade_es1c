@@ -22,9 +22,7 @@ export const ShareTrack = (props) => {
   const [data, setData] = useState([]);
 
   const webId = useWebId();
-  const { createNotification, discoverInbox } = useNotification(
-    webId
-  );
+  const { createNotification, discoverInbox } = useNotification(webId);
 
   /**
    * Send a notification to the receiver of the track
@@ -32,6 +30,7 @@ export const ShareTrack = (props) => {
    * @returns {Promise<void>}
    */
   const sendNotification = async (userWebId) => {
+
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
