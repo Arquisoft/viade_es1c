@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
 
-export const VisualizeNotification = (props) => {
+export const VisualizeNotifications = (props) => {
   // Hook for i18n
   const {t} = useTranslation();
 
@@ -30,4 +30,4 @@ export const VisualizeNotification = (props) => {
   );
 }
 
-export default VisualizeNotification;
+export default VisualizeNotifications;
