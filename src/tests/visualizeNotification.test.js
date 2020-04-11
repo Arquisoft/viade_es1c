@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import VisualizeNotification from "../components/containers/visualizeNotifications/VisualizeNotifications";
+import VisualizeNotifications from "../components/containers/visualizeNotifications/VisualizeNotifications";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 it("renders without crashing",() => {
     const div = document.createElement("div");
-    ReactDOM.render(<VisualizeNotification></VisualizeNotification>, div);
+    ReactDOM.render(<VisualizeNotifications></VisualizeNotifications>, div);
 });
 
 it("renders button correctly", () => {
-    const {getByTestId} =render(<VisualizeNotification></VisualizeNotification>);
+    const {getByTestId} =render(<VisualizeNotifications></VisualizeNotifications>);
     expect(getByTestId("visualizeNotificationTest"));
 });

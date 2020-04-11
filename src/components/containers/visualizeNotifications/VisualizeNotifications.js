@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
 
-export const VisualizeNotifications = (props) => {
+export const VisualizeNotifications = () => {
   // Hook for i18n
   const {t} = useTranslation();
 
