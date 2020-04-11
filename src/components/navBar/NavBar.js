@@ -13,13 +13,13 @@ const MyNavBar = props => {
     const {t} = useTranslation();
     return (
         <section data-testid="navTest">
-            <LoggedIn>
-                <Navbar className="nav-color">
+
+                <Navbar className="nav-color" >
                     <a className="navbar-brand a-bar a-logo" href="#/">
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
                     </a>
                     <Nav className="mr-auto">
-                        <a data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize">
+                        <a data-testid="visualTest" data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize" >
                             <img src={process.env.PUBLIC_URL + "/img/icon/maps-icon.png"} width="40" height="40" alt="My tracks"/>
                         </a>
                         <a data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
@@ -40,7 +40,7 @@ const MyNavBar = props => {
                         <div className="i18nMenu">
                             <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
                                 <DropdownItem>
-                                    <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
+                                    <div data-testid="pruebaClick1" onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
                                 <DropdownItem>
                                     <div onClick={() => i18n.changeLanguage("es")}> ESP </div>
@@ -51,7 +51,7 @@ const MyNavBar = props => {
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>
-            </LoggedIn>
+
         </section>
     );
 }
