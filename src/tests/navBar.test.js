@@ -5,6 +5,29 @@ import { act, render, queryByTestId, cleanup, getByTestId, waitForElement } from
 import "@testing-library/jest-dom/extend-expect";
 import { getI18n } from "react-i18next";
 
+
+
+let contenedor;
+beforeEach(() => {
+    const {container}=render(<MyNavBar></MyNavBar>);
+    contenedor=container;
+});
+
+describe("PRUEBA", () => {
+    test("Render", async() => {
+        waitForElement(() =>  {
+            expect(queryByTestId(contenedor,"navTest")).not.toBeNull();
+            expect(queryByTestId(contenedor,"pruebaClick1")).not.toBeNull();
+            expect(queryByTestId(contenedor,"pruebaClick2")).not.toBeNull();
+            //queryByTestId(contenedor,"pruebaClick1").click();
+            //queryByTestId(contenedor,"pruebaClick2").click();
+            //queryByTestId(contenedor,"visualTest").click();
+        
+        }); 
+    });
+});
+
+
 // afterEach(cleanup);
 // let w;
 
@@ -27,25 +50,3 @@ import { getI18n } from "react-i18next";
 //     expect(document.getElementsByClassName("i18nMenu")).toBeTruthy();
 //     expect(document.getElementsByClassName("logout btn btn-light")).toBeTruthy();
 // });
-
-let contenedor;
-beforeEach(() => act(() => {
-    const {container}=render(<MyNavBar></MyNavBar>);
-    contenedor=container;
-}));
-
-describe("PRUEBA", () => {
-    
-        test("Render", async() => {
-            waitForElement(() =>  {
-                expect(queryByTestId(contenedor,"navTest")).not.toBeNull();
-                expect(queryByTestId(contenedor,"pruebaClick1")).not.toBeNull();
-                expect(queryByTestId(contenedor,"pruebaClick2")).not.toBeNull();
-                //queryByTestId(contenedor,"pruebaClick1").click();
-                //queryByTestId(contenedor,"pruebaClick2").click();
-                //queryByTestId(contenedor,"visualTest").click();
-            
-            }); 
-        });
-      
-});

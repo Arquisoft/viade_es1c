@@ -12,14 +12,14 @@ beforeEach( () => {
     contenedor = container;
 });
 
-describe('login component', () => {
+describe("login component", () => {
     afterAll(cleanup);
 
-    test('renders without crashing', () => {
+    test("renders without crashing", () => {
         expect(contenedor).toBeTruthy();
     });
 
-    test('renders the header correctly', () => {
+    test("renders the header correctly", () => {
         waitForElement(() => {
             expect(queryByTestId(contenedor,"title")).not.toBeNull();
             expect(queryByTestId(contenedor,"title")).not.toBeNull();
