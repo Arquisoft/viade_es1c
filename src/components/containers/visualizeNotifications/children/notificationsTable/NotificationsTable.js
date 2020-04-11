@@ -49,7 +49,7 @@ export const NotificationsTable = (props) => {
    * @returns {Promise<void>}
    */
   async function handleNotifications() {
-      if (webId !== undefined) {
+      if (webId !== undefined && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
         const inboxes = [{ path: userWebId, inboxName: 'Global Inbox', shape: 'default' }];
         await fetchNotification(inboxes);
