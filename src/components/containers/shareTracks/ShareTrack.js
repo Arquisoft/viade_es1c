@@ -4,18 +4,15 @@ import { Select } from "../../utils/select/Select";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
-import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect} from "react-router-dom";
 import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
 import { useNotification, useWebId } from '@inrupt/solid-react-components';
-import {HashRouter} from "react-router-dom";
 
 
 let timesLoad = 0; // For handleLoad()
 
-export const ShareTrack = (props) => {
+export const ShareTrack = () => {
 
   // i18n locales
   const { t } = useTranslation();
@@ -125,7 +122,6 @@ export const ShareTrack = (props) => {
 
   return (
     <section data-testid="shareTrackTest">
-      <LoggedIn>
         <div className="modal-div">
           <div className="modal-content">
             <div className="modal-header">
@@ -156,10 +152,6 @@ export const ShareTrack = (props) => {
           </div>
         </div>
         <NotificationContainer/>
-      </LoggedIn>
-      <LoggedOut>
-        <HashRouter>	<Redirect to="/"></Redirect>	</HashRouter>
-      </LoggedOut>
     </section>
   );
 };
