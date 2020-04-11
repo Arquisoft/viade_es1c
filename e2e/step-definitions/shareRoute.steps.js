@@ -8,7 +8,7 @@ defineFeature(feature, test => {
 
     test('We want to share a route with a friend',({given,when,and,then}) =>{
 
-        given('Given The share route page on the application', async() => {
+        given('The share route page on the application', async() => {
 
         });
 

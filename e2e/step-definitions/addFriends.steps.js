@@ -18,7 +18,7 @@ defineFeature(feature, test => {
 
     when('We enter a WebId', async () => {
       await page.waitFor(500);
-      var driver = new webdriver.Builder();
+
       //driver.findElement(By.id('friendId')).sendKeys("https://es1c.solid.community");      
     });
 
