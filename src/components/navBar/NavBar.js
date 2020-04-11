@@ -13,7 +13,7 @@ const MyNavBar = props => {
     const {t} = useTranslation();
     return (
         <section data-testid="navTest">
-            <LoggedIn>
+            
                 <Navbar className="nav-color">
                     <a className="navbar-brand a-bar a-logo" href="#/">
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
@@ -51,7 +51,7 @@ const MyNavBar = props => {
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>
-            </LoggedIn>
+            
         </section>
     );
 }
