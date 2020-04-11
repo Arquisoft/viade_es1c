@@ -12,14 +12,14 @@ export const Welcome = props => {
 
     return (
         <section data-testid="welcomeTest">
-            <LoggedIn className = "loggedInPane" >
+            
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
                             <img className="myImg" src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} alt="Logo ViaDe"></img>
                         </div>
                         <div className="col-sm value-format">
-                            <h1 className="h1-welcome">{t('welcome.welcome')}</h1>
+                            <h1 data-testid="title" className="h1-welcome">{t('welcome.welcome')}</h1>
                             <Value src="user.name"></Value>
                         </div>
                         <div className="col-sm">
@@ -34,7 +34,7 @@ export const Welcome = props => {
                         </div>
                     </div>
                 </div>
-            </LoggedIn>
+            
             <LoggedOut className = "loggedOutPane">
                <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>

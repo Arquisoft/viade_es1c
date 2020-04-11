@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Welcome from "../components/containers/welcome/Welcome";
-import { render} from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
+import Welcome from "../components/containers/welcome/Welcome";
 
 
 it("Welcome -> renders without crashing",() => {
@@ -15,20 +15,23 @@ it("Welcome -> renders Welcome correctly", () => {
     const {container,getByTestId} =render(
         <Welcome></Welcome>
     );
-    expect(getByTestId("welcomeTest"));
+    expect(getByTestId("welcomeTest")).toBeInTheDocument();
+
+    expect(getByTestId("title")).toBeInTheDocument();
+
 });
 
-it("Welcome -> renders listOfLinks", () => {
-    expect(document.getElementsByClassName("welcomeLinks")).toBeTruthy();
-    expect(document.getElementsByClassName("welcomeLinkDocs")).toBeTruthy();
-    expect(document.getElementsByClassName("welcomeLinksViade")).toBeTruthy();
-});
-
-it("Welcome -> renders LoggedIn", () => {
-    expect(document.getElementsByClassName("loggedInPane")).toBeTruthy();
-});
-
-it("Welcome -> renders LoggedOut", () => {
-    expect(document.getElementsByClassName("loggedOutPane")).toBeTruthy();
-});
+//it("Welcome -> renders listOfLinks", () => {
+//    expect(document.getElementsByClassName("welcomeLinks")).toBeTruthy();
+//    expect(document.getElementsByClassName("welcomeLinkDocs")).toBeTruthy();
+//    expect(document.getElementsByClassName("welcomeLinksViade")).toBeTruthy();
+//});
+//
+//it("Welcome -> renders LoggedIn", () => {
+//    expect(document.getElementsByClassName("loggedInPane")).toBeTruthy();
+//});
+//
+//it("Welcome -> renders LoggedOut", () => {
+//    expect(document.getElementsByClassName("loggedOutPane")).toBeTruthy();
+//});
 
