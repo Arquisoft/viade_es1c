@@ -12,6 +12,7 @@ export const Welcome = props => {
 
     return (
         <section data-testid="welcomeTest">
+            <LoggedIn>
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
@@ -33,6 +34,7 @@ export const Welcome = props => {
                         </div>
                     </div>
                 </div>
+            </LoggedIn>
             <LoggedOut className = "loggedOutPane">
                <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>
