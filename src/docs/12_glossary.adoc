@@ -16,4 +16,5 @@
 | Solid POD | Derived from "Personal Online Data", it's user's personal storage space, user decides which things apps and people can see. [Official Website, where you can get a POD: https://solid.inrupt.com/get-a-solid-pod]
 | WebStorm | Integrated Development Environment created by JetBrains used for JavaScript development.
 | Wikiloc | Wikiloc is a mashup where geo-referenced outdoor routes and points of interest from around the world can be stored and shared. [Official Website:  https://es.wikiloc.com/]
+|Leaflet | Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps. [Official Website: https://leafletjs.com/]
 |===
