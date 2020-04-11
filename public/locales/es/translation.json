@@ -53,7 +53,7 @@
       "en": "English (Inglés)",
       "es": "Español (Español)"
     },
-    "maps": "Mis rutas",
+    "maps": "Visualizar rutas",
     "language": "Idioma: "
   },
   "notFound": {
@@ -110,7 +110,7 @@
     "defaultError": "Error: Formato incorrecto"
   },
   "routes": {
-    "title": "Mis rutas",
+    "title": "Visualizar rutas",
     "select": "Seleccione la ruta:",
     "button": "Visualizar",
     "origin": "Origen de la ruta",
@@ -131,7 +131,10 @@
     "play": "Reproducir",
     "stop": "Parar",
     "histogram": "Perfil de elevación:",
-    "multimedia": "Multimedia:"
+    "multimedia": "Multimedia:",
+    "myTracks": "Mis rutas",
+    "shared": "Compartidas",
+    "loading": "Cargando las rutas..."
   },
   "share": {
     "title": "Compartir mis rutas",
@@ -191,7 +194,10 @@
     "read": "Leído",
     "mark" : "Marcar",
     "errorTitle": "Error al marcar como leído",
-    "errorMessage": "No hay ninguna notificación marcada"
+    "errorMessage": "No hay ninguna notificación marcada",
+    "infoTitle": "Notificaciones actuales",
+    "infoMessage1": "Tiene ",
+    "infoMessage2": " notificaciones sin leer"
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

@@ -53,7 +53,7 @@
       "en": "English (English)",
       "es": "Español (Spanish)"
     },
-    "maps": "My tracks",
+    "maps": "Visualize tracks",
     "language": "Language: "
   },
   "notFound": {
@@ -110,7 +110,7 @@
     "defaultError": "Error: Field value has wrong format"
   },
   "routes": {
-    "title": "My tracks",
+    "title": "Visualize tracks",
     "select": "Choose the track:",
     "button": "Visualize",
     "origin": "Origin of the track",
@@ -131,7 +131,10 @@
     "play": "Play",
     "stop": "Stop",
     "histogram": "Elevation profile:",
-    "multimedia": "Multimedia:"
+    "multimedia": "Multimedia:",
+    "myTracks": "My tracks",
+    "shared": "Shared",
+    "loading": "Loading your tracks..."
   },
   "share": {
     "title": "Share my tracks",
@@ -191,7 +194,10 @@
     "read": "Read",
     "mark" : "Mark",
     "errorTitle": "Error marking as read",
-    "errorMessage": "No notification marked"
+    "errorMessage": "No notification marked",
+    "infoTitle": "Current notifications",
+    "infoMessage1": "You have ",
+    "infoMessage2": " unread notifications"
   },
   "alert":{
     "message": "THIS OPTION IS NOT AVAILABLE YET"
