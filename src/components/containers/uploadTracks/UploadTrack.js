@@ -4,13 +4,10 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Button } from 'react-bootstrap';
 import "./UploadTrack.css";
-import {LoggedIn,LoggedOut} from "@solid/react";
-import { Redirect} from "react-router-dom";
 import UploadService from "../../../services/UploadService";
-import {HashRouter} from "react-router-dom";
 
 
-export const UploadTrack = (props) => {
+export const UploadTrack = () => {
   // Locales for i18n
   const { t } = useTranslation();
 
@@ -32,7 +29,6 @@ export const UploadTrack = (props) => {
 
   return (
         <section data-testid="uploadTrackTest">
-            <LoggedIn>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -50,10 +46,6 @@ export const UploadTrack = (props) => {
                 </div>
                 <NotificationContainer/>
             </div>
-            </LoggedIn>
-            <LoggedOut>
-                <HashRouter><Redirect to="/"></Redirect></HashRouter>
-            </LoggedOut>
         </section>
     );
 };

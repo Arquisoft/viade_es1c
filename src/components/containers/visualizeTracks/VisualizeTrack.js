@@ -1,18 +1,15 @@
 import React, {useState, useCallback} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
 import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
-import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import { Redirect} from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
 import LoadingOverlay from 'react-loading-overlay';
 import VisualizeService from "../../../services/VisualizeService";
-import {HashRouter} from "react-router-dom";
 
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -212,7 +209,6 @@ export const VisualizeTrack = () => {
 
     return (
         <section data-testid="visualizeTest">
-            <LoggedIn>
                 <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
@@ -315,10 +311,6 @@ export const VisualizeTrack = () => {
                     <NotificationContainer/>
                 </Container>
                 </LoadingOverlay>
-            </LoggedIn>
-            <LoggedOut>
-               <HashRouter> <Redirect to="/"></Redirect></HashRouter>
-            </LoggedOut>
         </section>
     );
 }

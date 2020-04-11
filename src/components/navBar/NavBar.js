@@ -1,19 +1,17 @@
 import React from "react";
 import { Navbar, Nav, DropdownButton, DropdownItem } from "react-bootstrap";
 import "./Navbar.css";
-import {LoggedIn} from "@solid/react";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
 import ReactTooltip from 'react-tooltip';
 import i18n from 'i18next';
 
 
-const MyNavBar = props => {
+const MyNavBar = () => {
 
     const {t} = useTranslation();
     return (
         <section data-testid="navTest">
-            <LoggedIn>
                 <Navbar className="nav-color">
                     <a className="navbar-brand a-bar a-logo" href="#/">
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
@@ -51,7 +49,6 @@ const MyNavBar = props => {
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>
-            </LoggedIn>
         </section>
     );
 }

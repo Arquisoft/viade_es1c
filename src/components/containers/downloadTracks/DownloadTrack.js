@@ -1,13 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
-import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect} from "react-router-dom";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import DownloadService from "../../../services/DownloadService";
-import {HashRouter} from "react-router-dom";
 
-export const DownloadTrack = props => {
+export const DownloadTrack = () => {
 
   // Locales for i18n
   const { t } = useTranslation();
@@ -26,7 +23,6 @@ export const DownloadTrack = props => {
 
   return (
     <section data-testid="downloadComp">
-      <LoggedIn>
         <div className="modal-dialog" >
           <div className="modal-content">
             <div className="modal-header">
@@ -45,10 +41,6 @@ export const DownloadTrack = props => {
           </div>
         </div>
         <NotificationContainer/>
-      </LoggedIn>
-      <LoggedOut>
-        <HashRouter><Redirect to="/"></Redirect></HashRouter>
-      </LoggedOut>
     </section>
   );
 };
