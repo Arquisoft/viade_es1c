@@ -43,11 +43,7 @@ const MyNavBar = props => {
                                     <div data-testid="pruebaClick1" onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
                                 <DropdownItem>
-<<<<<<< HEAD
                                     <div data-testid="pruebaClick2" onClick={() => i18n.changeLanguage("es")}> ESP </div>
-=======
-                                    <div id = "btnEsp" onClick={() => i18n.changeLanguage("es")}> ESP </div>
->>>>>>> 9aba46e2b2aebacc7e877cfdedbcf38430d67b2a
                                 </DropdownItem>
                             </DropdownButton>
                         </div>
@@ -55,10 +51,7 @@ const MyNavBar = props => {
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>
-<<<<<<< HEAD
             </LoggedIn>
-=======
->>>>>>> 9aba46e2b2aebacc7e877cfdedbcf38430d67b2a
         </section>
     );
 }

@@ -39,8 +39,8 @@ describe("PRUEBA", () => {
         test("Render", async() => {
             waitForElement(() =>  {
                 expect(queryByTestId(contenedor,"navTest")).not.toBeNull();
-                expect(queryByTestId(contenedor,"pruebaClick1")).toBeTruthy();
-                expect(queryByTestId(contenedor,"pruebaClick2")).toBeTruthy();
+                expect(queryByTestId(contenedor,"pruebaClick1")).not.toBeNull();
+                expect(queryByTestId(contenedor,"pruebaClick2")).not.toBeNull();
                 queryByTestId(contenedor,"pruebaClick1").click();
                 queryByTestId(contenedor,"pruebaClick2").click();
                 queryByTestId(contenedor,"visualTest").click();
