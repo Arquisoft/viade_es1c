@@ -4,10 +4,11 @@ import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./Friends.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import MyFriends from "./children/myFriends/MyFriends";
 import FriendsService from "../../../services/FriendsService";
 import { useNotification, useWebId } from "@inrupt/solid-react-components";
+import {HashRouter} from "react-router-dom";
 
 
 export const Friends = () => {
@@ -90,7 +91,7 @@ export const Friends = () => {
   }
 
   return (
-    <section>
+    <section data-testid="friendsTest">
       <LoggedIn>
         <div className="modal-div">
           <div className="modal-appearance">
@@ -122,7 +123,7 @@ export const Friends = () => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Redirect to="/"></Redirect>
+        <HashRouter>	<Redirect to="/"></Redirect>	</HashRouter>
       </LoggedOut>
     </section>
   );

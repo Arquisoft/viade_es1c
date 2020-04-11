@@ -1,17 +1,18 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut} from '@solid/react';
+import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
-import LoggedIn from "@solid/react/module/components/LoggedIn";
 import { Redirect } from "react-router-dom";
 import {Value} from "@solid/react";
+import {HashRouter} from "react-router-dom";
+
 
 export const Welcome = props => {
     const {t} = useTranslation();
 
     return (
-        <section>
-            <LoggedIn>
+        <section data-testid="welcomeTest">
+            <LoggedIn className = "loggedInPane" >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
@@ -23,19 +24,19 @@ export const Welcome = props => {
                         </div>
                         <div className="col-sm">
                             <h2 className="myH2">{t('welcome.title')}</h2>
-                            <ul>
+                            <ul className = "welcomeLinks" >
                                 <li>{t('welcome.presentation')}</li>
-                                <li><a
+                                <li className = "welcomeLinkDocs"><a
                                     href="https://arquisoft.github.io/viade_es1c/docs/">{t('welcome.documentation')}</a>
-                                </li>
-                                <li><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
+                                </li >
+                                <li className = "welcomeLinksViade" ><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </LoggedIn>
-            <LoggedOut>
-                <Redirect to="/"></Redirect>
+            <LoggedOut className = "loggedOutPane">
+               <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
             </LoggedOut>
         </section>
     );
