@@ -14,6 +14,9 @@ export const UploadTrack = (props) => {
   // Locales for i18n
   const { t } = useTranslation();
 
+  /**
+   * Upload the track chosen by the user through the input file
+   */
   async function handleUpload(){
     let uService = new UploadService(document.getElementById("fileArea"));
     await uService.handleUpload();

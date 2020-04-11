@@ -1,113 +1,25 @@
 {
-  "appPermission": {
-    "message": "La aplicacion necesita todos los permisos para funcionar.",
-    "link": {
-      "label": "Saber más",
-      "href": "https://solidsdk.inrupt.net/public/general/es/app-permissions.html"
-    }
-  },
-  "notifications": {
-    "success": "Éxito",
-    "error": "Error",
-    "unknownError": "Ha occurido un error desconocido",
-    "404": "Editando un documento nuevo.",
-    "errorLoading": "Había un error al cargar tu documento. Por favor, intenta de nuevo.",
-    "errorSaving": "Había un error al guardar tu documento. Por favor, intenta de nuevo.",
-    "errorFetching": "Error recogiendo fichero.",
-    "accessGranted": "Collaborador ahora tiene acceso de leer y escribir.",
-    "errorGrantingAccess": "Había un error al dar acceso a tu documento. Por favor, intenta de nuevo.",
-    "saved": "Tu documento ha sido guardado al pod.",
-    "notEditable": "(no editable)",
-    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)"
-  },
   "login": {
     "title": "Bienvenido a ViaDe_ES1C",
     "formButtonText": "Iniciar sesión",
-    "solidHelp": "¿Qué es una identidad Solid?",
-    "errors": {
-      "unknown": "Algo ha salido mal, por favor inténtelo de nuevo. Si el problema persiste, inténtelo más tarde....",
-      "webIdNotValid": "El WebId no es válido",
-      "emptyProvider": "El proveedor de Solid es requerido",
-      "emptyWebId": "Un WebId válido es requerido"
-    }
-  },
-  "register": {
-    "title": "Bienvenido a ViaDe_ES1C",
-    "step1Title": "Selecciona tu Proveedor",
-    "whatIsAProvider": "Qué es un Proveedor, cómo escoger uno?",
-    "alreadySolid": "Ya tengo una identidad Solid",
-    "next": "Siguiente"
+    "solidHelp": "¿Qué es una identidad Solid?"
   },
   "navBar": {
     "welcome": "Bienvenida",
-    "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
-    "profile": "Perfil",
     "friends": "Mis amigos",
     "share-files": "Compartir rutas",
     "upload": "Subir rutas",
     "download": "Descargar rutas",
     "notifications": "Mis notificaciones",
-    "changeLanguage": "Cambiar Lenguaje",
-    "languages": {
-      "en": "English (Inglés)",
-      "es": "Español (Español)"
-    },
-    "maps": "Visualizar rutas",
-    "language": "Idioma: "
-  },
-  "notFound": {
-    "title": "Página no encontrada",
-    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. O la página que buscaste ha sido movida o eliminada",
-    "redirectButton": "Llevarme a la página principal"
+    "maps": "Visualizar rutas"
   },
   "welcome": {
     "welcome": "Bienvenido,",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas, compartirlas con nuestros amigos, descargarlas y subirlas.",
     "documentation": "Enlace a la documentación",
-    "repository": "Enlace al repositorio de GitHub",
-    "doneMessage": "¿Terminaste?",
-    "upload": "Subir foto",
-    "successTitle": "Éxito",
-    "uploadSuccess": "Imagen de perfil actualizada correctamente",
-    "uploadingText": "Subiendo",
-    "errorTitle": "Error",
-    "errors": {
-      "sizeLimit": "El tamaño del archivo supera el límite permitido ({{limit}})",
-      "unsupported": "Formato no soportado",
-      "maximumFiles": "Disculpe, has excedido la cantidad máxima de archivos permitidos por subida"
-    }
-  },
-  "profile": {
-    "successCallback": "Pod actualizado satisfactoriamente",
-    "successTitle": "Éxito",
-    "errorCallback": "Ha ocurrido un error al enviar el formulario",
-    "errorTitle": "Error",
-    "saveBtn": "Guardar",
-    "resetBtn": "Limpiar",
-    "addBtn": "+ Agregar ",
-    "deleteBtn": "Eliminar",
-    "dropdownDefaultText": "- Seleccionar -",
-    "upload": "Subir foto",
-    "uploadSuccess": "Imagen de perfil actualizada correctamente",
-    "uploadingText": "Subiendo",
-    "updateSuccess": "Perfil actualizado correctamente",
-    "nameRequired": "Nombre es un campo obligatorio",
-    "errors": {
-      "default": "Algo está mal, intente nuevamente...",
-      "406": "Por favor asegúrese de que el formulario sea válido",
-      "500": "Ha ocurrido un error en el servidor",
-      "sizeLimit": "El tamaño del archivo supera el límite permitido ({{limit}})",
-      "unsupported": "Formato no soportado",
-      "maximumFiles": "Disculpe, has excedido la cantidad máxima de archivos permitidos por subida"
-    },
-    "autosaveNotification": "Cambios realizados en el Perfil son guardados automáticamente. No se puede deshacer.",
-    "warningResolution": "El valor del campo se ha actualizado a ",
-    "minMxNumberInclusive": "Error: Mínimo y máximo debería ser ",
-    "minMxNumberExclusive": "Error: Mínimo y máximo debería ser ",
-    "minMaxString": "Error: Mínimo y máximo debería ser ",
-    "defaultError": "Error: Formato incorrecto"
+    "repository": "Enlace al repositorio de GitHub"
   },
   "routes": {
     "title": "Visualizar rutas",
@@ -197,7 +109,8 @@
     "errorMessage": "No hay ninguna notificación marcada",
     "infoTitle": "Notificaciones actuales",
     "infoMessage1": "Tiene ",
-    "infoMessage2": " notificaciones sin leer"
+    "infoMessage2": " notificaciones sin leer",
+    "loadingNotifications": "Cargando sus notificaciones..."
   },
   "alert":{
     "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"

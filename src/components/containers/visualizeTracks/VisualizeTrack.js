@@ -74,6 +74,8 @@ export const VisualizeTrack = () => {
 
     // Loading
     const [loading, setLoading] = useState(false);
+    // Handle visualize button
+    const [disableVisualize, setDisableVisualize] = useState(true);
 
     /**
      * Fuction to handle load select event
@@ -96,8 +98,8 @@ export const VisualizeTrack = () => {
             NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
         } else if (vService.errorLoad || selectedFilter === undefined)  {
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
-        }
-        else {
+        } else {
+            setDisableVisualize(false);
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
         setData(vService.routes);
@@ -140,7 +142,7 @@ export const VisualizeTrack = () => {
                 handleMultimedia(vService);
             }
         }
-        setLoading(false)
+        setLoading(false);
         handleFilter();
     }
 
@@ -304,7 +306,7 @@ export const VisualizeTrack = () => {
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select className="select-format" id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                                     {t('routes.button')}
                                 </Button>
                             </div>

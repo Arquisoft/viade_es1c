@@ -7,19 +7,14 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import DownloadService from "../../../services/DownloadService";
 import {HashRouter} from "react-router-dom";
 
-/*
-    *****************************************
-    *                                       *
-    *   FOLLOWING THE SPECIFICATION V1.1    *
-    *                                       *
-    * ***************************************
-*/
-
 export const DownloadTrack = props => {
 
   // Locales for i18n
   const { t } = useTranslation();
 
+  /**
+   * Download the corresponding track entered by the user in the textField
+   */
   async function handleDownload() {
     let dService = new DownloadService(document.getElementById("downFile"),
       document.getElementById("txtUrl").value);

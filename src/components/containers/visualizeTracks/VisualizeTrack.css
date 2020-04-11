@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     display: inline-block;
-    margin-right: 50px;
+    margin-right: 45px;
     margin-top: 5em;
 }
 
@@ -75,5 +75,5 @@ h3 {
 
 .radio-format {
     margin-top: .8em;
-    margin-left: .3em;
+    margin-left: .2em;
 }
