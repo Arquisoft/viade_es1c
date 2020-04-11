@@ -1,10 +1,9 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {LoggedOut, LoggedIn, LoginButton } from '@solid/react';
-import {Redirect} from "react-router-dom";
+import {LoginButton } from '@solid/react';
 import "./Login.css";
 
-export const Login = props => {
+export const Login = () => {
     const {t} = useTranslation();
     const publicUrl = 'url('.concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(')');
 
@@ -12,7 +11,6 @@ export const Login = props => {
       <div data-testid="loginPane" style={{ background: publicUrl
               , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
               , backgroundPosition: 'center', backgroundSize: 'cover' }}>
-            <LoggedOut className = "loggedOutPane" >
                 <div className="Login">
                     <h2 className = "loginTitle">{t("login.title")}</h2>
                     <div >
@@ -29,10 +27,6 @@ export const Login = props => {
                         {t('login.solidHelp')}
                     </a>
                 </div>
-            </LoggedOut>
-            <LoggedIn className = "loggedInPane" >
-                <Redirect to="/welcome"></Redirect>
-            </LoggedIn>
         </div>
     );
 }

@@ -1,18 +1,15 @@
 import React, {useState, useCallback} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
 import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
-import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import { Redirect} from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
 import LoadingOverlay from 'react-loading-overlay';
 import VisualizeService from "../../../services/VisualizeService";
-import {HashRouter} from "react-router-dom";
 
 // CSS imports
 import 'leaflet/dist/leaflet.css';
@@ -74,6 +71,8 @@ export const VisualizeTrack = () => {
 
     // Loading
     const [loading, setLoading] = useState(false);
+    // Handle visualize button
+    const [disableVisualize, setDisableVisualize] = useState(true);
 
     /**
      * Fuction to handle load select event
@@ -96,8 +95,8 @@ export const VisualizeTrack = () => {
             NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
         } else if (vService.errorLoad || selectedFilter === undefined)  {
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
-        }
-        else {
+        } else {
+            setDisableVisualize(false);
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
         setData(vService.routes);
@@ -140,7 +139,7 @@ export const VisualizeTrack = () => {
                 handleMultimedia(vService);
             }
         }
-        setLoading(false)
+        setLoading(false);
         handleFilter();
     }
 
@@ -210,7 +209,6 @@ export const VisualizeTrack = () => {
 
     return (
         <section data-testid="visualizeTest">
-            <LoggedIn>
                 <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
@@ -304,7 +302,7 @@ export const VisualizeTrack = () => {
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select className="select-format" id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
@@ -313,10 +311,6 @@ export const VisualizeTrack = () => {
                     <NotificationContainer/>
                 </Container>
                 </LoadingOverlay>
-            </LoggedIn>
-            <LoggedOut>
-               <HashRouter> <Redirect to="/"></Redirect></HashRouter>
-            </LoggedOut>
         </section>
     );
 }

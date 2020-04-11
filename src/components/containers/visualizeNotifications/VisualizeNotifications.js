@@ -1,10 +1,7 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut, LoggedIn} from '@solid/react';
-import { Redirect} from "react-router-dom";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
-import {HashRouter} from "react-router-dom";
 
 export const VisualizeNotifications = (props) => {
   // Hook for i18n
@@ -12,7 +9,6 @@ export const VisualizeNotifications = (props) => {
 
   return (
     <section data-testid="visualizeNotificationTest">
-      <LoggedIn>
         <div className="modal-div">
           <div className="modal-appearance">
             <div className="modal-header">
@@ -23,10 +19,6 @@ export const VisualizeNotifications = (props) => {
             </div>
           </div>
         </div>
-      </LoggedIn>
-      <LoggedOut>
-        <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
-      </LoggedOut>
     </section>
   );
 }

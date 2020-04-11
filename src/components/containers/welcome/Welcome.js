@@ -1,18 +1,14 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut, LoggedIn} from '@solid/react';
 import "./Welcome.css";
-import { Redirect } from "react-router-dom";
 import {Value} from "@solid/react";
-import {HashRouter} from "react-router-dom";
 
 
-export const Welcome = props => {
+export const Welcome = () => {
     const {t} = useTranslation();
 
     return (
         <section data-testid="welcomeTest">
-            <LoggedIn className = "loggedInPane" >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
@@ -34,10 +30,6 @@ export const Welcome = props => {
                         </div>
                     </div>
                 </div>
-            </LoggedIn>
-            <LoggedOut className = "loggedOutPane">
-               <HashRouter> <Redirect to="/"></Redirect> </HashRouter>
-            </LoggedOut>
         </section>
     );
 }
