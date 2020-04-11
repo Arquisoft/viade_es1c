@@ -5,11 +5,12 @@ import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
 import { useNotification, useWebId } from '@inrupt/solid-react-components';
+import {HashRouter} from "react-router-dom";
 
 
 let timesLoad = 0; // For handleLoad()
@@ -21,9 +22,7 @@ export const ShareTrack = (props) => {
   const [data, setData] = useState([]);
 
   const webId = useWebId();
-  const { createNotification, discoverInbox } = useNotification(
-    webId
-  );
+  const { createNotification, discoverInbox } = useNotification(webId);
 
   /**
    * Send a notification to the receiver of the track
@@ -31,6 +30,7 @@ export const ShareTrack = (props) => {
    * @returns {Promise<void>}
    */
   const sendNotification = async (userWebId) => {
+
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
@@ -124,7 +124,7 @@ export const ShareTrack = (props) => {
   handleLoad(); // To upload tracks to select component
 
   return (
-    <section>
+    <section data-testid="shareTrackTest">
       <LoggedIn>
         <div className="modal-div">
           <div className="modal-content">
@@ -158,7 +158,7 @@ export const ShareTrack = (props) => {
         <NotificationContainer/>
       </LoggedIn>
       <LoggedOut>
-        <Redirect to="/"></Redirect>
+        <HashRouter>	<Redirect to="/"></Redirect>	</HashRouter>
       </LoggedOut>
     </section>
   );
