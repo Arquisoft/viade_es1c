@@ -214,13 +214,13 @@ export const VisualizeTrack = () => {
                 <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
-                        <h1 className="myH1">{t('routes.title')}</h1>
+                        <h1 data-testid="h1vTest" className="myH1">{t('routes.title')}</h1>
                     </Row>
                     <Row>
                         <Col sm={10}>
                             <Row>
                                 {!isViewerOpen && (
-                                    <Map className="map" center={center} zoom={zoom}>
+                                    <Map data-testid="mapTest" className="map" center={center} zoom={zoom}>
                                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                                         {showElements && (
                                           <div>
@@ -244,7 +244,7 @@ export const VisualizeTrack = () => {
                                           <h4 className="h4-format">{t('routes.histogram')}</h4>
                                       </Row>
                                       <Row>
-                                          <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
+                                          <VictoryChart data-testid="vVTest" style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
                                               <VictoryStack colorScale={"cool"}>
                                                   <VictoryArea data={elevation}/>
                                               </VictoryStack>
@@ -276,10 +276,10 @@ export const VisualizeTrack = () => {
                                       <Row>
                                           <div className="formal-div">
                                               <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
-                                              <Button className="button-margin" onClick={handlePowerOn}>{t('routes.play')}</Button>
-                                              <Button className="button-margin" onClick={handlePowerOff}>{t('routes.stop')}</Button>
-                                              <Button className="button-margin" onClick={handleNext}>{t('routes.next')}</Button>
-                                              <Button className="button-margin" onClick={handlePrevious}>{t('routes.previous')}</Button>
+                                              <Button data-testid="btnPlayTest" className="button-margin" onClick={handlePowerOn}>{t('routes.play')}</Button>
+                                              <Button data-testid="btnStopTest" className="button-margin" onClick={handlePowerOff}>{t('routes.stop')}</Button>
+                                              <Button data-testid="btnNextTest" className="button-margin" onClick={handleNext}>{t('routes.next')}</Button>
+                                              <Button data-testid="btnPreviousTest" className="button-margin" onClick={handlePrevious}>{t('routes.previous')}</Button>
                                           </div>
                                       </Row>
                                     )}

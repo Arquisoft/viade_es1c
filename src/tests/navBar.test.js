@@ -1,47 +1,51 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import MyNavBar from "../components/navBar/NavBar";
-import { render, queryByTestId, cleanup, getByTestId } from "@testing-library/react";
+import { act, render, queryByTestId, cleanup, getByTestId, waitForElement } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { getI18n } from "react-i18next";
 
-afterEach(cleanup);
-let w;
+// afterEach(cleanup);
+// let w;
 
-it("NavBar -> renders without crashing",() => {
-    const div = document.createElement("div");
-    ReactDOM.render(<MyNavBar></MyNavBar>, div);
-});
-
-it("NavBar -> renders navBar correctly", () => {
-    const {component, getByTestId} =render(<MyNavBar></MyNavBar>);
-    expect(getByTestId("navTest"));
-    getByTestId("pruebaClick1").click();
-});
-
-it("NavBar -> component navBar has the correct subComponents",() => {
-    //w.expect(getByTestId("visualTest")).toBeTruthy();
-    expect(document.getElementsByClassName("mr-auto")).toBeTruthy();
-    expect(document.getElementsByClassName("navbar-link a-bar")).toBeTruthy();
-    expect(document.getElementsByClassName("navbar-link a-bar a-download")).toBeTruthy();
-    expect(document.getElementsByClassName("i18nMenu")).toBeTruthy();
-    expect(document.getElementsByClassName("logout btn btn-light")).toBeTruthy();
-});
-
-// let wrapper;
-// beforeEach(() => act(() => {
-//     const {container,debug}=render(<MyNavBar/>);
-//     console.log(container);
-//     wrapper=container;
-//     debug();
-// }));
-
-// describe("PRUEBA", () => {
-//     afterAll(cleanup);
-//     test("Render",() => {
-//         expect(wrapper).toBeTruthy();
-//         //console.log(wrapper);
-//     });
-
-    
+// it("NavBar -> renders without crashing",() => {
+//     const div = document.createElement("div");
+//     ReactDOM.render(<MyNavBar></MyNavBar>, div);
 // });
+
+// it("NavBar -> renders navBar correctly", () => {
+//     const {component, getByTestId} =render(<MyNavBar></MyNavBar>);
+//     expect(getByTestId("navTest"));
+//     //expect(getByTestId("pruebaClick1"));
+// });
+
+// it("NavBar -> component navBar has the correct subComponents",() => {
+//     //w.expect(getByTestId("visualTest")).toBeTruthy();
+//     expect(document.getElementsByClassName("mr-auto")).toBeTruthy();
+//     expect(document.getElementsByClassName("navbar-link a-bar")).toBeTruthy();
+//     expect(document.getElementsByClassName("navbar-link a-bar a-download")).toBeTruthy();
+//     expect(document.getElementsByClassName("i18nMenu")).toBeTruthy();
+//     expect(document.getElementsByClassName("logout btn btn-light")).toBeTruthy();
+// });
+
+let contenedor;
+beforeEach(() => act(() => {
+    const {container}=render(<MyNavBar/>);
+    contenedor=container;
+}));
+
+describe("PRUEBA", () => {
+    
+        test("Render", async() => {
+            waitForElement(() =>  {
+                expect(queryByTestId(contenedor,"navTest")).not.toBeNull();
+                expect(queryByTestId(contenedor,"pruebaClick1")).toBeTruthy();
+                expect(queryByTestId(contenedor,"pruebaClick2")).toBeTruthy();
+                queryByTestId(contenedor,"pruebaClick1").click();
+                queryByTestId(contenedor,"pruebaClick2").click();
+                queryByTestId(contenedor,"visualTest").click();
+            
+            }); 
+        });
+      
+});
