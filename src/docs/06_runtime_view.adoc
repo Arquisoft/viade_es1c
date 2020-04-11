@@ -1,3 +1,73 @@
 [[section-runtime-view]]
 == Runtime View
-*TO BE DONE*
+=== Main Scenario
+=== First Scenario: Login
+==== Login flowchart
+****
+image:Login_flowchart.png[]
+****
+==== Login runtime in detail
+
+*Although it's a basic scenario, it's one of the most important scenarios due to, if a user is not logged in, he could not use the app.*
+
+. User opens the app at any browser. And there are two possibilities:
+.. User is already logged in, so he can use de app.
+.. User is not logged in, he can just click on Login and a popup will appear.
+... If user has a solid account, he can select which provider does he want to use to log in and fill the login form, introducing his solid credentials.
+... If user has not a solid account, he can register and create a personal POD. Then he will be able to log in introducing the entered information in the register form.
+.. User will be redirected to the main UI, where he can see some of his data and a slight introduction to our app.
+
+=== Second Scenario: Visualize tracks and media
+==== Visualize tracks and media flowchart
+****
+image:Visualize_flowchart.png[]
+****
+==== Visualize tracks and media runtime in detail
+
+*This scenario is probably the second most important scenario, behind of login scenario, because it's represents the main objective of our app, is the basis on which the rest of the app's functionalities are developed*
+
+. User logs in to the app.
+. User goes to visualize section.
+. User select if he wants to visualize his own tracks or other user's tracks that have been shared with him.
+. User clicks on load tracks from pod
+.. If user selected visualize his own tracks
+... If folder "viade/routes" does not exist on user's pod, app will show an error to the user.
+... If user pod's folder "viade/routes" is empty, app will show a warning to the user.
+... If folder "viade/routes" exist and it's not empty then the combo will be filled with the tracks uploaded in that folder.
+.. If user selected visualize other user's tracks.
+... If folder "public/share" does not exist on user's pod, app will show an error to the user.
+... If user pod's folder "public/share" is empty, app will show a warning to the user.
+... If folder "public/share" exist and it's not empty then the combo will be filled with the tracks uploaded in that folder.
+. User clicks on visualize.
+.. If user has not loaded his tracks from pod, app will show an error to the user.
+.. If user has loaded his tracks from pod.
+... If app can not read the track, app will show an error to the user.
+... If app can read the track but, app or user has not permissions to access media content, app will show an error to the user, but it will paint the track on the map.
+... If app can read the track and all permissions are good, then app will paint the track on the map and show all track's media content.
+
+=== Third Scenario: Share tracks
+==== Share tracks flowchart
+****
+image:Share_flowchart.png[]
+****
+
+==== Share tracks runtime in detail
+
+*Although this scenario is not the essential one of the app, it represents another of the basic and important requirements that the app should meet.*
+
+. User logs in to the app.
+. User selects share tracks section.
+. User selects:
+.. The track that he wants to share.
+.. The added friend with whom he wants to share.
+. User clicks on share
+.. If user does not select any friend to share with, the app will show an error to the user.
+.. If user has already shared that track with that friend, then the app will show a warning to the user.
+.. If something was wrong during the creation of the file in friend's pod, app will show an error to the user.
+.. If everything was good and there were any problems then the app will show a notification of success to the user and share the track with his selected friend.
+
+=== Fourth Scenario: Friends
+=== Fifth Scenario: Notifications
+=== Sixth Scenario: Upload tracks
+=== Seventh Scenario: Download tracks 
+
