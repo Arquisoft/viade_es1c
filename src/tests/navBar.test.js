@@ -30,7 +30,7 @@ import { getI18n } from "react-i18next";
 
 let contenedor;
 beforeEach(() => act(() => {
-    const {container}=render(<MyNavBar/>);
+    const {container}=render(<MyNavBar></MyNavBar>);
     contenedor=container;
 }));
 
@@ -41,9 +41,9 @@ describe("PRUEBA", () => {
                 expect(queryByTestId(contenedor,"navTest")).not.toBeNull();
                 expect(queryByTestId(contenedor,"pruebaClick1")).not.toBeNull();
                 expect(queryByTestId(contenedor,"pruebaClick2")).not.toBeNull();
-                queryByTestId(contenedor,"pruebaClick1").click();
-                queryByTestId(contenedor,"pruebaClick2").click();
-                queryByTestId(contenedor,"visualTest").click();
+                //queryByTestId(contenedor,"pruebaClick1").click();
+                //queryByTestId(contenedor,"pruebaClick2").click();
+                //queryByTestId(contenedor,"visualTest").click();
             
             }); 
         });
