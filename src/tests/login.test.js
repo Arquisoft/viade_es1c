@@ -17,7 +17,7 @@ afterEach(() => {
     container= null;
 });
 
-it("Welcome test", () => {
+it("Login test, renders without crashing", () => {
     act(() => {
         ReactDOM.render(<Login></Login>, container);
     });
