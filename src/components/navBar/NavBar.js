@@ -45,7 +45,7 @@ const MyNavBar = () => {
                                 </DropdownItem>
                             </DropdownButton>
                         </div>
-                        <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
+                        <LogoutButton id="logoutButton" className="logout btn btn-light">{t("logout.button")}</LogoutButton>
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>
