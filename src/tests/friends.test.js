@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import MyFriends from "../components/containers/friends/children/MyFriends";
 
-import Friends from "../components/containers/friends/Friends";
-
+const webId = 'https://miguelornia.solid.community/profile/card#me';
 
 it("renders without crashing",() => {
     const div = document.createElement("div");
-    ReactDOM.render(<Friends></Friends>, div);
+    ReactDOM.render(<MyFriends myWebId={webId}></MyFriends>, div);
 })
 
 it("renders button correctly", () => {
-    const {getByTestId} =render(<Friends></Friends>);
+    const {getByTestId} =render(<MyFriends myWebId={webId}></MyFriends>);
     expect(getByTestId("friendsTest"));
     
     expect(getByTestId("btnAddFriend"));
@@ -34,9 +34,9 @@ it("renders button correctly", () => {
 //    container= null;
 //});
 //
-//it("Friends test, renders without crashing", () => {
+//it("MyFriends test, renders without crashing", () => {
 //    act(() => {
-//        ReactDOM.render(<Friends></Friends>, container);
+//        ReactDOM.render(<MyFriends></MyFriends>, container);
 //    });
 //
 //    expect(container).toBeTruthy();
