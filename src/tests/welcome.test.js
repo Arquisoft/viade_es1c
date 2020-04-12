@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render, waitForElement, queryByTestId} from "@testing-library/react";
-//import '@testing-library/jest-dom'
-import { act } from "react-dom/test-utils"
-
-import {useTranslation} from "react-i18next";
+import { act } from "react-dom/test-utils";
 
 import Welcome from "../components/containers/welcome/Welcome";
 
@@ -21,11 +17,11 @@ afterEach(() => {
     container= null;
 });
 
-it("Welcome test", () =>{
-    act(() =>{
+it("Welcome test", () => {
+    act(() => {
         ReactDOM.render(<Welcome></Welcome>, container);
     });
-    
+
     expect(container).toBeTruthy();
     expect(container.querySelector("#welcomeTest")).toBeTruthy();
     expect(container.querySelector("#h1-welcome")).toBeTruthy();
