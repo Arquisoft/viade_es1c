@@ -8,7 +8,7 @@ export const VisualizeNotifications = () => {
   const {t} = useTranslation();
 
   return (
-    <section data-testid="visualizeNotificationTest">
+    <section>
         <div className="modal-div">
           <div className="modal-appearance">
             <div className="modal-header">
