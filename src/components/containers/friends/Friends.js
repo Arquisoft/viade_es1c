@@ -98,7 +98,7 @@ export const Friends = () => {
               <span className="span-friends">{t("friends.addTitle")}</span>
               <div className="add-friends">
                 <input className="input-add" id="friendId" type="text"></input>
-                <Button id="add" className="correct-margin" onClick={addFriend}>
+                <Button id="add" data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
                   {t("friends.add")}
                 </Button>
               </div>
@@ -108,7 +108,7 @@ export const Friends = () => {
                 <MyFriends src="user.friends"></MyFriends>
               </div>
               <div>
-                <Button id="delete" className="correct-margin" onClick={deleteFriend}>
+                <Button id="delete" data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
                   {t("friends.delete")}
                </Button>
               </div>
