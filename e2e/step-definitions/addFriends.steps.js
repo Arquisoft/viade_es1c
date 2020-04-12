@@ -18,7 +18,7 @@ defineFeature((feature), (test) => {
       });
       page = await browser.newPage();
       await page.goto("http://localhost:3000/#/",{waitUntil: "load", timeout: 0}); 
-      const newPagePromise = new Promise((x) => browser.once("targetcreated", target => x(target.page())));	
+      const newPagePromise = new Promise((x) => {browser.once("targetcreated", target => x(target.page()))});	
       await expect(page).toClick("button", { className: "btn btn-primary a-solid button-login" });
       popup = await newPagePromise;
       expect(popup).toClick("button", { text: "Solid Community" });

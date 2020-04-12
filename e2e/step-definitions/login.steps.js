@@ -21,7 +21,7 @@ defineFeature((feature), (test) => {
 
     when("We press Iniciar Sesion and enter our information", async () => {
 
-      const newPagePromise = new Promise((x) => browser.once("targetcreated", target => x(target.page())));	
+      const newPagePromise = new Promise((x) => {browser.once("targetcreated", target => x(target.page()))});	
       await expect(page).toClick("button", { className: "btn btn-primary a-solid button-login" });
       popup = await newPagePromise;
 
