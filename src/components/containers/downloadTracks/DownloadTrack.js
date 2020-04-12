@@ -30,7 +30,7 @@ export const DownloadTrack = () => {
             </div>
             <div className="modal-body">
               <h4>{t("download.instruction")}</h4>
-              <input id="txtUrl" type="text"></input>
+              <input id="txtUrl" type="text" placeholder="e.g. track1"></input>
               <br/>
               <i>{t("download.especificacion")}</i>
             </div>
