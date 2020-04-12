@@ -25,9 +25,7 @@ it("Welcome test", () =>{
     act(() =>{
         ReactDOM.render(<Welcome></Welcome>, container);
     });
-
     
-
     expect(container).toBeTruthy();
     expect(container.querySelector("#welcomeTest")).toBeTruthy();
     expect(container.querySelector("#h1-welcome")).toBeTruthy();
