@@ -1,15 +1,14 @@
 import React, {useState, useCallback} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
 import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
-import {LoggedIn, LoggedOut} from "@solid/react";
 import {Button, Col, Row, Container} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import L from 'leaflet';
 import {Select} from '../../utils/select/Select';
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import { Redirect } from "react-router-dom";
 import ImageViewer from 'react-simple-image-viewer';
 import ReactPlayer from 'react-player';
+import LoadingOverlay from 'react-loading-overlay';
 import VisualizeService from "../../../services/VisualizeService";
 
 // CSS imports
@@ -26,6 +25,7 @@ L.Icon.Default.mergeOptions({
 });
 
 let actualIndexVideo = 0;   // For actual index video
+let selectedFilter; // For actual filter
 /**
  * Component used to display routes on a map
  */
@@ -65,31 +65,63 @@ export const VisualizeTrack = () => {
     const [videos, setVideos] = useState([]);
     const [actualVideo, setActualVideo] = useState("");
 
+    // For tracks filter
+    const myTracks = "Mis rutas";
+    const shared = "Compartidas";
+
+    // Loading
+    const [loading, setLoading] = useState(false);
+    // Handle visualize button
+    const [disableVisualize, setDisableVisualize] = useState(true);
+
     /**
      * Fuction to handle load select event
      * @returns {Promise<void>}
      */
     async function handleLoad(){
         let vService = new VisualizeService(null);
-        await vService.getRoutesFromPod();
+        let buttons = document.getElementsByName("filter-radio");
+        let labels = document.getElementsByName("filter-label");
+        for (let i = 0; i < buttons.length; i++){
+            if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.myTracks')) === 0){
+                selectedFilter = myTracks;
+                await vService.getMyRoutesFromPod();
+            } else if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.shared')) === 0){
+                selectedFilter = shared;
+                await vService.getSharedRoutesFromPod();
+            }
+        }
         if (vService.warning != null){
             NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
-        } else if (vService.errorLoad)  {
+        } else if (vService.errorLoad || selectedFilter === undefined)  {
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
-        }
-        else {
+        } else {
+            setDisableVisualize(false);
             NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
         }
         setData(vService.routes);
+        handleFilter();
     }
 
     /**
-     * Funcion to handle display map, histogram and multimedia event
+     * Function that handle select radioButton
+     */
+    function handleFilter() {
+        if (selectedFilter.localeCompare(shared) === 0) {
+            document.getElementById("radio-2").checked = true;
+        } else if (selectedFilter.localeCompare(myTracks) === 0) {
+            document.getElementById("radio-1").checked = true;
+        }
+    }
+
+    /**
+     * Function to handle display map, histogram and multimedia event
      * @returns {Promise<void>}
      */
     async function handleSelect(){
+        setLoading(true);
         let vService = new VisualizeService(document.getElementById("selectRoute"));
-        await vService.fillMap();
+        await vService.fillMap(selectedFilter);
         if (vService.error != null){
             NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
         } else {
@@ -107,6 +139,8 @@ export const VisualizeTrack = () => {
                 handleMultimedia(vService);
             }
         }
+        setLoading(false);
+        handleFilter();
     }
 
     /**
@@ -174,8 +208,8 @@ export const VisualizeTrack = () => {
     }
 
     return (
-        <section>
-            <LoggedIn>
+        <section data-testid="visualizeTest">
+                <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
                         <h1 className="myH1" id="MisRutas">{t('routes.title')}</h1>
@@ -252,13 +286,23 @@ export const VisualizeTrack = () => {
                         </Col>
                         <Col>
                             <div>
+                                <Row>
+                                    <label className="radio-format" name="filter-label">
+                                        <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
+                                        {t('routes.myTracks')}
+                                    </label>
+                                    <label className="radio-format" name="filter-label">
+                                        <input name="filter-radio" id="radio-2" type="radio"/>
+                                        {t('routes.shared')}
+                                    </label>
+                                </Row>
                                 <Button className="visualizeButton" variant="primary"
                                         onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select className="select-format" id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect}>
+                                <Button className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                                     {t('routes.button')}
                                 </Button>
                             </div>
@@ -266,10 +310,7 @@ export const VisualizeTrack = () => {
                     </Row>
                     <NotificationContainer/>
                 </Container>
-            </LoggedIn>
-            <LoggedOut>
-                <Redirect to="/"></Redirect>
-            </LoggedOut>
+                </LoadingOverlay>
         </section>
     );
 }

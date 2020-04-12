@@ -1,24 +1,17 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
-import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import DownloadService from "../../../services/DownloadService";
 
-/*
-    *****************************************
-    *                                       *
-    *   FOLLOWING THE SPECIFICATION V1.1    *
-    *                                       *
-    * ***************************************
-*/
-
-export const DownloadTrack = props => {
+export const DownloadTrack = () => {
 
   // Locales for i18n
   const { t } = useTranslation();
 
+  /**
+   * Download the corresponding track entered by the user in the textField
+   */
   async function handleDownload() {
     let dService = new DownloadService(document.getElementById("downFile"),
       document.getElementById("txtUrl").value);
@@ -29,9 +22,8 @@ export const DownloadTrack = props => {
   }
 
   return (
-    <section>
-      <LoggedIn>
-        <div className="modal-dialog">
+    <section data-testid="downloadComp">
+        <div className="modal-dialog" >
           <div className="modal-content">
             <div className="modal-header">
               <h2>{t("download.title")}</h2>
@@ -49,10 +41,6 @@ export const DownloadTrack = props => {
           </div>
         </div>
         <NotificationContainer/>
-      </LoggedIn>
-      <LoggedOut>
-        <Redirect to="/"></Redirect>
-      </LoggedOut>
     </section>
   );
 };

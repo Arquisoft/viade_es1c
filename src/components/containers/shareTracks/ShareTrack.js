@@ -4,8 +4,6 @@ import { Select } from "../../utils/select/Select";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./ShareTrack.css";
-import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
 import FriendList from "./children/friendList/FriendList";
 import ShareService from "../../../services/ShareService";
 import ldflex from "@solid/query-ldflex";
@@ -14,16 +12,14 @@ import { useNotification, useWebId } from '@inrupt/solid-react-components';
 
 let timesLoad = 0; // For handleLoad()
 
-export const ShareTrack = (props) => {
+export const ShareTrack = () => {
 
   // i18n locales
   const { t } = useTranslation();
   const [data, setData] = useState([]);
 
   const webId = useWebId();
-  const { createNotification, discoverInbox } = useNotification(
-    webId
-  );
+  const { createNotification, discoverInbox } = useNotification(webId);
 
   /**
    * Send a notification to the receiver of the track
@@ -31,6 +27,7 @@ export const ShareTrack = (props) => {
    * @returns {Promise<void>}
    */
   const sendNotification = async (userWebId) => {
+
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
@@ -124,8 +121,7 @@ export const ShareTrack = (props) => {
   handleLoad(); // To upload tracks to select component
 
   return (
-    <section>
-      <LoggedIn>
+    <section data-testid="shareTrackTest">
         <div className="modal-div">
           <div className="modal-content">
             <div className="modal-header">
@@ -156,10 +152,6 @@ export const ShareTrack = (props) => {
           </div>
         </div>
         <NotificationContainer/>
-      </LoggedIn>
-      <LoggedOut>
-        <Redirect to="/"></Redirect>
-      </LoggedOut>
     </section>
   );
 };

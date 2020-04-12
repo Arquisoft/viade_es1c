@@ -1,13 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
-import { Button } from 'react-bootstrap';
-import DownloadService from '../services/DownloadService';
+import React from "react";
+import ReactDOM from "react-dom";
+import DownloadTrack  from "../components/containers/downloadTracks/DownloadTrack";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+//import {BrowserRouter as Router} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 
-const r1='../tracks/rutaDePrueba3'
+it("Download -> renders without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<DownloadTrack></DownloadTrack>, div);
+});
 
-var upl=new DownloadService();
+it("Download -> renders download correctly", () => {
+    const {getByTestId} = render(<DownloadTrack></DownloadTrack>);
+    expect(getByTestId("downloadComp"));
+});
 
-test('Test download', () => {
-  
-}); 
+it("Download -> component download has the correct subComponents", () => {
+    expect(document.getElementsByClassName("modal-dialog")).toBeTruthy();
+    expect(document.getElementsByClassName("modal-content")).toBeTruthy();
+    expect(document.getElementsByClassName("modal-header")).toBeTruthy();
+    expect(document.getElementsByClassName("modal-body")).toBeTruthy();
+    expect(document.getElementsByClassName("modal-footer")).toBeTruthy();
+});

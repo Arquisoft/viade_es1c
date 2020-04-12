@@ -8,24 +8,39 @@ import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
 import Login from "../containers/login/Login";
 import Friends from "../containers/friends/Friends";
-import VisualizeNotification from "../containers/visualizeNotifications/VisualizeNotification";
+import VisualizeNotifications from "../containers/visualizeNotifications/VisualizeNotifications";
+import { LoggedIn, LoggedOut } from "@solid/react";
 
+/**
+ * It is in charge of the different routes of the application
+ * and of verifying that access is allowed to certain areas of the application
+ * @returns {*}
+ * @constructor
+ */
 export default function Routes() {
     return (
         <HashRouter>
-                <MyNavBar/>
-                <Switch>
-                    <Route exact path="/welcome" component={Welcome}/>
-                    <Route exact path="/visualize" component={VisualizeTrack}/>
-                    <Route exact path="/upload" component={UploadTrack}/>
-                    <Route exact path="/share" component={ShareTrack}/>
-                    <Route exact path="/friends" component={Friends}/>
-                    <Route exact path="/download" component={DownloadTrack}/>
-                    <Route exact path="/notifications" component={VisualizeNotification}/>
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path="/" component={Login}/>
-                    <Redirect to="/"></Redirect>
-                </Switch>
+                <LoggedIn>
+                    <MyNavBar/>
+                    <Switch>
+                        <Route exact path="/" component={Welcome}/>
+                        <Route exact path="/welcome" component={Welcome}/>
+                        <Route exact path="/visualize" component={VisualizeTrack}/>
+                        <Route exact path="/upload" component={UploadTrack}/>
+                        <Route exact path="/share" component={ShareTrack}/>
+                        <Route exact path="/friends" component={Friends}/>
+                        <Route exact path="/download" component={DownloadTrack}/>
+                        <Route exact path="/notifications" component={VisualizeNotifications}/>
+                        <Redirect to="/"></Redirect>
+                    </Switch>
+                </LoggedIn>
+                <LoggedOut>
+                    <Switch>
+                        <Route exact path="/" component={Login}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Redirect to="/"></Redirect>
+                    </Switch>
+                </LoggedOut>
         </HashRouter>
     );
 }
