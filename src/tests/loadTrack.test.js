@@ -5,9 +5,9 @@ import { Button } from "react-bootstrap";
 import UploadService from "../services/UploadService";
 import archivo from "../tracks/rutaDePrueba3";
 
-const fs = require('fs');
+const fs = require("fs");
 
-var r1="../tracks/rutaDePrueba3.json"
+var r1="../tracks/rutaDePrueba3.json";
 
 var upl=new UploadService();
 
@@ -18,7 +18,7 @@ test("Test login", () => {
     type: "text/turtle",
   });
 
-  ReactDOM.render(<Button onClick={() =>{
+  ReactDOM.render(<Button onClick={() => {
     upl.processTrack(file);
   }}>Prueba</Button>,div);
 
@@ -27,6 +27,6 @@ test("Test login", () => {
   //expect(2+2).toBe(4);
 }); 
 
-() =>{
+() => {
 
 };

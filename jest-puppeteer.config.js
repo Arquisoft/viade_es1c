@@ -5,4 +5,4 @@ module.exports = {
       launchTimeout: 60000,
       debug: true,
     },
-  }
+  };
