@@ -14,8 +14,13 @@ it("Download -> renders without crashing",() => {
 it("Download -> renders download correctly", () => {
     const {getByTestId} = render(<DownloadTrack></DownloadTrack>);
     expect(getByTestId("downloadComp"));
+    expect(getByTestId("titleDownloadh2"));
 });
 
-it("Download -> component download has the correct subComponents", () => {
-   
-});
+//it("Download -> component download has the correct subComponents", () => {
+//    expect(document.getElementsByClassName("modal-dialog")).toBeTruthy();
+//    expect(document.getElementsByClassName("modal-content")).toBeTruthy();
+//    expect(document.getElementsByClassName("modal-header")).toBeTruthy();
+//    expect(document.getElementsByClassName("modal-body")).toBeTruthy();
+//    expect(document.getElementsByClassName("modal-footer")).toBeTruthy();
+//});
