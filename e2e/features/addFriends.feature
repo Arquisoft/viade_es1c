@@ -5,4 +5,5 @@ Feature: Add a Friend
 		When We enter a WebId
 		And We click the Add button
 		Then I expect the WebId to appear on the friends list
+		And I delete my new friend
 		

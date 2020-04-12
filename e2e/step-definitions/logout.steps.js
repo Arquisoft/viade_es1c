@@ -11,9 +11,9 @@ defineFeature(feature, test => {
 	})
 	
   test('We want to logout', ({ given, when, then }) => {
-    let popup;
-
+    
     given('The application page', async() => {
+      let popup;
       browser = await puppeteer.launch({
         headless: false,
         defaultViewport: null
