@@ -17,7 +17,6 @@ it("renders button correctly", () => {
     
     expect(getByTestId("btnAddFriend"));
     //getByTestId("btnAddFriend").click();
-
     expect(getByTestId("btnDeleteFriend"));
     //getByTestId("btnDeleteFriend").click();
     
