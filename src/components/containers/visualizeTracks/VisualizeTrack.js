@@ -210,13 +210,13 @@ export const VisualizeTrack = () => {
     return (
         <section data-testid="visualizeTest">
                 <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
-                <Container>
+                <Container data-testid="containerVisualTest">
                     <Row>
                         <h1 className="myH1">{t('routes.title')}</h1>
                     </Row>
                     <Row>
                         <Col sm={10}>
-                            <Row>
+                            <Row data-testid="visualizeTest2">
                                 {!isViewerOpen && (
                                     <Map className="map" center={center} zoom={zoom}>
                                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
@@ -296,13 +296,13 @@ export const VisualizeTrack = () => {
                                         {t('routes.shared')}
                                     </label>
                                 </Row>
-                                <Button className="visualizeButton" variant="primary"
+                                <Button data-testid="btn1VTest" className="visualizeButton" variant="primary"
                                         onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select className="select-format" id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
+                                <Button data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                                     {t('routes.button')}
                                 </Button>
                             </div>

@@ -17,9 +17,5 @@ it("Download -> renders download correctly", () => {
 });
 
 it("Download -> component download has the correct subComponents", () => {
-    expect(document.getElementsByClassName("modal-dialog")).toBeTruthy();
-    expect(document.getElementsByClassName("modal-content")).toBeTruthy();
-    expect(document.getElementsByClassName("modal-header")).toBeTruthy();
-    expect(document.getElementsByClassName("modal-body")).toBeTruthy();
-    expect(document.getElementsByClassName("modal-footer")).toBeTruthy();
+   
 });
