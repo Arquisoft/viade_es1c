@@ -182,7 +182,7 @@ export default class VisualizeService{
                     if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
                         try {
                             this.existsImage = true;
-                            let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                            let permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
                             await this.readPermission(permissionRoute);
                             this.permissionsImage = true;
                             this.images.push(routeMedia);
@@ -192,7 +192,7 @@ export default class VisualizeService{
                     } else if (extension.localeCompare(".mp4") === 0) {
                         try {
                             this.existsVideo = true;
-                            let permissionRoute = routeMedia.replace("/routeMedia/image/*", "/card#me");
+                            let permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
                             await this.readPermission(permissionRoute);
                             this.permissionsVideo = true;
                             this.videos.push(routeMedia);

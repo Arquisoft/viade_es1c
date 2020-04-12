@@ -97,7 +97,7 @@ export const Friends = () => {
             <div className="modal-body">
               <span className="span-friends">{t("friends.addTitle")}</span>
               <div className="add-friends">
-                <input className="input-add" id="friendId" type="text"></input>
+                <input className="input-add" id="friendId" type="text" placeholder="https://user.solid.community/profile/card#me"></input>
                 <Button className="correct-margin" onClick={addFriend}>
                   {t("friends.add")}
                 </Button>
