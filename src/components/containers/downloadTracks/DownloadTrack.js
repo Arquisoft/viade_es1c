@@ -26,7 +26,7 @@ export const DownloadTrack = () => {
         <div className="modal-dialog" >
           <div className="modal-content">
             <div className="modal-header">
-              <h2>{t("download.title")}</h2>
+              <h2 data-testid="titleDownloadh2">{t("download.title")}</h2>
             </div>
             <div className="modal-body">
               <h4>{t("download.instruction")}</h4>
