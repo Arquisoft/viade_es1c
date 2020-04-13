@@ -30,6 +30,7 @@
     "react-scripts": "3.2.0",
     "react-simple-image-viewer": "0.0.3",
     "react-tooltip": "^4.1.2",
+    "selenium-webdriver": "^4.0.0-alpha.7",
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
     "styled-components": "^5.0.1",
@@ -39,7 +40,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
+    "test:e2e": "jest -c e2e/jest.config.js",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
+    "cucumber": "cucumber-js --require-module @babel/register",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -58,9 +61,13 @@
     ]
   },
   "devDependencies": {
+    "cucumber": "^6.0.5",
+    "jest": "^25.2.7",
+    "jest-cucumber": "^2.0.11",
+    "jest-puppeteer": "^4.4.0",
+    "puppeteer": "^2.1.1",
     "@testing-library/react": "^9.5.0",
     "jest-dom": "^4.0.0",
-    "jest-puppeteer": "^4.4.0",
     "shx": "^0.3.2"
   },
   "resolutions": {
