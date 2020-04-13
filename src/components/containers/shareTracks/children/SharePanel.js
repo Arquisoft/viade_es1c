@@ -7,7 +7,7 @@ import "./SharePanel.css";
 import FriendList from "./friendList/FriendList";
 import ldflex from "@solid/query-ldflex";
 import { useNotification } from '@inrupt/solid-react-components';
-
+import ShareService from "../../../../services/ShareService";
 
 let timesLoad = 0; // For handleLoad()
 
@@ -56,6 +56,9 @@ export const SharePanel = ({myWebId, service}) => {
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friend");
     let friendsWebIds = [];
+    if (sService instanceof ShareService) {
+      sService = new ShareService();
+    }
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
         friendsWebIds.push(friends[i].innerText);
