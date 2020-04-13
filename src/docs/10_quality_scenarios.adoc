@@ -54,6 +54,7 @@ the application must have a strong access control to avoid bad practices | High,
 |Security| Data security with Solid PODs | High, High
 | Usability | The application must be easy to use, intuitive for inexperienced users | Medium, High
 |Efficiency | The application must respond in less than two seconds to make it more dynamic. | High, High
+|Efficiency | The application must upload and download routes in less than two seconds. | Medium, High
 |Robustness | Robustness in terms of the number of users that will operate on it  | High, High
 |Robustness| Robustness in terms of persistence | High, High
 |Accesibility | The application must be accessible to all people | High, High
