@@ -25,6 +25,7 @@ Constraints that have to do with design and implementation decisions
 |We will use the React JavaScript library for the development of user interfaces. This development environment merges, links the structure of the interface with the logic.
 |Interoperability between different route management systems
 |The application must be compatible with other route management systems.
+|Follow the specification proposed in the  GitHub's ViadeSpec repository| Try to follow the specifications of the GitHub ViadeSpec repository, to make the application more interoperable. We have followed these specifications until version 1.1.
 | Solid Specifications |Follow Solid specifications
 |===
 
