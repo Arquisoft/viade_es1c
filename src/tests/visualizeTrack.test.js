@@ -23,7 +23,15 @@ it("VisualizeTrack -> component visualizeTrack has the correct subComponents", (
     expect(getByTestId("containerVisualTest")).toBeTruthy();
     expect(getByTestId("btn1VTest")).toBeTruthy();
     expect(getByTestId("btn2VTest")).toBeTruthy();
-    getByTestId("btn2VTest").click();
+    expect(getByTestId("combo")).toBeTruthy();
 
-    
+});
+
+it("VisualizeTrack -> load button is working", () => {
+
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    expect(getByTestId("btn1VTest")).toBeTruthy();
+    getByTestId("btn1VTest").click();
+    expect(getByTestId("combo")).toBeTruthy();
+
 });
