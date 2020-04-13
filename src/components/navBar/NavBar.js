@@ -12,33 +12,33 @@ const MyNavBar = () => {
     const {t} = useTranslation();
     return (
         <section data-testid="navTest">
-                <Navbar data-testid="navTest2" className="nav-color">
-                    <a data-testid="logoTestId" className="navbar-brand a-bar a-logo" href="#/">
+                <Navbar className="nav-color">
+                    <a className="navbar-brand a-bar a-logo" href="#/">
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
                     </a>
                     <Nav className="mr-auto">
-                        <a data-testid="NV_visual_1" data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize">
+                        <a data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize">
                             <img src={process.env.PUBLIC_URL + "/img/icon/maps-icon.png"} width="40" height="40" alt="My tracks"/>
                         </a>
-                        <a data-testid="NV_share_2" data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
+                        <a data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
                             <img src={process.env.PUBLIC_URL + "/img/icon/share-files.svg"} width="27" height="49" alt="Share files"/>
                         </a>
-                        <a data-testid="NV_friend_3" data-tip={t('navBar.friends')} className="navbar-link a-bar" href="#/friends">
+                        <a data-tip={t('navBar.friends')} className="navbar-link a-bar" href="#/friends">
                             <img src={process.env.PUBLIC_URL + "/img/icon/friends-icon.png"} width="38" height="40" alt="My friends"/>
                         </a>
-                        <a data-testid="NV_not_4" data-tip={t('navBar.notifications')} className="navbar-link a-bar" href="#/notifications">
+                        <a data-tip={t('navBar.notifications')} className="navbar-link a-bar" href="#/notifications">
                             <img src={process.env.PUBLIC_URL + "/img/icon/notification-icon.svg"} width="26" height="44" alt="Notifications"/>
                         </a>
-                        <a data-testid="NV_up_5" data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
+                        <a data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
                             <img src={process.env.PUBLIC_URL + "/img/icon/upload-icon.png"} width="40" height="40" alt="Upload track"/>
                         </a>
-                        <a data-testid="NV_down_6" data-tip={t('navBar.download')} className="navbar-link a-bar a-download" href="#/download">
+                        <a data-tip={t('navBar.download')} className="navbar-link a-bar a-download" href="#/download">
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">
                             <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
                                 <DropdownItem>
-                                    <div data-testid="NV_tr_7" onClick={() => i18n.changeLanguage("en")}> ENG </div>
+                                    <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
                                 <DropdownItem>
                                     <div onClick={() => i18n.changeLanguage("es")}> ESP </div>

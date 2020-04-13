@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import MyFriends from "../components/containers/friends/children/MyFriends";
 
-const webId = 'https://miguelornia.solid.community/profile/card#me';
+const webId = "https://miguelornia.solid.community/profile/card#me";
 
 it("renders without crashing",() => {
     const div = document.createElement("div");
