@@ -21,6 +21,7 @@ it("Add friend", () => {
     fireEvent.change(input, {target: {value: "https://miguelornia.inrupt.net/profile/card#me"}});
     expect(getByTestId("btnAddFriend"));
     getByTestId("btnAddFriend").click();
+    fireEvent.change(input, {target: {value: "https://miguelornia.inrupt.net/profile/card#me"}});
     getByTestId("btnAddFriend").click();
     fireEvent.change(input, {target: {value: ""}});
     getByTestId("btnAddFriend").click();
