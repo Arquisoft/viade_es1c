@@ -52,7 +52,7 @@ export default class DownloadService {
         "viade/routes/" == folder where the routes are stored
     */
     this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/");
-    if (this.HTMLElementUrlValue != null){
+    if (this.HTMLElementUrlValue !== null){
       let selectedRouteName = this.HTMLElementUrlValue.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
     }

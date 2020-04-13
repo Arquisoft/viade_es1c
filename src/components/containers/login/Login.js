@@ -1,11 +1,11 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {LoginButton } from '@solid/react';
+import {LoginButton } from "@solid/react";
 import "./Login.css";
 
 export const Login = () => {
     const {t} = useTranslation();
-    const publicUrl = 'url('.concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(')');
+    const publicUrl = "url(".concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(")");
 
     return (
       <div id="loginPane" style={{ background: publicUrl

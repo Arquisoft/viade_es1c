@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import NotificationsTable from "../components/containers/visualizeNotifications/children/notificationsTable/NotificationsTable";
+import NotificationsTable from "../components/containers/visualizeNotifications/children/NotificationsTable";
 import { render } from "@testing-library/react";
 
 const webId = "https://miguelornia.solid.community/profile/card#me";

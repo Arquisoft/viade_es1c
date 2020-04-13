@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import MyFriends from "../components/containers/friends/children/MyFriends";
 import FriendsService from "./mocks/FriendsService";
@@ -16,6 +16,9 @@ it("renders without crashing",() => {
 it("renders button correctly", () => {
     const {getByTestId} =render(<MyFriends myWebId={webId} service={fService}></MyFriends>);
     expect(getByTestId("friendsTest"));
+    expect(getByTestId("input-add"));
+    const input = getByTestId("input-add");
+    fireEvent.change(input, {target: {value: "Pepe"}});
     expect(getByTestId("btnAddFriend"));
     getByTestId("btnAddFriend").click();
     expect(getByTestId("btnDeleteFriend"));

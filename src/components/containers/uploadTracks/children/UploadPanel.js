@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import 'react-notifications/lib/notifications.css';
+import "react-notifications/lib/notifications.css";
 import { NotificationContainer, NotificationManager } from "react-notifications";
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 import "./UploadPanel.css";
 
 

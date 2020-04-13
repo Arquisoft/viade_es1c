@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
+import NotificationsTable  from "./children/NotificationsTable";
 import "./VisualizeNotifications.css";
 import { useWebId } from "@inrupt/solid-react-components";
 

@@ -16,7 +16,7 @@ export const DownloadPanel = ({service}) => {
     await dService.searchTrack(document.getElementById("txtUrl").value,
       document.getElementById("downFile"));
     if (dService.error != null) {
-      NotificationManager.error(t("download.errorMessage"), t("download.errorTitle"), 5500)
+      NotificationManager.error(t("download.errorMessage"), t("download.errorTitle"), 5500);
     }
   }
 
@@ -28,7 +28,7 @@ export const DownloadPanel = ({service}) => {
             <h2 data-testid="titleDownloadh2">{t("download.title")}</h2>
           </div>
           <div className="modal-body">
-            <h4 data-testid="instruction">{t("download.instruction")}</h4>
+            <h4 data-testid="instruction" placeholder="e.g. track1">{t("download.instruction")}</h4>
             <input data-testid="inputUrl" id="txtUrl" type="text"></input>
             <br/>
             <i data-testid="extension">{t("download.especificacion")}</i>

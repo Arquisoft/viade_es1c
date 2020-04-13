@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import VisualizeTrack from '../containers/visualizeTracks/VisualizeTrack';
+import VisualizeTrack from "../containers/visualizeTracks/VisualizeTrack";
 import UploadTrack from "../containers/uploadTracks/UploadTrack";
 import MyNavBar from "../navBar/NavBar";
 import ShareTrack from "../containers/shareTracks/ShareTrack";

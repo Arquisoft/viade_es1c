@@ -1,26 +1,26 @@
 import React, {useState, useCallback} from "react";
 import {Marker, Popup, TileLayer, Polyline, Map} from "react-leaflet";
-import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
-import {Button, Col, Row, Container} from 'react-bootstrap';
+import { VictoryArea, VictoryChart, VictoryTheme, VictoryStack } from "victory";
+import {Button, Col, Row, Container} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
-import L from 'leaflet';
-import {Select} from '../../../utils/select/Select';
+import L from "leaflet";
+import {Select} from "../../../utils/select/Select";
 import {NotificationContainer, NotificationManager} from "react-notifications";
-import ImageViewer from 'react-simple-image-viewer';
-import ReactPlayer from 'react-player';
-import LoadingOverlay from 'react-loading-overlay';
+import ImageViewer from "react-simple-image-viewer";
+import ReactPlayer from "react-player";
+import LoadingOverlay from "react-loading-overlay";
 
 // CSS imports
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 import "./VisualizePanel.css";
-import 'react-notifications/lib/notifications.css';
+import "react-notifications/lib/notifications.css";
 
 // Marker's icon
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
 let actualIndexVideo = 0;   // For actual index video
@@ -82,21 +82,21 @@ export const VisualizePanel = ({service}) => {
     let buttons = document.getElementsByName("filter-radio");
     let labels = document.getElementsByName("filter-label");
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.myTracks')) === 0){
+      if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.myTracks")) === 0){
         selectedFilter = myTracks;
         await vService.getMyRoutesFromPod();
-      } else if (buttons[i].checked && labels[i].innerText.localeCompare(t('routes.shared')) === 0){
+      } else if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.shared")) === 0){
         selectedFilter = shared;
         await vService.getSharedRoutesFromPod();
       }
     }
     if (vService.warning != null){
-      NotificationManager.warning(t('routes.loadWarningMessage'), t('routes.loadWarningTitle'), 3000);
+      NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
     } else if (vService.errorLoad || selectedFilter === undefined)  {
-      NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
+      NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       setDisableVisualize(false);
-      NotificationManager.success(t('routes.successLoadMessage'), t('routes.successLoadTitle'), 2000);
+      NotificationManager.success(t("routes.successLoadMessage"), t("routes.successLoadTitle"), 2000);
     }
     setData(vService.routes);
     handleFilter();
@@ -122,7 +122,7 @@ export const VisualizePanel = ({service}) => {
     let vService = service;
     await vService.fillMap(selectedFilter, document.getElementById("selectRoute"));
     if (vService.error != null){
-      NotificationManager.error(t('routes.errorMessage'), t('routes.errorTitle'), 3000);
+      NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       let points = vService.points;
       let elevationsValues = vService.elevationsValues;
@@ -163,10 +163,10 @@ export const VisualizePanel = ({service}) => {
       setShowImage(false);
       setShowVideo(false);
       if (!vService.permissionsImage && vService.existsImage === true) {
-        NotificationManager.error(t('routes.imageErrorMessage'), t('routes.imageErrorTitle'), 3000);
+        NotificationManager.error(t("routes.imageErrorMessage"), t("routes.imageErrorTitle"), 3000);
       }
       if (!vService.permissionsVideo && vService.existsVideo === true) {
-        NotificationManager.error(t('routes.videoErrorMessage'), t('routes.videoErrorTitle'), 3000);
+        NotificationManager.error(t("routes.videoErrorMessage"), t("routes.videoErrorTitle"), 3000);
       }
     }
   }
@@ -208,10 +208,10 @@ export const VisualizePanel = ({service}) => {
 
   return (
     <section data-testid="visualizeTest">
-      <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
+      <LoadingOverlay active={loading} spinner text={t("routes.loading")}>
         <Container data-testid="containerVisualTest">
           <Row>
-            <h1 className="myH1">{t('routes.title')}</h1>
+            <h1 className="myH1">{t("routes.title")}</h1>
           </Row>
           <Row>
             <Col sm={10}>
@@ -224,10 +224,10 @@ export const VisualizePanel = ({service}) => {
                         <Polyline color={'blue'}
                                   positions={positions}/>
                         <Marker position={origin}>
-                          <Popup>{t('routes.origin')}</Popup>
+                          <Popup>{t("routes.origin")}</Popup>
                         </Marker>
                         <Marker position={target}>
-                          <Popup>{t('routes.target')}</Popup>
+                          <Popup>{t("routes.target")}</Popup>
                         </Marker>
                       </div>
                     )}
@@ -238,7 +238,7 @@ export const VisualizePanel = ({service}) => {
                 {showElements && (
                   <Col>
                     <Row>
-                      <h4 className="h4-format">{t('routes.histogram')}</h4>
+                      <h4 className="h4-format">{t("routes.histogram")}</h4>
                     </Row>
                     <Row>
                       <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
@@ -252,7 +252,7 @@ export const VisualizePanel = ({service}) => {
                 <Col>
                   {(showImage || showVideo) && (
                     <Row>
-                      <h4 className="h4-format">{t('routes.multimedia')}</h4>
+                      <h4 className="h4-format">{t("routes.multimedia")}</h4>
                     </Row>
                   )}
                   {showImage && (
@@ -273,10 +273,10 @@ export const VisualizePanel = ({service}) => {
                     <Row>
                       <div className="formal-div">
                         <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
-                        <Button className="button-margin" onClick={handlePowerOn}>{t('routes.play')}</Button>
-                        <Button className="button-margin" onClick={handlePowerOff}>{t('routes.stop')}</Button>
-                        <Button className="button-margin" onClick={handleNext}>{t('routes.next')}</Button>
-                        <Button className="button-margin" onClick={handlePrevious}>{t('routes.previous')}</Button>
+                        <Button className="button-margin" onClick={handlePowerOn}>{t("routes.play")}</Button>
+                        <Button className="button-margin" onClick={handlePowerOff}>{t("routes.stop")}</Button>
+                        <Button className="button-margin" onClick={handleNext}>{t("routes.next")}</Button>
+                        <Button className="button-margin" onClick={handlePrevious}>{t("routes.previous")}</Button>
                       </div>
                     </Row>
                   )}
@@ -288,21 +288,21 @@ export const VisualizePanel = ({service}) => {
                 <Row>
                   <label className="radio-format" name="filter-label">
                     <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
-                    {t('routes.myTracks')}
+                    {t("routes.myTracks")}
                   </label>
                   <label className="radio-format" name="filter-label">
                     <input name="filter-radio" id="radio-2" type="radio"/>
-                    {t('routes.shared')}
+                    {t("routes.shared")}
                   </label>
                 </Row>
                 <Button data-testid="btn1VTest" className="visualizeButton" variant="primary"
                         onClick={handleLoad}>
-                  {t('routes.loadButton')}
+                  {t("routes.loadButton")}
                 </Button>
-                <h3>{t('routes.select')}</h3>
+                <h3>{t("routes.select")}</h3>
                 <Select className="select-format" id={"selectRoute"} options={data}/>
                 <Button data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
-                  {t('routes.button')}
+                  {t("routes.button")}
                 </Button>
               </div>
             </Col>
@@ -312,6 +312,6 @@ export const VisualizePanel = ({service}) => {
       </LoadingOverlay>
     </section>
   );
-}
+};
 
 export default VisualizePanel;

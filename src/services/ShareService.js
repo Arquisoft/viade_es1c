@@ -42,7 +42,7 @@ export default class ShareService {
    * @param {current session} session
    */
   async getSessionId(session){
-    if (session != null) {
+    if (session !== null) {
       this.webId = session.webId;
       await this.getPodRoute(this.webId);
     }

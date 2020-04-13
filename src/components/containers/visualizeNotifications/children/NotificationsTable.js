@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import { Table , TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Paper, Box, makeStyles, Checkbox, TablePagination} from '@material-ui/core';
-import { useNotification } from '@inrupt/solid-react-components';
+  Paper, Box, makeStyles, Checkbox, TablePagination} from "@material-ui/core";
+import { useNotification } from "@inrupt/solid-react-components";
 import { useTranslation } from "react-i18next";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {Button} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from "react-notifications";
 
