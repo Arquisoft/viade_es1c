@@ -15,15 +15,15 @@ export const Welcome = () => {
                             <img className="myImg" src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} alt="Logo ViaDe"></img>
                         </div>
                         <div className="col-sm value-format">
-                            <h1 id="h1-welcome">{t('welcome.welcome')}</h1>
+                            <h1 className="h1-welcome" id="h1-welcome">{t("welcome.welcome")}</h1>
                             <Value src="user.name"></Value>
                         </div>
                         <div className="col-sm">
-                            <h2 id="h2-welcome" className="myH2">{t('welcome.title')}</h2>
+                            <h2 id="h2-welcome" className="myH2">{t("welcome.title")}</h2>
                             <ul className = "welcomeLinks" >
-                                <li>{t('welcome.presentation')}</li>
+                                <li>{t("welcome.presentation")}</li>
                                 <li id = "linkDoc" className = "welcomeLinkDocs"><a
-                                    href="https://arquisoft.github.io/viade_es1c/docs/">{t('welcome.documentation')}</a>
+                                    href="https://arquisoft.github.io/viade_es1c/docs/">{t("welcome.documentation")}</a>
                                 </li >
                                 <li id = "linkBuild" className = "welcomeLinksViade" ><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
                             </ul>

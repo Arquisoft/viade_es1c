@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Select component used in different areas of the interface

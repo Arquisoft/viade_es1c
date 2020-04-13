@@ -1,25 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import VisualizeTrack from "../components/containers/visualizeTracks/VisualizeTrack";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import VisualizePanel from "../components/containers/visualizeTracks/children/VisualizePanel";
+import VisualizeService from "./mocks/VisualizeService";
+
+let vService = new VisualizeService();
 
 it("VisualizeTrack -> renders without crashing",() => {
     const div = document.createElement("div");
-    ReactDOM.render(<VisualizeTrack></VisualizeTrack>, div);
-})
+    ReactDOM.render(<VisualizePanel service={vService}></VisualizePanel>, div);
+});
 
 it("VisualizeTrack -> renders visualize correctly", () => {
-    const {getByTestId} =render(<VisualizeTrack></VisualizeTrack>);
-    expect(getByTestId("visualizeTest"));
+    const {getByTestId} =render(<VisualizePanel service={vService}></VisualizePanel>);
+    expect(getByTestId("visualizeTest")).toBeTruthy();
 });
 
 it("VisualizeTrack -> component visualizeTrack has the correct subComponents", () => {
-    expect(document.getElementsByClassName("myH1")).toBeTruthy();
-    expect(document.getElementsByClassName("map")).toBeTruthy();
-    expect(document.getElementsByClassName("h4-format")).toBeTruthy();
-    expect(document.getElementsByClassName("formal-div")).toBeTruthy();
-    expect(document.getElementsByClassName("button-margin")).toBeTruthy();
-    expect(document.getElementsByClassName("visualizeButton")).toBeTruthy();
-    expect(document.getElementsByClassName("select-format")).toBeTruthy();
+    
+    const {getByTestId} =render(<VisualizePanel service={vService}></VisualizePanel>);
+    expect(getByTestId("containerVisualTest")).toBeTruthy();
+    expect(getByTestId("btn1VTest")).toBeTruthy();
+    expect(getByTestId("btn2VTest")).toBeTruthy();
+    getByTestId("btn2VTest").click();
+
+    
 });

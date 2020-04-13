@@ -1,23 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import NotificationsTable from "../components/containers/visualizeNotifications/children/notificationsTable/NotificationsTable";
-import { act } from "react-dom/test-utils";
+import NotificationsTable from "../components/containers/visualizeNotifications/children/NotificationsTable";
+import { render } from "@testing-library/react";
 
-let container;
+const webId = "https://miguelornia.solid.community/profile/card#me";
 
-beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
+it("Download -> renders without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<NotificationsTable myWebId={webId}></NotificationsTable>, div);
 });
 
-afterEach(() => {
-    document.body.removeChild(container);
-    container = null;
-});
-
-it("Notifications Table render test", () => {
-    act(() => {
-        ReactDOM.render(<NotificationsTable></NotificationsTable>, container);
-    });
-    expect(container).toBeTruthy();
+it("Download -> renders download correctly", () => {
+    const {getByTestId} = render(<NotificationsTable myWebId={webId}></NotificationsTable>);
+    expect(getByTestId("notificationTableComp"));
+    //expect(getByTestId("btnMark"));
+    //getByTestId("btnMark").click();
 });
