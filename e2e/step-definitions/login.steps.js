@@ -13,7 +13,8 @@ defineFeature((feature), (test) => {
 
     given("The login page", async() => {
       browser = await puppeteer.launch({
-        headless: false
+        headless: false,
+        defaultViewport: null
       });
       page = await browser.newPage();
       await page.goto("http://localhost:3000/#/",{waitUntil: "load", timeout: 0}); 
@@ -34,7 +35,7 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect to be on the Welcome page of ViaDe", async () => {
-      await expect(page).toMatch("Bienvenido", { timeout: 500 });
+      await expect(page).toMatch("Bienvenido", { timeout: 1000 });
     });
 
   }); 

@@ -26,7 +26,7 @@ defineFeature((feature), (test) => {
       await popup.type("[name='username']", "es1c", {visible: true});
       await popup.type("[name='password']", "Viade_es1c", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
-      await expect(page).toMatch("Bienvenido", { timeout: 500 });
+      await expect(page).toMatch("Bienvenido", { timeout: 1000 });
 
 
       //Visualize page:

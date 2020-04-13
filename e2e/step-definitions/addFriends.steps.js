@@ -26,7 +26,7 @@ defineFeature((feature), (test) => {
       await popup.type("[name='username']", "es1c", {visible: true});
       await popup.type("[name='password']", "Viade_es1c", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
-      await expect(page).toMatch("Bienvenido", { timeout: 500 });
+      await expect(page).toMatch("Bienvenido", { timeout: 1000 });
 
       //Friends page:
       page2 = await browser.newPage();
@@ -36,7 +36,7 @@ defineFeature((feature), (test) => {
 
     when("We enter a WebId", async () => {
       page2.type("[id='friendId']", "https://sandracast.solid.community", {visible: true});   
-      await page.waitFor(1000);
+      await page.waitFor(1500);
     });
 
     and("We click the Add button", async () => {
@@ -45,7 +45,7 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect the WebId to appear on the friends list", async () => {
-      await page.waitFor(1000);
+      await page.waitFor(1500);
       await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li", { name: "listFriend" });
     });
 
