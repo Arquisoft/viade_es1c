@@ -9,6 +9,7 @@ import {NotificationContainer, NotificationManager} from "react-notifications";
 import ImageViewer from "react-simple-image-viewer";
 import ReactPlayer from "react-player";
 import LoadingOverlay from "react-loading-overlay";
+import VisualizeService from "../../../../services/VisualizeService";
 
 // CSS imports
 import "leaflet/dist/leaflet.css";
@@ -79,6 +80,9 @@ export const VisualizePanel = ({service}) => {
    */
   async function handleLoad(){
     let vService = service;
+    if (vService instanceof VisualizeService) {
+      vService = new VisualizeService();
+    }
     let buttons = document.getElementsByName("filter-radio");
     let labels = document.getElementsByName("filter-label");
     for (let i = 0; i < buttons.length; i++){
@@ -120,6 +124,9 @@ export const VisualizePanel = ({service}) => {
   async function handleSelect(){
     setLoading(true);
     let vService = service;
+    if (vService instanceof VisualizeService) {
+      vService = new VisualizeService();
+    }
     await vService.fillMap(selectedFilter, document.getElementById("selectRoute"));
     if (vService.error != null){
       NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);

@@ -67,8 +67,7 @@
     "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
-    "warningLoadTitle" : "Advertencia al cargar rutas",
-    "warningLoadMessage" : "No hay rutas para compartir"
+    "warningLoadTitle" : "Advertencia al cargar rutas"
   },
   "upload": {
     "title": "Subir mis rutas",
