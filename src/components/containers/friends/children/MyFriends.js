@@ -3,11 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import FriendList from "./friendList/FriendList";
-import FriendsService from "../../../../services/FriendsService";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
-export const MyFriends = ({myWebId}) => {
+export const MyFriends = ({myWebId, service}) => {
 
   // i18n locales
   const { t } = useTranslation();
@@ -21,20 +20,22 @@ export const MyFriends = ({myWebId}) => {
    * @returns {Promise<void>}
    */
   async function addFriend() {
-    let fService = new FriendsService();
+    let fService = service;
     let friendWebId = document.getElementById("friendId").value;
     let checkFriend = await fService.check(friendWebId);
-    if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-      if (checkFriend) {
-        NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
-      } else {
-        await fService.add(friendWebId);
-        let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
-        await sendNotification(friendWebId, text);
-        window.location.reload(true);
+    if (friendWebId !== undefined) {
+      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
+        if (checkFriend) {
+          NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
+        } else {
+          await fService.add(friendWebId);
+          let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
+          await sendNotification(friendWebId, text);
+          window.location.reload(true);
+        }
+      } else  {
+        NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
       }
-    } else  {
-      NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
     }
   }
 
@@ -67,7 +68,7 @@ export const MyFriends = ({myWebId}) => {
    * @returns {Promise<void>}
    */
   async function deleteFriend() {
-    let fService = new FriendsService();
+    let fService = service;
     let friends = document.getElementsByName("listFriend");
     let buttons = document.getElementsByName("friend");
     let friendWebId;
@@ -76,13 +77,15 @@ export const MyFriends = ({myWebId}) => {
         friendWebId = friends[i].innerText;
       }
     }
-    if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-      await fService.delete(friendWebId);
-      let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
-      await sendNotification(friendWebId, text);
-      window.location.reload(true);
-    } else {
-      NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
+    if (friendWebId !== undefined) {
+      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
+        await fService.delete(friendWebId);
+        let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
+        await sendNotification(friendWebId, text);
+        window.location.reload(true);
+      } else {
+        NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
+      }
     }
   }
 

@@ -10,7 +10,7 @@ import FC from 'solid-file-client';
 */
 
 export default class VisualizeService{
-    constructor(HTMLElement){
+    constructor(){
         this.points = [];
         this.elevationsValues = [];
         this.urlRouteInPod = null;
@@ -24,7 +24,7 @@ export default class VisualizeService{
         this.existsMultimedia = true;
         this.existsVideo = false;
         this.existsImage = false;
-        this.HTMLElement = HTMLElement;
+        this.HTMLElement = null;
         this.images = [];
         this.permissionsImage = false;
         this.permissionsVideo = false;
@@ -121,7 +121,8 @@ export default class VisualizeService{
     /**
      * Method that assign the points to print the track in the map
      */
-    async fillMap(selectedFilter){
+    async fillMap(selectedFilter, HTMLElement){
+        this.HTMLElement = HTMLElement;
         if (selectedFilter.localeCompare("Mis rutas") === 0) {
             await this.getSession("viade/routes/");
         } else if (selectedFilter.localeCompare("Compartidas") === 0) {

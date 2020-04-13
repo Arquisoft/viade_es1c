@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Table , TableBody, TableCell, TableContainer, TableHead, TableRow,
   Paper, Box, makeStyles, Checkbox, TablePagination} from '@material-ui/core';
-import { useNotification, useWebId } from '@inrupt/solid-react-components';
+import { useNotification } from '@inrupt/solid-react-components';
 import { useTranslation } from "react-i18next";
 import ReactLoading from 'react-loading';
 import {Button} from "react-bootstrap";
@@ -9,7 +9,7 @@ import {NotificationContainer, NotificationManager} from "react-notifications";
 
 let times = 0; // Shows no read notifications
 
-export const NotificationsTable = (props) => {
+export const NotificationsTable = ({myWebId}) => {
 
   // Hook for i18n
   const {t} = useTranslation();
@@ -23,7 +23,7 @@ export const NotificationsTable = (props) => {
     },
   });
   const classes = useStyles();
-  const webId = useWebId();
+  const webId = myWebId;
   const {
     notification,
     markAsReadNotification,
@@ -160,7 +160,7 @@ export const NotificationsTable = (props) => {
   handleNotifications(); // Load the hooks
 
   return (
-    <div>
+    <div data-testid="notificationTableComp">
       {!showTable && (
         <BoxWithLoading isLoading={!showTable}/>
       )}
@@ -210,7 +210,7 @@ export const NotificationsTable = (props) => {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
           <br/>
-          <Button onClick={markAsRead}>{t("notifications.mark")}</Button>
+          <Button data-testid="btnMark" onClick={markAsRead}>{t("notifications.mark")}</Button>
         </div>
       )}
       <NotificationContainer/>

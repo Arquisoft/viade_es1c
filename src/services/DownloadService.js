@@ -11,10 +11,10 @@ import auth from "solid-auth-client";
 
 export default class DownloadService {
 
-  constructor(HTMLElementDown, HTMLElementUrlValue) {
+  constructor() {
     this.error = null;
-    this.HTMLElementDown = HTMLElementDown;
-    this.HTMLElementUrlValue = HTMLElementUrlValue;
+    this.HTMLElementDown = "";
+    this.HTMLElementUrlValue = "";
     this.urlRouteInPod = "";
     this.webId = "";
   }
@@ -77,7 +77,9 @@ export default class DownloadService {
    * Obtains the track to download
    * @returns {Promise<void>}
    */
-  async searchTrack() {
+  async searchTrack(HTMLElementUrlValue, HTMLElementDown) {
+    this.HTMLElementUrlValue = HTMLElementUrlValue;
+    this.HTMLElementDown = HTMLElementDown;
     await this.getSession();
     try {
       await this.downloadTrack(this.HTMLElementUrlValue);
