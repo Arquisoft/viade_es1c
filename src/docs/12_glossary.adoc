@@ -17,4 +17,7 @@
 | WebStorm | Integrated Development Environment created by JetBrains used for JavaScript development.
 | Wikiloc | Wikiloc is a mashup where geo-referenced outdoor routes and points of interest from around the world can be stored and shared. [Official Website:  https://es.wikiloc.com/]
 |Leaflet | Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps. [Official Website: https://leafletjs.com/]
+| Puppeteer | Puppeteer is a Node library which provides a high-level API to control Chrome or Chromium over the DevTools Protocol [Official Website: https://pptr.dev/]
+| Cucumber | Cucumber is a software tool that supports behavior-driven development (BDD).  [Official Website: https://cucumber.io/]
+| Jest | Jest is a delightful JavaScript Testing Framework with a focus on simplicity. [Official Website: https://jestjs.io/]
 |===
