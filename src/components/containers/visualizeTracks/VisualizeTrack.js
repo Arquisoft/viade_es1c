@@ -212,7 +212,7 @@ export const VisualizeTrack = () => {
                 <LoadingOverlay active={loading} spinner text={t('routes.loading')}>
                 <Container>
                     <Row>
-                        <h1 className="myH1">{t('routes.title')}</h1>
+                        <h1 className="myH1" id="MisRutas">{t('routes.title')}</h1>
                     </Row>
                     <Row>
                         <Col sm={10}>
@@ -296,15 +296,17 @@ export const VisualizeTrack = () => {
                                         {t('routes.shared')}
                                     </label>
                                 </Row>
-                                <Button className="visualizeButton" variant="primary"
+                                <Button id="loadButton" className="visualizeButton" variant="primary"
                                         onClick={handleLoad}>
                                     {t('routes.loadButton')}
                                 </Button>
                                 <h3>{t('routes.select')}</h3>
                                 <Select className="select-format" id={"selectRoute"} options={data}/>
-                                <Button className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
-                                    {t('routes.button')}
-                                </Button>
+                                <div>
+                                    <Button id="visualize" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
+                                        {t('routes.button')}
+                                    </Button>
+                                </div>
                             </div>
                         </Col>
                     </Row>

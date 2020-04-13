@@ -32,14 +32,14 @@ export const UploadTrack = () => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h2>{t("upload.title")}</h2>
+                        <h2 id='titleUpload'>{t("upload.title")}</h2>
                     </div>
                     <div className="modal-body">
                         <span>{t("upload.uploadPrompt")}</span>
                         <input type="file" id="fileArea" multiple/>
                     </div>
                     <div className="modal-footer">
-                        <Button onClick={handleUpload}>
+                        <Button id='uploadButton' onClick={handleUpload}>
                             {t("upload.button")}
                         </Button>
                     </div>
