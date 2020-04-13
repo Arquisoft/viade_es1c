@@ -2,6 +2,7 @@ export default class FriendsService {
 
   constructor() {
     this.friends = [];
+    this.existsWebId = ["https://miguelornia.inrupt.net/profile/card#me"];
   }
 
   check(friendWebId) {
@@ -14,8 +15,8 @@ export default class FriendsService {
   }
 
   exists(friendWebId) {
-    for (let i = 0; i < this.friends.length; i++) {
-      if (this.friends[i].localeCompare(friendWebId) === 0) {
+    for (let i = 0; i < this.existsWebId.length; i++) {
+      if (this.existsWebId[i].localeCompare(friendWebId) === 0) {
         return true;
       }
     }
