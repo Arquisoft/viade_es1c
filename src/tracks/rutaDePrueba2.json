@@ -1,0 +1,93 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "comments": {
+            "@id": "viade:comments",
+            "@type": "@id"
+        },
+        "description": {
+            "@id": "schema:description",
+            "@type": "xs:string"
+        },
+        "media": {
+            "@container": "@list",
+            "@id": "viade:media"
+        },
+        "name": {
+            "@id": "schema:name",
+            "@type": "xsd:string"
+        },
+        "points": {
+            "@container": "@list",
+            "@id": "viade:points"
+        },
+        "latitude": {
+            "@id": "schema:latitude",
+            "@type": "xsd:double"
+        },
+        "longitude": {
+            "@id": "schema:longitude",
+            "@type": "xsd:double"
+        },
+        "elevation": {
+            "@id": "schema:elevation",
+            "@type": "xsd:decimal"
+        },
+        "author": {
+            "@id": "schema:author",
+            "@type": "@id"
+        },
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "viade": "http://arquisoft.github.io/viadeSpec/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "name": "Route test 2",
+    "author": "https://miguelornia.solid.community/profile/card#me",
+    "description": "This is a test to see the output of the JsonLDConversor",
+    "comments": "http://inrupt.luispc1998/viade/comments/routeComments/commentExample.json",
+    "media": [
+        {
+            "@id": "https://miguelornia.solid.community/viade/resources/83357_2880_1800.jpg"
+        },
+        {
+            "@id": "https://miguelornia.solid.community/viade/resources/83357_2880_1800.jpg"
+        },
+        {
+            "@id": "https://miguelornia.solid.community/viade/resources/83357_2880_1800.jpg"
+        },
+        {
+            "@id": "https://miguelornia.solid.community/viade/resources/83357_2880_1800.jpg"
+        }
+    ],
+    "waypoints" : [
+        {
+            "name": "Name for the waypoint",
+            "description": "Description of the waypoint",
+            "latitude": 45.123,
+            "longitude": 34.121,
+            "elevation": 34
+        },
+        {
+            "name": "Computer Science School",
+            "description": "Become a good engineer with us",
+            "latitude": 45.123,
+            "longitude": 34.121,
+            "elevation": 34
+        }
+
+    ],
+    "points": [
+        {
+            "latitude": 40.6643,
+            "longitude": -74.0059700,
+			"elevation": 300
+        },
+        {
+            "latitude": 40.6643,
+            "longitude": -79.0059700,
+			"elevation": 600
+        }
+    ]
+}

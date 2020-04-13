@@ -25,8 +25,7 @@ Constraints that have to do with design and implementation decisions
 |We will use the React JavaScript library for the development of user interfaces. This development environment merges, links the structure of the interface with the logic.
 |Interoperability between different route management systems
 |The application must be compatible with other route management systems.
-|Parse routes
-|The formats must be supported by WikiLoc, for example, XML format.
+|Follow the specification proposed in the  GitHub's ViadeSpec repository| Try to follow the specifications of the GitHub ViadeSpec repository, to make the application more interoperable. We have followed these specifications until version 1.1.
 | Solid Specifications |Follow Solid specifications
 |===
 
@@ -40,6 +39,8 @@ Constraints that have to do with team organization.
 |It will work with a team of 6 people
 | Time
 | Comply with the proposed deadline
+|Developing
+|The project can be deployed from the repository with Travis. Codecov is also used for code coverage and codacy for code quality.
 |===
 
 === Conventions constraints
@@ -53,20 +54,3 @@ Restrictions that have to do with the conventions that the team will agree, for 
 |Version control
 |Version control will be performed using GitHub
 |===
-
-
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
-
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
