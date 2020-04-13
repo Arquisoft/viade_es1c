@@ -50,8 +50,8 @@ defineFeature((feature), (test) => {
     });
 
     and("I delete my new friend", async () => {
+      await page.waitFor(1500);
       expect(page2).toClick("div > div > section > div > div > div > div > ul > li > input", { class: "radio" });
-      await page2.waitFor(1500);
 
       await page2.evaluate(() => {
         let btns = [...document.querySelectorAll("button")];
