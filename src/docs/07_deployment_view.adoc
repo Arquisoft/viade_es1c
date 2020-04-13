@@ -3,5 +3,10 @@
 
 
 == Deployment View
-*TO BE DONE*
 
+As it is a decentralized app, we are basically focused on the interaction between the user and the Solid platform. Users interact with the platform by the POD and every user has a unique one where it’s data is stored. So, a user that is using ViaDe, is interacting with Solid and this is taking the data from the corresponding PODs in order to make the app work in an efficient way.
+
+****
+.ViaDe - Deployment View
+image:doc07_deployView_08-04.jpg[]
+****
