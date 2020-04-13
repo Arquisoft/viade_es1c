@@ -56,9 +56,6 @@ export const SharePanel = ({myWebId, service}) => {
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friend");
     let friendsWebIds = [];
-    if (sService instanceof ShareService) {
-      sService = new ShareService();
-    }
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
         friendsWebIds.push(friends[i].innerText);
@@ -70,6 +67,9 @@ export const SharePanel = ({myWebId, service}) => {
         let userWebId = friendsWebIds[i];
         let name = await ldflex[userWebId].name;
         let sService = service;
+        if (sService instanceof ShareService) {
+          sService = new ShareService();
+        }
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
