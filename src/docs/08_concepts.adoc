@@ -12,5 +12,6 @@ We have wanted to use this architectural pattern in order to be able to distingu
 === Stability and Change 
 As we have said in the previus point we are using a MVC structure that also allows and makes easier to make changes or increase the functionality
 
-
+=== Usability for the users
+Our application is made in order to make the user easier the navigation through the web. We tried successfully to achieve the lowest waiting times we could in the whole app.
 
