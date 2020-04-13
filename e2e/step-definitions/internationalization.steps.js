@@ -1,12 +1,12 @@
-const {defineFeature, loadFeature}=require('jest-cucumber');
-const feature = loadFeature('./e2e/features/internationalization.feature');
+const {defineFeature, loadFeature}=require("jest-cucumber");
+const feature = loadFeature("./e2e/features/internationalization.feature");
 const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
 
-defineFeature(feature, test => {
+defineFeature((feature), (test) => {
 
-    test("We are login into Viade and we check all views are internationalized",({given,when,then}) =>{
+    test("We are login into Viade and we check all views are internationalized",({given,when,then}) => { 
 
         given("A view", async() => {
             let popup;
