@@ -20,3 +20,8 @@ We have divided the tests into automatic and unit tests. We have divided the tes
 
 === Transactional
 Using the Solid Pods we have managed to communicate with the Pod fulfilling the ACID(atomicity,consistency,isolation,durability) properties.
+
+=== Folder Structure
+****
+image:estructuraDeCarpetas.png[]
+****
