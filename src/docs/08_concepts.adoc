@@ -19,7 +19,7 @@ Our application is made in order to make the user easier the navigation through 
 We have divided the tests into automatic and unit tests. We have divided the tests into automatic and unit tests. In this way we test many more things of the application.
 
 === Transactional
-Using the Solid Pods we have managed to communicate with the Pod fulfilling the ACID(atomicity,consistency,isolation,durability) properties.
+Using the Solid Pods we have managed to communicate with the Pod fulfilling the ACID(atomicity, consistency, isolation, durability) properties.
 
 === Folder Structure
 ****
