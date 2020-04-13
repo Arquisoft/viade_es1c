@@ -40,7 +40,7 @@ Constraints that have to do with team organization.
 | Time
 | Comply with the proposed deadline
 |Developing
-|The project can be deployed from the repository with Travis. Codecov (https://codecov.io/) is also used for code coverage and codacy for code quality.
+|The project can be deployed from the repository with Travis. Codecov is also used for code coverage and codacy for code quality.
 |===
 
 === Conventions constraints
