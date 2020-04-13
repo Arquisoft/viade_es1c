@@ -78,7 +78,10 @@ export const SharePanel = ({myWebId, service}) => {
             NotificationManager.error(t("share.errorCreateMessage"), t("share.errorCreateTitle"), 5000);
           } else if(sService.error === "Permisos denegados"){
             NotificationManager.error(t("share.errorPermissionMessage"), t("share.errorPermissionTitle"), 5000);
-          } else {
+          } else if(sService.error === "Carpeta no encontrada"){
+            NotificationManager.error(t("share.errorFriendsFolder"), t("share.errorCreateTitle"), 5000);
+          }
+          else {
             NotificationManager.warning(t("share.warningDeleteMessage").concat(name), t("share.warningDeleteTitle"), 5000);
           }
         }

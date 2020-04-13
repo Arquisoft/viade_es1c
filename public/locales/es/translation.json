@@ -67,7 +67,8 @@
     "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
-    "warningLoadTitle" : "Advertencia al cargar rutas"
+    "warningLoadTitle" : "Advertencia al cargar rutas",
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod del amigo"
   },
   "upload": {
     "title": "Subir mis rutas",
