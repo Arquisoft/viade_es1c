@@ -1,0 +1,124 @@
+{
+  "login": {
+    "title": "Welcome to ViaDe_ES1C",
+    "solidHelp": "What is a Solid Identity?",
+    "formButtonText": "Log In"
+  },
+  "navBar": {
+    "welcome": "Welcome",
+    "logOut": "Log out",
+    "friends": "My friends",
+    "share-files" : "Share tracks",
+    "upload": "Upload tracks",
+    "download": "Download tracks",
+    "notifications": "My notifications",
+    "maps": "Visualize tracks"
+  },
+  "welcome": {
+    "welcome": "Welcome,",
+    "title": "What is ViaDe_ES1C?",
+    "presentation": "ViaDe is a decentralized application for route management. It is developed in the Solid web ecosystem. It allows us to visualize our tracks, share them with our friends, download and upload them.",
+    "documentation": "Link to documentation",
+    "repository": "Link to GitHub repository"
+  },
+  "routes": {
+    "title": "Visualize tracks",
+    "select": "Choose the track:",
+    "button": "Visualize",
+    "origin": "Origin of the track",
+    "target": "Track destination",
+    "errorTitle": "Error displaying",
+    "errorMessage": "Track not found",
+    "loadWarningTitle": "Warning when loading",
+    "loadWarningMessage": "There is no route in the POD",
+    "loadButton": "Load tracks from POD",
+    "successLoadTitle": "Loaded successfully",
+    "successLoadMessage": "Their routes have been loaded",
+    "imageErrorTitle": "Error displaying images",
+    "imageErrorMessage": "There are no permissions to access to images or are not found",
+    "videoErrorTitle": "Error displaying videos",
+    "videoErrorMessage": "There are no permissions to access to videos or are not found",
+    "next": "Next",
+    "previous": "Previous",
+    "play": "Play",
+    "stop": "Stop",
+    "histogram": "Elevation profile:",
+    "multimedia": "Multimedia:",
+    "myTracks": "My tracks",
+    "shared": "Shared",
+    "loading": "Loading your track..."
+  },
+  "share": {
+    "title": "Share my tracks",
+    "createSharePrompt": "Choose the friends and the track you want to share with them",
+    "idLabel": "Choose track to share:",
+    "shareTrack": "Share",
+    "resetShareForm": "Reset",
+    "friends": "Friend list:",
+    "errorFriends" : "There's no friend selected to share",
+    "successShareMessage" : "Your tracks have been shared",
+    "successShareTitle" : "Share successfully",
+    "errorCreateMessage" : "Something was wrong",
+    "errorCreateTitle" : "Share unsuccessfully",
+    "warningShareMessage" : "Track has been alredy shared with ",
+    "warningShareTitle" : "Tracks duplicated",
+    "errorPermissionMessage" : "You are not allowed to access to this folder",
+    "errorPermissionTitle" : "Share unsuccessfully",
+    "warningDeleteMessage" : "Track's copy has not been removed correctly",
+    "warningDeleteTitle" : "Minor problem",
+    "errorFriendsTitle" : "Input error",
+    "warningLoadTitle" : "Warning when loading routes",
+    "warningLoadMessage" : "There are no tracks to share"
+  },
+  "upload": {
+    "title": "Upload my tracks",
+    "button": "Upload",
+    "uploadPrompt" : "Choose the files of the routes you want to upload",
+    "successTitle": "Uploaded successfully",
+    "successMessage" : "Your tracks have been uploaded",
+    "errorTitle" : "Upload error",
+    "errorMessage": "You must upload a file with extension \".json\"",
+    "errorEmptyMessage": "You must upload a file"
+  },
+  "download": {
+    "title": "Download track",
+    "instruction": "Enter the file name:",
+    "button": "Download",
+    "errorMessage": "Make sure the entered route exists in the Pod and that you type it correctly",
+    "errorTitle": "Non-existent route in the Pod",
+    "especificacion": "* Do not include extension"
+  },
+  "friends": {
+    "title": "My friends",
+    "addTitle": "Enter the WebID of the new friend",
+    "add": "Add",
+    "deleteTitle": "Choose the friend you want to delete",
+    "delete": "Delete",
+    "deleteErrorTitle": "Error deleting friend",
+    "deleteErrorMessage": "The selected WebId is invalid",
+    "addErrorTitle": "Error adding friend",
+    "addErrorMessage": "The entered WebId is not valid",
+    "checkErrorMessage": "The friend to add is already a friend"
+  },
+  "notifications": {
+    "title" : "My notifications",
+    "value": "Notification",
+    "read": "Read",
+    "mark" : "Mark",
+    "errorTitle": "Error marking as read",
+    "errorMessage": "No notification marked",
+    "infoTitle": "Current notifications",
+    "infoMessage1": "You have ",
+    "infoMessage2": " unread notifications",
+    "loadingNotifications": "Loading your notifications..."
+  },
+  "alert":{
+    "message": "THIS OPTION IS NOT AVAILABLE YET"
+  },
+  "logout": {
+    "button": "Logout"
+  },
+  "nav": {
+    "language": "Language"
+  }
+}

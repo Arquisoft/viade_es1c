@@ -1,0 +1,79 @@
+.selectWrapper {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    margin-right: 45px;
+    margin-top: 5em;
+}
+
+section {
+    background: linear-gradient(#fff, #b6e8fe, #fff);
+}
+
+.myH1 {
+    margin-top: .5em;
+    margin-left: 3em;
+}
+
+h3 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.select-format {
+    width: 100%;
+    background: #fff;
+    text-align:left;
+    margin-bottom: 2em;
+}
+
+.map {
+    margin-top: 2em;
+    width: 95%;
+    height: 350px;
+}
+
+.popup {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+.visualizeButton {
+    margin-top: 2em;
+}
+
+.img_viewer {
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.my_Img {
+    margin: 3px;
+}
+
+.player-format {
+    margin-top: 2em;
+}
+
+.button-margin {
+    margin: 1em;
+}
+
+.formal-div {
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
+    background: #fff;
+}
+
+.h4-format {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.radio-format {
+    margin-top: .8em;
+    margin-left: .2em;
+}

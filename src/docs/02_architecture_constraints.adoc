@@ -15,77 +15,42 @@ We will divide the restrictions into:
 Constraints that have to do with design and implementation decisions
 
 |===
-^.^|Constraint^.^|Explanation
+|Constraint |Explanation
 
-^.^|Decentralized system, where data storage will be separated from the application
-^.^|For this we will use the Solid PODs. Where customer data will be saved
-^.^|Data persistence. Where to save customer data: routes, friends, images, videos, route information
-^.^|For this we will also use the Solid PODs
-^.^|Using the React framework
-^.^|We will use the React JavaScript library for the development of user interfaces. This development environment merges, links the structure of the interface with the logic.
-^.^|Interoperability between different route management systems
-^.^|The application must be compatible with other route management systems.
-^.^|Use of third party applications to display maps.
-^.^|Investigate how to show customer routes on a map
-
-*Topic to discuss* 
-
-Google maps use credit card, study the option of using OpenStreetMaps
-^.^|Parse routes
-^.^|The formats must be supported by WikiLoc, for example, XML format.
-^.^|Login
-^.^|The login must be redirected to Solid in order to obtain the customers' PODs
-.2+^.^| Testing
-^.^|Implementation of exhaustive tests at the backend and frontend level
-^.^| The route management system must pass successfully all the tests 
-^.^| Solid Specifications ^.^|Follow Solid specifications
+|Decentralized system, where data storage will be separated from the application
+|For this we will use the Solid PODs. Where customer data will be saved
+|Data persistence. Where to save customer data: routes, friends, images, videos, route information
+|For this we will also use the Solid PODs
+|Using the React framework
+|We will use the React JavaScript library for the development of user interfaces. This development environment merges, links the structure of the interface with the logic.
+|Interoperability between different route management systems
+|The application must be compatible with other route management systems.
+|Follow the specification proposed in the  GitHub's ViadeSpec repository| Try to follow the specifications of the GitHub ViadeSpec repository, to make the application more interoperable. We have followed these specifications until version 1.1.
+| Solid Specifications |Follow Solid specifications
 |===
 
 === Organizational and political constraints
 Constraints that have to do with team organization.
 
 |===
-^.^|Constraint^.^|Explanation
+|Constraint |Explanation
 
-^.^|Work distribution
-^.^|Labor division in frontend and backend
-^.^|Team
-^.^|It will work with a team of 6 people
-^.^| Language
-^.^| The documentation must be in English
-^.^| Free
-^.^| Free to use and free of charge
-^.^| Time
-^.^| Comply with the proposed deadline
+|Team
+|It will work with a team of 6 people
+| Time
+| Comply with the proposed deadline
+|Developing
+|The project can be deployed from the repository with Travis. Codecov (https://codecov.io/) is also used for code coverage and codacy for code quality.
 |===
 
 === Conventions constraints
 Restrictions that have to do with the conventions that the team will agree, for example, programming or versioning guidelines, documentation or naming conventions
 
 |===
-^.^|Constraint^.^|Explanation
+|Constraint |Explanation
 
-^.^|Documentation
-^.^|The documentation will be done using Ascii-Doctor, Ruby, Node and following the Arc42 structure
-^.^|Nomenclature
-^.^|All class names, methods, etc., must appear in English
-^.^|Version control
-^.^|Version control will be performed using GitHub
+|Documentation
+|The documentation will be done using Ascii-Doctor, Ruby, Node and following the Arc42 structure
+|Version control
+|Version control will be performed using GitHub
 |===
-
-
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
-
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
