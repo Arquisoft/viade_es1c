@@ -15,12 +15,8 @@ Viade will have some different interfaces:
 
 === Business Context
 ****
-.ViaDe - Black box diagram
-image:Diagrama_caja_negra.PNG[]
-****
-****
-.ViaDe - Black box diagram's keylegend
-image:Leyenda_diagrama_caja_negra.PNG[]
+.ViaDe - Black box diagram and keylegend
+image:Black_Box_Diagram.png[]
 ****
 [options="header",cols="1,1"]
 |===
@@ -47,7 +43,7 @@ image:TechnicalContextDiagram.png[]
 [options="header",cols="1,1"]
 |===
 |Object |Description
-|User (1, 2) |Represents the users of the application
+|User (A, B) |Represents the users of the application
 |ViaDe |Decentralized and web based application
 |SOLID POD (1, 2) |Individual storage unit for one user
 |SOLID (Social Linked Data) |New web ecosystem
