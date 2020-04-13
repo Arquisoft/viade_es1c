@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Select component used in different areas of the interface
+ * (VisualizeTrack, ShareTrack)
+ */
 export const Select = props => {
   const { id, options, defaultValue, onChange, ...rest } = props;
   return (

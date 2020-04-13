@@ -3,12 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./Friends.css";
-import { LoggedIn, LoggedOut } from "@solid/react";
-import { Redirect } from "react-router-dom";
 import MyFriends from "./children/myFriends/MyFriends";
 import FriendsService from "../../../services/FriendsService";
 import { useNotification, useWebId } from "@inrupt/solid-react-components";
-
 
 export const Friends = () => {
 
@@ -90,8 +87,7 @@ export const Friends = () => {
   }
 
   return (
-    <section>
-      <LoggedIn>
+    <section data-testid="friendsTest">
         <div className="modal-div">
           <div className="modal-appearance">
             <div className="modal-header">
@@ -102,7 +98,7 @@ export const Friends = () => {
               <span className="span-friends">{t("friends.addTitle")}</span>
               <div className="add-friends">
                 <input className="input-add" id="friendId" type="text"></input>
-                <Button className="correct-margin" onClick={addFriend}>
+                <Button data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
                   {t("friends.add")}
                 </Button>
               </div>
@@ -112,7 +108,7 @@ export const Friends = () => {
                 <MyFriends src="user.friends"></MyFriends>
               </div>
               <div>
-                <Button className="correct-margin" onClick={deleteFriend}>
+                <Button data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
                   {t("friends.delete")}
                </Button>
               </div>
@@ -120,10 +116,6 @@ export const Friends = () => {
           </div>
         </div>
         <NotificationContainer/>
-      </LoggedIn>
-      <LoggedOut>
-        <Redirect to="/"></Redirect>
-      </LoggedOut>
     </section>
   );
 };

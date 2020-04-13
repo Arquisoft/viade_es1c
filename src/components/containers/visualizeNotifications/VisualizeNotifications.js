@@ -1,17 +1,14 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {LoggedOut, LoggedIn} from '@solid/react';
-import { Redirect } from "react-router-dom";
 import NotificationsTable  from "./children/notificationsTable/NotificationsTable";
 import "./VisualizeNotifications.css";
 
-export const VisualizeNotification = (props) => {
+export const VisualizeNotifications = () => {
   // Hook for i18n
   const {t} = useTranslation();
 
   return (
     <section>
-      <LoggedIn>
         <div className="modal-div">
           <div className="modal-appearance">
             <div className="modal-header">
@@ -22,12 +19,8 @@ export const VisualizeNotification = (props) => {
             </div>
           </div>
         </div>
-      </LoggedIn>
-      <LoggedOut>
-        <Redirect to="/"></Redirect>
-      </LoggedOut>
     </section>
   );
 }
 
-export default VisualizeNotification;
+export default VisualizeNotifications;

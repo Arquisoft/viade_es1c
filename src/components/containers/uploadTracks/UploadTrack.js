@@ -4,15 +4,16 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Button } from 'react-bootstrap';
 import "./UploadTrack.css";
-import {LoggedIn,LoggedOut} from "@solid/react";
-import { Redirect } from "react-router-dom";
 import UploadService from "../../../services/UploadService";
 
 
-export const UploadTrack = (props) => {
+export const UploadTrack = () => {
   // Locales for i18n
   const { t } = useTranslation();
 
+  /**
+   * Upload the track chosen by the user through the input file
+   */
   async function handleUpload(){
     let uService = new UploadService(document.getElementById("fileArea"));
     await uService.handleUpload();
@@ -27,8 +28,7 @@ export const UploadTrack = (props) => {
   }
 
   return (
-        <section>
-            <LoggedIn>
+        <section data-testid="uploadTrackTest">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -46,10 +46,6 @@ export const UploadTrack = (props) => {
                 </div>
                 <NotificationContainer/>
             </div>
-            </LoggedIn>
-            <LoggedOut>
-                <Redirect to="/"></Redirect>
-            </LoggedOut>
         </section>
     );
 };
