@@ -16,7 +16,8 @@ export default class VisualizeService {
   }
 
   getMyRoutesFromPod() {
-
+    const myRoutes = ["Ruta1"];
+    this.routes = myRoutes;
   }
 
   getSharedRoutesFromPod() {

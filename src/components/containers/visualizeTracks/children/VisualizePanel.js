@@ -86,12 +86,14 @@ export const VisualizePanel = ({service}) => {
     let buttons = document.getElementsByName("filter-radio");
     let labels = document.getElementsByName("filter-label");
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.myTracks")) === 0){
-        selectedFilter = myTracks;
-        await vService.getMyRoutesFromPod();
-      } else if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.shared")) === 0){
-        selectedFilter = shared;
-        await vService.getSharedRoutesFromPod();
+      if (labels[i].innerText !== undefined){
+        if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.myTracks")) === 0){
+          selectedFilter = myTracks;
+          await vService.getMyRoutesFromPod();
+        } else if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.shared")) === 0){
+          selectedFilter = shared;
+          await vService.getSharedRoutesFromPod();
+        }
       }
     }
     if (vService.warning != null){
@@ -110,10 +112,12 @@ export const VisualizePanel = ({service}) => {
    * Function that handle select radioButton
    */
   function handleFilter() {
-    if (selectedFilter.localeCompare(shared) === 0) {
-      document.getElementById("radio-2").checked = true;
-    } else if (selectedFilter.localeCompare(myTracks) === 0) {
-      document.getElementById("radio-1").checked = true;
+    if (selectedFilter !== undefined ){
+      if (selectedFilter.localeCompare(shared) === 0) {
+        document.getElementById("radio-2").checked = true;
+      } else if (selectedFilter.localeCompare(myTracks) === 0) {
+        document.getElementById("radio-1").checked = true;
+      }
     }
   }
 
@@ -307,7 +311,7 @@ export const VisualizePanel = ({service}) => {
                   {t("routes.loadButton")}
                 </Button>
                 <h3>{t("routes.select")}</h3>
-                <Select className="select-format" id={"selectRoute"} options={data}/>
+                <Select data-testid="combo" className="select-format" id={"selectRoute"} options={data}/>
                 <Button data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                   {t("routes.button")}
                 </Button>
