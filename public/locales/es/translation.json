@@ -68,7 +68,7 @@
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
     "warningLoadTitle" : "Advertencia al cargar rutas",
-    "warningLoadMessage" : "No hay rutas para compartir"
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod del amigo"
   },
   "upload": {
     "title": "Subir mis rutas",

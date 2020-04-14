@@ -7,7 +7,7 @@ import "./SharePanel.css";
 import FriendList from "./friendList/FriendList";
 import ldflex from "@solid/query-ldflex";
 import { useNotification } from '@inrupt/solid-react-components';
-
+import ShareService from "../../../../services/ShareService";
 
 let timesLoad = 0; // For handleLoad()
 
@@ -67,6 +67,9 @@ export const SharePanel = ({myWebId, service}) => {
         let userWebId = friendsWebIds[i];
         let name = await ldflex[userWebId].name;
         let sService = service;
+        if (sService instanceof ShareService) {
+          sService = new ShareService();
+        }
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
@@ -78,7 +81,10 @@ export const SharePanel = ({myWebId, service}) => {
             NotificationManager.error(t("share.errorCreateMessage"), t("share.errorCreateTitle"), 5000);
           } else if(sService.error === "Permisos denegados"){
             NotificationManager.error(t("share.errorPermissionMessage"), t("share.errorPermissionTitle"), 5000);
-          } else {
+          } else if(sService.error === "Carpeta no encontrada"){
+            NotificationManager.error(t("share.errorFriendsFolder"), t("share.errorCreateTitle"), 5000);
+          }
+          else {
             NotificationManager.warning(t("share.warningDeleteMessage").concat(name), t("share.warningDeleteTitle"), 5000);
           }
         }
