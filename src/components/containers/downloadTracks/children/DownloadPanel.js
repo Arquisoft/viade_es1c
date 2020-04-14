@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
+import DownloadService from "../../../../services/DownloadService";
 
 export const DownloadPanel = ({service}) => {
 
@@ -13,9 +14,12 @@ export const DownloadPanel = ({service}) => {
    */
   async function handleDownload() {
     let dService = service;
+    if (dService instanceof DownloadService) {
+      dService = new DownloadService();
+    }
     await dService.searchTrack(document.getElementById("txtUrl").value,
       document.getElementById("downFile"));
-    if (dService.error != null) {
+    if (dService.error !== null) {
       NotificationManager.error(t("download.errorMessage"), t("download.errorTitle"), 5500);
     }
   }
