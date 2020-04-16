@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import { Table , TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Paper, Box, makeStyles, Checkbox, TablePagination} from '@material-ui/core';
-import { useNotification, useWebId } from '@inrupt/solid-react-components';
+  Paper, Box, makeStyles, Checkbox, TablePagination} from "@material-ui/core";
+import { useNotification } from "@inrupt/solid-react-components";
 import { useTranslation } from "react-i18next";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {Button} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from "react-notifications";
 
-export const NotificationsTable = (props) => {
+let times = 0; // Shows no read notifications
+
+export const NotificationsTable = ({myWebId}) => {
 
   // Hook for i18n
   const {t} = useTranslation();
@@ -21,7 +23,7 @@ export const NotificationsTable = (props) => {
     },
   });
   const classes = useStyles();
-  const webId = useWebId();
+  const webId = myWebId;
   const {
     notification,
     markAsReadNotification,
@@ -47,7 +49,7 @@ export const NotificationsTable = (props) => {
    * @returns {Promise<void>}
    */
   async function handleNotifications() {
-      if (webId !== undefined) {
+      if (webId !== undefined && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
         const inboxes = [{ path: userWebId, inboxName: 'Global Inbox', shape: 'default' }];
         await fetchNotification(inboxes);
@@ -60,6 +62,11 @@ export const NotificationsTable = (props) => {
           }
           setRows(rows);
           setShowTable(true);
+          if (times === 0) {
+            times++;
+            NotificationManager.info(t('notifications.infoMessage1').concat(rows.length).concat(t('notifications.infoMessage2'))
+              , t('notifications.infoTitle'), 3000);
+          }
         }
       }
   }
@@ -73,7 +80,11 @@ export const NotificationsTable = (props) => {
   function WithLoading(Component) {
     return function WithLoadingComponent({ isLoading, ...props }) {
       if (!isLoading) return (<Component {...props} />);
-      return (<div align="center"><ReactLoading type={"spin"} color={"#5FB0FF"} height={'10%'} width={'10%'}/></div>);
+      return (<div align="center">
+        <ReactLoading type={"spin"} color={"#5FB0FF"} height={'10%'} width={'10%'}/>
+        <br/>
+        <p>{t('notifications.loadingNotifications')}</p>
+      </div>);
     }
   }
 
@@ -149,7 +160,7 @@ export const NotificationsTable = (props) => {
   handleNotifications(); // Load the hooks
 
   return (
-    <div>
+    <div data-testid="notificationTableComp">
       {!showTable && (
         <BoxWithLoading isLoading={!showTable}/>
       )}
@@ -199,7 +210,7 @@ export const NotificationsTable = (props) => {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
           <br/>
-          <Button onClick={markAsRead}>{t("notifications.mark")}</Button>
+          <Button data-testid="btnMark" onClick={markAsRead}>{t("notifications.mark")}</Button>
         </div>
       )}
       <NotificationContainer/>

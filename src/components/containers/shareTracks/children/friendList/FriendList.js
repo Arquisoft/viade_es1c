@@ -2,7 +2,7 @@ import React from "react";
 import {useLDflexList} from "@solid/react";
 import "./FriendList.css";
 
-/** Displays a list of items matching a Solid LDflex expression. */
+/** Displays a list of friends with a checkBox */
 export default function FriendList({
                                src, offset = 0, limit = Infinity, filter = () => true,
                                container = items => <ul className="ul-format">{items}</ul>,

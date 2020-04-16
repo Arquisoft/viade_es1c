@@ -10,8 +10,8 @@ import FC from "solid-file-client";
 
 export default class UploadService {
 
-  constructor(HTMLElement) {
-    this.HTMLElement = HTMLElement;
+  constructor() {
+    this.HTMLElement = null;
     this.error = null;
     this.success = null;
   }
@@ -89,7 +89,8 @@ export default class UploadService {
    * @returns {Promise<void>}
    */
 
-  async handleUpload() {
+  async handleUpload(HTMLElement) {
+    this.HTMLElement = HTMLElement;
     const fileInput = this.HTMLElement;
     const tracks = fileInput.files;
     await this.processMultipleTrack(tracks);
