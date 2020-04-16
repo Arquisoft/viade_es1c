@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import VisualizeTrack from '../containers/visualizeTracks/VisualizeTrack';
+import VisualizeTrack from "../containers/visualizeTracks/VisualizeTrack";
 import UploadTrack from "../containers/uploadTracks/UploadTrack";
 import MyNavBar from "../navBar/NavBar";
 import ShareTrack from "../containers/shareTracks/ShareTrack";
 import DownloadTrack from "../containers/downloadTracks/DownloadTrack";
 import Welcome from "../containers/welcome/Welcome";
 import Login from "../containers/login/Login";
-import Friends from "../containers/friends/Friends";
 import VisualizeNotifications from "../containers/visualizeNotifications/VisualizeNotifications";
 import { LoggedIn, LoggedOut } from "@solid/react";
+import Friends from "../containers/friends/Friends";
 
 /**
  * It is in charge of the different routes of the application

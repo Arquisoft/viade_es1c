@@ -69,7 +69,7 @@
     "errorFriendsTitle" : "Input error",
     "warningLoadTitle" : "Warning when loading routes",
     "warningLoadMessage" : "There are no tracks to share",
-    "errorFolderNotFound" : "Folder not found in friend's pod"
+    "errorFriendsFolder" : "Folder not found in friend's pod"
   },
   "upload": {
     "title": "Upload my tracks",

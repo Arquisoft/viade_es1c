@@ -4,7 +4,7 @@ import "./Navbar.css";
 import {useTranslation} from "react-i18next";
 import {LogoutButton} from "@solid/react";
 import ReactTooltip from 'react-tooltip';
-import i18n from 'i18next';
+import i18n from "i18next";
 
 
 const MyNavBar = () => {
@@ -36,16 +36,16 @@ const MyNavBar = () => {
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">
-                            <DropdownButton className="i18nMenu" variant="light" title={t("nav.language")}>
+                            <DropdownButton id = "btnLanguage" className="i18nMenu" variant="light" title={t("nav.language")}>
                                 <DropdownItem>
-                                    <div onClick={() => i18n.changeLanguage("en")}> ENG </div>
+                                    <div id="btnEng" onClick={() => i18n.changeLanguage("en")}> ENG </div>
                                 </DropdownItem>
                                 <DropdownItem>
-                                    <div onClick={() => i18n.changeLanguage("es")}> ESP </div>
+                                    <div id="btnEsp" onClick={() => i18n.changeLanguage("es")}> ESP </div>
                                 </DropdownItem>
                             </DropdownButton>
                         </div>
-                        <LogoutButton className="logout btn btn-light">{t("logout.button")}</LogoutButton>
+                        <LogoutButton id="logoutButton" className="logout btn btn-light">{t("logout.button")}</LogoutButton>
                         <ReactTooltip place="bottom" type="dark" effect="solid"/>
                       </Nav>
                 </Navbar>

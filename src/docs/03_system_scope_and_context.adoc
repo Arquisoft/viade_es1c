@@ -37,7 +37,7 @@ ViaDe is a web based application which relies on the foundation of decentralizat
 
 ****
 .ViaDe - Technical context diagram
-image:TechnicalContextDiagram.png[]
+image:TechnicalContextDiagram.jpg[]
 ****
 
 [options="header",cols="1,1"]
@@ -45,6 +45,6 @@ image:TechnicalContextDiagram.png[]
 |Object |Description
 |User (A, B) |Represents the users of the application
 |ViaDe |Decentralized and web based application
-|SOLID POD (1, 2) |Individual storage unit for one user
+|SOLID POD (A, B) |Individual storage unit for one user
 |SOLID (Social Linked Data) |New web ecosystem
 |===

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import MyNavBar from "../components/navBar/NavBar";
-import { render } from "@testing-library/react";
+import { render} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 it("NavBar -> renders without crashing",() => {
@@ -12,13 +12,15 @@ it("NavBar -> renders without crashing",() => {
 it("NavBar -> renders navBar correctly", () => {
     const {getByTestId} =render(<MyNavBar></MyNavBar>);
     expect(getByTestId("navTest"));
-});
-
-it("NavBar -> component navBar has the correct subComponents",() => {
-    expect(document.getElementsByClassName("nav-color")).toBeTruthy();
-    expect(document.getElementsByClassName("mr-auto")).toBeTruthy();
-    expect(document.getElementsByClassName("navbar-link a-bar")).toBeTruthy();
-    expect(document.getElementsByClassName("navbar-link a-bar a-download")).toBeTruthy();
-    expect(document.getElementsByClassName("i18nMenu")).toBeTruthy();
-    expect(document.getElementsByClassName("logout btn btn-light")).toBeTruthy();
+	/*
+    expect(getByTestId("logoTestId"));
+    expect(getByTestId("navTest2"));
+    getByTestId("logoTestId").click();
+    getByTestId("NV_visual_1").click();
+    getByTestId("NV_share_2").click();
+    getByTestId("NV_friend_3").click();
+    getByTestId("NV_not_4").click();
+    getByTestId("NV_up_5").click();
+    getByTestId("NV_down_6").click();
+	*/
 });

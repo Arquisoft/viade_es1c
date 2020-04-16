@@ -3,7 +3,7 @@ import FC from "solid-file-client";
 
 export default class ShareService {
 
-  constructor(userFriend, HTMLElement) {
+  constructor() {
     this.user = null;
     this.friends = [];
     this.error = null;
@@ -13,8 +13,8 @@ export default class ShareService {
     this.success = null;
     this.urlRouteInPod = null;
     this.routes = [];
-    this.userFriend = userFriend;
-    this.HTMLElement = HTMLElement;
+    this.userFriend = "";
+    this.HTMLElement = null;
     this.content = null;
     this.session = null;
     this.webId = null;
@@ -42,7 +42,7 @@ export default class ShareService {
    * @param {current session} session
    */
   async getSessionId(session){
-    if (session != null) {
+    if (session !== null) {
       this.webId = session.webId;
       await this.getPodRoute(this.webId);
     }
@@ -134,7 +134,7 @@ export default class ShareService {
         this.error = "Permisos denegados";
       }
     } else {
-      this.error = "Carpeta no creada";
+      this.error = "Carpeta no encontrada";
     }
     
   }
@@ -160,7 +160,9 @@ export default class ShareService {
   /**
    * Method that shares the track on the other user pod
    */
-  async shareTrack() {
+  async shareTrack(userFriend, HTMLElement) {
+    this.userFriend = userFriend;
+    this.HTMLElement = HTMLElement;
     await this.getSession();
     const fc = new FC(auth);
     this.content = await fc.readFile(this.urlRouteInPod, null);
