@@ -71,7 +71,6 @@ export default class FriendGroupService {
     }
     jsonld["users"] = group;
     this.groupJsonContent = JSON.stringify(jsonld);
-    alert(this.groupJsonContent);
   }
 
   /**
