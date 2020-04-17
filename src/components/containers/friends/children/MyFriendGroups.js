@@ -2,11 +2,11 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
-import FriendList from "./friendList/FriendList";
-import "./MyFriends.css";
+import FriendGroup from "./friendGroup/FriendGroup";
+import "./MyFriendGroups.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
-export const MyFriends = ({myWebId, service}) => {
+export const MyFriendGroups = ({myWebId, service}) => {
 
   // i18n locales
   const { t } = useTranslation();
@@ -52,7 +52,7 @@ export const MyFriends = ({myWebId, service}) => {
       }
       createNotification(
         {
-          title: 'Friend notification',
+          title: 'Group notification',
           summary: summary,
           actor: webId
         },
@@ -63,56 +63,27 @@ export const MyFriends = ({myWebId, service}) => {
     }
   };
 
-  /**
-   * Delete the selected friend
-   * @returns {Promise<void>}
-   */
-  async function deleteFriend() {
-    let fService = service;
-    let friends = document.getElementsByName("listFriend");
-    let buttons = document.getElementsByName("friend");
-    let friendWebId;
-    for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendWebId = friends[i].innerText;
-      }
-    }
-    if (friendWebId !== undefined) {
-      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-        await fService.delete(friendWebId);
-        let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
-        await sendNotification(friendWebId, text);
-        window.location.reload(true);
-      } else {
-        NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
-      }
-    }
-  }
-
   return (
         <div>
           <div className="modal-app">
             <div className="modal-header">
-              <h2>{t("friends.title")}</h2>
+              <h2>{t("groups.title")}</h2>
               <hr/>
             </div>
             <div className="modal-body">
-              <span className="span-friends">{t("friends.addTitle")}</span>
-              <div className="add-friends">
-                <input data-testid="input-add" className="input-add" id="friendId" type="text" placeholder="e.g. https://user.solid.community/profile/card#me"></input>
-                <Button data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
-                  {t("friends.add")}
-                </Button>
+              <span className="span-friends">{t("groups.addTitle")}</span>
+              <div className="add-groups">
+                <input data-testid="input-add" className="input-add" id="groupId" type="text" placeholder="e.g. senderismo"></input>
               </div>
               <br/>
-              <span className="span-friends">{t("friends.deleteTitle")}</span>
+              <span className="span-friends-group">{t("groups.addToGroupTitle")}</span>
               <div className="list-friends">
-                <FriendList src="user.friends"></FriendList>
+                <FriendGroup src="user.friends"></FriendGroup>
               </div>
               <div>
-                <Button data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
-                  {t("friends.delete")}
-               </Button>
+                <Button data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
+                  {t("groups.add")}
+                </Button>
               </div>
             </div>
           </div>
@@ -121,4 +92,4 @@ export const MyFriends = ({myWebId, service}) => {
   );
 };
 
-export default MyFriends;
+export default MyFriendGroups;

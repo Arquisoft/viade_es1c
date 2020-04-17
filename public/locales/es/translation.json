@@ -101,6 +101,12 @@
     "addErrorMessage": "El WebId introducido no es válido",
     "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
   },
+  "groups": {
+    "title": "Mis grupos",
+    "addTitle": "Introduzca el nombre del grupo",
+    "add": "Crear grupo",
+    "addToGroupTitle" : "Seleccione los amigos que desea invitar al grupo"
+  },
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación",

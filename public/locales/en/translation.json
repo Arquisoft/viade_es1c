@@ -101,6 +101,12 @@
     "addErrorMessage": "The entered WebId is not valid",
     "checkErrorMessage": "The friend to add is already a friend"
   },
+  "groups": {
+    "title": "My groups",
+    "addTitle": "Enter group's name",
+    "add": "Create a new group",
+    "addToGroupTitle" : "Select the friends you want to invite to the group"
+  },
   "notifications": {
     "title" : "My notifications",
     "value": "Notification",

@@ -9,8 +9,9 @@
     margin-top: .5em;
 }
 
-.add-friends{
+.add-groups {
     margin-top: .8em;
+    margin-bottom: .4em;
 }
 
 .input-add {
@@ -18,14 +19,13 @@
 }
 
 .span-friends {
-    margin-top: 1em;
+    margin-top: 1.6em;
 }
 
 .modal-app{
     border: solid #cbcbcb 1px;
     border-radius: .2em;
-    background: #fff;
     margin-top: 1em;
-    margin-left: 5em;
+    margin-left: 1em;
     margin-right: 1em;
 }
