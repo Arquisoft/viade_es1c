@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import MyFriends from "../components/containers/friends/children/MyFriends";
+import MyFriends from "../components/containers/friends/children/myFriends/MyFriends";
 import FriendsService from "./mocks/FriendsService";
 
 const webId = "https://miguelornia.solid.community/profile/card#me";

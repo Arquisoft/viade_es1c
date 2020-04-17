@@ -1,7 +1,7 @@
 import React from "react";
 import { useWebId } from "@inrupt/solid-react-components";
-import MyFriends from "./children/MyFriends";
-import MyFriendGroups from "./children/MyFriendGroups";
+import MyFriends from "./children/myFriends/MyFriends";
+import MyFriendGroups from "./children/myFriendGroups/MyFriendGroups";
 import FriendsService from "../../../services/FriendsService";
 import { Row, Col } from "react-bootstrap";
 

@@ -105,7 +105,10 @@
     "title": "Mis grupos",
     "addTitle": "Introduzca el nombre del grupo",
     "add": "Crear grupo",
-    "addToGroupTitle" : "Seleccione los amigos que desea invitar al grupo"
+    "addToGroupTitle" : "Seleccione los amigos que desea invitar al grupo",
+    "createErrorTitle": "Error al crear el grupo",
+    "checkErrorMessage": "Ya existe un grupo con dicho nombre",
+    "createErrorMessage": "El grupo a crear no es válido"
   },
   "notifications": {
     "title" : "Mis notificaciones",

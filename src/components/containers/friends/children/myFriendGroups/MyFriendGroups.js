@@ -15,49 +15,63 @@ export const MyFriendGroups = ({myWebId, service}) => {
     webId
   );
 
+  let friendsWebIds = [];
+
   /**
    * Add a new friend
    * @returns {Promise<void>}
    */
-  async function addFriend() {
+  async function createGroup() {
     let fService = service;
-    let friendWebId = document.getElementById("friendId").value;
-    let checkFriend = await fService.check(friendWebId);
-    if (friendWebId !== undefined) {
-      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-        if (checkFriend) {
-          NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
+    let friendGroup = document.getElementById("groupId").value;
+    let checkGroup = await fService.check(friendGroup);
+    let friends = document.getElementsByName("friendlist");
+    let buttons = document.getElementsByName("friendGroup");
+    for (let i = 0; i < buttons.length; i++){
+      if (buttons[i].checked){
+        friendsWebIds.push(friends[i].innerText);
+      }
+    }
+    if (friendGroup !== undefined && friendsWebIds.length > 0) {
+      if (friendGroup.localeCompare("") !== 0) {
+        if (checkGroup) {
+          NotificationManager.error(t("groups.checkErrorMessage"), t("groups.createErrorTitle"), 3000);
         } else {
-          await fService.add(friendWebId);
-          let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
-          await sendNotification(friendWebId, text);
+          await fService.create(friendGroup);
+          let text = "User: ".concat(webId).concat(", added you to his/her group: ").concat(friendGroup);
+          await sendNotification(text);
           window.location.reload(true);
         }
       } else  {
-        NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
+        NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);
       }
+    } else  {
+      NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);
     }
   }
 
   /**
-   * Send a notification to the added / deleted user
-   * @param userWebId - WebId of the receiver
+   * Send a notification to the user in the new group
    * @returns {Promise<void>}
    */
-  const sendNotification = async (userWebId, summary) => {
+  const sendNotification = async (summary) => {
     try {
-      const inboxUrl = await discoverInbox(userWebId);
-      if (!inboxUrl) {
-        throw new Error('Inbox not found');
+      if (friendsWebIds.length > 0) {
+        for (let i = 0; i < friendsWebIds.length; i++) {
+          const inboxUrl = await discoverInbox(friendsWebIds[i]);
+          if (!inboxUrl) {
+            throw new Error('Inbox not found');
+          }
+          createNotification(
+            {
+              title: 'Group notification',
+              summary: summary,
+              actor: webId
+            },
+            inboxUrl
+          );
+        }
       }
-      createNotification(
-        {
-          title: 'Group notification',
-          summary: summary,
-          actor: webId
-        },
-        inboxUrl
-      );
     } catch (ex) {
       console.log(ex);
     }
@@ -81,7 +95,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
                 <FriendGroup src="user.friends"></FriendGroup>
               </div>
               <div>
-                <Button data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
+                <Button data-testid="btnAddFriend" className="correct-margin" onClick={createGroup}>
                   {t("groups.add")}
                 </Button>
               </div>

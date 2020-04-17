@@ -86,6 +86,8 @@ export const MyFriends = ({myWebId, service}) => {
       } else {
         NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
       }
+    } else {
+      NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
     }
   }
 
