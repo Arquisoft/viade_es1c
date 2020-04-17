@@ -107,8 +107,10 @@
     "add": "Create a new group",
     "addToGroupTitle" : "Select the friends you want to invite to the group",
     "createErrorTitle": "Failed to create group",
-    "checkErrorMessage": "A group with that name already exists",
-    "createErrorMessage": "The group to create is not valid"
+    "createErrorMessage": "The group to create is not valid",
+    "createSuccessTitle": "Group created successfully",
+    "createSuccessMessage1": "Group ",
+    "createSuccessMessage2": " has been created"
   },
   "notifications": {
     "title" : "My notifications",

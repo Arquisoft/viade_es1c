@@ -5,6 +5,7 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 import FriendGroup from "./friendGroup/FriendGroup";
 import "./MyFriendGroups.css";
 import { useNotification } from "@inrupt/solid-react-components";
+import FriendGroupService from "../../../../../services/FriendGroupService";
 
 export const MyFriendGroups = ({myWebId, service}) => {
 
@@ -15,6 +16,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
     webId
   );
 
+  // For friends web id (create new group)
   let friendsWebIds = [];
 
   /**
@@ -22,9 +24,11 @@ export const MyFriendGroups = ({myWebId, service}) => {
    * @returns {Promise<void>}
    */
   async function createGroup() {
-    let fService = service;
+    let gService = service;
+    if (gService instanceof FriendGroupService) {
+      gService = new FriendGroupService();
+    }
     let friendGroup = document.getElementById("groupId").value;
-    let checkGroup = await fService.check(friendGroup);
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friendGroup");
     for (let i = 0; i < buttons.length; i++){
@@ -34,19 +38,32 @@ export const MyFriendGroups = ({myWebId, service}) => {
     }
     if (friendGroup !== undefined && friendsWebIds.length > 0) {
       if (friendGroup.localeCompare("") !== 0) {
-        if (checkGroup) {
-          NotificationManager.error(t("groups.checkErrorMessage"), t("groups.createErrorTitle"), 3000);
-        } else {
-          await fService.create(friendGroup);
-          let text = "User: ".concat(webId).concat(", added you to his/her group: ").concat(friendGroup);
-          await sendNotification(text);
-          window.location.reload(true);
-        }
+          await gService.create(friendGroup, friendsWebIds);
+          if (gService.success === true) {
+            NotificationManager.success(t("groups.createSuccessMessage1").concat(friendGroup).concat(t("groups.createSuccessMessage2")),
+              t("groups.createSuccessTitle"), 3000);
+            let text = "User: ".concat(webId).concat(", added you to his/her group: ").concat(friendGroup);
+            await sendNotification(text);
+            clear(buttons);
+          }
       } else  {
         NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);
       }
     } else  {
       NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);
+    }
+  }
+
+  /**
+   * Clear all fields
+   * @param buttons
+   */
+  function clear(buttons) {
+    document.getElementById("groupId").value = "";
+    for (let i = 0; i < buttons.length; i++){
+      if (buttons[i].checked){
+        buttons[i].checked = false;
+      }
     }
   }
 
@@ -87,7 +104,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
             <div className="modal-body">
               <span className="span-friends">{t("groups.addTitle")}</span>
               <div className="add-groups">
-                <input data-testid="input-add" className="input-add" id="groupId" type="text" placeholder="e.g. senderismo"></input>
+                <input data-testid="input-add" className="input-add" id="groupId" type="text" placeholder="e.g. trekking"></input>
               </div>
               <br/>
               <span className="span-friends-group">{t("groups.addToGroupTitle")}</span>

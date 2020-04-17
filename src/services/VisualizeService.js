@@ -93,7 +93,7 @@ export default class VisualizeService{
             "viade/routes/" == folder where the routes are stored
         */
         this.urlRouteInPod = webId.slice(0, webId.length - 15).concat(route);
-        if (this.HTMLElement != null){
+        if (this.HTMLElement !== null){
             let selectedRouteName = this.HTMLElement.value.concat(".json");
             this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
         }
