@@ -28,3 +28,25 @@
 .modal-div-cont {
     margin-top: 2em;
 }
+
+.row {
+    justify-content: center;
+    align-items: center;
+}
+
+.correct-margin-top {
+    margin-top: .8em;
+    margin-bottom: 1em;
+}
+
+.modal-cont {
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    height: 100%;
+    max-height: 100%;
+    text-align: center;
+    background: #fff;
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
+}

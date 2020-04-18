@@ -50,9 +50,12 @@
   },
   "share": {
     "title": "Share my tracks",
-    "createSharePrompt": "Choose the friends and the track you want to share with them",
+    "friend" : "Friends",
+    "group" : "Groups",
+    "createSharePrompt": "Choose who you want to share tracks with",
     "idLabel": "Choose track to share:",
     "shareTrack": "Share",
+    "loadInfo" : "Upload routes and contacts",
     "resetShareForm": "Reset",
     "friends": "Friend list:",
     "groups": "Friend Groups list:",

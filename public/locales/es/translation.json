@@ -50,9 +50,12 @@
   },
   "share": {
     "title": "Compartir mis rutas",
-    "createSharePrompt": "Seleccione los amigos y la ruta que desea compartir con ellos",
+    "friend" : "Amigos",
+    "group" : "Grupos",
+    "createSharePrompt": "Seleccione con quien desea compartir rutas",
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
+    "loadInfo" : "Cargar rutas y contactos",
     "resetShareForm": "Limpiar",
     "friends": "Lista de amigos:",
     "groups": "Lista de grupos de amigos:",

@@ -13,12 +13,16 @@ import { MyGroups } from "./myGroups/MyGroups";
 
 let timesLoad = 0; // For handleLoad()
 
+let isSelectedFriends;
+
 export const SharePanel = ({myWebId, service, gService}) => {
 
   // i18n locales
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [groupData, setGroupData] = useState([]);
+  const [showElements, setShowElements] = useState(false);
+  const [showFriends, setShowFriends] = useState(true);
 
   const webId = myWebId;
   const { createNotification, discoverInbox } = useNotification(webId);
@@ -136,49 +140,102 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
   }
 
-  handleLoad(); // To upload tracks to select component
+  /**
+   * Function that handle select radioButton
+   
+  function handleFilter() {
+    if (selectedFilter !== undefined ){
+      if (selectedFilter.localeCompare(t("share.group")) === 0) {
+        document.getElementById("radio-2").checked = true;
+        isSelectedFriends = false;
+      } else if (selectedFilter.localeCompare(t("share.friend")) === 0) {
+        document.getElementById("radio-1").checked = true;
+        isSelectedFriends = true;
+      }
+      console.log(isSelectedFriends);
+    }
+  }*/
 
-  handleLoadGroups(); // To load groups from pod
+  async function handleVisualize(){
+    if (document.getElementById("radio-1").checked === true){
+      isSelectedFriends = true;
+    } else {
+      isSelectedFriends = false;
+    }
+    setShowElements(true);
+    await handleLoad();
+    if (isSelectedFriends){
+      setShowFriends(true);
+    } else {
+      setShowFriends(false);
+      handleLoadGroups();
+    }
+  }
 
   return (
     <section data-testid="shareTrackTest">
       <div className="modal-div-cont">
-        <div className="modal-content">
+        <div className="modal-cont">
           <div className="modal-header">
             <h2>{t("share.title")}</h2>
             <hr/>
           </div>
-          <form className="modal-body">
+          <div className="main-content">
             <span>{t("share.createSharePrompt")}</span>
-            <div>
-              <label className="lab" htmlFor="documentUriInput">
-                {t("share.idLabel")}
-              </label>
-              <Select className="select-share" id={"selectRoute"} options={data}/>
-            </div>
             <Row>
-              <Col>
-                <div className="list-friends">
-                  <h4 className="h4-format">{t("share.friends")}</h4>
-                  <FriendList src="user.friends"></FriendList>
-                </div>
-              </Col>
-              <Col>
-                <div className="list-groups">
-                  <h4 className="h4-format">{t("share.groups")}</h4>
-                  <MyGroups groups={groupData}></MyGroups>
-                </div>
-              </Col>
+              <label className="radio-format" name="filter-label">
+                <input name="filter-radio" id="radio-1" type="radio" checked={true}/>
+                {t("share.friend")}
+              </label>
+              <label className="radio-format" name="filter-label">
+                <input name="filter-radio" id="radio-2" type="radio"/>
+                {t("share.group")}
+              </label>
             </Row>
-            <div>
-              <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
-                {t("share.shareTrack")}
-              </Button>
-              <Button data-testid="btnClean" className="correct-margin" onClick={handleClean}>
-                {t("share.resetShareForm")}
-              </Button>
-            </div>
-          </form>
+            <Button className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
+          </div>
+          {
+            showElements && (
+              <form className="modal-body">
+                <div>
+                  <label className="lab" htmlFor="documentUriInput">
+                    {t("share.idLabel")}
+                  </label>
+                  <Select className="select-share" id={"selectRoute"} options={data}/>
+                </div>
+                <Row>
+                  {
+                    showFriends && (
+                      <Col>
+                        <div className="list-friends">
+                          <h4 className="h4-format">{t("share.friends")}</h4>
+                          <FriendList src="user.friends"></FriendList>
+                        </div>
+                      </Col>
+                    )
+                  }
+                  {
+                    !showFriends && (
+                      <Col>
+                        <div className="list-groups">
+                          <h4 className="h4-format">{t("share.groups")}</h4>
+                          <MyGroups groups={groupData}></MyGroups>
+                        </div>
+                      </Col>
+                    )
+                  }
+                </Row>
+                <div>
+                  <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
+                    {t("share.shareTrack")}
+                  </Button>
+                  <Button data-testid="btnClean" className="correct-margin" onClick={handleClean}>
+                    {t("share.resetShareForm")}
+                  </Button>
+                </div>
+              </form>
+            )
+          }
         </div>
       </div>
       <NotificationContainer/>
