@@ -158,20 +158,6 @@ export const SharePanel = ({myWebId, service, gService}) => {
   }
 
   /**
-   * Clean all selected items
-   */
-  function handleClean() {
-    let selected = document.getElementById("selectRoute");
-    selected.selectedIndex = 0;
-    let buttons = document.getElementsByName("friend");
-    for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        buttons[i].checked = false;
-      }
-    }
-  }
-
-  /**
    * Shows friend or groups and loads tracks
    * @returns {Promise<void>}
    */
@@ -260,9 +246,6 @@ export const SharePanel = ({myWebId, service, gService}) => {
                 <div>
                   <Button data-testid="btnUpload" className="correct-margin" onClick={handleFriends}>
                     {t("share.shareTrack")}
-                  </Button>
-                  <Button data-testid="btnClean" className="correct-margin" onClick={handleClean}>
-                    {t("share.resetShareForm")}
                   </Button>
                 </div>
               </form>
