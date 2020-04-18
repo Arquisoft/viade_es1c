@@ -12,8 +12,8 @@ import FriendGroupService from "../../../../services/FriendGroupService";
 import { MyGroups } from "./myGroups/MyGroups";
 
 let timesLoad = 0; // For handleLoad()
-
 let isSelectedFriends;
+let selectedFilter;
 
 export const SharePanel = ({myWebId, service, gService}) => {
 
@@ -62,11 +62,26 @@ export const SharePanel = ({myWebId, service, gService}) => {
   async function handleUpload(){
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friend");
+    let group = false;
     let friendsWebIds = [];
+    if (buttons.length === 0) {
+      group = true;
+      friends = document.getElementsByName("groupList");
+      buttons = document.getElementsByName("group");
+    }
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendsWebIds.push(friends[i].innerText);
+      if (group) {
+        if (buttons[i].checked) {
+          await gService.getFriendsWebIds(friends[i].innerText);
+        }
+      } else {
+        if (buttons[i].checked){
+          friendsWebIds.push(friends[i].innerText);
+        }
       }
+    }
+    if (group && gService.groupFriends.length > 0) {
+      friendsWebIds = gService.groupFriends;
     }
     let HTMLElement = document.getElementById("selectRoute");
     if (friendsWebIds.length > 0){
@@ -116,6 +131,10 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
   }
 
+  /**
+   * Load groups from POD
+   * @returns {Promise<void>}
+   */
   async function handleLoadGroups(){
     if (gService instanceof FriendGroupService){
       gService = new FriendGroupService();
@@ -123,7 +142,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
     await gService.getGroups();
     if (gService.errorLoad === null){
       setGroupData(gService.groupsNames);
-    } 
+    }
   }
 
   /**
@@ -141,34 +160,40 @@ export const SharePanel = ({myWebId, service, gService}) => {
   }
 
   /**
-   * Function that handle select radioButton
-   
-  function handleFilter() {
-    if (selectedFilter !== undefined ){
-      if (selectedFilter.localeCompare(t("share.group")) === 0) {
-        document.getElementById("radio-2").checked = true;
-        isSelectedFriends = false;
-      } else if (selectedFilter.localeCompare(t("share.friend")) === 0) {
-        document.getElementById("radio-1").checked = true;
-        isSelectedFriends = true;
-      }
-      console.log(isSelectedFriends);
-    }
-  }*/
-
+   * Shows friend or groups and loads tracks
+   * @returns {Promise<void>}
+   */
   async function handleVisualize(){
-    if (document.getElementById("radio-1").checked === true){
+    if (document.getElementById("radio-1").checked === true) {
+      selectedFilter = "radio-1";
       isSelectedFriends = true;
     } else {
+      selectedFilter = "radio-2";
       isSelectedFriends = false;
     }
-    setShowElements(true);
-    await handleLoad();
+    if (data.length === 0) {
+      await handleLoad();
+    }
     if (isSelectedFriends){
       setShowFriends(true);
     } else {
+      await handleLoadGroups();
       setShowFriends(false);
-      handleLoadGroups();
+    }
+    setShowElements(true);
+    handleFilter();
+  }
+
+  /**
+   * Handle filter change
+   */
+  function handleFilter() {
+    if (selectedFilter !== undefined) {
+      if (selectedFilter.localeCompare("radio-1") === 0){
+        document.getElementById("radio-1").checked = true;
+      } else {
+        document.getElementById("radio-2").checked = true;
+      }
     }
   }
 
@@ -182,20 +207,19 @@ export const SharePanel = ({myWebId, service, gService}) => {
           </div>
           <div className="main-content">
             <span>{t("share.createSharePrompt")}</span>
-            <Row>
+            <Row className="myRow">
               <label className="radio-format" name="filter-label">
-                <input name="filter-radio" id="radio-1" type="radio" checked={true}/>
+                <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
                 {t("share.friend")}
               </label>
               <label className="radio-format" name="filter-label">
-                <input name="filter-radio" id="radio-2" type="radio"/>
+                <input name="filter-radio" id="radio-2" type="radio" onChange={handleFilter()}/>
                 {t("share.group")}
               </label>
             </Row>
             <Button className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
           </div>
-          {
-            showElements && (
+          {showElements && (
               <form className="modal-body">
                 <div>
                   <label className="lab" htmlFor="documentUriInput">
@@ -203,27 +227,23 @@ export const SharePanel = ({myWebId, service, gService}) => {
                   </label>
                   <Select className="select-share" id={"selectRoute"} options={data}/>
                 </div>
-                <Row>
-                  {
-                    showFriends && (
+                <Row className="myRow">
+                  {showFriends && (
                       <Col>
                         <div className="list-friends">
                           <h4 className="h4-format">{t("share.friends")}</h4>
                           <FriendList src="user.friends"></FriendList>
                         </div>
                       </Col>
-                    )
-                  }
-                  {
-                    !showFriends && (
+                    )}
+                  {!showFriends && (
                       <Col>
                         <div className="list-groups">
                           <h4 className="h4-format">{t("share.groups")}</h4>
                           <MyGroups groups={groupData}></MyGroups>
                         </div>
                       </Col>
-                    )
-                  }
+                    )}
                 </Row>
                 <div>
                   <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
@@ -234,8 +254,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                   </Button>
                 </div>
               </form>
-            )
-          }
+            )}
         </div>
       </div>
       <NotificationContainer/>

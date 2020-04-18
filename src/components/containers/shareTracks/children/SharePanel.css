@@ -27,9 +27,10 @@
 
 .modal-div-cont {
     margin-top: 2em;
+    margin-bottom: 2em;
 }
 
-.row {
+.myRow {
     justify-content: center;
     align-items: center;
 }

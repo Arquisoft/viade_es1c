@@ -12,6 +12,8 @@ export default class FriendGroupService {
     this.warning = false;
     this.groupsNames = [];
     this.errorLoad = null;
+    this.groupFriends = [];
+    this.content = "";
   }
 
   /**
@@ -114,5 +116,32 @@ export default class FriendGroupService {
     } catch(SFCFetchError){
       this.errorLoad = "Error al cargar lista de grupos";
     }
+  }
+
+  /**
+   * Obtains webId of my friends
+   * @returns {Promise<void>}
+   */
+  async obtainUrls() {
+    let group = JSON.parse(this.content);
+    // We obtain the webIds of the group
+    let users = group.users.length;
+    for (let i = 0; i < users; i++) {
+      let friend = group.users[i].url;
+      this.groupFriends.push(friend);
+    }
+  }
+
+  /**
+   * Get my friends WebIds from POD
+   * @param group
+   * @returns {Promise<void>}
+   */
+  async getFriendsWebIds(group) {
+    await this.getSession();
+    let url = this.urlRouteInPod.concat(group).concat(".json");
+    const fc = new FC(auth);
+    this.content = await fc.readFile(url, null);
+    await this.obtainUrls();
   }
 }
