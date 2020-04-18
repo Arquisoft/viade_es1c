@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
-import FriendGroup from "./friendGroup/FriendGroup";
+import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriendGroups.css";
 import { useNotification } from "@inrupt/solid-react-components";
 import FriendGroupService from "../../../../../services/FriendGroupService";
@@ -30,7 +30,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
     }
     let friendGroup = document.getElementById("groupId").value;
     let friends = document.getElementsByName("friendlist");
-    let buttons = document.getElementsByName("friendGroup");
+    let buttons = document.getElementsByName("friend");
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
         friendsWebIds.push(friends[i].innerText);
@@ -44,6 +44,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
               t("groups.createSuccessTitle"), 3000);
             let text = "User: ".concat(webId).concat(", added you to his/her group: ").concat(friendGroup);
             await sendNotification(text);
+            friendsWebIds = [];
             clear(buttons);
           }
       } else  {
@@ -109,7 +110,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
               <br/>
               <span className="span-friends-group">{t("groups.addToGroupTitle")}</span>
               <div className="list-friends">
-                <FriendGroup src="user.friends"></FriendGroup>
+                <FriendList src="user.friends"></FriendList>
               </div>
               <div>
                 <Button data-testid="btnAddFriend" className="correct-margin" onClick={createGroup}>

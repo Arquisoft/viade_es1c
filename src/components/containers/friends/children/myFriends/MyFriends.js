@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
-import FriendList from "./friendList/FriendList";
+import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
@@ -69,23 +69,21 @@ export const MyFriends = ({myWebId, service}) => {
    */
   async function deleteFriend() {
     let fService = service;
-    let friends = document.getElementsByName("listFriend");
+    let friends = document.getElementsByName("friendList");
     let buttons = document.getElementsByName("friend");
-    let friendWebId;
+    let friendsWebId = [];
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
-        friendWebId = friends[i].innerText;
+        friendsWebId.push(friends[i].innerText);
       }
     }
-    if (friendWebId !== undefined) {
-      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-        await fService.delete(friendWebId);
+    if (friendsWebId !== undefined && friendsWebId.length > 0) {
+      for (let i = 0; i < friendsWebId.length; i++) {
+        await fService.delete(friendsWebId[i]);
         let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
-        await sendNotification(friendWebId, text);
-        window.location.reload(true);
-      } else {
-        NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
+        await sendNotification(friendsWebId[i], text);
       }
+      window.location.reload(true);
     } else {
       NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
     }

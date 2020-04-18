@@ -4,7 +4,7 @@ import { Select } from "../../../utils/select/Select";
 import { Button, Row, Col } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./SharePanel.css";
-import FriendList from "./friendList/FriendList";
+import FriendList from "../../../utils/friendList/FriendList";
 import ldflex from "@solid/query-ldflex";
 import { useNotification } from '@inrupt/solid-react-components';
 import ShareService from "../../../../services/ShareService";
