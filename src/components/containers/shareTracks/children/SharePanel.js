@@ -12,8 +12,8 @@ import FriendGroupService from "../../../../services/FriendGroupService";
 import { MyGroups } from "./myGroups/MyGroups";
 
 let timesLoad = 0; // For handleLoad()
-let isSelectedFriends;
-let selectedFilter;
+let isSelectedFriends; // For selected filter (boolean)
+let selectedFilter; // For selected filter (value)
 
 export const SharePanel = ({myWebId, service, gService}) => {
 
@@ -56,15 +56,18 @@ export const SharePanel = ({myWebId, service, gService}) => {
   };
 
   /**
-   * Upload the share track and send a notification to the receiver
+   * Handle friends/groups to share
    * @returns {Promise<void>}
    */
-  async function handleUpload(){
+  async function handleFriends(){
     let friends = document.getElementsByName("friendlist");
     let buttons = document.getElementsByName("friend");
     let group = false;
     let friendsWebIds = [];
     if (buttons.length === 0) {
+      if (gService instanceof FriendGroupService){
+        gService = new FriendGroupService();
+      }
       group = true;
       friends = document.getElementsByName("groupList");
       buttons = document.getElementsByName("group");
@@ -83,6 +86,15 @@ export const SharePanel = ({myWebId, service, gService}) => {
     if (group && gService.groupFriends.length > 0) {
       friendsWebIds = gService.groupFriends;
     }
+    await handleShare(friendsWebIds);
+  }
+
+  /**
+   * Upload the share track and send a notification to the receiver
+   * @param friendsWebIds
+   * @returns {Promise<void>}
+   */
+  async function handleShare(friendsWebIds) {
     let HTMLElement = document.getElementById("selectRoute");
     if (friendsWebIds.length > 0){
       for (let i=0 ; i < friendsWebIds.length; i++){
@@ -94,17 +106,17 @@ export const SharePanel = ({myWebId, service, gService}) => {
         }
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
         if (sService.successShare === true){
-          NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
+          NotificationManager.success(t("share.successShareMessage").concat(name), t("share.successShareTitle"), 2000);
           await sendNotification(userWebId);
         } else if (sService.warning === true){
           NotificationManager.warning(t("share.warningShareMessage").concat(name), t("share.warningShareTitle"), 5000);
         } else {
           if (sService.error === "Error en el create"){
-            NotificationManager.error(t("share.errorCreateMessage"), t("share.errorCreateTitle"), 5000);
+            NotificationManager.error(t("share.errorCreateMessage").concat(name), t("share.errorCreateTitle"), 5000);
           } else if(sService.error === "Permisos denegados"){
-            NotificationManager.error(t("share.errorPermissionMessage"), t("share.errorPermissionTitle"), 5000);
+            NotificationManager.error(t("share.errorPermissionMessage").concat(name), t("share.errorPermissionTitle"), 5000);
           } else if(sService.error === "Carpeta no encontrada"){
-            NotificationManager.error(t("share.errorFriendsFolder"), t("share.errorCreateTitle"), 5000);
+            NotificationManager.error(t("share.errorFriendsFolder").concat(name), t("share.errorCreateTitle"), 5000);
           }
           else {
             NotificationManager.warning(t("share.warningDeleteMessage").concat(name), t("share.warningDeleteTitle"), 5000);
@@ -191,7 +203,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
     if (selectedFilter !== undefined) {
       if (selectedFilter.localeCompare("radio-1") === 0){
         document.getElementById("radio-1").checked = true;
-      } else {
+      } else if (selectedFilter.localeCompare("radio-2") === 0) {
         document.getElementById("radio-2").checked = true;
       }
     }
@@ -213,7 +225,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                 {t("share.friend")}
               </label>
               <label className="radio-format" name="filter-label">
-                <input name="filter-radio" id="radio-2" type="radio" onChange={handleFilter()}/>
+                <input name="filter-radio" id="radio-2" type="radio" onChange={handleFilter}/>
                 {t("share.group")}
               </label>
             </Row>
@@ -246,7 +258,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                     )}
                 </Row>
                 <div>
-                  <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
+                  <Button data-testid="btnUpload" className="correct-margin" onClick={handleFriends}>
                     {t("share.shareTrack")}
                   </Button>
                   <Button data-testid="btnClean" className="correct-margin" onClick={handleClean}>

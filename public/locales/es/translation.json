@@ -59,21 +59,21 @@
     "resetShareForm": "Limpiar",
     "friends": "Lista de amigos:",
     "groups": "Lista de grupos de amigos:",
-    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
-    "successShareMessage" : "Se han compartido sus rutas",
+    "errorFriends": "No se ha seleccionado ningun amigo/grupo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas con ",
     "successShareTitle" : "Compartido con éxito",
-    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateMessage" : "Ha habido algún problema al compartir con ",
     "errorCreateTitle" : "Compartido sin éxito",
     "warningShareMessage" : "Ya se ha compartido la ruta con ",
     "warningShareTitle" : "Duplicidad de rutas",
-    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta de ",
     "errorPermissionTitle" : "Compartido sin éxito",
     "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
     "warningLoadTitle" : "Advertencia al cargar rutas",
     "warningLoadMessage" : "No hay rutas para compartir",
-    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod del amigo"
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod de "
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -127,9 +127,6 @@
     "infoMessage1": "Tiene ",
     "infoMessage2": " notificaciones sin leer",
     "loadingNotifications": "Cargando sus notificaciones..."
-  },
-  "alert":{
-    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
   },
   "logout": {
     "button": "Cerrar sesión"
