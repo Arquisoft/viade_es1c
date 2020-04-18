@@ -8,6 +8,10 @@ export default class FriendGroupService {
     this.urlRouteInPod = "";
     this.groupJsonContent = "";
     this.success = false;
+    this.folderContent = null;
+    this.warning = false;
+    this.groupsNames = [];
+    this.errorLoad = null;
   }
 
   /**
@@ -89,6 +93,26 @@ export default class FriendGroupService {
       this.success = true;
     } catch(e) {
       this.success = false;
+    }
+  }
+
+  /**
+   * Returns groups stored in POD
+   */
+  async getGroups(){
+    await this.getSession();
+    const fc = new FC(auth);
+    try{
+      this.folderContent = await fc.readFolder(this.urlRouteInPod, null);
+      if (this.folderContent.length === 0){
+        this.warning = "No hay grupos";
+      } else {
+        for (let i = 0; i < this.folderContent.files.length; i++) {
+          this.groupsNames.push(this.folderContent.files[i].name.slice(0, this.folderContent.files[i].name.length - 5));
+        }
+      }
+    } catch(SFCFetchError){
+      this.errorLoad = "Error al cargar lista de grupos";
     }
   }
 }

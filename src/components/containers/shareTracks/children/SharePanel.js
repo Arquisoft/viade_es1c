@@ -8,14 +8,17 @@ import FriendList from "../../../utils/friendList/FriendList";
 import ldflex from "@solid/query-ldflex";
 import { useNotification } from '@inrupt/solid-react-components';
 import ShareService from "../../../../services/ShareService";
+import FriendGroupService from "../../../../services/FriendGroupService";
+import { MyGroups } from "./myGroups/MyGroups";
 
 let timesLoad = 0; // For handleLoad()
 
-export const SharePanel = ({myWebId, service}) => {
+export const SharePanel = ({myWebId, service, gService}) => {
 
   // i18n locales
   const { t } = useTranslation();
   const [data, setData] = useState([]);
+  const [groupData, setGroupData] = useState([]);
 
   const webId = myWebId;
   const { createNotification, discoverInbox } = useNotification(webId);
@@ -109,6 +112,16 @@ export const SharePanel = ({myWebId, service}) => {
     }
   }
 
+  async function handleLoadGroups(){
+    if (gService instanceof FriendGroupService){
+      gService = new FriendGroupService();
+    }
+    await gService.getGroups();
+    if (gService.errorLoad === null){
+      setGroupData(gService.groupsNames);
+    } 
+  }
+
   /**
    * Clean all selected items
    */
@@ -124,6 +137,8 @@ export const SharePanel = ({myWebId, service}) => {
   }
 
   handleLoad(); // To upload tracks to select component
+
+  handleLoadGroups(); // To load groups from pod
 
   return (
     <section data-testid="shareTrackTest">
@@ -151,7 +166,7 @@ export const SharePanel = ({myWebId, service}) => {
               <Col>
                 <div className="list-groups">
                   <h4 className="h4-format">{t("share.groups")}</h4>
-                  <FriendList src="user.friends"></FriendList>
+                  <MyGroups groups={groupData}></MyGroups>
                 </div>
               </Col>
             </Row>
