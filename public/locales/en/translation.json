@@ -55,6 +55,7 @@
     "shareTrack": "Share",
     "resetShareForm": "Reset",
     "friends": "Friend list:",
+    "groups": "Friend Groups list:",
     "errorFriends" : "There's no friend selected to share",
     "successShareMessage" : "Your tracks have been shared",
     "successShareTitle" : "Share successfully",

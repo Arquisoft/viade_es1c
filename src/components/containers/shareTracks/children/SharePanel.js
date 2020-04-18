@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Select } from "../../../utils/select/Select";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./SharePanel.css";
 import FriendList from "./friendList/FriendList";
@@ -127,7 +127,7 @@ export const SharePanel = ({myWebId, service}) => {
 
   return (
     <section data-testid="shareTrackTest">
-      <div className="modal-div">
+      <div className="modal-div-cont">
         <div className="modal-content">
           <div className="modal-header">
             <h2>{t("share.title")}</h2>
@@ -141,10 +141,20 @@ export const SharePanel = ({myWebId, service}) => {
               </label>
               <Select className="select-share" id={"selectRoute"} options={data}/>
             </div>
-            <div className="list-friends">
-              <h4 className="h4-format">{t("share.friends")}</h4>
-              <FriendList src="user.friends"></FriendList>
-            </div>
+            <Row>
+              <Col>
+                <div className="list-friends">
+                  <h4 className="h4-format">{t("share.friends")}</h4>
+                  <FriendList src="user.friends"></FriendList>
+                </div>
+              </Col>
+              <Col>
+                <div className="list-groups">
+                  <h4 className="h4-format">{t("share.groups")}</h4>
+                  <FriendList src="user.friends"></FriendList>
+                </div>
+              </Col>
+            </Row>
             <div>
               <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
                 {t("share.shareTrack")}

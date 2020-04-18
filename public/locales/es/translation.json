@@ -55,6 +55,7 @@
     "shareTrack": "Compartir",
     "resetShareForm": "Limpiar",
     "friends": "Lista de amigos:",
+    "groups": "Lista de grupos de amigos:",
     "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
     "successShareMessage" : "Se han compartido sus rutas",
     "successShareTitle" : "Compartido con éxito",
