@@ -4,6 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import MyFriends from "../components/containers/friends/children/MyFriends";
 import FriendsService from "./mocks/FriendsService";
+import Friends from "../components/containers/friends/Friends";
 
 const webId = "https://miguelornia.solid.community/profile/card#me";
 let fService = new FriendsService();
@@ -12,6 +13,11 @@ it("renders without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<MyFriends myWebId={webId} service={fService}></MyFriends>, div);
 })
+
+it("Friends --> renders Friends without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<Friends></Friends>, div);
+});
 
 it("Add friend", () => {
     const {getByTestId} = render(<MyFriends myWebId={webId} service={fService}></MyFriends>);

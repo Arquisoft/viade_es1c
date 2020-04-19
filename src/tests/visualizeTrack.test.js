@@ -8,12 +8,12 @@ import VisualizeTrack from "../components/containers/visualizeTracks/VisualizeTr
 
 let vService = new VisualizeService();
 
-it("VisualizeTrack -> renders without crashing",() => {
+it("VisualizeTrack -> renders visualizePanel without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<VisualizePanel service={vService}></VisualizePanel>, div);
 });
 
-it("VisualizeTrack2 -> renders without crashing",() => {
+it("VisualizeTrack -> renders visualizeTrack without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<VisualizeTrack ></VisualizeTrack>, div);
 });
@@ -30,7 +30,6 @@ it("VisualizeTrack -> component visualizeTrack has the correct subComponents", (
     expect(getByTestId("btn2VTest")).toBeTruthy();
     getByTestId("btn2VTest").click();
     expect(getByTestId("combo")).toBeTruthy();
-    
 
 });
 
