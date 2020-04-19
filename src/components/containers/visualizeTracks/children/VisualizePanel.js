@@ -271,7 +271,7 @@ export const VisualizePanel = ({service}) => {
                       <Row>
                         <div className="img_viewer formal-div">
                           {images.map((src, index) => (
-                            <img className="my_Img" src={src} onClick={() => openImageViewer(index)} width="90" id={"" + index} key={index} alt=""/>
+                            <img data-testid="btnImagenTest" className="my_Img" src={src} onClick={() => openImageViewer(index)} width="90" id={"" + index} key={index} alt=""/>
                           ))}
                           {isViewerOpen && (
                             <ImageViewer src={images} currentIndex={currentImage} onClose={closeImageViewer}/>
