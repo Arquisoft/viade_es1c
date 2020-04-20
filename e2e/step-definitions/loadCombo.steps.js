@@ -33,7 +33,7 @@ defineFeature((feature), (test) => {
       //Visualize page:
       page2 = await browser.newPage();
       await page2.goto("http://localhost:3000/#/visualize",{waitUntil: "load", timeout: 0}); 
-      await expect(page2).toMatchElement("h1", { id: "MisRutas" });
+      await expect(page2).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
     });
 
     when("I press the button Cargar rutas del POD", async () => {
