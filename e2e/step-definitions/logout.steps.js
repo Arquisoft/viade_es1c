@@ -26,17 +26,19 @@ defineFeature((feature), (test) => {
       await popup.type("[name='username']", "es1c", {visible: true});
       await popup.type("[name='password']", "Viade_es1c", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
-      await expect(page).toMatch("Bienvenido", { timeout: 1000 });
+      //await expect(page).toMatch("Bienvenido", { timeout: 1000 });
+      await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
     });
 
     when("We press Logout", async () => {
-      await page.waitFor(2000);
+      //await page.waitFor(2000);
+      await expect(page).toMatchElement("div > div > section > nav > div > button", { id: "logoutButton" ,waitUntil: "load", timeout: 0});
       await expect(page).toClick("div > div > section > nav > div > button", { id: "logoutButton" });
     });
-
+  
     then("I expect to be in the Log In page", async () => {
-      await page.waitFor(2000);
-      await expect(page).toMatchElement("h2", { text: "Bienvenido a ViaDe_ES1C" });
+      //await page.waitFor(2000);
+      await expect(page).toMatchElement("h2", { text: "Bienvenido a ViaDe_ES1C" ,waitUntil: "load", timeout: 0});
     });
 
   }); 

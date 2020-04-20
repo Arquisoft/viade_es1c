@@ -35,7 +35,8 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect to be on the Welcome page of ViaDe", async () => {
-      await expect(page).toMatch("Bienvenido", { timeout: 1000 });
+      //await expect(page).toMatch("Bienvenido", { timeout: 1000 });
+      await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
     });
 
   }); 
