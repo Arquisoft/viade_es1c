@@ -2,7 +2,7 @@ export default class ShareService {
 
   constructor() {
     this.error = "";
-    this.errorLoad = "";
+    this.errorLoad = null;
     this.successShare = true;
     this.warning = true;
     this.success = "";

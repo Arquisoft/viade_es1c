@@ -64,7 +64,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
     let buttons = document.getElementsByName("friend");
     let group = false;
     let friendsWebIds = [];
-    if (buttons.length === 0) {
+    if (selectedFilter.localeCompare("radio-2") === 0) {
       if (gService instanceof FriendGroupService){
         gService = new FriendGroupService();
       }
@@ -207,20 +207,20 @@ export const SharePanel = ({myWebId, service, gService}) => {
             <span>{t("share.createSharePrompt")}</span>
             <Row className="myRow">
               <label className="radio-format" name="filter-label">
-                <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
+                <input data-testid="radio-1" name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
                 {t("share.friend")}
               </label>
               <label className="radio-format" name="filter-label">
-                <input name="filter-radio" id="radio-2" type="radio" onChange={handleFilter}/>
+                <input data-testid="radio-2" name="filter-radio" id="radio-2" type="radio" onChange={handleFilter}/>
                 {t("share.group")}
               </label>
             </Row>
-            <Button className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
+            <Button data-testid="btnLoad" className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
           </div>
           {showElements && (
               <form className="modal-body">
                 <div>
-                  <label className="lab" htmlFor="documentUriInput">
+                  <label className="lab">
                     {t("share.idLabel")}
                   </label>
                   <Select className="select-share" id={"selectRoute"} options={data}/>
@@ -244,7 +244,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                     )}
                 </Row>
                 <div>
-                  <Button data-testid="btnUpload" className="correct-margin" onClick={handleFriends}>
+                  <Button data-testid="btnShare" className="correct-margin" onClick={handleFriends}>
                     {t("share.shareTrack")}
                   </Button>
                 </div>

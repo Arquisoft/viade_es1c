@@ -6,20 +6,30 @@ import MyFriends from "../components/containers/friends/children/myFriends/MyFri
 import FriendsService from "./mocks/FriendsService";
 import Friends from "../components/containers/friends/Friends";
 
+// Initializing values
 const webId = "https://miguelornia.solid.community/profile/card#me";
 let fService = new FriendsService();
 
-it("renders without crashing",() => {
-    const div = document.createElement("div");
-    ReactDOM.render(<MyFriends myWebId={webId} service={fService}></MyFriends>, div);
-})
-
-it("Friends --> renders Friends without crashing",() => {
+/**
+ * Father renders OK
+ */
+it("Friends --> Renders Friends without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<Friends></Friends>, div);
 });
 
-it("Add friend", () => {
+/**
+ * Child renders OK
+ */
+it("MyFriends --> Renders MyFriends without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<MyFriends myWebId={webId} service={fService}></MyFriends>, div);
+});
+
+/**
+ * Adding a new friend
+ */
+it("MyFriends --> Add friend", () => {
     const {getByTestId} = render(<MyFriends myWebId={webId} service={fService}></MyFriends>);
     expect(getByTestId("friendsTest"));
     expect(getByTestId("input-add"));
@@ -33,22 +43,12 @@ it("Add friend", () => {
     getByTestId("btnAddFriend").click();
 });
 
-it("Delete friend", () => {
+/**
+ * Deleting a friend
+ */
+it("MyFriends --> Delete friend", () => {
     const {getByTestId} = render(<MyFriends myWebId={webId} service={fService}></MyFriends>);
     expect(getByTestId("friendsTest"));
     expect(getByTestId("btnDeleteFriend"));
     getByTestId("btnDeleteFriend").click();
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+});

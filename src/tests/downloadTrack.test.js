@@ -6,19 +6,29 @@ import "@testing-library/jest-dom/extend-expect";
 import DownloadService from "./mocks/DownloadService";
 import DownloadTrack  from "../components/containers/downloadTracks/DownloadTrack";
 
+// Initializing values
 let dService = new DownloadService();
 
-it("Download -> renders DownloadPanel without crashing",() => {
-    const div = document.createElement("div");
-    ReactDOM.render(<DownloadPanel service={dService}></DownloadPanel>, div);
-});
-
-it("Download -> renders DownloadTrack without crashing",() => {
+/**
+ * Father renders OK
+ */
+it("DownloadTrack -> renders DownloadTrack without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<DownloadTrack></DownloadTrack>, div);
 });
 
-it("Download -> renders download correctly", () => {
+/**
+ * Child renders OK
+ */
+it("DownloadPanel --> Renders DownloadPanel without crashing",() => {
+    const div = document.createElement("div");
+    ReactDOM.render(<DownloadPanel service={dService}></DownloadPanel>, div);
+});
+
+/**
+ * Checking components from DownloadPanel
+ */
+it("DownloadPanel --> Renders DownloadPanel correctly", () => {
     const {getByTestId} = render(<DownloadPanel service={dService}></DownloadPanel>);
     expect(getByTestId("downloadComp"));
     expect(getByTestId("titleDownloadh2"));
@@ -28,11 +38,3 @@ it("Download -> renders download correctly", () => {
     expect(getByTestId("btnDownload"));
     getByTestId("btnDownload").click();
 });
-
-//it("Download -> component download has the correct subComponents", () => {
-//    expect(document.getElementsByClassName("modal-dialog")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-content")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-header")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-body")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-footer")).toBeTruthy();
-//});

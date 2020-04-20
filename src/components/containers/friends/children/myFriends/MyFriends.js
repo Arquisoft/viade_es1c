@@ -90,7 +90,7 @@ export const MyFriends = ({myWebId, service}) => {
   }
 
   return (
-        <div>
+        <div data-testid="friendsTest">
           <div className="modal-app">
             <div className="modal-header">
               <h2>{t("friends.title")}</h2>
