@@ -1,4 +1,27 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
-*TO BE DONE*
+=== Security 
+All the components are wrapped up in a LoggedIn label that makes sure the different sites of the application can not be accessed if you have not registered before.
+All the user information is stored in the pod, so that only the own user has access to it.
+
+=== Patterns
+We have use a MVC structure, separatting the application into services (they have the functionality of the application), and components (that mix the View part with the Mdel one).
+We have wanted to use this architectural pattern in order to be able to distinguish the appearance, the business (logic) and the persistance.
+
+=== Stability and Change 
+As we have said in the previus point we are using a MVC structure that also allows and makes easier to make changes or increase the functionality
+
+=== Usability for the users
+Our application is made in order to make the user easier the navigation through the web. We tried successfully to achieve the lowest waiting times we could in the whole app. The application is internationalized in two languages, Spanish and English.
+
+=== Test
+We have divided the tests into automatic and unit tests. We have divided the tests into automatic and unit tests. In this way we test many more things of the application.
+
+=== Transactional
+Using the Solid Pods we have managed to communicate with the Pod fulfilling the ACID(atomicity, consistency, isolation, durability) properties.
+
+=== Folder Structure
+****
+image:estructuraDeCarpetas.png[]
+****

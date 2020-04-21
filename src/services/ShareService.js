@@ -3,7 +3,7 @@ import FC from "solid-file-client";
 
 export default class ShareService {
 
-  constructor(userFriend, HTMLElement) {
+  constructor() {
     this.user = null;
     this.friends = [];
     this.error = null;
@@ -13,8 +13,8 @@ export default class ShareService {
     this.success = null;
     this.urlRouteInPod = null;
     this.routes = [];
-    this.userFriend = userFriend;
-    this.HTMLElement = HTMLElement;
+    this.userFriend = "";
+    this.HTMLElement = null;
     this.content = null;
     this.session = null;
     this.webId = null;
@@ -42,7 +42,7 @@ export default class ShareService {
    * @param {current session} session
    */
   async getSessionId(session){
-    if (session != null) {
+    if (session !== null) {
       this.webId = session.webId;
       await this.getPodRoute(this.webId);
     }
@@ -115,23 +115,28 @@ export default class ShareService {
   }
 
   async upload(fc, urlFriendPod){
-    let permisos = await this.readPermission(urlFriendPod);
-    if (permisos === true){
-      let selectedRouteName = this.HTMLElement.value.concat("");
-      this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
-      if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
-        try{
-          await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
-          this.successShare = true;
-        } catch (SFCFetchError){
-          this.error = "Error en el create";
-        } 
+    if (await fc.itemExists(urlFriendPod) === true){
+      let permisos = await this.readPermission(urlFriendPod);
+      if (permisos === true){
+        let selectedRouteName = this.HTMLElement.value.concat("");
+        this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
+        if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
+          try{
+            await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
+            this.successShare = true;
+          } catch (SFCFetchError){
+            this.error = "Error en el create";
+          } 
+        } else {
+          this.warning = true;
+        }
       } else {
-        this.warning = true;
+        this.error = "Permisos denegados";
       }
     } else {
-      this.error = "Permisos denegados";
+      this.error = "Carpeta no encontrada";
     }
+    
   }
 
   /**
@@ -155,7 +160,9 @@ export default class ShareService {
   /**
    * Method that shares the track on the other user pod
    */
-  async shareTrack() {
+  async shareTrack(userFriend, HTMLElement) {
+    this.userFriend = userFriend;
+    this.HTMLElement = HTMLElement;
     await this.getSession();
     const fc = new FC(auth);
     this.content = await fc.readFile(this.urlRouteInPod, null);

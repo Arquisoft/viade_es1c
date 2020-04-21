@@ -14,15 +14,28 @@ The list of decisions will increase throughout the development of the project. T
 
 |11/02/2020 | *Development Environment* |Visual Studio Code and WebStorm. |Simplicity | |All the development team
 
-|11/02/2020 | *Maps* |Use of third party applications to display maps. Investigate how to show customer routes on a map |Allow visualization of maps |Google maps use credit card, study the option of using OpenStreetMaps | All the development team
+|11/02/2020 | *Maps* |We use JavaScript library leaflet to visualize the map | Simplicity | Could be difficult to test | All the development team
 
 |11/02/2020 |*Parse routes* |The formats must be supporteed by WikiLoc, for example, XML. |Interoperability |Variety of formats | All the team
 
-|11/02/2020 |*Login* |The login must be redirected to Solid in order to obtain the customers' PODs |Improves usability | |All the development team
+|11/02/2020 |*Login* |The login redirects to a Solid popup in order to connect with the customers' PODs |Improves usability | If solid is not working you can not log into the application |All the development team
 
-|11/02/2020 |*Testing* |Implementation of exhaustive tests at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctyly |Need to invert time on exhaustive tests |All the development team
+|11/02/2020 |*Testing* |Implementation of exhaustive Test-driven development (TDD) at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctly |Need to invert time on exhaustive tests |All the development team
 
-|04/02/2020 |*Language* |The documentation must be in English |Internationalization |Need to translate |All the development team
+|04/02/2020 |*Language* |The documentation is in English, and the hole application is interationalized into English too |Internationalization |Need to translate |All the development team
+
+|17/03/2020 |*Acceptance tests* |Implementation of Behaviour-Driven Development (BDD) tests using Cucumber.
+|They can be run in front of the client |Time to make them and write the 'User Stories' |All the development team
+
+|17/03/2020 |*Routes format* |JSON-LD is the format chosen to store routes in the POD
+|Following ViaDe specification | May noy be used by all groups |All the development team
+
+|17/03/2020 |*ViaDe Specification* |Development following the ViaDe Specification
+|Interoperability |May not be used by all groups |All the development team
+
+|17/03/2020 |*Structure* |Decoupled application, separating components and functionalities.
+|Improves architecture | |All the development team
+
 
 |===
 

@@ -19,3 +19,25 @@ This project is an assignment for the [Software Architecture course](https://arq
 The app is deployed at [https://arquisoft.github.io/viade_es1c/](https://arquisoft.github.io/viade_es1c/) which also contains a [technical documentation](https://arquisoft.github.io/viade_es1c/docs).
 
 More information about how this project has been setup is available [in the wiki](https://github.com/Arquisoft/viade_es1c/wiki).
+
+
+## To use the Viade app
+
+You can use the application by clicking on the next [link](https://arquisoft.github.io/viade_es1c/) 
+
+Or if you prefer, you can clone the repository and make this steps.
+
+First, you should install the dependencies with the next command
+
+```shell
+npm install
+```
+
+
+The second step would be to start the app with the command:
+
+```shell
+npm start
+```
+
+And the application should open in your browser.

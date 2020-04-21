@@ -9,24 +9,25 @@ image:doc10_qualityTree.png[]
 
 === Quality Scenarios
 
-The following quality scenarios are studied in a global way, since as it has not yet entered into details of implementation can not be made more specific yet.
+The following quality scenarios are studied in a global way, since as it has not yet entered into details of implementation can not be made more specific yet. The priority column contains two values, the first for the development team and the second for the client.
 
 
 |===
-|Quality |Scenario
+|Quality | Scenario | Priority
 
-|Privacy |Use a Solid PODs and Solid specifications
-.2+|Security |Access control, 
-the application must have a strong access control to avoid bad practices | Data security with Solid PODs
-| Usability | The application must be easy to use, intuitive for inexperienced users
-|Efficiency | The application must respond in short times to make it more dynamic.
-.2+|Robustness | Robustness in terms of the number of users that will operate on it | Robustness in terms of persistence
-|Accesibility | The application must be accessible to all people
-.2+|Simplicity |Application with a simple interface |
-Easy to use application for the user without prior knowledge
-|Maintainability |Maintainable and upgradeable, making use of good designs
-|Availability |The application must be accessible at any time
-|Interoperability |Interoperability between different route management systems
-|Testability | Exhaustive tests that verify the perfect operation of the application before being launched
+|Privacy | Use a Solid PODs and Solid specifications | High, High
+|Accesibility | The application must be accessible to all people | High, High
+|Availability |The application must be accessible at any time | High, High
+|Interoperability |Interoperability between different route management systems | High, High
+|Robustness | Robustness in terms of the number of users that will operate on it  | High, High
+|Robustness | Robustness in terms of persistence | High, High
+|Security | Data security with Solid PODs | High, High
+|Security | Access control, the application must have a strong access control to avoid bad practices | High, Low
+|Efficiency | The application must respond in less than two seconds to make it more dynamic | High, High
+|Efficiency | The application must upload and download routes in less than two seconds | Medium, High
+|Simplicity | Application with a simple interface | Medium, High 
+|Simplicity | Easy to use application for the user without prior knowledge | Medium, High
+|Maintainability | Maintainable and upgradeable, making use of good designs | High, Low
+|Usability | The application must be easy to use, intuitive for inexperienced users | Medium, High
+|Testability | Exhaustive tests that verify the perfect operation of the application before being launched | High, Low
 |===
-
