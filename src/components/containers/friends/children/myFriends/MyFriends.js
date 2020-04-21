@@ -107,7 +107,7 @@ export const MyFriends = ({myWebId, service}) => {
               <br/>
               <span className="span-friends">{t("friends.deleteTitle")}</span>
               <div className="list-friends">
-                <FriendList src="user.friends"></FriendList>
+                <FriendList src="user.friends" nameList="friendList" nameCk="friend"></FriendList>
               </div>
               <div>
                 <Button data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>

@@ -5,7 +5,6 @@ import { Button, Row, Col } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./SharePanel.css";
 import FriendList from "../../../utils/friendList/FriendList";
-import ldflex from "@solid/query-ldflex";
 import { useNotification } from '@inrupt/solid-react-components';
 import ShareService from "../../../../services/ShareService";
 import FriendGroupService from "../../../../services/FriendGroupService";
@@ -60,8 +59,8 @@ export const SharePanel = ({myWebId, service, gService}) => {
    * @returns {Promise<void>}
    */
   async function handleFriends(){
-    let friends = document.getElementsByName("friendlist");
-    let buttons = document.getElementsByName("friend");
+    let friends = document.getElementsByName("listFriend");
+    let buttons = document.getElementsByName("myFriend");
     let group = false;
     let friendsWebIds = [];
     if (selectedFilter.localeCompare("radio-2") === 0) {
@@ -99,11 +98,11 @@ export const SharePanel = ({myWebId, service, gService}) => {
     if (friendsWebIds.length > 0){
       for (let i=0 ; i < friendsWebIds.length; i++){
         let userWebId = friendsWebIds[i];
-        let name = await ldflex[userWebId].name;
         let sService = service;
         if (sService instanceof ShareService) {
           sService = new ShareService();
         }
+        let name = await sService.getName(userWebId);
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage").concat(name), t("share.successShareTitle"), 2000);
@@ -230,7 +229,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                       <Col>
                         <div className="list-friends">
                           <h4 className="h4-format">{t("share.friends")}</h4>
-                          <FriendList src="user.friends"></FriendList>
+                          <FriendList src="user.friends" nameList="listFriend" nameCk="myFriend"></FriendList>
                         </div>
                       </Col>
                     )}

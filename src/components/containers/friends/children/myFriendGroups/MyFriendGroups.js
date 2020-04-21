@@ -29,8 +29,8 @@ export const MyFriendGroups = ({myWebId, service}) => {
       gService = new FriendGroupService();
     }
     let friendGroup = document.getElementById("groupId").value;
-    let friends = document.getElementsByName("friendlist");
-    let buttons = document.getElementsByName("friend");
+    let friends = document.getElementsByName("friendListGroup");
+    let buttons = document.getElementsByName("friendGroup");
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
         friendsWebIds.push(friends[i].innerText);
@@ -110,7 +110,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
               <br/>
               <span className="span-friends-group">{t("groups.addToGroupTitle")}</span>
               <div className="list-friends">
-                <FriendList src="user.friends"></FriendList>
+                <FriendList src="user.friends" nameList="friendListGroup" nameCk="friendGroup"></FriendList>
               </div>
               <div>
                 <Button data-testid="btnAddFriend" className="correct-margin" onClick={createGroup}>

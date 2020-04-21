@@ -15,4 +15,8 @@ export default class ShareService {
   getRoutesFromPod() {
 
   }
+  
+  getName(userWebId) {
+    return "Miguel";
+  }
 }
