@@ -26,7 +26,8 @@ defineFeature((feature), (test) => {
       await expect(page).toClick("button", { className: "btn btn-primary a-solid button-login" });
       popup = await newPagePromise;
 
-      expect(popup).toClick("button", { text: "Solid Community" });
+      await expect(popup).toMatchElement("button", { text: "Solid Community", waitUntil: "load", timeout: 0, visible: true});
+      await expect(popup).toClick("button", { text: "Solid Community" });
       await popup.waitForNavigation({waitUntil: "load", timeout: 0});
 
       await popup.type("[name='username']", "es1c", {visible: true});
@@ -35,7 +36,6 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect to be on the Welcome page of ViaDe", async () => {
-      //await expect(page).toMatch("Bienvenido", { timeout: 1000 });
       await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
     });
 

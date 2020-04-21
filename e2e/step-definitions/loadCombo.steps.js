@@ -21,14 +21,13 @@ defineFeature((feature), (test) => {
       const newPagePromise = new Promise((x) => browser.once(("targetcreated"), (target) => x(target.page())));	
       await expect(page).toClick("button", { className: "btn btn-primary a-solid button-login" });
       popup = await newPagePromise;
-      expect(popup).toClick("button", { text: "Solid Community" });
+      await expect(popup).toMatchElement("button", { text: "Solid Community", waitUntil: "load", timeout: 0, visible: true});
+      await expect(popup).toClick("button", { text: "Solid Community" });
       await popup.waitForNavigation({waitUntil: "load", timeout: 0});
       await popup.type("[name='username']", "es1c", {visible: true});
       await popup.type("[name='password']", "Viade_es1c", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
-      //await expect(page).toMatch("Bienvenido", { timeout: 1000 });
       await expect(page).toMatch("Bienvenido", {waitUntil: "load", timeout: 0});
-
 
       //Visualize page:
       page2 = await browser.newPage();
@@ -38,14 +37,11 @@ defineFeature((feature), (test) => {
 
     when("I press the button Cargar rutas del POD", async () => {
         await expect(page2).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
-        //await page2.waitFor(500);
     });
 
     then("I expect the comboBox to be filled", async () => {
-      //await expect(page2).toMatch("rutaDePrueba1", { timeout: 500 });
       await expect(page2).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
     });
-    
 
     and("I expect the comboBox to have the same amount of routes as the POD", async() => {
       expect(page2).toClick("select", { id: "selectRoute" });

@@ -21,12 +21,12 @@ defineFeature((feature), (test) => {
       const newPagePromise = new Promise((x) =>  browser.once(("targetcreated"), (target) => x(target.page())));	
       await expect(page).toClick("button", { className: "btn btn-primary a-solid button-login" });
       popup = await newPagePromise;
-      expect(popup).toClick("button", { text: "Solid Community" });
+      await expect(popup).toMatchElement("button", { text: "Solid Community", waitUntil: "load", timeout: 0, visible: true});
+      await expect(popup).toClick("button", { text: "Solid Community" });
       await popup.waitForNavigation({waitUntil: "load", timeout: 0});
       await popup.type("[name='username']", "es1c", {visible: true});
       await popup.type("[name='password']", "Viade_es1c", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
-      //await expect(page).toMatch("Bienvenido", { timeout: 1000 });
       await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
 
       //Friends page:
@@ -46,29 +46,25 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect the WebId to appear on the friends list", async () => {
-      //await page.waitFor(1500);
-      //await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li", { name: "listFriend" });
       await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li", { name: "listFriend" ,waitUntil: "load", timeout: 0});
     });
 
     and("I delete my new friend", async () => {
-      //await page.waitFor(1500);
-      //expect(page2).toClick("div > div > section > div > div > div > div > ul > li > input", { class: "radio" });
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li > input", { class: "radio" ,waitUntil: "load", timeout: 0});
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li > input", { class: "radio" ,waitUntil: "load", timeout: 0, visible: true});
       await expect(page2).toClick("div > div > section > div > div > div > div > ul > li > input", { class: "radio" });
 
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > button", { id: "delete", waitUntil: "load", timeout: 0});
-      await expect(page2).toClick("div > div > section > div > div > div > div > button", { id: "delete" });
+      //Así no, con bucle funciona
+      //await expect(page2).toMatchElement("div > div > section > div > div > div > div > button", { id: "delete", waitUntil: "load", timeout: 0});
+      //await expect(page2).toClick("div > div > section > div > div > div > div > button", { id: "delete" });
 
-      //await page2.evaluate(() => {
-      //  let btns = [...document.querySelectorAll("button")];
-      //  btns.forEach(function (btn) {
-      //    if (btn.innerText === "Borrar"){
-      //      btn.click();
-      //    }  
-      //  });
-      //});
-      //await page2.waitFor(500);
+      await page2.evaluate(() => {
+       let btns = [...document.querySelectorAll("button")];
+       btns.forEach(function (btn) {
+         if (btn.innerText === "Borrar"){
+           btn.click();
+         }  
+       });
+      });
     });
   }); 
 
