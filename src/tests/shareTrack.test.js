@@ -52,8 +52,6 @@ test("SharePanel --> Renders load and share buttons correctly (FRIENDS)", async 
     // Wait for appearance
     await waitForDomChange(() => {
         expect(getByTestId("friendsList"));
-        //expect(getByTestId("_0"));
-        //getByTestId("_0").click();
         expect(getByTestId("btnShare"));
     });
     getByTestId("btnShare").click();

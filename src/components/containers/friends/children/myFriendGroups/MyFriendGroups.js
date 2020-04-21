@@ -96,7 +96,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
   };
 
   return (
-        <div>
+        <div data-testid="groupTest">
           <div className="modal-app">
             <div className="modal-header">
               <h2>{t("groups.title")}</h2>
@@ -105,7 +105,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
             <div className="modal-body">
               <span className="span-friends">{t("groups.addTitle")}</span>
               <div className="add-groups">
-                <input data-testid="input-add" className="input-add" id="groupId" type="text" placeholder="e.g. trekking"></input>
+                <input data-testid="input-create-group" className="input-add" id="groupId" type="text" placeholder="e.g. trekking"></input>
               </div>
               <br/>
               <span className="span-friends-group">{t("groups.addToGroupTitle")}</span>
@@ -113,7 +113,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
                 <FriendList src="user.friends" nameList="friendListGroup" nameCk="friendGroup"></FriendList>
               </div>
               <div>
-                <Button data-testid="btnAddFriend" className="correct-margin" onClick={createGroup}>
+                <Button data-testid="btnCreateGroup" className="correct-margin" onClick={createGroup}>
                   {t("groups.add")}
                 </Button>
               </div>
