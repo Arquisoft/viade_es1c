@@ -83,18 +83,12 @@ export const VisualizePanel = ({service}) => {
     if (vService instanceof VisualizeService) {
       vService = new VisualizeService();
     }
-    let buttons = document.getElementsByName("filter-radio");
-    let labels = document.getElementsByName("filter-label");
-    for (let i = 0; i < buttons.length; i++){
-      if (labels[i].innerText !== undefined){
-        if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.myTracks")) === 0){
-          selectedFilter = myTracks;
-          await vService.getMyRoutesFromPod();
-        } else if (buttons[i].checked && labels[i].innerText.localeCompare(t("routes.shared")) === 0){
-          selectedFilter = shared;
-          await vService.getSharedRoutesFromPod();
-        }
-      }
+    if (document.getElementById("radio-1").checked === true){
+      selectedFilter = myTracks;
+      await vService.getMyRoutesFromPod();
+    } else if (document.getElementById("radio-2").checked === true){
+      selectedFilter = shared;
+      await vService.getSharedRoutesFromPod();
     }
     if (vService.warning != null){
       NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
@@ -297,8 +291,8 @@ export const VisualizePanel = ({service}) => {
             <Col>
               <div>
                 <Row>
-                  <label className="radio-format" name="filter-label">
-                    <input name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
+                  <label data-testid="label1Test" className="radio-format" name="filter-label">
+                    <input data-testid="inputLabel1" name="filter-radio" id="radio-1" type="radio" checked={true} onChange={handleFilter}/>
                     {t("routes.myTracks")}
                   </label>
                   <label className="radio-format" name="filter-label">
