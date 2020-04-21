@@ -296,7 +296,7 @@ export const VisualizePanel = ({service}) => {
                     {t("routes.myTracks")}
                   </label>
                   <label className="radio-format" name="filter-label">
-                    <input name="filter-radio" id="radio-2" type="radio"/>
+                    <input data-testid="inputLabel2" name="filter-radio" id="radio-2" type="radio"/>
                     {t("routes.shared")}
                   </label>
                 </Row>
