@@ -146,7 +146,7 @@ export const SharePanel = ({myWebId, service}) => {
               <FriendList src="user.friends"></FriendList>
             </div>
             <div>
-              <Button data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
+              <Button class="btnUpload" data-testid="btnUpload" className="correct-margin" onClick={handleUpload}>
                 {t("share.shareTrack")}
               </Button>
               <Button data-testid="btnClean" className="correct-margin" onClick={handleClean}>
