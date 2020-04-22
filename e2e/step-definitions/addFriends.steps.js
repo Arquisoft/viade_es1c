@@ -52,9 +52,17 @@ defineFeature((feature), (test) => {
     and("I delete my new friend", async () => {
       //Nueva versión
       await expect(page2).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
-      console.log("Lo encuentra");
+      //console.log("Lo encuentra");
       await expect(page2).toClick("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput"});
-      console.log("Hace click");
+      //console.log("Hace click");
+      
+      //Busca boton borrar
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > button ", { id: "deleteFriend", waitUntil: "load", timeout: 0});
+      //console.log("Encuentra el borrar");
+      //await page2.waitFor(1500);
+      //await expect(page2).toClick("div > div > section > div > div > div > div > div > div > button ", { id: "deleteFriend", className:"correct-margin"});
+      //console.log("Click en el borrar");
+      //await page2.waitFor(1500);
       //Fin nueva versión
 
       //await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" ,waitUntil: "load", timeout: 0, visible: true});
@@ -64,14 +72,15 @@ defineFeature((feature), (test) => {
       //await expect(page2).toMatchElement("div > div > section > div > div > div > div > button", { id: "delete", waitUntil: "load", timeout: 0});
       //await expect(page2).toClick("div > div > section > div > div > div > div > button", { id: "delete" });
 
-      //await page2.evaluate(() => {
-      // let btns = [...document.querySelectorAll("button")];
-      // btns.forEach(function (btn) {
-      //   if (btn.innerText === "Borrar"){
-      //     btn.click();
-      //   }  
-      // });
-      //});
+      await page2.evaluate(() => {
+       let btns = [...document.querySelectorAll("button")];
+       btns.forEach(function (btn) {
+         if (btn.innerText === "Borrar"){
+           btn.click();
+         }  
+       });
+      });
+      await page2.waitFor(1500);
     });
   }); 
 
