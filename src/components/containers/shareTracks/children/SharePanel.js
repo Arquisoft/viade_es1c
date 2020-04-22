@@ -71,6 +71,7 @@ export const SharePanel = ({myWebId, service}) => {
           sService = new ShareService();
         }
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
+		
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage"), t("share.successShareTitle"), 2000);
           await sendNotification(userWebId);

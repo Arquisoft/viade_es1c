@@ -13,6 +13,4 @@ it("Download -> renders without crashing",() => {
 it("Download -> renders download correctly", () => {
     const {getByTestId} = render(<NotificationsTable myWebId={webId}></NotificationsTable>);
     expect(getByTestId("notificationTableComp"));
-    //expect(getByTestId("btnMark"));
-    //getByTestId("btnMark").click();
 });

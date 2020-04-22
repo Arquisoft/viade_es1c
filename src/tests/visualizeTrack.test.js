@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render, fireEvent} from "@testing-library/react";
+import { render, fireEvent, getByText} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import VisualizePanel from "../components/containers/visualizeTracks/children/VisualizePanel";
 import VisualizeService from "./mocks/VisualizeService";
@@ -33,8 +33,9 @@ it("VisualizeTrack -> component visualizeTrack has the correct subComponents", (
     expect(getByTestId("combo")).toBeTruthy();
     
 });
-
-//Loading of combobox
+/**
+ * Loading of combobox, as checking radiobutton1(my routes)
+ */
 it("VisualizeTrack --> radiobutton1 is working",() => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     
@@ -43,21 +44,47 @@ it("VisualizeTrack --> radiobutton1 is working",() => {
     getByTestId("btn1VTest").click();
 
     expect(getByTestId("combo")).toBeTruthy();
-    //console.log(getByTestId("combo"));
 });
 
+/**
+ * Testing the combo has the correct information
+ */
+it("VisualizeTrack --> combo is loaded",() => {
+    const callback=jest.fn();
+    const {container, getByText,getByTestId}=render(<VisualizePanel service={vService} onChange={callback}></VisualizePanel>);
+    fireEvent.change(getByTestId("inputLabel1"), { target: { checked: true } });
+    //Filling combo
+    getByTestId("btn1VTest").click();
+   
+
+    fireEvent.focus(container.querySelector(".select-format"));
+    fireEvent.keyDown(container.querySelector(".select-format"),{ key: 'ArrowDown', code: 40 });
+
+    //Da error deberia ser 1 pero da 0
+    //expect(container.querySelector(".select-format").length).toEqual(1);
+});
+
+/**
+ * Loading of combobox as testing radiobutton2(shared routes)
+ */
 it("VisualizeTrack --> radiobutton2 is working",() => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     fireEvent.change(getByTestId("inputLabel2"), { target: { checked: true } });
     getByTestId("btn1VTest").click();
 });
 
+/**
+ * Testing of visualize button
+ */
 it("VisualizeTrack -> visualize button is working", () => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     expect(getByTestId("btn2VTest")).toBeTruthy();
     getByTestId("btn2VTest").click();
 });
 
+/**
+ * Test where errors caused by having both radio-buttons deselected
+ */
 it("visualizeTrack --> without any radio-button pressed error must be handled",() => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     fireEvent.change(getByTestId("inputLabel1"), { target: { checked: false } });

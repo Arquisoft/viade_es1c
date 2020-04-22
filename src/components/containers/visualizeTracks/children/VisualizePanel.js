@@ -26,6 +26,7 @@ L.Icon.Default.mergeOptions({
 
 let actualIndexVideo = 0;   // For actual index video
 let selectedFilter; // For actual filter
+
 /**
  * Component used to display routes on a map
  */
