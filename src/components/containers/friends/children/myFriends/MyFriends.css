@@ -21,14 +21,11 @@
     margin-top: 1em;
 }
 
-.modal-appearance{
-    background: #fff;
+.modal-app{
     border: solid #cbcbcb 1px;
     border-radius: .2em;
-}
-
-.modal-div {
-    margin-left: 22em;
-    margin-right: 22em;
+    background: #fff;
     margin-top: 2em;
+    margin-left: 5em;
+    margin-right: 1em;
 }

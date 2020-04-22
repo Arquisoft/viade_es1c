@@ -50,25 +50,30 @@
   },
   "share": {
     "title": "Compartir mis rutas",
-    "createSharePrompt": "Seleccione los amigos y la ruta que desea compartir con ellos",
+    "friend" : "Amigos",
+    "group" : "Grupos",
+    "createSharePrompt": "Seleccione con quien desea compartir rutas",
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
+    "loadInfo" : "Cargar rutas y contactos",
     "resetShareForm": "Limpiar",
     "friends": "Lista de amigos:",
-    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
-    "successShareMessage" : "Se han compartido sus rutas",
+    "groups": "Lista de grupos de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo/grupo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas con ",
     "successShareTitle" : "Compartido con éxito",
-    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateMessage" : "Ha habido algún problema al compartir con ",
     "errorCreateTitle" : "Compartido sin éxito",
     "warningShareMessage" : "Ya se ha compartido la ruta con ",
     "warningShareTitle" : "Duplicidad de rutas",
-    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta de ",
     "errorPermissionTitle" : "Compartido sin éxito",
     "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
     "warningLoadTitle" : "Advertencia al cargar rutas",
-    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod del amigo"
+    "warningLoadMessage" : "No hay rutas para compartir",
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod de "
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -100,6 +105,17 @@
     "addErrorMessage": "El WebId introducido no es válido",
     "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
   },
+  "groups": {
+    "title": "Mis grupos",
+    "addTitle": "Introduzca el nombre del grupo",
+    "add": "Crear grupo",
+    "addToGroupTitle" : "Seleccione los amigos que desea invitar al grupo",
+    "createErrorTitle": "Error al crear el grupo",
+    "createErrorMessage": "El grupo a crear no es válido",
+    "createSuccessTitle": "Grupo creado con éxito",
+    "createSuccessMessage1": "El grupo ",
+    "createSuccessMessage2": " ha sido creado"
+  },
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación",
@@ -111,9 +127,6 @@
     "infoMessage1": "Tiene ",
     "infoMessage2": " notificaciones sin leer",
     "loadingNotifications": "Cargando sus notificaciones..."
-  },
-  "alert":{
-    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
   },
   "logout": {
     "button": "Cerrar sesión"

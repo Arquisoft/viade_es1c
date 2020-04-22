@@ -3,16 +3,20 @@
 }
 
 .select-share {
-    width: 100%;
+    width: 50%;
     background: #fff;
     text-align:left;
     margin-bottom: .5em;
 }
 
-.list-friends {
+.list-friends, .list-groups {
     border: solid #cbcbcb 1px;
     margin-bottom: .5em;
     border-radius: .2em;
+}
+
+.list-groups {
+    margin-top: .4em;
 }
 
 .modal-appearance{
@@ -21,8 +25,29 @@
     border-radius: .2em;
 }
 
-.modal-div {
-    margin-left: 22em;
-    margin-right: 22em;
+.modal-div-cont {
     margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.myRow {
+    justify-content: center;
+    align-items: center;
+}
+
+.correct-margin-top {
+    margin-top: .8em;
+    margin-bottom: 1em;
+}
+
+.modal-cont {
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    height: 100%;
+    max-height: 100%;
+    text-align: center;
+    background: #fff;
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
-import FriendList from "./friendList/FriendList";
+import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
@@ -69,30 +69,29 @@ export const MyFriends = ({myWebId, service}) => {
    */
   async function deleteFriend() {
     let fService = service;
-    let friends = document.getElementsByName("listFriend");
+    let friends = document.getElementsByName("friendList");
     let buttons = document.getElementsByName("friend");
-    let friendWebId;
+    let friendsWebId = [];
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
-        friendWebId = friends[i].innerText;
+        friendsWebId.push(friends[i].innerText);
       }
     }
-    if (friendWebId !== undefined) {
-      if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
-        await fService.delete(friendWebId);
+    if (friendsWebId !== undefined && friendsWebId.length > 0) {
+      for (let i = 0; i < friendsWebId.length; i++) {
+        await fService.delete(friendsWebId[i]);
         let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
-        await sendNotification(friendWebId, text);
-        window.location.reload(true);
-      } else {
-        NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
+        await sendNotification(friendsWebId[i], text);
       }
+      window.location.reload(true);
+    } else {
+      NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
     }
   }
 
   return (
-    <section data-testid="friendsTest">
-        <div className="modal-div">
-          <div className="modal-appearance">
+        <div data-testid="friendsTest">
+          <div className="modal-app">
             <div className="modal-header">
               <h2>{t("friends.title")}</h2>
               <hr/>
@@ -108,7 +107,7 @@ export const MyFriends = ({myWebId, service}) => {
               <br/>
               <span className="span-friends">{t("friends.deleteTitle")}</span>
               <div className="list-friends">
-                <FriendList src="user.friends"></FriendList>
+                <FriendList src="user.friends" nameList="friendList" nameCk="friend"></FriendList>
               </div>
               <div>
                 <Button data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
@@ -117,9 +116,8 @@ export const MyFriends = ({myWebId, service}) => {
               </div>
             </div>
           </div>
-        </div>
         <NotificationContainer/>
-    </section>
+        </div>
   );
 };
 

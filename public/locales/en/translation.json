@@ -50,26 +50,30 @@
   },
   "share": {
     "title": "Share my tracks",
-    "createSharePrompt": "Choose the friends and the track you want to share with them",
+    "friend" : "Friends",
+    "group" : "Groups",
+    "createSharePrompt": "Choose who you want to share tracks with",
     "idLabel": "Choose track to share:",
     "shareTrack": "Share",
+    "loadInfo" : "Upload routes and contacts",
     "resetShareForm": "Reset",
     "friends": "Friend list:",
-    "errorFriends" : "There's no friend selected to share",
-    "successShareMessage" : "Your tracks have been shared",
+    "groups": "Friend Groups list:",
+    "errorFriends" : "There's no friend/group selected to share",
+    "successShareMessage" : "Your tracks have been shared with ",
     "successShareTitle" : "Share successfully",
-    "errorCreateMessage" : "Something was wrong",
+    "errorCreateMessage" : "There was a problem sharing with ",
     "errorCreateTitle" : "Share unsuccessfully",
     "warningShareMessage" : "Track has been alredy shared with ",
     "warningShareTitle" : "Tracks duplicated",
-    "errorPermissionMessage" : "You are not allowed to access to this folder",
+    "errorPermissionMessage" : "You are not allowed to access to this folder - ",
     "errorPermissionTitle" : "Share unsuccessfully",
     "warningDeleteMessage" : "Track's copy has not been removed correctly",
     "warningDeleteTitle" : "Minor problem",
     "errorFriendsTitle" : "Input error",
     "warningLoadTitle" : "Warning when loading routes",
     "warningLoadMessage" : "There are no tracks to share",
-    "errorFriendsFolder" : "Folder not found in friend's pod"
+    "errorFriendsFolder" : "Folder not found in friend's pod - "
   },
   "upload": {
     "title": "Upload my tracks",
@@ -101,6 +105,17 @@
     "addErrorMessage": "The entered WebId is not valid",
     "checkErrorMessage": "The friend to add is already a friend"
   },
+  "groups": {
+    "title": "My groups",
+    "addTitle": "Enter group's name",
+    "add": "Create a new group",
+    "addToGroupTitle" : "Select the friends you want to invite to the group",
+    "createErrorTitle": "Failed to create group",
+    "createErrorMessage": "The group to create is not valid",
+    "createSuccessTitle": "Group created successfully",
+    "createSuccessMessage1": "Group ",
+    "createSuccessMessage2": " has been created"
+  },
   "notifications": {
     "title" : "My notifications",
     "value": "Notification",
@@ -112,9 +127,6 @@
     "infoMessage1": "You have ",
     "infoMessage2": " unread notifications",
     "loadingNotifications": "Loading your notifications..."
-  },
-  "alert":{
-    "message": "THIS OPTION IS NOT AVAILABLE YET"
   },
   "logout": {
     "button": "Logout"

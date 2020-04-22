@@ -36,7 +36,7 @@ defineFeature((feature), (test) => {
     });
 
     when("We enter a WebId", async () => {
-      await page2.type("[id='friendId']", "https://sandracast.solid.community", {visible: true, waitUntil: "load", timeout: 0});   
+      await page2.type("[id='friendId']", "https://sandracast.solid.community/profile/card#me", {visible: true, waitUntil: "load", timeout: 0});   
       await page2.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
     });
 

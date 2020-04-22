@@ -1,0 +1,31 @@
+.correct-margin {
+    margin-left: 2em;
+}
+
+.list-friends {
+    border: solid #cbcbcb 1px;
+    margin-bottom: .5em;
+    border-radius: .2em;
+    margin-top: .5em;
+}
+
+.add-groups {
+    margin-top: .8em;
+    margin-bottom: .4em;
+}
+
+.input-add {
+    width: 75%;
+}
+
+.span-friends {
+    margin-top: 1.6em;
+}
+
+.modal-app{
+    border: solid #cbcbcb 1px;
+    border-radius: .2em;
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+}

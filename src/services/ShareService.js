@@ -1,5 +1,6 @@
 import auth from "solid-auth-client";
 import FC from "solid-file-client";
+import ldflex from "@solid/query-ldflex";
 
 export default class ShareService {
 
@@ -177,5 +178,14 @@ export default class ShareService {
     await this.upload(fc, urlFriendPod);
     //**delete copy file**/
     await this.removeCopiedTrack(fc);
+  }
+
+  /**
+   * Returns user name
+   * @param userWebId
+   * @returns {Promise<*>}
+   */
+  async getName(userWebId) {
+    return await ldflex[userWebId].name
   }
 }
