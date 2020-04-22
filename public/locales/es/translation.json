@@ -83,7 +83,8 @@
     "successMessage" : "Sus rutas han sido subidas",
     "errorTitle" : "Error en la subida",
     "errorMessage": "Debe subir un archivo con extensión \".json\"",
-    "errorEmptyMessage": "Debes subir algún archivo"
+    "errorEmptyMessage": "Debes subir algún archivo",
+    "errorPermissionsMessage": "No hay permisos para realizar la subida"
   },
   "download": {
     "title": "Descargar ruta",
@@ -103,7 +104,8 @@
     "deleteErrorMessage": "El WebId seleccionado no es válido",
     "addErrorTitle": "Error al añadir amigo",
     "addErrorMessage": "El WebId introducido no es válido",
-    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos",
+    "permissionsErrorMessage": "No hay permisos para realizar la operación"
   },
   "groups": {
     "title": "Mis grupos",
@@ -119,14 +121,13 @@
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación",
-    "read": "Leído",
-    "mark" : "Marcar",
-    "errorTitle": "Error al marcar como leído",
-    "errorMessage": "No hay ninguna notificación marcada",
+    "errorTitle": "Error al buscar",
+    "errorMessage": "No hay ninguna notificación para ese criterio de búsqueda",
     "infoTitle": "Notificaciones actuales",
     "infoMessage1": "Tiene ",
-    "infoMessage2": " notificaciones sin leer",
-    "loadingNotifications": "Cargando sus notificaciones..."
+    "infoMessage2": " notificaciones",
+    "loadingNotifications": "Cargando sus notificaciones...",
+    "searchButton": "Buscar"
   },
   "logout": {
     "button": "Cerrar sesión"

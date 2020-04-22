@@ -83,7 +83,8 @@
     "successMessage" : "Your tracks have been uploaded",
     "errorTitle" : "Upload error",
     "errorMessage": "You must upload a file with extension \".json\"",
-    "errorEmptyMessage": "You must upload a file"
+    "errorEmptyMessage": "You must upload a file",
+    "errorPermissionsMessage": "There are no permissions to upload"
   },
   "download": {
     "title": "Download track",
@@ -103,7 +104,8 @@
     "deleteErrorMessage": "The selected WebId is invalid",
     "addErrorTitle": "Error adding friend",
     "addErrorMessage": "The entered WebId is not valid",
-    "checkErrorMessage": "The friend to add is already a friend"
+    "checkErrorMessage": "The friend to add is already a friend",
+    "permissionsErrorMessage": "There are no permissions to perform the operation"
   },
   "groups": {
     "title": "My groups",
@@ -119,14 +121,13 @@
   "notifications": {
     "title" : "My notifications",
     "value": "Notification",
-    "read": "Read",
-    "mark" : "Mark",
-    "errorTitle": "Error marking as read",
-    "errorMessage": "No notification marked",
+    "errorTitle": "Search failed",
+    "errorMessage": "There is no notification for that search criteria",
     "infoTitle": "Current notifications",
     "infoMessage1": "You have ",
-    "infoMessage2": " unread notifications",
-    "loadingNotifications": "Loading your notifications..."
+    "infoMessage2": " notifications",
+    "loadingNotifications": "Loading your notifications...",
+    "searchButton": "Search"
   },
   "logout": {
     "button": "Logout"

@@ -6,6 +6,8 @@ export default class FriendsService {
 
   constructor() {
     this.webId = "";
+    this.errorAdd = false;
+    this.errorDelete = false;
   }
 
   /**
@@ -22,7 +24,11 @@ export default class FriendsService {
         this.webId = session.webId;
       }
     });
-    await ldflex[this.webId].knows.add(ldflex[friendWebId]);
+    try {
+      await ldflex[this.webId].knows.add(ldflex[friendWebId]);
+    } catch (e) {
+      this.errorAdd = true;
+    }
   }
 
   /**
@@ -39,7 +45,11 @@ export default class FriendsService {
         this.webId = session.webId;
       }
     });
-    await ldflex[this.webId].knows.delete(ldflex[friendWebId]);
+    try {
+      await ldflex[this.webId].knows.delete(ldflex[friendWebId]);
+    } catch(e) {
+      this.errorDelete = true;
+    }
   }
 
   /**

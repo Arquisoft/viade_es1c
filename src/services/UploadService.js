@@ -1,4 +1,5 @@
 import FC from "solid-file-client";
+import auth from "solid-auth-client";
 
 /*
     *****************************************
@@ -12,8 +13,45 @@ export default class UploadService {
 
   constructor() {
     this.HTMLElement = null;
-    this.error = null;
-    this.success = null;
+    this.error = false;
+    this.success = false;
+    this.errorPermissions = false;
+    this.urlRouteInPod = null;
+  }
+
+  /**
+   * Aux method to return the session with it's logged in.
+   */
+  async getSession(){
+    await auth.trackSession(session => {
+      if (!session){
+        return;
+      } else {
+        this.session = session;
+      }
+    })
+    await this.getSessionId(this.session);
+  }
+
+  /**
+   * Aux method that return the webId of the user who is logged in.
+   * @param {current session} session
+   */
+  async getSessionId(session) {
+    let webId = session.webId;
+    await this.getPodRoute(webId);
+  }
+
+  /**
+   * Aux method that returns the route to tracks upload in the pod.
+   * @param {logged in user's webId} webId
+   */
+  async getPodRoute(webId) {
+    /*
+        15 == length("profile/card#me")
+        "viade/routes/" == folder where the routes are stored
+    */
+    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes");
   }
 
   /**
@@ -61,12 +99,12 @@ export default class UploadService {
     let extension = nameFile.split(".");
     if (!extension[1].localeCompare("json")) {
       if (times === 0) {
-        this.success = "Subido con exito";
+        this.success = true;
         times++;
       }
       await this.processFile(track, nameFile);
     } else {
-      this.error = "Error";
+      this.error = true;
     }
   }
 
@@ -84,6 +122,17 @@ export default class UploadService {
   }
 
   /**
+   * Aux method to check read permissions
+   * @returns {Promise<boolean>}
+   */
+  async readPermission(url) {
+    const fc = new FC(auth);
+    url = url.concat("/test.ttl");
+    await fc.createFile(url, null);
+    await fc.delete(url);
+  }
+
+  /**
    * Perform multiple upload of tracks
    * @param {*} HTMLElement {input file}
    * @returns {Promise<void>}
@@ -93,6 +142,12 @@ export default class UploadService {
     this.HTMLElement = HTMLElement;
     const fileInput = this.HTMLElement;
     const tracks = fileInput.files;
-    await this.processMultipleTrack(tracks);
+    await this.getSession();
+    try {
+      await this.readPermission(this.urlRouteInPod);
+      await this.processMultipleTrack(tracks);
+    } catch (SFCFetchError) {
+      this.errorPermissions = true;
+    }
   }
 }
