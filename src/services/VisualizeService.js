@@ -70,7 +70,7 @@ export default class VisualizeService{
             } else {
                 this.session = session;
             }
-        })
+        });
         await this.getSessionId(route, this.session);
     }
 
@@ -109,7 +109,7 @@ export default class VisualizeService{
         } else {
             for (let i = 0; i < content.files.length; i++) {
                 this.extension = content.files[i].name.split(".");
-                if (this.extension[1].localeCompare("json") === 0) {
+                if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
                     // 5 == length(".json")
                     this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
                 }

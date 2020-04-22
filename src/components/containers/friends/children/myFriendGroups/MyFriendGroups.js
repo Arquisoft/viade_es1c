@@ -46,6 +46,8 @@ export const MyFriendGroups = ({myWebId, service}) => {
             await sendNotification(text);
             friendsWebIds = [];
             clear(buttons);
+          } else {
+            NotificationManager.error(t("groups.permissionsErrorMessage"), t("groups.createErrorTitle"), 3000);
           }
       } else  {
         NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);

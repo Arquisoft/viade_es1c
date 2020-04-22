@@ -73,7 +73,9 @@
     "errorFriendsTitle" : "Input error",
     "warningLoadTitle" : "Warning when loading routes",
     "warningLoadMessage" : "There are no tracks to share",
-    "errorFriendsFolder" : "Folder not found in friend's pod - "
+    "errorFriendsFolder" : "Folder not found in friend's pod - ",
+    "errorMyPermissionsMessage": "Correctly configure your permissions for sharing with ",
+    "errorEmptyTracks": "There are no routes to share"
   },
   "upload": {
     "title": "Upload my tracks",
@@ -116,7 +118,8 @@
     "createErrorMessage": "The group to create is not valid",
     "createSuccessTitle": "Group created successfully",
     "createSuccessMessage1": "Group ",
-    "createSuccessMessage2": " has been created"
+    "createSuccessMessage2": " has been created",
+    "permissionsErrorMessage": "Permissions are missing to create the group"
   },
   "notifications": {
     "title" : "My notifications",
@@ -127,7 +130,8 @@
     "infoMessage1": "You have ",
     "infoMessage2": " notifications",
     "loadingNotifications": "Loading your notifications...",
-    "searchButton": "Search"
+    "searchButton": "Search",
+    "problemLoading": "No notifications available"
   },
   "logout": {
     "button": "Logout"

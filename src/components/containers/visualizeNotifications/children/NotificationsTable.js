@@ -7,11 +7,12 @@ import ReactLoading from "react-loading";
 import {Button, Form, FormControl} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from "react-notifications";
 import "./NotificationsTable.css";
+import NotificationsService from "../../../../services/NotificationsService";
 
-let times = 0; // Shows no read notifications
+let timesNotifications = 0; // Shows notifications
 let restartNotifications = true;  // For searcher
 
-export const NotificationsTable = ({myWebId}) => {
+export const NotificationsTable = ({myWebId, service}) => {
 
   // Hook for i18n
   const {t} = useTranslation();
@@ -31,6 +32,7 @@ export const NotificationsTable = ({myWebId}) => {
     fetchNotification,
   } = useNotification(webId);
   const BoxWithLoading = WithLoading(Box);
+  const [withoutNotifications, setWithoutNotifications] = useState(false);
 
   /**
    * Function that create the row
@@ -51,7 +53,14 @@ export const NotificationsTable = ({myWebId}) => {
       if (webId !== undefined && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
         const inboxes = [{ path: userWebId, inboxName: 'Global Inbox', shape: 'default' }];
-        await fetchNotification(inboxes);
+        if (service instanceof NotificationsService) {
+          service = new NotificationsService();
+        }
+        if (await service.checkContent(userWebId) === true && !service.error) {
+          await fetchNotification(inboxes);
+        } else {
+          setWithoutNotifications(true);
+        }
         if (notification.notifications.length > 0 && restartNotifications) {
           let rows = [];
           for (let i=0; i < notification.notifications.length; i++) {
@@ -59,8 +68,8 @@ export const NotificationsTable = ({myWebId}) => {
           }
           setRows(rows);
           setShowTable(true);
-          if (times === 0) {
-            times++;
+          if (timesNotifications === 0) {
+            timesNotifications++;
             NotificationManager.info(t('notifications.infoMessage1').concat(rows.length).concat(t('notifications.infoMessage2'))
               , t('notifications.infoTitle'), 3000);
           }
@@ -135,10 +144,10 @@ export const NotificationsTable = ({myWebId}) => {
 
   return (
     <div data-testid="notificationTableComp">
-      {!showTable && (
+      {!showTable && !withoutNotifications && (
         <BoxWithLoading isLoading={!showTable}/>
       )}
-      {showTable && (
+      {showTable && !withoutNotifications && (
         <div>
           <Form className="searcher" inline>
             <FormControl type="text" placeholder="e.g. user1" className="mr-sm-2" id="searchInput" />
@@ -180,6 +189,9 @@ export const NotificationsTable = ({myWebId}) => {
           />
           <br/>
         </div>
+      )}
+      {withoutNotifications && (
+        <u>{t("notifications.problemLoading")}</u>
       )}
       <NotificationContainer/>
     </div>

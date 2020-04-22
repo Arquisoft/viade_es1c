@@ -95,7 +95,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
    */
   async function handleShare(friendsWebIds) {
     let HTMLElement = document.getElementById("selectRoute");
-    if (friendsWebIds.length > 0){
+    if (friendsWebIds.length > 0 && HTMLElement.value.localeCompare("") !== 0){
       for (let i=0 ; i < friendsWebIds.length; i++){
         let userWebId = friendsWebIds[i];
         let sService = service;
@@ -116,14 +116,17 @@ export const SharePanel = ({myWebId, service, gService}) => {
             NotificationManager.error(t("share.errorPermissionMessage").concat(name), t("share.errorPermissionTitle"), 5000);
           } else if(sService.error === "Carpeta no encontrada"){
             NotificationManager.error(t("share.errorFriendsFolder").concat(name), t("share.errorCreateTitle"), 5000);
-          }
-          else {
+          } else if (sService.error === "Mis permisos fallan") {
+            NotificationManager.error(t("share.errorMyPermissionsMessage").concat(name), t("share.errorCreateTitle"), 5000);
+          } else {
             NotificationManager.warning(t("share.warningDeleteMessage").concat(name), t("share.warningDeleteTitle"), 5000);
           }
         }
       }
-    } else {
+    } else if (friendsWebIds.length === 0) {
       NotificationManager.error(t("share.errorFriends"), t("share.errorFriendsTitle") , 5000);
+    } else {
+      NotificationManager.error(t("share.errorEmptyTracks"), t("share.errorFriendsTitle") , 5000);
     }
   }
 
