@@ -46,25 +46,32 @@ defineFeature((feature), (test) => {
     });
 
     then("I expect the WebId to appear on the friends list", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li", { name: "listFriend" ,waitUntil: "load", timeout: 0});
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
     });
 
     and("I delete my new friend", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" ,waitUntil: "load", timeout: 0, visible: true});
-      await expect(page2).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" });
+      //Nueva versión
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
+      console.log("Lo encuentra");
+      await expect(page2).toClick("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput"});
+      console.log("Hace click");
+      //Fin nueva versión
+
+      //await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" ,waitUntil: "load", timeout: 0, visible: true});
+      //await expect(page2).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" });
 
       //Así no, con bucle funciona
       //await expect(page2).toMatchElement("div > div > section > div > div > div > div > button", { id: "delete", waitUntil: "load", timeout: 0});
       //await expect(page2).toClick("div > div > section > div > div > div > div > button", { id: "delete" });
 
-      await page2.evaluate(() => {
-       let btns = [...document.querySelectorAll("button")];
-       btns.forEach(function (btn) {
-         if (btn.innerText === "Borrar"){
-           btn.click();
-         }  
-       });
-      });
+      //await page2.evaluate(() => {
+      // let btns = [...document.querySelectorAll("button")];
+      // btns.forEach(function (btn) {
+      //   if (btn.innerText === "Borrar"){
+      //     btn.click();
+      //   }  
+      // });
+      //});
     });
   }); 
 
