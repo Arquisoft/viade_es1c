@@ -32,9 +32,15 @@ defineFeature(feature, test => {
         });
 
         when("We select a route from the combo", async () => {
-            //Dejamos el primero por defecto
+            //First route available is already selected
             page2 = await browser.newPage();
             await page2.goto("http://localhost:3000/#/share",{waitUntil: "load", timeout: 0}); 
+
+            //We select to share with friends
+            //Friend option is already selected
+            //Cargar rutas y contactos
+            await expect(page2).toMatchElement("div > div > section > div > div > div > button", { id: "btnLoad" ,waitUntil: "load", timeout: 0, visible: true});
+            await expect(page2).toClick("div > div > section > div > div > div > button", { id: "btnLoad" });
         });
 
         and("We select a friend", async () => {
@@ -44,8 +50,8 @@ defineFeature(feature, test => {
         });
 
         and("We click the Share button", async () => {
-            await expect(page2).toMatchElement("div > div > section > div > div > form > div > button", { class: "btnUpload" ,waitUntil: "load", timeout: 0, visible: true});
-            await expect(page2).toClick("div > div > section > div > div > form > div > button", { class: "btnUpload" });
+            await expect(page2).toMatchElement("div > div > section > div > div > form > div > button", { id: "btnShare" ,waitUntil: "load", timeout: 0, visible: true});
+            await expect(page2).toClick("div > div > section > div > div > form > div > button", { id: "btnShare" });
         });
   
         then("I expect that the route has been shared", async () => {

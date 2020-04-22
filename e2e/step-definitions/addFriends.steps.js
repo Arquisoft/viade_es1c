@@ -41,7 +41,7 @@ defineFeature((feature), (test) => {
     });
 
     and("We click the Add button", async () => {
-      expect(page2).toClick("div > div > section > div > div > div > div > button", { id: "add" });
+      expect(page2).toClick("div > div > section > div > div > div > div > div > div > button", { id: "btnAdd" });
       await page2.waitForNavigation({waitUntil: "load", timeout: 0});
     });
 
@@ -50,8 +50,8 @@ defineFeature((feature), (test) => {
     });
 
     and("I delete my new friend", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > ul > li > input", { class: "radio" ,waitUntil: "load", timeout: 0, visible: true});
-      await expect(page2).toClick("div > div > section > div > div > div > div > ul > li > input", { class: "radio" });
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" ,waitUntil: "load", timeout: 0, visible: true});
+      await expect(page2).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { name: "friend" });
 
       //Así no, con bucle funciona
       //await expect(page2).toMatchElement("div > div > section > div > div > div > div > button", { id: "delete", waitUntil: "load", timeout: 0});
