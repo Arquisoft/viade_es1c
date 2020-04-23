@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render, fireEvent, getByText} from "@testing-library/react";
+import { render, fireEvent, waitForDomChange} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import VisualizePanel from "../components/containers/visualizeTracks/children/VisualizePanel";
 import VisualizeService from "./mocks/VisualizeService";
@@ -49,19 +49,21 @@ it("VisualizeTrack --> radiobutton1 is working",() => {
 /**
  * Testing the combo has the correct information
  */
-it("VisualizeTrack --> combo is loaded",() => {
-    const callback=jest.fn();
-    const {container, getByText,getByTestId}=render(<VisualizePanel service={vService} onChange={callback}></VisualizePanel>);
+it("VisualizeTrack --> combo is loaded", async () => {
+    const {container,getByTestId}=render(<VisualizePanel service={vService}></VisualizePanel>);
     fireEvent.change(getByTestId("inputLabel1"), { target: { checked: true } });
     //Filling combo
     getByTestId("btn1VTest").click();
    
+    await waitForDomChange(() => {
+        //expect(container.querySelector(".select-forma").length).toEqual(3);
+        //expect(getByTestId("comb").length).toEqual(1);
+        expect(getByTestId("combo"));
+        expect(getByTestId("combo").length).toEqual(1);
+        expect(getByTestId("btn2VTest"));
+    });
+    getByTestId("btn2VTest").click();
 
-    fireEvent.focus(container.querySelector(".select-format"));
-    fireEvent.keyDown(container.querySelector(".select-format"),{ key: 'ArrowDown', code: 40 });
-
-    //Da error deberia ser 1 pero da 0
-    //expect(container.querySelector(".select-format").length).toEqual(1);
 });
 
 /**

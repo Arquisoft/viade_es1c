@@ -1,7 +1,7 @@
 export default class VisualizeService {
 
   constructor() {
-    this.warning = "";
+    this.warning="";
     this.errorLoad = "";
     this.routes = [];
     this.points = [];
@@ -14,7 +14,8 @@ export default class VisualizeService {
     this.existsVideo = true;
     this.existsImage = true;
   }
-
+  
+  
   getMyRoutesFromPod() {
     const myRoutes = ["Ruta1"];
     this.routes = myRoutes;
@@ -27,4 +28,5 @@ export default class VisualizeService {
   fillMap(selectedFilter, HTMLElement) {
 
   }
+
 }

@@ -52,9 +52,9 @@ export const VisualizePanel = ({service}) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [images, setImages] = useState([]);
   const openImageViewer = useCallback((index) => {
-    setCurrentImage(index);
-    setIsViewerOpen(true);
-  }, []);
+		setCurrentImage(index);
+		setIsViewerOpen(true);
+	  }, []);
   const closeImageViewer = () => {
     setCurrentImage(0);
     setIsViewerOpen(false);

@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-
 import Login from "../components/containers/login/Login";
-
 
 let container;
 
@@ -17,6 +15,9 @@ afterEach(() => {
     container= null;
 });
 
+/**
+ * Login renders correctly and has the correct subcomponents
+ */
 it("Login test, renders without crashing", () => {
     act(() => {
         ReactDOM.render(<Login></Login>, container);
