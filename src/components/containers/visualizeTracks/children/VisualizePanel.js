@@ -245,7 +245,7 @@ export const VisualizePanel = ({service}) => {
                 {showElements && (
                   <Col>
                     <Row>
-                      <h4 className="h4-format">{t("routes.histogram")}</h4>
+                      <h4 id="h4PerfilElevacion" className="h4-format">{t("routes.histogram")}</h4>
                     </Row>
                     <Row>
                       <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
@@ -308,7 +308,7 @@ export const VisualizePanel = ({service}) => {
                 </Button>
                 <h3>{t("routes.select")}</h3>
                 <Select data-testid="combo" className="select-format" id={"selectRoute"} options={data}/>
-                <Button data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
+                <Button id="visualizeRouteButton" data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
                   {t("routes.button")}
                 </Button>
               </div>
