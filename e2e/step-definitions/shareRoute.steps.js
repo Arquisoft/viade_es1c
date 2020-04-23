@@ -45,17 +45,12 @@ defineFeature(feature, test => {
 
         and("We select a friend", async () => {
             //Raquel is the only friend
-            console.log("Busca el checkbox");
             await expect(page2).toMatchElement("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" ,waitUntil: "load", timeout: 0, visible: true});
-            console.log("Encuentra el checkbox");
             await expect(page2).toClick("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" });
-            console.log("Lo clicka");
         });
 
         and("We click the Share button", async () => {
-            console.log("Hace cosas");
             await expect(page2).toMatchElement("div > div > section > div > div > form > div > button", { id: "btnShare" ,waitUntil: "load", timeout: 0, visible: true});
-            console.log("Hace cosas");
             await expect(page2).toClick("div > div > section > div > div > form > div > button", { id: "btnShare" });
         });
   
