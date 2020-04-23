@@ -30,22 +30,36 @@ defineFeature((feature), (test) => {
           await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
 
           //Friends page:
-          page2 = await browser.newPage();
-          await page2.goto("http://localhost:3000/#/download",{waitUntil: "load", timeout: 0}); 
-          await expect(page2).toMatchElement("h2", { id: "downloadTitle" });
+          //page2 = await browser.newPage();
+          //await page2.goto("http://localhost:3000/#/download",{waitUntil: "load", timeout: 0}); 
+          //await expect(page2).toMatchElement("h2", { id: "downloadTitle" });
+        });
+
+        and("Click in the NavBar to download", async () => {
+          await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarDownload", waitUntil: "load", timeout: 0});
+          //await page.waitFor(2000);
+          await page.evaluate(() => {
+            let links = [...document.querySelectorAll("a")];
+            links.forEach(function (a) {
+              console.log(a);
+              if (a.id === "navBarDownload"){
+                a.click();
+              }  
+            });
+           });
         });
 
         when("We enter a name of the file that we want to download", async () => {
-          await page2.type("[id='txtUrl']", "rutaDePrueba1", {visible: true, waitUntil: "load", timeout: 0});   
-          await page2.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
+          await page.type("[id='txtUrl']", "rutaDePrueba1", {visible: true, waitUntil: "load", timeout: 0});   
+          await page.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
         });
 
         and("We click to the button", async () => {
-          expect(page2).toClick("div > div > section > div > div > div > button", { id: "btnDownload" });
+          expect(page).toClick("div > div > section > div > div > div > button", { id: "btnDownload" });
         });
 
         then("I expect a message to be shown", async () => {
-          
+          // Mensaje de aviso
         });
     });
 });
