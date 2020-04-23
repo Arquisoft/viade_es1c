@@ -3,7 +3,6 @@ const feature = loadFeature("./e2e/features/shareRoute.feature");
 const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
-let page2 = null;
 
 defineFeature(feature, test => {
     //Raquel is already my friend
@@ -33,25 +32,37 @@ defineFeature(feature, test => {
 
         when("We select a route from the combo", async () => {
             //First route available is already selected
-            page2 = await browser.newPage();
-            await page2.goto("http://localhost:3000/#/share",{waitUntil: "load", timeout: 0}); 
+            //page2 = await browser.newPage();
+            //await page2.goto("http://localhost:3000/#/share",{waitUntil: "load", timeout: 0}); 
+
+            await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarShare", waitUntil: "load", timeout: 0});
+            //await page.waitFor(2000);
+            await page.evaluate(() => {
+                let links = [...document.querySelectorAll("a")];
+                links.forEach(function (a) {
+                    console.log(a);
+                    if (a.id === "navBarShare"){
+                        a.click();
+                    }  
+                });
+            });
 
             //We select to share with friends
             //Friend option is already selected
             //Cargar rutas y contactos
-            await expect(page2).toMatchElement("div > div > section > div > div > div > button", { id: "btnLoad" ,waitUntil: "load", timeout: 0, visible: true});
-            await expect(page2).toClick("div > div > section > div > div > div > button", { id: "btnLoad" });
+            await expect(page).toMatchElement("div > div > section > div > div > div > button", { id: "btnLoad" ,waitUntil: "load", timeout: 0, visible: true});
+            await expect(page).toClick("div > div > section > div > div > div > button", { id: "btnLoad" });
         });
 
         and("We select a friend", async () => {
             //Raquel is the only friend
-            await expect(page2).toMatchElement("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" ,waitUntil: "load", timeout: 0, visible: true});
-            await expect(page2).toClick("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" });
+            await expect(page).toMatchElement("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" ,waitUntil: "load", timeout: 0, visible: true});
+            await expect(page).toClick("div > div > section > div > div > form > div > div > div > ul > li > input", { class: "ck" });
         });
 
         and("We click the Share button", async () => {
-            await expect(page2).toMatchElement("div > div > section > div > div > form > div > button", { id: "btnShare" ,waitUntil: "load", timeout: 0, visible: true});
-            await expect(page2).toClick("div > div > section > div > div > form > div > button", { id: "btnShare" });
+            await expect(page).toMatchElement("div > div > section > div > div > form > div > button", { id: "btnShare" ,waitUntil: "load", timeout: 0, visible: true});
+            await expect(page).toClick("div > div > section > div > div > form > div > button", { id: "btnShare" });
         });
   
         then("I expect that the route has been shared", async () => {
