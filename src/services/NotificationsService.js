@@ -4,7 +4,6 @@ import auth from "solid-auth-client";
 export default class NotificationsService {
 
   constructor() {
-    this.notifications = [];
     this.error = false;
   }
 

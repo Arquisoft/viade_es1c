@@ -149,9 +149,9 @@ export const NotificationsTable = ({myWebId, service}) => {
       )}
       {showTable && !withoutNotifications && (
         <div>
-          <Form className="searcher" inline>
+          <Form data-testid="searchForm" className="searcher" inline>
             <FormControl type="text" placeholder="e.g. user1" className="mr-sm-2" id="searchInput" />
-            <Button variant="primary" onClick={searchNotifications}>{t("notifications.searchButton")}</Button>
+            <Button data-testid="btnSearch" variant="primary" onClick={searchNotifications}>{t("notifications.searchButton")}</Button>
           </Form>
           <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-labelledby="tableTitle" aria-label="enhanced table">
@@ -191,7 +191,7 @@ export const NotificationsTable = ({myWebId, service}) => {
         </div>
       )}
       {withoutNotifications && (
-        <u>{t("notifications.problemLoading")}</u>
+        <u data-testid="errorMessage">{t("notifications.problemLoading")}</u>
       )}
       <NotificationContainer/>
     </div>
