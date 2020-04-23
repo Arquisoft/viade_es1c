@@ -15,7 +15,7 @@
     "maps": "Visualizar rutas"
   },
   "welcome": {
-    "welcome": "Bienvenido,",
+    "welcome": "Bienvenido/a,",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas, compartirlas con nuestros amigos, descargarlas y subirlas.",
     "documentation": "Enlace a la documentación",
@@ -73,7 +73,9 @@
     "errorFriendsTitle" : "Error de entrada",
     "warningLoadTitle" : "Advertencia al cargar rutas",
     "warningLoadMessage" : "No hay rutas para compartir",
-    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod de "
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod de ",
+    "errorMyPermissionsMessage": "Configure correctamente sus permisos para compartir con ",
+    "errorEmptyTracks": "No hay rutas para compartir"
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -83,7 +85,8 @@
     "successMessage" : "Sus rutas han sido subidas",
     "errorTitle" : "Error en la subida",
     "errorMessage": "Debe subir un archivo con extensión \".json\"",
-    "errorEmptyMessage": "Debes subir algún archivo"
+    "errorEmptyMessage": "Debes subir algún archivo",
+    "errorPermissionsMessage": "No hay permisos para realizar la subida"
   },
   "download": {
     "title": "Descargar ruta",
@@ -103,7 +106,8 @@
     "deleteErrorMessage": "El WebId seleccionado no es válido",
     "addErrorTitle": "Error al añadir amigo",
     "addErrorMessage": "El WebId introducido no es válido",
-    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos",
+    "permissionsErrorMessage": "No hay permisos para realizar la operación"
   },
   "groups": {
     "title": "Mis grupos",
@@ -114,19 +118,20 @@
     "createErrorMessage": "El grupo a crear no es válido",
     "createSuccessTitle": "Grupo creado con éxito",
     "createSuccessMessage1": "El grupo ",
-    "createSuccessMessage2": " ha sido creado"
+    "createSuccessMessage2": " ha sido creado",
+    "permissionsErrorMessage": "Faltan permisos para crear el grupo"
   },
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación",
-    "read": "Leído",
-    "mark" : "Marcar",
-    "errorTitle": "Error al marcar como leído",
-    "errorMessage": "No hay ninguna notificación marcada",
+    "errorTitle": "Error al buscar",
+    "errorMessage": "No hay ninguna notificación para ese criterio de búsqueda",
     "infoTitle": "Notificaciones actuales",
     "infoMessage1": "Tiene ",
-    "infoMessage2": " notificaciones sin leer",
-    "loadingNotifications": "Cargando sus notificaciones..."
+    "infoMessage2": " notificaciones",
+    "loadingNotifications": "Cargando sus notificaciones...",
+    "searchButton": "Buscar",
+    "problemLoading": "No hay notificaciones disponibles"
   },
   "logout": {
     "button": "Cerrar sesión"

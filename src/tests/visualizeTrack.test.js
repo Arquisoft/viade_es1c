@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { render, fireEvent} from "@testing-library/react";
+import { render, fireEvent, waitForDomChange} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import VisualizePanel from "../components/containers/visualizeTracks/children/VisualizePanel";
 import VisualizeService from "./mocks/VisualizeService";
@@ -8,16 +8,19 @@ import VisualizeTrack from "../components/containers/visualizeTracks/VisualizeTr
 
 let vService = new VisualizeService();
 
+//Component visualizePanel renders correctly
 it("VisualizeTrack -> renders visualizePanel without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<VisualizePanel service={vService}></VisualizePanel>, div);
 });
 
+//Component visualizeTrack renders correctly
 it("VisualizeTrack -> renders visualizeTrack without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<VisualizeTrack ></VisualizeTrack>, div);
 });
 
+//Check the panel exists after rendering
 it("VisualizeTrack -> renders visualize correctly", () => {
     const {getByTestId} =render(<VisualizePanel service={vService}></VisualizePanel>);
     expect(getByTestId("visualizeTest")).toBeTruthy();
@@ -29,27 +32,63 @@ it("VisualizeTrack -> component visualizeTrack has the correct subComponents", (
     expect(getByTestId("containerVisualTest")).toBeTruthy();
     expect(getByTestId("combo")).toBeTruthy();
     
-    // expect(getByTestId("label1Test")).toBeTruthy();
-    // expect(getByTestId("inputLabel1")).toBeTruthy();
-    
 });
-
-it("VisualizeTrack -> load button is working", () => {
-
+/**
+ * Loading of combobox, as checking radiobutton1(my routes)
+ */
+it("VisualizeTrack --> radiobutton1 is working",() => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     
-    //fireEvent.change(getByTestId("inputLabel1"), { target: { checked: true } });
-
     expect(getByTestId("btn1VTest")).toBeTruthy();
+    fireEvent.change(getByTestId("inputLabel1"), { target: { checked: true } });
     getByTestId("btn1VTest").click();
-    expect(getByTestId("combo")).toBeTruthy();
 
+    expect(getByTestId("combo")).toBeTruthy();
 });
 
-it("VisualizeTrack -> visualize button is working", () => {
+/**
+ * Testing the combo has the correct information
+ */
+it("VisualizeTrack --> combo is loaded", async () => {
+    const {container,getByTestId}=render(<VisualizePanel service={vService}></VisualizePanel>);
+    fireEvent.change(getByTestId("inputLabel1"), { target: { checked: true } });
+    //Filling combo
+    getByTestId("btn1VTest").click();
+   
+    await waitForDomChange(() => {
+        //expect(container.querySelector(".select-forma").length).toEqual(3);
+        //expect(getByTestId("comb").length).toEqual(1);
+        expect(getByTestId("combo"));
+        expect(getByTestId("combo").length).toEqual(1);
+        expect(getByTestId("btn2VTest"));
+    });
+    getByTestId("btn2VTest").click();
+});
 
+/**
+ * Loading of combobox as testing radiobutton2(shared routes)
+ */
+it("VisualizeTrack --> radiobutton2 is working",() => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    fireEvent.change(getByTestId("inputLabel2"), { target: { checked: true } });
+    getByTestId("btn1VTest").click();
+});
+
+/**
+ * Testing of visualize button
+ */
+it("VisualizeTrack -> visualize button is working", () => {
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     expect(getByTestId("btn2VTest")).toBeTruthy();
     getByTestId("btn2VTest").click();
+});
 
+/**
+ * Test where errors caused by having both radio-buttons deselected
+ */
+it("visualizeTrack --> without any radio-button pressed error must be handled",() => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    fireEvent.change(getByTestId("inputLabel1"), { target: { checked: false } });
+    fireEvent.change(getByTestId("inputLabel2"), { target: { checked: false } });
+    getByTestId("btn1VTest").click();
 });

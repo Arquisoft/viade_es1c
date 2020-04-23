@@ -29,9 +29,13 @@ export const MyFriends = ({myWebId, service}) => {
           NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
         } else {
           await fService.add(friendWebId);
-          let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
-          await sendNotification(friendWebId, text);
-          window.location.reload(true);
+          if (!fService.errorAdd) {
+            let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
+            await sendNotification(friendWebId, text);
+            window.location.reload(true);
+          } else {
+            NotificationManager.error(t("friends.permissionsErrorMessage"), t("friends.addErrorTitle"), 3000);
+          }
         }
       } else  {
         NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
@@ -80,10 +84,14 @@ export const MyFriends = ({myWebId, service}) => {
     if (friendsWebId !== undefined && friendsWebId.length > 0) {
       for (let i = 0; i < friendsWebId.length; i++) {
         await fService.delete(friendsWebId[i]);
-        let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
-        await sendNotification(friendsWebId[i], text);
+        if (!fService.errorDelete) {
+          let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
+          await sendNotification(friendsWebId[i], text);
+          window.location.reload(true);
+        } else {
+          NotificationManager.error(t("friends.permissionsErrorMessage"), t("friends.deleteErrorTitle"), 3000);
+        }
       }
-      window.location.reload(true);
     } else {
       NotificationManager.error(t("friends.deleteErrorMessage"), t("friends.deleteErrorTitle"), 3000);
     }

@@ -73,7 +73,9 @@
     "errorFriendsTitle" : "Input error",
     "warningLoadTitle" : "Warning when loading routes",
     "warningLoadMessage" : "There are no tracks to share",
-    "errorFriendsFolder" : "Folder not found in friend's pod - "
+    "errorFriendsFolder" : "Folder not found in friend's pod - ",
+    "errorMyPermissionsMessage": "Correctly configure your permissions for sharing with ",
+    "errorEmptyTracks": "There are no routes to share"
   },
   "upload": {
     "title": "Upload my tracks",
@@ -83,7 +85,8 @@
     "successMessage" : "Your tracks have been uploaded",
     "errorTitle" : "Upload error",
     "errorMessage": "You must upload a file with extension \".json\"",
-    "errorEmptyMessage": "You must upload a file"
+    "errorEmptyMessage": "You must upload a file",
+    "errorPermissionsMessage": "There are no permissions to upload"
   },
   "download": {
     "title": "Download track",
@@ -103,7 +106,8 @@
     "deleteErrorMessage": "The selected WebId is invalid",
     "addErrorTitle": "Error adding friend",
     "addErrorMessage": "The entered WebId is not valid",
-    "checkErrorMessage": "The friend to add is already a friend"
+    "checkErrorMessage": "The friend to add is already a friend",
+    "permissionsErrorMessage": "There are no permissions to perform the operation"
   },
   "groups": {
     "title": "My groups",
@@ -114,19 +118,20 @@
     "createErrorMessage": "The group to create is not valid",
     "createSuccessTitle": "Group created successfully",
     "createSuccessMessage1": "Group ",
-    "createSuccessMessage2": " has been created"
+    "createSuccessMessage2": " has been created",
+    "permissionsErrorMessage": "Permissions are missing to create the group"
   },
   "notifications": {
     "title" : "My notifications",
     "value": "Notification",
-    "read": "Read",
-    "mark" : "Mark",
-    "errorTitle": "Error marking as read",
-    "errorMessage": "No notification marked",
+    "errorTitle": "Search failed",
+    "errorMessage": "There is no notification for that search criteria",
     "infoTitle": "Current notifications",
     "infoMessage1": "You have ",
-    "infoMessage2": " unread notifications",
-    "loadingNotifications": "Loading your notifications..."
+    "infoMessage2": " notifications",
+    "loadingNotifications": "Loading your notifications...",
+    "searchButton": "Search",
+    "problemLoading": "No notifications available"
   },
   "logout": {
     "button": "Logout"

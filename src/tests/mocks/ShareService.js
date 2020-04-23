@@ -35,7 +35,7 @@ export default class ShareService {
   }
 
   getRoutesFromPod() {
-
+    this.routes = ["Ruta1"];
   }
   
   getName(userWebId) {
