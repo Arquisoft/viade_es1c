@@ -104,6 +104,7 @@ it("visualizeTrack --> routes have multimedia", async () => {
         expect(getByTestId("btn2VTest"));
     });
 
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta1" }, });
     getByTestId("btn2VTest").click();
 
     await waitForDomChange(() => {
@@ -115,5 +116,35 @@ it("visualizeTrack --> routes have multimedia", async () => {
     getByTestId("btnNextTest").click();
     getByTestId("btnPreviousTest").click();
 
+});
+
+/**
+ * Test visualize with only images
+ */
+it("visualizeTrack --> routes have only images", async () => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    getByTestId("btn1VTest").click();
+
+    await waitForDomChange(() => {
+        expect(getByTestId("btn2VTest"));
+    });
+
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta2" }, });
+    getByTestId("btn2VTest").click();
+});
+
+/**
+ * Test visualize with only videos
+ */
+it("visualizeTrack --> routes have only videos", async () => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    getByTestId("btn1VTest").click();
+
+    await waitForDomChange(() => {
+        expect(getByTestId("btn2VTest"));
+    });
+
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta3" }, });
+    getByTestId("btn2VTest").click();
 });
 

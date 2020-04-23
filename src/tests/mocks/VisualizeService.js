@@ -1,7 +1,10 @@
+/**
+ * Simulating access to POD and visualize tracks
+ */
 export default class VisualizeService {
 
   constructor() {
-    this.warning=null;
+    this.warning = null;
     this.errorLoad = "";
     this.routes = [];
     this.points = [];
@@ -13,22 +16,27 @@ export default class VisualizeService {
     this.permissionsVideo = true;
     this.existsVideo = true;
     this.existsImage = true;
-	
-	this.mostrar=false;
+	  this.mostrar = false;
   }
   
   
   getMyRoutesFromPod() {
-    const myRoutes = ["Ruta1"];
+    let myRoutes = ["Ruta1", "Ruta2", "Ruta3"];
     this.routes = myRoutes;
   }
 
-  getSharedRoutesFromPod() {
-
-  }
+  getSharedRoutesFromPod() {}
 
   fillMap(selectedFilter, HTMLElement) {
-
+    this.permissionsImage = true;
+    if (HTMLElement.value.localeCompare("Ruta2")) {
+      this.images = [];
+      this.permissionsImage = false;
+      this.existsImage = false;
+    } else if (HTMLElement.value.localeCompare("Ruta3")) {
+      this.videos = [];
+      this.permissionsVideo = false;
+      this.existsVideo = false;
+    }
   }
-
 }

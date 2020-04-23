@@ -41,7 +41,7 @@ export const UploadPanel = ({service}) => {
           </div>
           <div className="modal-body">
             <span>{t("upload.uploadPrompt")}</span>
-            <input type="file" id="fileArea" multiple/>
+            <input data-testid="input-file-area" type="file" id="fileArea" multiple/>
           </div>
           <div className="modal-footer">
             <Button data-testid="btnUpload" onClick={handleUpload}>
