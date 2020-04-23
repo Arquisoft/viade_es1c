@@ -3,7 +3,6 @@ const feature = loadFeature("./e2e/features/visualizeRoute.feature");
 const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
-let page2 = null;
 
 
 defineFeature((feature), (test) => {
@@ -30,27 +29,40 @@ defineFeature((feature), (test) => {
       await expect(page).toMatch("Bienvenido", {waitUntil: "load", timeout: 0});
 
       //Visualize page:
-      page2 = await browser.newPage();
-      await page2.goto("http://localhost:3000/#/visualize",{waitUntil: "load", timeout: 0}); 
-      await expect(page2).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
+      //page2 = await browser.newPage();
+      //await page2.goto("http://localhost:3000/#/visualize",{waitUntil: "load", timeout: 0}); 
+      //await expect(page2).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
+
+      await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarVisualize", waitUntil: "load", timeout: 0});
+      //await page.waitFor(2000);
+      await page.evaluate(() => {
+        let links = [...document.querySelectorAll("a")];
+        links.forEach(function (a) {
+          console.log(a);
+          if (a.id === "navBarVisualize"){
+            a.click();
+          }  
+        });
+       });
     });
 
+
     when("I press the button 'Cargar rutas del POD'", async () => {
-        await expect(page2).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
+        await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
     });
 
     then("I expect the comboBox to be filled", async () => {
-      await expect(page2).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
+      await expect(page).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
     });
 
     and("I expect the comboBox to have the same amount of routes as the POD", async() => {
-      expect(page2).toClick("select", { id: "selectRoute" });
-      expect(page2).toMatch("rutaDePrueba1");
-      expect(page2).toMatch("rutaDePrueba2");
-      expect(page2).toMatch("rutaDePrueba3");
-      expect(page2).toMatch("rutaDePrueba4");
-      expect(page2).toMatch("rutaDePrueba6");
-      expect(page2).toMatch("rutaDePrueba6");
+      expect(page).toClick("select", { id: "selectRoute" });
+      expect(page).toMatch("rutaDePrueba1");
+      expect(page).toMatch("rutaDePrueba2");
+      expect(page).toMatch("rutaDePrueba3");
+      expect(page).toMatch("rutaDePrueba4");
+      expect(page).toMatch("rutaDePrueba6");
+      expect(page).toMatch("rutaDePrueba6");
     });
   });
 
@@ -82,33 +94,48 @@ defineFeature((feature), (test) => {
       await expect(page).toMatch("Bienvenido", {waitUntil: "load", timeout: 0});
 
       //Visualize page:
-      page2 = await browser.newPage();
-      await page2.goto("http://localhost:3000/#/visualize",{waitUntil: "load", timeout: 0}); 
-      await expect(page2).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
+      //page2 = await browser.newPage();
+      //await page2.goto("http://localhost:3000/#/visualize",{waitUntil: "load", timeout: 0}); 
+      //await expect(page2).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
+
+      await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarVisualize", waitUntil: "load", timeout: 0});
+      //await page.waitFor(2000);
+      await page.evaluate(() => {
+        let links = [...document.querySelectorAll("a")];
+        links.forEach(function (a) {
+          console.log(a);
+          if (a.id === "navBarVisualize"){
+            a.click();
+          }  
+        });
+       });
+
+
+
 
       //I press the button 'Cargar rutas del POD'
-      await expect(page2).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
+      await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
 
       //I expect the comboBox to be filled
-      await expect(page2).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
+      await expect(page).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
 
       //I expect the comboBox to have the same amount of routes as the POD
-      expect(page2).toClick("select", { id: "selectRoute" });
-      expect(page2).toMatch("rutaDePrueba1");
-      expect(page2).toMatch("rutaDePrueba2");
-      expect(page2).toMatch("rutaDePrueba3");
-      expect(page2).toMatch("rutaDePrueba4");
-      expect(page2).toMatch("rutaDePrueba6");
-      expect(page2).toMatch("rutaDePrueba6");
+      expect(page).toClick("select", { id: "selectRoute" });
+      expect(page).toMatch("rutaDePrueba1");
+      expect(page).toMatch("rutaDePrueba2");
+      expect(page).toMatch("rutaDePrueba3");
+      expect(page).toMatch("rutaDePrueba4");
+      expect(page).toMatch("rutaDePrueba6");
+      expect(page).toMatch("rutaDePrueba6");
     });
 
     when("I press the button 'Visualizar'", async () => {
-      await expect(page2).toClick("div > div > section > div > div > div > div > div > button", { id: "visualizeRouteButton" });
+      await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "visualizeRouteButton" });
     });
 
     then("I expect the elevation diagram to appear", async () => {
-      //await expect(page2).toMatch("Perfil de elevación:", {waitUntil: "load", timeout: 0});
-      await expect(page2).toMatchElement("h4", { id: "h4PerfilElevacion", waitUntil: "load", timeout: 0 });
+      //await expect(page).toMatch("Perfil de elevación:", {waitUntil: "load", timeout: 0});
+      await expect(page).toMatchElement("h4", { id: "h4PerfilElevacion", waitUntil: "load", timeout: 0 });
     });
 
   }); 
