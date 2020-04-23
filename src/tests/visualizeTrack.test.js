@@ -63,7 +63,6 @@ it("VisualizeTrack --> combo is loaded", async () => {
         expect(getByTestId("btn2VTest"));
     });
     getByTestId("btn2VTest").click();
-
 });
 
 /**

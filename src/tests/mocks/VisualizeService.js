@@ -1,7 +1,7 @@
 export default class VisualizeService {
 
   constructor() {
-    this.warning="";
+    this.warning=null;
     this.errorLoad = "";
     this.routes = [];
     this.points = [];
@@ -13,6 +13,7 @@ export default class VisualizeService {
     this.permissionsVideo = true;
     this.existsVideo = true;
     this.existsImage = true;
+	this.mostrar=false;
   }
   
   

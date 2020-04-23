@@ -17,6 +17,9 @@ afterEach(() => {
     container= null;
 });
 
+/**
+ * Test Welcome renders correctly and has all the subcomponents
+ */
 it("Welcome test, renders without crashing", () => {
     act(() => {
         ReactDOM.render(<Welcome></Welcome>, container);

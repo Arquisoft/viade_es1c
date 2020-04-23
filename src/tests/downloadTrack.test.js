@@ -8,16 +8,25 @@ import DownloadTrack  from "../components/containers/downloadTracks/DownloadTrac
 
 let dService = new DownloadService();
 
+/**
+ * DownloadPanel renders correctly
+ */
 it("Download -> renders DownloadPanel without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<DownloadPanel service={dService}></DownloadPanel>, div);
 });
 
+/**
+ * DownloadTrack renders correctly
+ */
 it("Download -> renders DownloadTrack without crashing",() => {
     const div = document.createElement("div");
     ReactDOM.render(<DownloadTrack></DownloadTrack>, div);
 });
 
+/**
+ * Test the download panel has all his subcomponents
+ */
 it("Download -> renders download correctly", () => {
     const {getByTestId} = render(<DownloadPanel service={dService}></DownloadPanel>);
     expect(getByTestId("downloadComp"));
@@ -28,11 +37,3 @@ it("Download -> renders download correctly", () => {
     expect(getByTestId("btnDownload"));
     getByTestId("btnDownload").click();
 });
-
-//it("Download -> component download has the correct subComponents", () => {
-//    expect(document.getElementsByClassName("modal-dialog")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-content")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-header")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-body")).toBeTruthy();
-//    expect(document.getElementsByClassName("modal-footer")).toBeTruthy();
-//});

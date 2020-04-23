@@ -139,7 +139,8 @@ export const VisualizePanel = ({service}) => {
       setPositions(points);
       setZoom(zoomValue);
       setElevation(elevationsValues);
-      setShowElements(true);
+	  if(vService.mostrar==true)
+		setShowElements(true);
       if (vService.existsMultimedia === true) {
         handleMultimedia(vService);
       }
