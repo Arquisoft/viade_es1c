@@ -26,9 +26,9 @@ it("DownloadPanel --> Renders DownloadPanel without crashing",() => {
 });
 
 /**
- * Checking components from DownloadPanel
+ * Test the download panel has all his subcomponents
  */
-it("DownloadPanel --> Renders DownloadPanel correctly", () => {
+it("Download -> renders download correctly", () => {
     const {getByTestId} = render(<DownloadPanel service={dService}></DownloadPanel>);
     expect(getByTestId("downloadComp"));
     expect(getByTestId("titleDownloadh2"));

@@ -26,6 +26,7 @@ L.Icon.Default.mergeOptions({
 
 let actualIndexVideo = 0;   // For actual index video
 let selectedFilter; // For actual filter
+
 /**
  * Component used to display routes on a map
  */
@@ -51,9 +52,9 @@ export const VisualizePanel = ({service}) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [images, setImages] = useState([]);
   const openImageViewer = useCallback((index) => {
-    setCurrentImage(index);
-    setIsViewerOpen(true);
-  }, []);
+		setCurrentImage(index);
+		setIsViewerOpen(true);
+	  }, []);
   const closeImageViewer = () => {
     setCurrentImage(0);
     setIsViewerOpen(false);
@@ -138,7 +139,8 @@ export const VisualizePanel = ({service}) => {
       setPositions(points);
       setZoom(zoomValue);
       setElevation(elevationsValues);
-      setShowElements(true);
+	  if(vService.mostrar==true)
+		setShowElements(true);
       if (vService.existsMultimedia === true) {
         handleMultimedia(vService);
       }
@@ -296,7 +298,7 @@ export const VisualizePanel = ({service}) => {
                     {t("routes.myTracks")}
                   </label>
                   <label className="radio-format" name="filter-label">
-                    <input name="filter-radio" id="radio-2" type="radio"/>
+                    <input data-testid="inputLabel2" name="filter-radio" id="radio-2" type="radio"/>
                     {t("routes.shared")}
                   </label>
                 </Row>
