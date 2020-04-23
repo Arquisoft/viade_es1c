@@ -3,7 +3,6 @@ const feature = loadFeature("./e2e/features/addFriends.feature");
 const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
-let page2 = null;
 
 
 defineFeature((feature), (test) => {
