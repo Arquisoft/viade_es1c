@@ -30,33 +30,47 @@ defineFeature((feature), (test) => {
       await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
 
       //Friends page:
-      page2 = await browser.newPage();
-      await page2.goto("http://localhost:3000/#/friends",{waitUntil: "load", timeout: 0}); 
-      await expect(page2).toMatchElement("h2", { id: "friendsTitle" });
+      //page2 = await browser.newPage();
+      //await page2.goto("http://localhost:3000/#/friends",{waitUntil: "load", timeout: 0}); 
+      //await expect(page2).toMatchElement("h2", { id: "friendsTitle" });
+    });
+
+    and("Click in the NavBar to friends", async () => {
+      await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarFriends", waitUntil: "load", timeout: 0});
+      //await page.waitFor(2000);
+      await page.evaluate(() => {
+        let links = [...document.querySelectorAll("a")];
+        links.forEach(function (a) {
+          console.log(a);
+          if (a.id === "navBarFriends"){
+            a.click();
+          }  
+        });
+       });
     });
 
     when("We enter a WebId", async () => {
-      await page2.waitFor(500);
-      await page2.type("[id='friendId']", "https://sandracast.solid.community/profile/card#me", {visible: true, waitUntil: "load", timeout: 0});   
-      await page2.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
+      await page.waitFor(500);
+      await page.type("[id='friendId']", "https://sandracast.solid.community/profile/card#me", {visible: true, waitUntil: "load", timeout: 0});   
+      await page.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
     });
 
     and("We click the Add button", async () => {
-      expect(page2).toClick("div > div > section > div > div > div > div > div > div > button", { id: "btnAdd" });
-      await page2.waitForNavigation({waitUntil: "load", timeout: 0});
+      expect(page).toClick("div > div > section > div > div > div > div > div > div > button", { id: "btnAdd" });
+      await page.waitForNavigation({waitUntil: "load", timeout: 0});
     });
 
     then("I expect the WebId to appear on the friends list", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
     });
 
     and("I delete my new friend", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
-      await expect(page2).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput"});
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
+      await expect(page).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput"});
 
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > button ", { id: "deleteFriend", waitUntil: "load", timeout: 0});
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div > div > button ", { id: "deleteFriend", waitUntil: "load", timeout: 0});
 
-      await page2.evaluate(() => {
+      await page.evaluate(() => {
        let btns = [...document.querySelectorAll("button")];
        btns.forEach(function (btn) {
          if (btn.innerText === "Borrar"){
