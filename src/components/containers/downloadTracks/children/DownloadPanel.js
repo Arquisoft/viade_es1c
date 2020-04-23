@@ -29,7 +29,7 @@ export const DownloadPanel = ({service}) => {
       <div className="modal-dialog" >
         <div className="modal-content">
           <div className="modal-header">
-            <h2 data-testid="titleDownloadh2">{t("download.title")}</h2>
+            <h2 id="downloadTitle" data-testid="titleDownloadh2">{t("download.title")}</h2>
           </div>
           <div className="modal-body">
             <h4 data-testid="instruction" placeholder="e.g. track1">{t("download.instruction")}</h4>
@@ -39,7 +39,7 @@ export const DownloadPanel = ({service}) => {
           </div>
           <div className="modal-footer">
             <a href="/download" id="downFile"> </a>
-            <Button data-testid="btnDownload" onClick={handleDownload}> {t("download.button")}</Button>
+            <Button id="btnDownload" data-testid="btnDownload" onClick={handleDownload}> {t("download.button")}</Button>
           </div>
         </div>
       </div>
