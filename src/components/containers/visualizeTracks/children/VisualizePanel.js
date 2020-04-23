@@ -72,6 +72,7 @@ export const VisualizePanel = ({service}) => {
 
   // Loading
   const [loading, setLoading] = useState(false);
+  
   // Handle visualize button
   const [disableVisualize, setDisableVisualize] = useState(true);
 
@@ -280,10 +281,10 @@ export const VisualizePanel = ({service}) => {
                     <Row>
                       <div className="formal-div">
                         <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
-                        <Button className="button-margin" onClick={handlePowerOn}>{t("routes.play")}</Button>
-                        <Button className="button-margin" onClick={handlePowerOff}>{t("routes.stop")}</Button>
-                        <Button className="button-margin" onClick={handleNext}>{t("routes.next")}</Button>
-                        <Button className="button-margin" onClick={handlePrevious}>{t("routes.previous")}</Button>
+                        <Button data-testid="btnPowerOnTest" className="button-margin" onClick={handlePowerOn}>{t("routes.play")}</Button>
+                        <Button data-testid="btnPowerOffTest" className="button-margin" onClick={handlePowerOff}>{t("routes.stop")}</Button>
+                        <Button data-testid="btnNextTest" className="button-margin" onClick={handleNext}>{t("routes.next")}</Button>
+                        <Button data-testid="btnPreviousTest" className="button-margin" onClick={handlePrevious}>{t("routes.previous")}</Button>
                       </div>
                     </Row>
                   )}
