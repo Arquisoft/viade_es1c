@@ -51,8 +51,8 @@ defineFeature((feature), (test) => {
     });
 
     and("I delete my new friend", async () => {
-      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
-      await expect(page2).toClick("div > div > section > div > div > div > div > div div > ul > li > input", { id: "friendElementInput"});
+      await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput" ,waitUntil: "load", timeout: 0});
+      await expect(page2).toClick("div > div > section > div > div > div > div > div > div > ul > li > input", { id: "friendElementInput"});
 
       await expect(page2).toMatchElement("div > div > section > div > div > div > div > div > div > button ", { id: "deleteFriend", waitUntil: "load", timeout: 0});
 

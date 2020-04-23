@@ -24,8 +24,8 @@ defineFeature((feature), (test) => {
       await expect(popup).toMatchElement("button", { text: "Solid Community", waitUntil: "load", timeout: 0, visible: true});
       await expect(popup).toClick("button", { text: "Solid Community" });
       await popup.waitForNavigation({waitUntil: "load", timeout: 0});
-      await popup.type("[name='username']", "es1c", {visible: true});
-      await popup.type("[name='password']", "Viade_es1c", {visible: true});
+      await popup.type("[name='username']", "sandracast", {visible: true});
+      await popup.type("[name='password']", "Viade_sandra1", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
       await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
 
@@ -36,16 +36,32 @@ defineFeature((feature), (test) => {
     });
 
     when("We enter a group name", async () => {
-      //await page2.type("[id='friendId']", "https://sandracast.solid.community/profile/card#me", {visible: true, waitUntil: "load", timeout: 0});   
-      //await page2.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
+      await page2.type("[id='groupId']", "GrupoPrueba", {visible: true, waitUntil: "load", timeout: 0});   
+      await page2.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
     });
 
     and("We select the friends that we want", async () => {
-      
+      await page2.evaluate(() => {
+        let btns = [...document.querySelectorAll("input")];
+        let n=0;
+        btns.forEach(function (btn) {
+          if (n === 3) {
+            btn.click();
+          }  
+          n++;
+        });
+       });
     });
 
     then("I press the button to create de group", async () => {
-      
+      await page2.evaluate(() => {
+        let btns = [...document.querySelectorAll("button")];
+        btns.forEach(function (btn) {
+          if (btn.innerText === "Crear grupo"){
+            btn.click();
+          }  
+        });
+      });
     });
 
 
