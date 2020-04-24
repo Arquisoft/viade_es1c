@@ -77,6 +77,19 @@ export const VisualizePanel = ({service}) => {
   const [disableVisualize, setDisableVisualize] = useState(true);
 
   /**
+   * Function that handle select radioButton
+   */
+  function handleFilter() {
+    if (selectedFilter !== undefined ){
+      if (selectedFilter.localeCompare(shared) === 0) {
+        document.getElementById("radio-2").checked = true;
+      } else if (selectedFilter.localeCompare(myTracks) === 0) {
+        document.getElementById("radio-1").checked = true;
+      }
+    }
+  }
+
+  /**
    * Fuction to handle load select event
    * @returns {Promise<void>}
    */
@@ -105,19 +118,6 @@ export const VisualizePanel = ({service}) => {
   }
 
   /**
-   * Function that handle select radioButton
-   */
-  function handleFilter() {
-    if (selectedFilter !== undefined ){
-      if (selectedFilter.localeCompare(shared) === 0) {
-        document.getElementById("radio-2").checked = true;
-      } else if (selectedFilter.localeCompare(myTracks) === 0) {
-        document.getElementById("radio-1").checked = true;
-      }
-    }
-  }
-
-  /**
    * Function to handle display map, histogram and multimedia event
    * @returns {Promise<void>}
    */
@@ -140,8 +140,9 @@ export const VisualizePanel = ({service}) => {
       setPositions(points);
       setZoom(zoomValue);
       setElevation(elevationsValues);
-	  if(vService.mostrar==true)
-		setShowElements(true);
+	    if (vService.mostrar === true) {
+        setShowElements(true);
+      }
       if (vService.existsMultimedia === true) {
         handleMultimedia(vService);
       }

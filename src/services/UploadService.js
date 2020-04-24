@@ -23,7 +23,7 @@ export default class UploadService {
    * Aux method to return the session with it's logged in.
    */
   async getSession(){
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {
@@ -68,7 +68,7 @@ export default class UploadService {
     reader.onload = function() {
       let fileContent = reader.result;
       const auth = require("solid-auth-client");
-      auth.trackSession(session => {
+      auth.trackSession((session) => {
         if (!session) {
           return;
         } else {
@@ -80,7 +80,7 @@ export default class UploadService {
           let urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/").concat(nameFile);
           const fc = new FC(auth);
           fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
-          ).catch(err => this.error = "Error ".concat(err));
+          ).catch((err) => this.error = "Error ".concat(err));
         }
       });
     };

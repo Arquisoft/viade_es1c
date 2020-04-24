@@ -17,7 +17,7 @@ export default class FriendsService {
    */
   async add(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
@@ -38,7 +38,7 @@ export default class FriendsService {
    */
   async delete(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
@@ -59,7 +59,7 @@ export default class FriendsService {
    */
   async check(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
@@ -109,7 +109,7 @@ export default class FriendsService {
    */
   async obtainSessionFc() {
     const fc = new FC(auth);
-    let session = await auth.currentSession()
+    let session = await auth.currentSession();
     if (!session) {
       session = await auth.login();
     }

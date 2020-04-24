@@ -31,7 +31,6 @@ export const NotificationsTable = ({myWebId, service}) => {
     notification,
     fetchNotification,
   } = useNotification(webId);
-  const BoxWithLoading = WithLoading(Box);
   const [withoutNotifications, setWithoutNotifications] = useState(false);
 
   /**
@@ -52,7 +51,7 @@ export const NotificationsTable = ({myWebId, service}) => {
   async function handleNotifications() {
       if (webId !== undefined && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
-        const inboxes = [{ path: userWebId, inboxName: 'Global Inbox', shape: 'default' }];
+        const inboxes = [{ path: userWebId, inboxName: "Global Inbox", shape: "default" }];
         if (service instanceof NotificationsService) {
           service = new NotificationsService();
         }
@@ -70,8 +69,8 @@ export const NotificationsTable = ({myWebId, service}) => {
           setShowTable(true);
           if (timesNotifications === 0) {
             timesNotifications++;
-            NotificationManager.info(t('notifications.infoMessage1').concat(rows.length).concat(t('notifications.infoMessage2'))
-              , t('notifications.infoTitle'), 3000);
+            NotificationManager.info(t("notifications.infoMessage1").concat(rows.length).concat(t("notifications.infoMessage2"))
+              , t("notifications.infoTitle"), 3000);
           }
         }
       }
@@ -94,6 +93,9 @@ export const NotificationsTable = ({myWebId, service}) => {
     }
   }
 
+  // Loading box
+  const BoxWithLoading = WithLoading(Box);
+
   /**
    * Search notifications by input
    */
@@ -110,8 +112,8 @@ export const NotificationsTable = ({myWebId, service}) => {
         }
         if (notifications.length === 0) {
           restartNotifications = false;
-          NotificationManager.error(t('notifications.errorMessage')
-            , t('notifications.errorTitle'), 3000);
+          NotificationManager.error(t("notifications.errorMessage")
+            , t("notifications.errorTitle"), 3000);
         }
         setRows(notifications);
       } else {
@@ -196,6 +198,6 @@ export const NotificationsTable = ({myWebId, service}) => {
       <NotificationContainer/>
     </div>
   );
-}
+};
 
 export default NotificationsTable;

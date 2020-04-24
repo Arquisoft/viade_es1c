@@ -24,6 +24,6 @@ export const VisualizeNotifications = () => {
         </div>
     </section>
   );
-}
+};
 
 export default VisualizeNotifications;

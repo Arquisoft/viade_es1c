@@ -5,7 +5,7 @@ import { Button, Row, Col } from "react-bootstrap";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "./SharePanel.css";
 import FriendList from "../../../utils/friendList/FriendList";
-import { useNotification } from '@inrupt/solid-react-components';
+import { useNotification } from "@inrupt/solid-react-components";
 import ShareService from "../../../../services/ShareService";
 import FriendGroupService from "../../../../services/FriendGroupService";
 import { MyGroups } from "./myGroups/MyGroups";
@@ -36,14 +36,14 @@ export const SharePanel = ({myWebId, service, gService}) => {
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
-        throw new Error('Inbox not found');
+        throw new Error("Inbox not found");
       }
       let HTMLElement = document.getElementById("selectRoute");
       createNotification(
         {
-          title: 'Share notification',
-          summary: 'Your friend: '.concat(webId)
-            .concat(', shared this track with you: ')
+          title: "Share notification",
+          summary: "Your friend: ".concat(webId)
+            .concat(", shared this track with you: ")
             .concat(HTMLElement.value),
           actor: webId
         },
@@ -96,13 +96,15 @@ export const SharePanel = ({myWebId, service, gService}) => {
   async function handleShare(friendsWebIds) {
     let HTMLElement = document.getElementById("selectRoute");
     if (friendsWebIds.length > 0 && HTMLElement.value.localeCompare("") !== 0){
+      let userWebId = null;
+      let name = null;
+      let sService = service;
+      if (sService instanceof ShareService) {
+        sService = new ShareService();
+      }
       for (let i=0 ; i < friendsWebIds.length; i++){
-        let userWebId = friendsWebIds[i];
-        let sService = service;
-        if (sService instanceof ShareService) {
-          sService = new ShareService();
-        }
-        let name = await sService.getName(userWebId);
+        userWebId = friendsWebIds[i];
+        name = await sService.getName(userWebId);
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
 		
         if (sService.successShare === true){

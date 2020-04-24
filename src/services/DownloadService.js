@@ -23,13 +23,13 @@ export default class DownloadService {
    * Aux method to return the session with it's logged in.
    */
   async getSession(){
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session);
   }
 
