@@ -28,16 +28,11 @@ defineFeature((feature), (test) => {
           await popup.type("[name='password']", "Viade_es1c", {visible: true});
           await expect(popup).toClick("button", { text: "Log In" });
           await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
-
-          //Friends page:
-          //page2 = await browser.newPage();
-          //await page2.goto("http://localhost:3000/#/download",{waitUntil: "load", timeout: 0}); 
-          //await expect(page2).toMatchElement("h2", { id: "downloadTitle" });
         });
 
         and("Click in the NavBar to download", async () => {
           await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarDownload", waitUntil: "load", timeout: 0});
-          //await page.waitFor(2000);
+
           await page.evaluate(() => {
             let links = [...document.querySelectorAll("a")];
             links.forEach(function (a) {
@@ -47,11 +42,12 @@ defineFeature((feature), (test) => {
               }  
             });
            });
+          await expect(page).toMatchElement("h2", { id: "downloadTitle" });
         });
 
         when("We enter a name of the file that we want to download", async () => {
           await page.type("[id='txtUrl']", "rutaDePrueba1", {visible: true, waitUntil: "load", timeout: 0});   
-          await page.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
+          await page.waitFor(1500); //Time that it needs to write the url
         });
 
         and("We click to the button", async () => {

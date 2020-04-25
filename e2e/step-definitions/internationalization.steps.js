@@ -38,8 +38,6 @@ defineFeature((feature), (test) => {
   
         then("All words on the page change will change language to the one selected by the user", async () => {
             await expect(page).toMatch("Welcome", {waitUntil: "load", timeout: 0});
-        });
-
-        
+        });  
     });
 });

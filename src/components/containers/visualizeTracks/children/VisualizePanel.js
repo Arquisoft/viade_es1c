@@ -308,9 +308,11 @@ export const VisualizePanel = ({service}) => {
                 </Button>
                 <h3>{t("routes.select")}</h3>
                 <Select data-testid="combo" className="select-format" id={"selectRoute"} options={data}/>
-                <Button id="visualizeRouteButton" data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
-                  {t("routes.button")}
-                </Button>
+                <div>
+                  <Button id="visualizeRouteButton" data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
+                    {t("routes.button")}
+                  </Button>
+                </div>
               </div>
             </Col>
           </Row>

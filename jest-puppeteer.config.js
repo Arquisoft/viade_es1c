@@ -5,4 +5,6 @@ module.exports = {
       launchTimeout: 90000,
       debug: true,
     },
+    browser: "chromium",
+    browserContext: "default",
   };

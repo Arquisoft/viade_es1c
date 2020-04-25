@@ -27,16 +27,11 @@ defineFeature((feature), (test) => {
       await popup.type("[name='password']", "Viade_sandra1", {visible: true});
       await expect(popup).toClick("button", { text: "Log In" });
       await expect(page).toMatch("Bienvenido", { waitUntil: "load", timeout: 0 });
-
-      //Friends page:
-      //page2 = await browser.newPage();
-      //await page2.goto("http://localhost:3000/#/friends",{waitUntil: "load", timeout: 0}); 
-      //await expect(page2).toMatchElement("h2", { id: "friendsTitle" });
     });
 
     and("Click in the NavBar to friend", async () => {
       await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarFriends", waitUntil: "load", timeout: 0});
-      //await page.waitFor(2000);
+      
       await page.evaluate(() => {
         let links = [...document.querySelectorAll("a")];
         links.forEach(function (a) {
@@ -46,11 +41,12 @@ defineFeature((feature), (test) => {
           }  
         });
        });
+      await expect(page).toMatchElement("h2", { id: "friendsTitle" }); 
     });
 
     when("We enter a group name", async () => {
       await page.type("[id='groupId']", "GrupoPrueba", {visible: true, waitUntil: "load", timeout: 0});   
-      await page.waitFor(1500); //Tiempo que tarda en escribir los datos del formulario el test
+      await page.waitFor(1500); ///Time that it needs to write the name of the group
     });
 
     and("We select the friends that we want", async () => {

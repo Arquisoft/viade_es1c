@@ -31,12 +31,8 @@ defineFeature(feature, test => {
         });
 
         when("We select a route from the combo", async () => {
-            //First route available is already selected
-            //page2 = await browser.newPage();
-            //await page2.goto("http://localhost:3000/#/share",{waitUntil: "load", timeout: 0}); 
-
             await expect(page).toMatchElement("div > div > section > nav > div > a", { id: "navBarShare", waitUntil: "load", timeout: 0});
-            //await page.waitFor(2000);
+
             await page.evaluate(() => {
                 let links = [...document.querySelectorAll("a")];
                 links.forEach(function (a) {
@@ -49,7 +45,7 @@ defineFeature(feature, test => {
 
             //We select to share with friends
             //Friend option is already selected
-            //Cargar rutas y contactos
+            //First route available is already selected
             await expect(page).toMatchElement("div > div > section > div > div > div > button", { id: "btnLoad" ,waitUntil: "load", timeout: 0, visible: true});
             await expect(page).toClick("div > div > section > div > div > div > button", { id: "btnLoad" });
         });
