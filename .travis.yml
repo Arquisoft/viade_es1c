@@ -14,7 +14,7 @@ script:
   - npm test && codecov
   - CI=false npm run build
   - npm run docs
-  - npm run jest -c e2e/jest.config.js
+  - npm run test:e2e
 deploy:
   provider: pages
   skip_cleanup: true
