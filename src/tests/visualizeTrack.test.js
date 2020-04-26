@@ -56,8 +56,6 @@ it("VisualizeTrack --> combo is loaded", async () => {
     getByTestId("btn1VTest").click();
    
     await waitForDomChange(() => {
-        //expect(container.querySelector(".select-forma").length).toEqual(3);
-        //expect(getByTestId("comb").length).toEqual(1);
         expect(getByTestId("combo"));
         expect(getByTestId("combo").length).toEqual(1);
         expect(getByTestId("btn2VTest"));
@@ -87,8 +85,66 @@ it("VisualizeTrack -> visualize button is working", () => {
  * Test where errors caused by having both radio-buttons deselected
  */
 it("visualizeTrack --> without any radio-button pressed error must be handled",() => {
+    
     const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
     fireEvent.change(getByTestId("inputLabel1"), { target: { checked: false } });
     fireEvent.change(getByTestId("inputLabel2"), { target: { checked: false } });
     getByTestId("btn1VTest").click();
+
 });
+
+/**
+ * Test visualize with multimedia and pressing buttons of multimedia content
+ */
+it("visualizeTrack --> routes have multimedia", async () => { 
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    getByTestId("btn1VTest").click();
+   
+    await waitForDomChange(() => {
+        expect(getByTestId("btn2VTest"));
+    });
+
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta1" }, });
+    getByTestId("btn2VTest").click();
+
+    await waitForDomChange(() => {
+        expect(getByTestId("btnPowerOnTest"));
+    });
+
+    getByTestId("btnPowerOnTest").click();
+    getByTestId("btnPowerOffTest").click();
+    getByTestId("btnNextTest").click();
+    getByTestId("btnPreviousTest").click();
+
+});
+
+/**
+ * Test visualize with only images
+ */
+it("visualizeTrack --> routes have only images", async () => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    getByTestId("btn1VTest").click();
+
+    await waitForDomChange(() => {
+        expect(getByTestId("btn2VTest"));
+    });
+
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta2" }, });
+    getByTestId("btn2VTest").click();
+});
+
+/**
+ * Test visualize with only videos
+ */
+it("visualizeTrack --> routes have only videos", async () => {
+    const {getByTestId} = render(<VisualizePanel service={vService}></VisualizePanel>);
+    getByTestId("btn1VTest").click();
+
+    await waitForDomChange(() => {
+        expect(getByTestId("btn2VTest"));
+    });
+
+    fireEvent.change(getByTestId("combo"), { target: { value: "Ruta3" }, });
+    getByTestId("btn2VTest").click();
+});
+

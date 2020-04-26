@@ -52,11 +52,11 @@ export const MyFriends = ({myWebId, service}) => {
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
-        throw new Error('Inbox not found');
+        throw new Error("Inbox not found");
       }
       createNotification(
         {
-          title: 'Friend notification',
+          title: "Friend notification",
           summary: summary,
           actor: webId
         },

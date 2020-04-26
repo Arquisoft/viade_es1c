@@ -72,8 +72,22 @@ export const VisualizePanel = ({service}) => {
 
   // Loading
   const [loading, setLoading] = useState(false);
+  
   // Handle visualize button
   const [disableVisualize, setDisableVisualize] = useState(true);
+
+  /**
+   * Function that handle select radioButton
+   */
+  function handleFilter() {
+    if (selectedFilter !== undefined ){
+      if (selectedFilter.localeCompare(shared) === 0) {
+        document.getElementById("radio-2").checked = true;
+      } else if (selectedFilter.localeCompare(myTracks) === 0) {
+        document.getElementById("radio-1").checked = true;
+      }
+    }
+  }
 
   /**
    * Fuction to handle load select event
@@ -91,29 +105,16 @@ export const VisualizePanel = ({service}) => {
       selectedFilter = shared;
       await vService.getSharedRoutesFromPod();
     }
-    if (vService.warning != null){
+    if (vService.warning !== null){
       NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
     } else if (vService.errorLoad || selectedFilter === undefined)  {
       NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       setDisableVisualize(false);
       NotificationManager.success(t("routes.successLoadMessage"), t("routes.successLoadTitle"), 2000);
+      setData(vService.routes);
     }
-    setData(vService.routes);
     handleFilter();
-  }
-
-  /**
-   * Function that handle select radioButton
-   */
-  function handleFilter() {
-    if (selectedFilter !== undefined ){
-      if (selectedFilter.localeCompare(shared) === 0) {
-        document.getElementById("radio-2").checked = true;
-      } else if (selectedFilter.localeCompare(myTracks) === 0) {
-        document.getElementById("radio-1").checked = true;
-      }
-    }
   }
 
   /**
@@ -139,8 +140,10 @@ export const VisualizePanel = ({service}) => {
       setPositions(points);
       setZoom(zoomValue);
       setElevation(elevationsValues);
-	  if(vService.mostrar===true)
-		setShowElements(true);
+
+	    if (vService.mostrar === true) {
+        setShowElements(true);
+      }
       if (vService.existsMultimedia === true) {
         handleMultimedia(vService);
       }
@@ -280,10 +283,10 @@ export const VisualizePanel = ({service}) => {
                     <Row>
                       <div className="formal-div">
                         <ReactPlayer playing={playingVideo} className="player-format" url={actualVideo} width='auto' height='230px'/>
-                        <Button className="button-margin" onClick={handlePowerOn}>{t("routes.play")}</Button>
-                        <Button className="button-margin" onClick={handlePowerOff}>{t("routes.stop")}</Button>
-                        <Button className="button-margin" onClick={handleNext}>{t("routes.next")}</Button>
-                        <Button className="button-margin" onClick={handlePrevious}>{t("routes.previous")}</Button>
+                        <Button data-testid="btnPowerOnTest" className="button-margin" onClick={handlePowerOn}>{t("routes.play")}</Button>
+                        <Button data-testid="btnPowerOffTest" className="button-margin" onClick={handlePowerOff}>{t("routes.stop")}</Button>
+                        <Button data-testid="btnNextTest" className="button-margin" onClick={handleNext}>{t("routes.next")}</Button>
+                        <Button data-testid="btnPreviousTest" className="button-margin" onClick={handlePrevious}>{t("routes.previous")}</Button>
                       </div>
                     </Row>
                   )}

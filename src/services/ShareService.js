@@ -78,7 +78,7 @@ export default class ShareService {
     const fc = new FC(auth);
     await fc.readFile(url).then((content) => {
       perm = true;
-    }, err => this.error = "Error en el permission".concat(err));
+    }, (err) => this.error = "Error en el permission".concat(err));
     return perm;
   }
 

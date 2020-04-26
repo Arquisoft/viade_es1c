@@ -90,11 +90,17 @@
   },
   "download": {
     "title": "Descargar ruta",
-    "instruction":"Introduzca el nombre del archivo:",
+    "instruction":"Seleccione el nombre de la ruta:",
     "button":"Descargar",
-    "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
-    "errorTitle": "Ruta inexistente en el Pod",
-    "especificacion": "* No incluir extensión"
+    "errorMessage" : "No se ha podido descargar su ruta",
+    "errorTitle": "Ruta inexistente en el POD",
+    "loadWarningMessage": "No existe ninguna ruta en el POD",
+    "loadWarningTitle": "Advertencia al cargar",
+    "errorLoadMessage": "No se han encontrado sus rutas",
+    "errorLoadTitle": "Error al cargar",
+    "successLoadMessage": "Sus rutas han sido cargadas",
+    "successLoadTitle": "Cargado con éxito",
+    "buttonLoad": "Cargar rutas del POD"
   },
   "friends": {
     "title": "Mis amigos",

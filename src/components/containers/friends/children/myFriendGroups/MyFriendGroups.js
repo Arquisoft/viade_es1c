@@ -20,6 +20,46 @@ export const MyFriendGroups = ({myWebId, service}) => {
   let friendsWebIds = [];
 
   /**
+   * Clear all fields
+   * @param buttons
+   */
+  function clear(buttons) {
+    document.getElementById("groupId").value = "";
+    for (let i = 0; i < buttons.length; i++){
+      if (buttons[i].checked){
+        buttons[i].checked = false;
+      }
+    }
+  }
+
+  /**
+   * Send a notification to the user in the new group
+   * @returns {Promise<void>}
+   */
+  const sendNotification = async (summary) => {
+    try {
+      if (friendsWebIds.length > 0) {
+        for (let i = 0; i < friendsWebIds.length; i++) {
+          const inboxUrl = await discoverInbox(friendsWebIds[i]);
+          if (!inboxUrl) {
+            throw new Error("Inbox not found");
+          }
+          createNotification(
+            {
+              title: "Group notification",
+              summary: summary,
+              actor: webId
+            },
+            inboxUrl
+          );
+        }
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  /**
    * Add a new friend
    * @returns {Promise<void>}
    */
@@ -56,46 +96,6 @@ export const MyFriendGroups = ({myWebId, service}) => {
       NotificationManager.error(t("groups.createErrorMessage"), t("groups.createErrorTitle"), 3000);
     }
   }
-
-  /**
-   * Clear all fields
-   * @param buttons
-   */
-  function clear(buttons) {
-    document.getElementById("groupId").value = "";
-    for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        buttons[i].checked = false;
-      }
-    }
-  }
-
-  /**
-   * Send a notification to the user in the new group
-   * @returns {Promise<void>}
-   */
-  const sendNotification = async (summary) => {
-    try {
-      if (friendsWebIds.length > 0) {
-        for (let i = 0; i < friendsWebIds.length; i++) {
-          const inboxUrl = await discoverInbox(friendsWebIds[i]);
-          if (!inboxUrl) {
-            throw new Error('Inbox not found');
-          }
-          createNotification(
-            {
-              title: 'Group notification',
-              summary: summary,
-              actor: webId
-            },
-            inboxUrl
-          );
-        }
-      }
-    } catch (ex) {
-      console.log(ex);
-    }
-  };
 
   return (
         <div data-testid="groupTest">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {useTranslation} from "react-i18next";
 import "./Welcome.css";
 import {Value} from "@solid/react";
@@ -32,6 +32,6 @@ export const Welcome = () => {
                 </div>
         </section>
     );
-}
+};
 
 export default Welcome;

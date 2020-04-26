@@ -1,14 +1,14 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import Backend from 'i18next-xhr-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import Backend from "i18next-xhr-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
 
-const backend = new Backend(null, { loadPath: "locales/{{lng}}/{{ns}}.json" });
+const backendPath = new Backend(null, { loadPath: "locales/{{lng}}/{{ns}}.json" });
 
 i18n
   // load translation using xhr -> see /public/locales
   // learn more: https://github.com/i18next/i18next-xhr-backend
-  .use(backend)
+  .use(backendPath)
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -16,9 +16,9 @@ i18n
   // Alternative use the I18nextProvider: https://react.i18next.com/components/i18nextprovider
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: "en",
     debug: false,
-    whitelist: ['en', 'es'],
+    whitelist: ["en", "es"],
     // special options for react-i18next
     // learn more: https://react.i18next.com/components/i18next-instance
     react: {
