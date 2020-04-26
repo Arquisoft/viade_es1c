@@ -140,6 +140,7 @@ export const VisualizePanel = ({service}) => {
       setPositions(points);
       setZoom(zoomValue);
       setElevation(elevationsValues);
+
 	    if (vService.mostrar === true) {
         setShowElements(true);
       }
@@ -247,7 +248,7 @@ export const VisualizePanel = ({service}) => {
                 {showElements && (
                   <Col>
                     <Row>
-                      <h4 className="h4-format">{t("routes.histogram")}</h4>
+                      <h4 id="h4PerfilElevacion" className="h4-format">{t("routes.histogram")}</h4>
                     </Row>
                     <Row>
                       <VictoryChart style={{ parent: { maxWidth: "80%" }}} domainPadding={10} theme={VictoryTheme.material}>
@@ -304,15 +305,17 @@ export const VisualizePanel = ({service}) => {
                     {t("routes.shared")}
                   </label>
                 </Row>
-                <Button data-testid="btn1VTest" className="visualizeButton" variant="primary"
+                <Button id="loadButton" data-testid="btn1VTest" className="visualizeButton" variant="primary"
                         onClick={handleLoad}>
                   {t("routes.loadButton")}
                 </Button>
                 <h3>{t("routes.select")}</h3>
                 <Select data-testid="combo" className="select-format" id={"selectRoute"} options={data}/>
-                <Button data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
-                  {t("routes.button")}
-                </Button>
+                <div>
+                  <Button id="visualizeRouteButton" data-testid="btn2VTest" className="visualizeButton" onClick={handleSelect} disabled={disableVisualize}>
+                    {t("routes.button")}
+                  </Button>
+                </div>
               </div>
             </Col>
           </Row>

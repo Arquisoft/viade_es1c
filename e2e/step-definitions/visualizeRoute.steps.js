@@ -1,5 +1,5 @@
 const {defineFeature, loadFeature}=require("jest-cucumber");
-const feature = loadFeature("./e2e/features/loadCombo.feature");
+const feature = loadFeature("./e2e/features/visualizeRoute.feature");
 const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
@@ -7,9 +7,9 @@ let page = null;
 
 defineFeature((feature), (test) => {
 	
-  test("There are some routes on the POD", ({ given, when, then, and }) => {
+  test("There are some routes on the comboBox", ({ given, when, then, and }) => {
 
-    given("the 'Visualize' page", async() => {
+    given("the 'Visualize' page with the comboBox filled", async() => {
       let popup;
       browser = await puppeteer.launch({
         headless: false,
@@ -39,26 +39,26 @@ defineFeature((feature), (test) => {
           }  
         });
        });
-       await expect(page).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
-    });
 
+      await expect(page).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
 
-    when("I press the button 'Cargar rutas del POD'", async () => {
-        await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
-    });
+      //I press the button 'Cargar rutas del POD'
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div > button", { id: "loadButton", waitUntil: "load", timeout: 0, visible: true });
+      await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
 
-    then("I expect the comboBox to be filled", async () => {
+      //I expect the comboBox to be filled
       await expect(page).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
     });
 
-    and("I expect the comboBox to have the same amount of routes as the POD", async() => {
-      expect(page).toClick("select", { id: "selectRoute" });
-      expect(page).toMatch("rutaDePrueba1");
-      expect(page).toMatch("rutaDePrueba2");
-      expect(page).toMatch("rutaDePrueba3");
-      expect(page).toMatch("rutaDePrueba4");
-      expect(page).toMatch("rutaDePrueba6");
-      expect(page).toMatch("rutaDePrueba6");
+    when("I press the button 'Visualizar'", async () => {
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div > div > button", { id: "visualizeRouteButton", waitUntil: "load", timeout: 0, visible: true });
+      await expect(page).toClick("div > div > section > div > div > div > div > div > div > button", { id: "visualizeRouteButton" });
     });
-  });
+
+    then("I expect the elevation diagram to appear", async () => {
+      await expect(page).toMatchElement("h4", { id: "h4PerfilElevacion", waitUntil: "load", timeout: 0 });
+    });
+
+  }); 
+
 });

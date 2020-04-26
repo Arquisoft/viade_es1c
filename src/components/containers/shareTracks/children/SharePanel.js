@@ -220,7 +220,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                 {t("share.group")}
               </label>
             </Row>
-            <Button data-testid="btnLoad" className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
+            <Button id="btnLoad" data-testid="btnLoad" className="correct-margin-top" onClick={handleVisualize}>{t("share.loadInfo")}</Button>
           </div>
           {showElements && (
               <form className="modal-body">
@@ -249,7 +249,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
                     )}
                 </Row>
                 <div>
-                  <Button data-testid="btnShare" className="correct-margin" onClick={handleFriends}>
+                  <Button id="btnShare" data-testid="btnShare" className="correct-margin" onClick={handleFriends}>
                     {t("share.shareTrack")}
                   </Button>
                 </div>

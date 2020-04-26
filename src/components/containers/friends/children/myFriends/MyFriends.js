@@ -108,7 +108,7 @@ export const MyFriends = ({myWebId, service}) => {
               <span className="span-friends">{t("friends.addTitle")}</span>
               <div className="add-friends">
                 <input data-testid="input-add" className="input-add" id="friendId" type="text" placeholder="e.g. https://user.solid.community/profile/card#me"></input>
-                <Button data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
+                <Button id="btnAdd" data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
                   {t("friends.add")}
                 </Button>
               </div>
@@ -118,7 +118,7 @@ export const MyFriends = ({myWebId, service}) => {
                 <FriendList src="user.friends" nameList="friendList" nameCk="friend"></FriendList>
               </div>
               <div>
-                <Button data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
+                <Button id = "deleteFriend" data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
                   {t("friends.delete")}
                </Button>
               </div>
