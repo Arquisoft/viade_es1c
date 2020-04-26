@@ -1,6 +1,14 @@
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
+
 export default class NotificationsService {
 
   constructor() {

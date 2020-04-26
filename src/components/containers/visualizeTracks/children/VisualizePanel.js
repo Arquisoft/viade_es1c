@@ -105,15 +105,15 @@ export const VisualizePanel = ({service}) => {
       selectedFilter = shared;
       await vService.getSharedRoutesFromPod();
     }
-    if (vService.warning != null){
+    if (vService.warning !== null){
       NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
     } else if (vService.errorLoad || selectedFilter === undefined)  {
       NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       setDisableVisualize(false);
       NotificationManager.success(t("routes.successLoadMessage"), t("routes.successLoadTitle"), 2000);
+      setData(vService.routes);
     }
-    setData(vService.routes);
     handleFilter();
   }
 

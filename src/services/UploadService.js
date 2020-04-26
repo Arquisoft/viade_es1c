@@ -20,17 +20,15 @@ export default class UploadService {
   }
 
   /**
-   * Aux method to return the session with it's logged in.
+   * Aux method that returns the route to tracks upload in the pod.
+   * @param {logged in user's webId} webId
    */
-  async getSession(){
-    await auth.trackSession((session) => {
-      if (!session){
-        return;
-      } else {
-        this.session = session;
-      }
-    })
-    await this.getSessionId(this.session);
+  async getPodRoute(webId) {
+    /*
+        15 == length("profile/card#me")
+        "viade/routes/" == folder where the routes are stored
+    */
+    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes");
   }
 
   /**
@@ -43,15 +41,17 @@ export default class UploadService {
   }
 
   /**
-   * Aux method that returns the route to tracks upload in the pod.
-   * @param {logged in user's webId} webId
+   * Aux method to return the session with it's logged in.
    */
-  async getPodRoute(webId) {
-    /*
-        15 == length("profile/card#me")
-        "viade/routes/" == folder where the routes are stored
-    */
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes");
+  async getSession(){
+    await auth.trackSession((session) => {
+      if (!session){
+        return;
+      } else {
+        this.session = session;
+      }
+    })
+    await this.getSessionId(this.session);
   }
 
   /**

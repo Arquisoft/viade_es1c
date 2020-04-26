@@ -1,6 +1,14 @@
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 
+/*
+    *****************************************
+    *                                       *
+    *   FOLLOWING THE SPECIFICATION V1.1    *
+    *                                       *
+    * ***************************************
+*/
+
 export default class FriendGroupService {
 
   constructor() {
@@ -17,29 +25,6 @@ export default class FriendGroupService {
   }
 
   /**
-   * Aux method to return the session with it's logged in.
-   */
-  async getSession(){
-    await auth.trackSession(session => {
-      if (!session){
-        return;
-      } else {
-        this.session = session;
-      }
-    })
-    await this.getSessionId(this.session);
-  }
-
-  /**
-   * Aux method that return the webId of the user who is logged in.
-   * @param {current session} session
-   */
-  async getSessionId(session) {
-    let webId = session.webId;
-    await this.getPodRoute(webId);
-  }
-
-  /**
    * Aux method that returns the route to groups upload in the pod.
    * @param {logged in user's webId} webId
    */
@@ -53,6 +38,29 @@ export default class FriendGroupService {
       let name = this.groupName.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(name);
     }
+  }
+
+  /**
+   * Aux method that return the webId of the user who is logged in.
+   * @param {current session} session
+   */
+  async getSessionId(session) {
+    let webId = session.webId;
+    await this.getPodRoute(webId);
+  }
+
+  /**
+   * Aux method to return the session with it's logged in.
+   */
+  async getSession(){
+    await auth.trackSession(session => {
+      if (!session){
+        return;
+      } else {
+        this.session = session;
+      }
+    })
+    await this.getSessionId(this.session);
   }
 
   /**

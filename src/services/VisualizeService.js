@@ -21,7 +21,7 @@ export default class VisualizeService {
         this.warning = null;
         this.success = null;
         this.error = null;
-        this.errorLoad = null;
+        this.errorLoad = false;
         this.existsMultimedia = true;
         this.existsVideo = false;
         this.existsImage = false;
@@ -44,7 +44,7 @@ export default class VisualizeService {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
             await this.getRoutesNames(this.content);
         } catch (SFCFetchError) {
-            this.errorLoad = "Error al cargar combo";
+            this.errorLoad = true;
         }
     }
 
@@ -58,8 +58,33 @@ export default class VisualizeService {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
             await this.getRoutesNames(this.content);
         } catch (SFCFetchError) {
-            this.errorLoad = "Error al cargar combo";
+            this.errorLoad = true;
         }
+    }
+
+    /**
+     * Aux method that returns the route to tracks upload in the pod.
+     * @param {logged in user's webId} webId
+     */
+    async getPodRoute(route, webId) {
+        /*
+            15 == length("profile/card#me")
+            "viade/routes/" == folder where the routes are stored
+        */
+        this.urlRouteInPod = webId.slice(0, webId.length - 15).concat(route);
+        if (this.HTMLElement !== null){
+            let selectedRouteName = this.HTMLElement.value.concat(".json");
+            this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
+        }
+    }
+
+    /**
+     * Aux method that return the webId of the user who is logged in.
+     * @param {current session} session
+     */
+    async getSessionId(route, session) {
+        let webId = session.webId;
+        await this.getPodRoute(route, webId);
     }
 
     /**
@@ -74,31 +99,6 @@ export default class VisualizeService {
             }
         });
         await this.getSessionId(route, this.session);
-    }
-
-    /**
-     * Aux method that return the webId of the user who is logged in.
-     * @param {current session} session 
-     */
-    async getSessionId(route, session) {
-        let webId = session.webId;
-        await this.getPodRoute(route, webId);
-    }
-
-    /**
-     * Aux method that returns the route to tracks upload in the pod.
-     * @param {logged in user's webId} webId 
-     */
-    async getPodRoute(route, webId) {
-        /*
-            15 == length("profile/card#me")
-            "viade/routes/" == folder where the routes are stored
-        */
-        this.urlRouteInPod = webId.slice(0, webId.length - 15).concat(route);
-        if (this.HTMLElement !== null){
-            let selectedRouteName = this.HTMLElement.value.concat(".json");
-            this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
-        }
     }
 
     /**
