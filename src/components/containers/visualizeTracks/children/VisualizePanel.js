@@ -302,7 +302,7 @@ export const VisualizePanel = ({service}) => {
                     {t("routes.shared")}
                   </label>
                 </Row>
-                <Button data-testid="btn1VTest" className="visualizeButton" variant="primary"
+                <Button id="loadButton" data-testid="btn1VTest" className="visualizeButton" variant="primary"
                         onClick={handleLoad}>
                   {t("routes.loadButton")}
                 </Button>

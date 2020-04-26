@@ -5,6 +5,10 @@ module.exports = {
       launchTimeout: 90000,
       debug: true,
     },
+    launch: {
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      ignoreDefaultArgs: ["--disable-extensions"],
+    },
     browser: "chromium",
     browserContext: "default",
   };

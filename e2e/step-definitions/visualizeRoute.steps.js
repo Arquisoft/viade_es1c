@@ -43,6 +43,7 @@ defineFeature((feature), (test) => {
       await expect(page).toMatchElement("h1", { id: "MisRutas", waitUntil: "load", timeout: 0 });
 
       //I press the button 'Cargar rutas del POD'
+      await expect(page).toMatchElement("div > div > section > div > div > div > div > div > button", { id: "loadButton", waitUntil: "load", timeout: 0, visible: true });
       await expect(page).toClick("div > div > section > div > div > div > div > div > button", { id: "loadButton" });
 
       //I expect the comboBox to be filled

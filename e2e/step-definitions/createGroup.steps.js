@@ -41,7 +41,6 @@ defineFeature((feature), (test) => {
           }  
         });
        });
-      await expect(page).toMatchElement("h2", { id: "friendsTitle" }); 
     });
 
     when("We enter a group name", async () => {
