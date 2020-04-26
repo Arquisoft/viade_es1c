@@ -1,7 +1,7 @@
 language: node_js
+services: xvfb
 node_js:
   - 12.14.0
-services: xvfb
 cache:
   directories:
   - node_modules
