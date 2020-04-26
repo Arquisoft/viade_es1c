@@ -54,7 +54,7 @@ export const DownloadPanel = ({service}) => {
             <h2 id="downloadTitle" data-testid="titleDownloadh2">{t("download.title")}</h2>
           </div>
           <div className="modal-body">
-            <Button data-testid="btnLoadTracks" className="loadButton" onClick={handleLoad}>
+            <Button id="btnLoadTracksDownload" data-testid="btnLoadTracks" className="loadButton" onClick={handleLoad}>
               {t("download.buttonLoad")}
             </Button>
             <h4 data-testid="instruction" placeholder="e.g. track1">{t("download.instruction")}</h4>
