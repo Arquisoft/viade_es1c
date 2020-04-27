@@ -30,7 +30,7 @@ export default class ShareService {
   async getPodRoute(webId){
     this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/");
     this.urlToCopy = webId.slice(0, webId.length - 15).concat("public/");
-    if (this.HTMLElement != null){
+    if (this.HTMLElement !== null){
       let selectedRouteName = this.HTMLElement.value.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
       this.urlToCopy = this.urlToCopy.concat(selectedRouteName);

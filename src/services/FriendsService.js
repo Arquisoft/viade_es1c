@@ -100,7 +100,9 @@ export default class FriendsService {
   async request(op) {
     try {
       return await op(await this.obtainSessionFc());
-    } catch (error) {}
+    } catch (error) {
+      throw new Error("failed requesto to the webId");
+    }
   }
 
   /**

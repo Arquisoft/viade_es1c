@@ -185,29 +185,31 @@ export default class VisualizeService {
         let permissionRoute = null;
         if (route.media !== undefined && route.media.length > 0) {
                 for (let media in route.media) {
-                    routeMedia = route.media[media]["@id"];
-                    extensionRoute = routeMedia.split(".");
-                    extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                    if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)
-                        || (extension.localeCompare(".jpeg") === 0)) {
-                        try {
-                            this.existsImage = true;
-                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                            await this.readPermission(permissionRoute);
-                            this.permissionsImage = true;
-                            this.images.push(routeMedia);
-                        } catch (e) {
-                            this.permissionsImage = false;
-                        }
-                    } else if (extension.localeCompare(".mp4") === 0) {
-                        try {
-                            this.existsVideo = true;
-                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                            await this.readPermission(permissionRoute);
-                            this.permissionsVideo = true;
-                            this.videos.push(routeMedia);
-                        } catch (e) {
-                            this.permissionsVideo = false;
+                    if (media !== null){
+                        routeMedia = route.media[media]["@id"];
+                        extensionRoute = routeMedia.split(".");
+                        extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                        if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)
+                            || (extension.localeCompare(".jpeg") === 0)) {
+                            try {
+                                this.existsImage = true;
+                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                                await this.readPermission(permissionRoute);
+                                this.permissionsImage = true;
+                                this.images.push(routeMedia);
+                            } catch (e) {
+                                this.permissionsImage = false;
+                            }
+                        } else if (extension.localeCompare(".mp4") === 0) {
+                            try {
+                                this.existsVideo = true;
+                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                                await this.readPermission(permissionRoute);
+                                this.permissionsVideo = true;
+                                this.videos.push(routeMedia);
+                            } catch (e) {
+                                this.permissionsVideo = false;
+                            }
                         }
                     }
                 }

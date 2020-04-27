@@ -50,7 +50,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
         inboxUrl
       );
     } catch (ex) {
-      console.log(ex);
+      throw new Error("Problem creating the notification");
     }
   };
 

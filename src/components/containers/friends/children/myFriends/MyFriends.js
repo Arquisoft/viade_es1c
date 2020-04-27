@@ -63,7 +63,7 @@ export const MyFriends = ({myWebId, service}) => {
         inboxUrl
       );
     } catch (ex) {
-      console.log(ex);
+      throw new Error("Problem creating the notification");
     }
   };
 
