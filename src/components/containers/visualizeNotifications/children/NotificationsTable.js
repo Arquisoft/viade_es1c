@@ -1,15 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Table , TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Paper, Box, makeStyles, Checkbox, TablePagination} from "@material-ui/core";
+  Paper, Box, makeStyles, TablePagination} from "@material-ui/core";
 import { useNotification } from "@inrupt/solid-react-components";
 import { useTranslation } from "react-i18next";
 import ReactLoading from "react-loading";
-import {Button} from "react-bootstrap";
+import {Button, Form, FormControl} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from "react-notifications";
+import "./NotificationsTable.css";
+import NotificationsService from "../../../../services/NotificationsService";
 
-let times = 0; // Shows no read notifications
+let timesNotifications = 0; // Shows notifications
+let restartNotifications = true;  // For searcher
 
-export const NotificationsTable = ({myWebId}) => {
+export const NotificationsTable = ({myWebId, service}) => {
 
   // Hook for i18n
   const {t} = useTranslation();
@@ -26,12 +29,9 @@ export const NotificationsTable = ({myWebId}) => {
   const webId = myWebId;
   const {
     notification,
-    markAsReadNotification,
     fetchNotification,
   } = useNotification(webId);
-  const BoxWithLoading = WithLoading(Box);
-  const [selected, setSelected] = React.useState([]);
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const [withoutNotifications, setWithoutNotifications] = useState(false);
 
   /**
    * Function that create the row
@@ -51,21 +51,26 @@ export const NotificationsTable = ({myWebId}) => {
   async function handleNotifications() {
       if (webId !== undefined && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
-        const inboxes = [{ path: userWebId, inboxName: 'Global Inbox', shape: 'default' }];
-        await fetchNotification(inboxes);
-        if (notification.notifications.length > 0) {
+        const inboxes = [{ path: userWebId, inboxName: "Global Inbox", shape: "default" }];
+        if (service instanceof NotificationsService) {
+          service = new NotificationsService();
+        }
+        if (await service.checkContent(userWebId) === true && !service.error) {
+          await fetchNotification(inboxes);
+        } else {
+          setWithoutNotifications(true);
+        }
+        if (notification.notifications.length > 0 && restartNotifications) {
           let rows = [];
           for (let i=0; i < notification.notifications.length; i++) {
-            if (notification.notifications[i].read !==  'true') {
-              rows.push(createData(i+1, notification.notifications[i].summary));
-            }
+            rows.push(createData(i+1, notification.notifications[i].summary));
           }
           setRows(rows);
           setShowTable(true);
-          if (times === 0) {
-            times++;
-            NotificationManager.info(t('notifications.infoMessage1').concat(rows.length).concat(t('notifications.infoMessage2'))
-              , t('notifications.infoTitle'), 3000);
+          if (timesNotifications === 0) {
+            timesNotifications++;
+            NotificationManager.info(t("notifications.infoMessage1").concat(rows.length).concat(t("notifications.infoMessage2"))
+              , t("notifications.infoTitle"), 3000);
           }
         }
       }
@@ -88,56 +93,34 @@ export const NotificationsTable = ({myWebId}) => {
     }
   }
 
+  // Loading box
+  const BoxWithLoading = WithLoading(Box);
+
   /**
-   * Mark as read multiple notifications
+   * Search notifications by input
    */
-  function markAsRead() {
+  function searchNotifications() {
     if (notification.notifications.length > 0) {
-      let notificationList = document.getElementsByName("notificationList");
-      let checkboxes = document.getElementsByName("check");
-      let positionsNotifications = [];
-      for (let i=0; i < notificationList.length; i++) {
-        if (checkboxes[i].checked) {
-          positionsNotifications.push(i);
-        }
-      }
-      if (positionsNotifications.length > 0){
+      let searchInput = document.getElementById("searchInput").value;
+      if (searchInput.localeCompare("") !== 0) {
+        let notifications = [];
         for (let i=0; i < notification.notifications.length; i++) {
-          if (notification.notifications[i].read !== 'true' && positionsNotifications.includes(i)) {
-            markAsReadNotification(notification.notifications[i].path, notification.notifications[i].id, 'true').then(() => {
-              window.location.reload(true);
-            });
+          if (notification.notifications[i].summary.toUpperCase().includes(searchInput.toUpperCase())) {
+            restartNotifications = false;
+            notifications.push(createData(i+1, notification.notifications[i].summary));
           }
         }
+        if (notifications.length === 0) {
+          restartNotifications = false;
+          NotificationManager.error(t("notifications.errorMessage")
+            , t("notifications.errorTitle"), 3000);
+        }
+        setRows(notifications);
       } else {
-        NotificationManager.error(t('notifications.errorMessage'), t('notifications.errorTitle'), 3000);
+        restartNotifications = true;
       }
     }
   }
-
-  /**
-   * Handle multiple selection
-   * @param event
-   * @param name
-   */
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    setSelected(newSelected);
-  };
 
   /**
    * Handle page change
@@ -157,22 +140,27 @@ export const NotificationsTable = ({myWebId}) => {
     setPage(0);
   };
 
-  handleNotifications(); // Load the hooks
+  useEffect(() => {
+    handleNotifications(); // Load the hooks
+  });
 
   return (
     <div data-testid="notificationTableComp">
-      {!showTable && (
+      {!showTable && !withoutNotifications && (
         <BoxWithLoading isLoading={!showTable}/>
       )}
-      {showTable && (
+      {showTable && !withoutNotifications && (
         <div>
+          <Form data-testid="searchForm" className="searcher" inline>
+            <FormControl type="text" placeholder="e.g. user1" className="mr-sm-2" id="searchInput" />
+            <Button data-testid="btnSearch" variant="primary" onClick={searchNotifications}>{t("notifications.searchButton")}</Button>
+          </Form>
           <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-labelledby="tableTitle" aria-label="enhanced table">
               <TableHead>
                 <TableRow>
                   <TableCell>Nº</TableCell>
                   <TableCell align="right">{t("notifications.value")}</TableCell>
-                  <TableCell align="right">{t("notifications.read")}</TableCell>
                 </TableRow>
               </TableHead>
               {(<TableBody>
@@ -180,20 +168,12 @@ export const NotificationsTable = ({myWebId}) => {
                     ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     : rows
                 ).map((row, index) => {
-                  const isItemSelected = isSelected(row.N);
-                  const labelId = `enhanced-table-checkbox-${index}`;
                   return (
-                    <TableRow hover onClick={(event) => handleClick(event, row.N)}
-                              role="checkbox" aria-checked={isItemSelected}
-                              tabIndex={-1} key={row.N} selected={isItemSelected}>
-                      <TableCell id={labelId} name="notificationList">
+                    <TableRow hover tabIndex={-1} key={index}>
+                      <TableCell name="notificationList">
                         {row.N}
                       </TableCell>
                       <TableCell align="right">{row.Notification}</TableCell>
-                      <TableCell align="right">
-                        <Checkbox name="check" checked={isItemSelected}
-                                  inputProps={{'aria-labelledby': labelId}} color="primary"/>
-                      </TableCell>
                     </TableRow>
                   )
                 })}
@@ -210,12 +190,14 @@ export const NotificationsTable = ({myWebId}) => {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
           <br/>
-          <Button data-testid="btnMark" onClick={markAsRead}>{t("notifications.mark")}</Button>
         </div>
+      )}
+      {withoutNotifications && (
+        <u data-testid="errorMessage">{t("notifications.problemLoading")}</u>
       )}
       <NotificationContainer/>
     </div>
   );
-}
+};
 
 export default NotificationsTable;

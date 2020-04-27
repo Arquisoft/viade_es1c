@@ -15,7 +15,7 @@
     "maps": "Visualizar rutas"
   },
   "welcome": {
-    "welcome": "Bienvenido,",
+    "welcome": "Bienvenido/a,",
     "title": "¿Qué es ViaDe_ES1C?",
     "presentation": "ViaDe es una aplicación descentralizada para el manejo de rutas. Está desarrollada en el ecosistema web Solid. Permite visualizar nuestras rutas, compartirlas con nuestros amigos, descargarlas y subirlas.",
     "documentation": "Enlace a la documentación",
@@ -50,25 +50,32 @@
   },
   "share": {
     "title": "Compartir mis rutas",
-    "createSharePrompt": "Seleccione los amigos y la ruta que desea compartir con ellos",
+    "friend" : "Amigos",
+    "group" : "Grupos",
+    "createSharePrompt": "Seleccione con quien desea compartir rutas",
     "idLabel": "Seleccione la ruta a compartir:",
     "shareTrack": "Compartir",
+    "loadInfo" : "Cargar rutas y contactos",
     "resetShareForm": "Limpiar",
     "friends": "Lista de amigos:",
-    "errorFriends": "No se ha seleccionado ningun amigo con quien compartir",
-    "successShareMessage" : "Se han compartido sus rutas",
+    "groups": "Lista de grupos de amigos:",
+    "errorFriends": "No se ha seleccionado ningun amigo/grupo con quien compartir",
+    "successShareMessage" : "Se han compartido sus rutas con ",
     "successShareTitle" : "Compartido con éxito",
-    "errorCreateMessage" : "Ha habido algún problema",
+    "errorCreateMessage" : "Ha habido algún problema al compartir con ",
     "errorCreateTitle" : "Compartido sin éxito",
     "warningShareMessage" : "Ya se ha compartido la ruta con ",
     "warningShareTitle" : "Duplicidad de rutas",
-    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta",
+    "errorPermissionMessage" : "No tiene permisos para acceder a la carpeta de ",
     "errorPermissionTitle" : "Compartido sin éxito",
     "warningDeleteMessage" : "No se ha borrado la copia de la ruta correctamente",
     "warningDeleteTitle" : "Problema secundario",
     "errorFriendsTitle" : "Error de entrada",
     "warningLoadTitle" : "Advertencia al cargar rutas",
-    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod del amigo"
+    "warningLoadMessage" : "No hay rutas para compartir",
+    "errorFriendsFolder" : "No se ha encontrado la carpeta en el pod de ",
+    "errorMyPermissionsMessage": "Configure correctamente sus permisos para compartir con ",
+    "errorEmptyTracks": "No hay rutas para compartir"
   },
   "upload": {
     "title": "Subir mis rutas",
@@ -78,15 +85,22 @@
     "successMessage" : "Sus rutas han sido subidas",
     "errorTitle" : "Error en la subida",
     "errorMessage": "Debe subir un archivo con extensión \".json\"",
-    "errorEmptyMessage": "Debes subir algún archivo"
+    "errorEmptyMessage": "Debes subir algún archivo",
+    "errorPermissionsMessage": "No hay permisos para realizar la subida"
   },
   "download": {
     "title": "Descargar ruta",
-    "instruction":"Introduzca el nombre del archivo:",
+    "instruction":"Seleccione el nombre de la ruta:",
     "button":"Descargar",
-    "errorMessage" : "Asegúrese de que la ruta introducida existe en el Pod y de que la escribe correctamente",
-    "errorTitle": "Ruta inexistente en el Pod",
-    "especificacion": "* No incluir extensión"
+    "errorMessage" : "No se ha podido descargar su ruta",
+    "errorTitle": "Ruta inexistente en el POD",
+    "loadWarningMessage": "No existe ninguna ruta en el POD",
+    "loadWarningTitle": "Advertencia al cargar",
+    "errorLoadMessage": "No se han encontrado sus rutas",
+    "errorLoadTitle": "Error al cargar",
+    "successLoadMessage": "Sus rutas han sido cargadas",
+    "successLoadTitle": "Cargado con éxito",
+    "buttonLoad": "Cargar rutas del POD"
   },
   "friends": {
     "title": "Mis amigos",
@@ -98,22 +112,32 @@
     "deleteErrorMessage": "El WebId seleccionado no es válido",
     "addErrorTitle": "Error al añadir amigo",
     "addErrorMessage": "El WebId introducido no es válido",
-    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos"
+    "checkErrorMessage": "El amigo a añadir ya pertenece a la lista de amigos",
+    "permissionsErrorMessage": "No hay permisos para realizar la operación"
+  },
+  "groups": {
+    "title": "Mis grupos",
+    "addTitle": "Introduzca el nombre del grupo",
+    "add": "Crear grupo",
+    "addToGroupTitle" : "Seleccione los amigos que desea invitar al grupo",
+    "createErrorTitle": "Error al crear el grupo",
+    "createErrorMessage": "El grupo a crear no es válido",
+    "createSuccessTitle": "Grupo creado con éxito",
+    "createSuccessMessage1": "El grupo ",
+    "createSuccessMessage2": " ha sido creado",
+    "permissionsErrorMessage": "Faltan permisos para crear el grupo"
   },
   "notifications": {
     "title" : "Mis notificaciones",
     "value" : "Notificación",
-    "read": "Leído",
-    "mark" : "Marcar",
-    "errorTitle": "Error al marcar como leído",
-    "errorMessage": "No hay ninguna notificación marcada",
+    "errorTitle": "Error al buscar",
+    "errorMessage": "No hay ninguna notificación para ese criterio de búsqueda",
     "infoTitle": "Notificaciones actuales",
     "infoMessage1": "Tiene ",
-    "infoMessage2": " notificaciones sin leer",
-    "loadingNotifications": "Cargando sus notificaciones..."
-  },
-  "alert":{
-    "message": "NO ESTA DISPONIBLE TODAVIA ESTA OPCIÓN"
+    "infoMessage2": " notificaciones",
+    "loadingNotifications": "Cargando sus notificaciones...",
+    "searchButton": "Buscar",
+    "problemLoading": "No hay notificaciones disponibles"
   },
   "logout": {
     "button": "Cerrar sesión"

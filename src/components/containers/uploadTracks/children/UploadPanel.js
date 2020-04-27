@@ -20,13 +20,15 @@ export const UploadPanel = ({service}) => {
       uService = new UploadService();
     }
     await uService.handleUpload(document.getElementById("fileArea"));
-    if (uService.success !== null) {
+    if (uService.success) {
       NotificationManager.success(t("upload.successMessage"), t("upload.successTitle"), 2000);
       document.getElementById("fileArea").value = ""; // Clear input file
-    } else if (uService.error !== null) {
+    } else if (uService.error) {
       NotificationManager.error(t("upload.errorMessage"), t("upload.errorTitle"), 3000);
     } else if (document.getElementById("fileArea").value === "") {
       NotificationManager.error(t("upload.errorEmptyMessage"), t("upload.errorTitle"), 3000);
+    } else if (uService.errorPermissions) {
+      NotificationManager.error(t("upload.errorPermissionsMessage"), t("upload.errorTitle"), 3000);
     }
   }
 
@@ -39,7 +41,7 @@ export const UploadPanel = ({service}) => {
           </div>
           <div className="modal-body">
             <span>{t("upload.uploadPrompt")}</span>
-            <input type="file" id="fileArea" multiple/>
+            <input data-testid="input-file-area" type="file" id="fileArea" multiple/>
           </div>
           <div className="modal-footer">
             <Button data-testid="btnUpload" onClick={handleUpload}>

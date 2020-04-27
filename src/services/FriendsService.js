@@ -6,6 +6,8 @@ export default class FriendsService {
 
   constructor() {
     this.webId = "";
+    this.errorAdd = false;
+    this.errorDelete = false;
   }
 
   /**
@@ -15,14 +17,18 @@ export default class FriendsService {
    */
   async add(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
         this.webId = session.webId;
       }
     });
-    await ldflex[this.webId].knows.add(ldflex[friendWebId]);
+    try {
+      await ldflex[this.webId].knows.add(ldflex[friendWebId]);
+    } catch (e) {
+      this.errorAdd = true;
+    }
   }
 
   /**
@@ -32,14 +38,18 @@ export default class FriendsService {
    */
   async delete(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
         this.webId = session.webId;
       }
     });
-    await ldflex[this.webId].knows.delete(ldflex[friendWebId]);
+    try {
+      await ldflex[this.webId].knows.delete(ldflex[friendWebId]);
+    } catch(e) {
+      this.errorDelete = true;
+    }
   }
 
   /**
@@ -49,7 +59,7 @@ export default class FriendsService {
    */
   async check(friendWebId) {
     const auth = require("solid-auth-client");
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session) {
         return;
       } else {
@@ -99,7 +109,7 @@ export default class FriendsService {
    */
   async obtainSessionFc() {
     const fc = new FC(auth);
-    let session = await auth.currentSession()
+    let session = await auth.currentSession();
     if (!session) {
       session = await auth.login();
     }

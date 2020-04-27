@@ -1,4 +1,4 @@
 module.exports = {
-  preset: 'jest-puppeteer',
-  transform: {"\\.ts$": ['ts-jest']}
+  preset: "jest-puppeteer",
+  transform: {"\\.ts$": ["ts-jest"]}
 };

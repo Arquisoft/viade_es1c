@@ -1,5 +1,5 @@
-import auth from 'solid-auth-client';
-import FC from 'solid-file-client';
+import auth from "solid-auth-client";
+import FC from "solid-file-client";
 
 /*
     *****************************************
@@ -9,7 +9,8 @@ import FC from 'solid-file-client';
     * ***************************************
 */
 
-export default class VisualizeService{
+export default class VisualizeService {
+
     constructor(){
         this.points = [];
         this.elevationsValues = [];
@@ -20,7 +21,7 @@ export default class VisualizeService{
         this.warning = null;
         this.success = null;
         this.error = null;
-        this.errorLoad = null;
+        this.errorLoad = false;
         this.existsMultimedia = true;
         this.existsVideo = false;
         this.existsImage = false;
@@ -30,6 +31,7 @@ export default class VisualizeService{
         this.permissionsVideo = false;
         this.videos = [];
         this.permission = null;
+        this.mostrar=true;
     }
 
     /**
@@ -42,7 +44,7 @@ export default class VisualizeService{
             this.content = await fc.readFolder(this.urlRouteInPod, null);
             await this.getRoutesNames(this.content);
         } catch (SFCFetchError) {
-            this.errorLoad = "Error al cargar combo";
+            this.errorLoad = true;
         }
     }
 
@@ -56,36 +58,13 @@ export default class VisualizeService{
             this.content = await fc.readFolder(this.urlRouteInPod, null);
             await this.getRoutesNames(this.content);
         } catch (SFCFetchError) {
-            this.errorLoad = "Error al cargar combo";
+            this.errorLoad = true;
         }
     }
 
     /**
-     * Aux method to return the session with it's logged in.
-     */
-    async getSession(route){
-        await auth.trackSession(session => {
-            if (!session){
-                return;
-            } else {
-                this.session = session;
-            }
-        })
-        await this.getSessionId(route, this.session);
-    }
-
-    /**
-     * Aux method that return the webId of the user who is logged in.
-     * @param {current session} session 
-     */
-    async getSessionId(route, session) {
-        let webId = session.webId;
-        await this.getPodRoute(route, webId);
-    }
-
-    /**
      * Aux method that returns the route to tracks upload in the pod.
-     * @param {logged in user's webId} webId 
+     * @param {logged in user's webId} webId
      */
     async getPodRoute(route, webId) {
         /*
@@ -93,10 +72,33 @@ export default class VisualizeService{
             "viade/routes/" == folder where the routes are stored
         */
         this.urlRouteInPod = webId.slice(0, webId.length - 15).concat(route);
-        if (this.HTMLElement != null){
+        if (this.HTMLElement !== null){
             let selectedRouteName = this.HTMLElement.value.concat(".json");
             this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
         }
+    }
+
+    /**
+     * Aux method that return the webId of the user who is logged in.
+     * @param {current session} session
+     */
+    async getSessionId(route, session) {
+        let webId = session.webId;
+        await this.getPodRoute(route, webId);
+    }
+
+    /**
+     * Aux method to return the session with it's logged in.
+     */
+    async getSession(route){
+        await auth.trackSession((session) => {
+            if (!session){
+                return;
+            } else {
+                this.session = session;
+            }
+        });
+        await this.getSessionId(route, this.session);
     }
 
     /**
@@ -109,7 +111,7 @@ export default class VisualizeService{
         } else {
             for (let i = 0; i < content.files.length; i++) {
                 this.extension = content.files[i].name.split(".");
-                if (this.extension[1].localeCompare("json") === 0) {
+                if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
                     // 5 == length(".json")
                     this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
                 }
@@ -153,16 +155,18 @@ export default class VisualizeService{
      */
     async getPointsToPrint(content) {
         let route = JSON.parse(content);
-    
+        let latitude = null;
+        let longitude = null;
+        let elevation = null;
         // We obtain the points of the route
         let numberOfPoints = route.points.length;
         for (let i = 0; i < numberOfPoints; i++) {
 
-            let latitude = route.points[i].latitude;
-            let longitude = route.points[i].longitude;
+            latitude = route.points[i].latitude;
+            longitude = route.points[i].longitude;
             this.points.push([latitude, longitude]);
 
-            let elevation = route.points[i].elevation;
+            elevation = route.points[i].elevation;
             this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getMultimedia(route);
@@ -175,15 +179,20 @@ export default class VisualizeService{
      */
     async getMultimedia(route) {
         // We obtain the images of the track
+        let routeMedia = null;
+        let extensionRoute = null;
+        let extension = null;
+        let permissionRoute = null;
         if (route.media !== undefined && route.media.length > 0) {
                 for (let media in route.media) {
-                    let routeMedia = route.media[media]["@id"];
-                    let extensionRoute = routeMedia.split(".");
-                    let extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                    if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)) {
+                    routeMedia = route.media[media]["@id"];
+                    extensionRoute = routeMedia.split(".");
+                    extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                    if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)
+                        || (extension.localeCompare(".jpeg") === 0)) {
                         try {
                             this.existsImage = true;
-                            let permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
                             await this.readPermission(permissionRoute);
                             this.permissionsImage = true;
                             this.images.push(routeMedia);
@@ -193,7 +202,7 @@ export default class VisualizeService{
                     } else if (extension.localeCompare(".mp4") === 0) {
                         try {
                             this.existsVideo = true;
-                            let permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
                             await this.readPermission(permissionRoute);
                             this.permissionsVideo = true;
                             this.videos.push(routeMedia);

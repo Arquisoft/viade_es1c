@@ -1,3 +1,6 @@
+/**
+ * Simulating access to POD and SOLID friends
+ */
 export default class FriendsService {
 
   constructor() {

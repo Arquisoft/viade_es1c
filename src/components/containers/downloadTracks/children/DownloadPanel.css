@@ -1,0 +1,11 @@
+.select-load-format {
+    width: 50%;
+    background: #fff;
+    text-align: left;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.loadButton {
+    margin-bottom: 2em;
+}

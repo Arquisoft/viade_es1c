@@ -1,5 +1,6 @@
 import auth from "solid-auth-client";
 import FC from "solid-file-client";
+import ldflex from "@solid/query-ldflex";
 
 export default class ShareService {
 
@@ -77,7 +78,7 @@ export default class ShareService {
     const fc = new FC(auth);
     await fc.readFile(url).then((content) => {
       perm = true;
-    }, err => this.error = "Error en el permission".concat(err));
+    }, (err) => this.error = "Error en el permission".concat(err));
     return perm;
   }
 
@@ -167,7 +168,12 @@ export default class ShareService {
     const fc = new FC(auth);
     this.content = await fc.readFile(this.urlRouteInPod, null);
     //**copy track file at public carpet**
-    await fc.createFile(this.urlToCopy, this.content, "text/turtle", {});
+    try {
+      await fc.createFile(this.urlToCopy, this.content, "text/turtle", {});
+    } catch (e) {
+      this.error = "Mis permisos fallan";
+      return;
+    }
     //**share track to selected friend**
     /*for (let i = 0; i < this.userFriends.length ; i++){
       let urlFriendPod = this.userFriends[i].slice(0, this.userFriends[i].length - 15).concat("public/share/");
@@ -177,5 +183,14 @@ export default class ShareService {
     await this.upload(fc, urlFriendPod);
     //**delete copy file**/
     await this.removeCopiedTrack(fc);
+  }
+
+  /**
+   * Returns user name
+   * @param userWebId
+   * @returns {Promise<*>}
+   */
+  async getName(userWebId) {
+    return await ldflex[userWebId].name;
   }
 }
