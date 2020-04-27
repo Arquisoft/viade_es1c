@@ -30,7 +30,7 @@ export const MyFriends = ({myWebId, service}) => {
         } else {
           await fService.add(friendWebId);
           if (!fService.errorAdd) {
-            let text = 'User: '.concat(webId).concat(', added you to his/her friend list');
+            let text = "User: ".concat(webId).concat(", added you to his/her friend list");
             await sendNotification(friendWebId, text);
             window.location.reload(true);
           } else {
@@ -85,7 +85,7 @@ export const MyFriends = ({myWebId, service}) => {
       for (let i = 0; i < friendsWebId.length; i++) {
         await fService.delete(friendsWebId[i]);
         if (!fService.errorDelete) {
-          let text = 'User: '.concat(webId).concat(', deleted you from his/her friend list');
+          let text = "User: ".concat(webId).concat(", deleted you from his/her friend list");
           await sendNotification(friendsWebId[i], text);
           window.location.reload(true);
         } else {

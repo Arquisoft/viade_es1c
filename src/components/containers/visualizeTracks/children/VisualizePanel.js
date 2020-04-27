@@ -54,7 +54,7 @@ export const VisualizePanel = ({service}) => {
   const openImageViewer = useCallback((index) => {
 		setCurrentImage(index);
 		setIsViewerOpen(true);
-	  }, []);
+  }, []);
   const closeImageViewer = () => {
     setCurrentImage(0);
     setIsViewerOpen(false);
@@ -141,7 +141,7 @@ export const VisualizePanel = ({service}) => {
       setZoom(zoomValue);
       setElevation(elevationsValues);
 
-	    if (vService.mostrar === true) {
+      if (vService.mostrar === true) {
         setShowElements(true);
       }
       if (vService.existsMultimedia === true) {

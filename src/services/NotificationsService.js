@@ -21,7 +21,7 @@ export default class NotificationsService {
    * @returns {Promise<boolean>}
    */
   async checkContent(path) {
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {

@@ -191,6 +191,6 @@ export default class ShareService {
    * @returns {Promise<*>}
    */
   async getName(userWebId) {
-    return await ldflex[userWebId].name
+    return await ldflex[userWebId].name;
   }
 }

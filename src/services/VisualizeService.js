@@ -31,7 +31,7 @@ export default class VisualizeService {
         this.permissionsVideo = false;
         this.videos = [];
         this.permission = null;
-		    this.mostrar=true;
+        this.mostrar=true;
     }
 
     /**

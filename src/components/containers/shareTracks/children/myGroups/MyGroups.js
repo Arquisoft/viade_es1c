@@ -8,7 +8,7 @@ export const MyGroups = ({groups}) => {
                 return(
                     <li name="groupList" key={index}>{`${group}`}
                     <input data-testid={"_".concat(String(index))} name="group" className="ck" type="checkbox"></input></li>
-                )
+                );
             })}
         </ul>
     );
