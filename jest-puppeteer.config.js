@@ -5,4 +5,8 @@ module.exports = {
       launchTimeout: 90000,
       debug: true,
     },
+	launch:{
+		Headless:false,
+		Devtootls:true
+	}
   };
