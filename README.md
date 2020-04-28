@@ -8,7 +8,7 @@
 ## Contributors
 - Castaño Fonseca, Sandra
 - Fernández Rodríguez, Mario
-- Jove Lafuente, Alberto
+-   Jove Lafuente, Alberto
 - Ornia Gómez, Miguel
 - Santos Fernández, Raquel
 - Satour El Hammouti, Nourdine
