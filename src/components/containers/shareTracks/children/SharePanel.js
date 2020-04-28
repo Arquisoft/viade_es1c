@@ -71,9 +71,9 @@ export const SharePanel = ({myWebId, service, gService}) => {
         sService = new ShareService();
       }
       for (let i=0 ; i < friendsWebIds.length; i++){
-        userWebId = friendsWebIds[i];
+        userWebId = friendsWebIds[parseInt(i)];
         name = await sService.getName(userWebId);
-        await sService.shareTrack(friendsWebIds[i], HTMLElement);
+        await sService.shareTrack(friendsWebIds[parseInt(i)], HTMLElement);
 		
         if (sService.successShare === true){
           NotificationManager.success(t("share.successShareMessage").concat(name), t("share.successShareTitle"), 2000);
@@ -121,11 +121,11 @@ export const SharePanel = ({myWebId, service, gService}) => {
     for (let i = 0; i < buttons.length; i++){
       if (group) {
         if (buttons[i].checked) {
-          await gService.getFriendsWebIds(friends[i].innerText);
+          await gService.getFriendsWebIds(friends[parseInt(i)].innerText);
         }
       } else {
-        if (buttons[i].checked){
-          friendsWebIds.push(friends[i].innerText);
+        if (buttons[parseInt(i)].checked){
+          friendsWebIds.push(friends[parseInt(i)].innerText);
         }
       }
     }

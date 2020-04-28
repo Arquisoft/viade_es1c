@@ -32,7 +32,7 @@ export default class FriendsService {
 
   delete(friendWebId) {
     for (let i = 0; i < this.friends.length; i++) {
-      if (this.friends[i].localeCompare(friendWebId) === 0) {
+      if (this.friends[parseInt(i)].localeCompare(friendWebId) === 0) {
         this.friends.splice(i);
       }
     }

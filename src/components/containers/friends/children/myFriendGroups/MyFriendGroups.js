@@ -27,7 +27,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
     document.getElementById("groupId").value = "";
     for (let i = 0; i < buttons.length; i++){
       if (buttons[i].checked){
-        buttons[i].checked = false;
+        buttons[parseInt(i)].checked = false;
       }
     }
   }
@@ -72,8 +72,8 @@ export const MyFriendGroups = ({myWebId, service}) => {
     let friends = document.getElementsByName("friendListGroup");
     let buttons = document.getElementsByName("friendGroup");
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendsWebIds.push(friends[i].innerText);
+      if (buttons[parseInt(i)].checked){
+        friendsWebIds.push(friends[parseInt(i)].innerText);
       }
     }
     if (friendGroup !== undefined && friendsWebIds.length > 0) {

@@ -34,7 +34,7 @@ export default class NotificationsService {
       for (let i = 0; i < content.files.length; i++) {
         this.extension = content.files[i].name.split(".");
         if (this.extension[this.extension.length - 1].localeCompare("ttl") === 0) {
-          let file = await fc.readFile(path.concat(content.files[i].name), null);
+          let file = await fc.readFile(path.concat(content.files[parseInt(i)].name), null);
           let fileContent = String(file);
           if (fileContent.includes("summary")) {
             return true;
