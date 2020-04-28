@@ -63,7 +63,7 @@ export const NotificationsTable = ({myWebId, service}) => {
         if (notification.notifications.length > 0 && restartNotifications) {
           let rows = [];
           for (let i=0; i < notification.notifications.length; i++) {
-            rows.push(createData(i+1, notification.notifications[i].summary));
+            rows.push(createData(i+1, notification.notifications[parseInt(i)].summary));
           }
           setRows(rows);
           setShowTable(true);
@@ -107,9 +107,9 @@ export const NotificationsTable = ({myWebId, service}) => {
       if (searchInput.localeCompare("") !== 0) {
         let notifications = [];
         for (let i=0; i < notification.notifications.length; i++) {
-          if (notification.notifications[i].summary.toUpperCase().includes(searchInput.toUpperCase())) {
+          if (notification.notifications[parseInt(i)].summary.toUpperCase().includes(searchInput.toUpperCase())) {
             restartNotifications = false;
-            notifications.push(createData(i+1, notification.notifications[i].summary));
+            notifications.push(createData(i+1, notification.notifications[parseInt(i)].summary));
           }
         }
         if (notifications.length === 0) {

@@ -79,13 +79,13 @@ export const MyFriends = ({myWebId, service}) => {
     let buttons = document.getElementsByName("friend");
     let friendsWebId = [];
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendsWebId.push(friends[i].innerText);
+      if (buttons[parseInt(i)].checked){
+        friendsWebId.push(friends[parseInt(i)].innerText);
       }
     }
     if (friendsWebId !== undefined && friendsWebId.length > 0) {
       for (let i = 0; i < friendsWebId.length; i++) {
-        await fService.delete(friendsWebId[i]);
+        await fService.delete(friendsWebId[parseInt(i)]);
         if (!fService.errorDelete) {
           let text = "User: ".concat(webId).concat(", deleted you from his/her friend list");
           await sendNotification(friendsWebId[i], text);
