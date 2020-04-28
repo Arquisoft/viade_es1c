@@ -120,7 +120,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
     for (let i = 0; i < buttons.length; i++){
       if (group) {
-        if (buttons[i].checked) {
+        if (buttons[parseInt(i)].checked) {
           await gService.getFriendsWebIds(friends[parseInt(i)].innerText);
         }
       } else {

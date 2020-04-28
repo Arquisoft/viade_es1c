@@ -26,7 +26,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
   function clear(buttons) {
     document.getElementById("groupId").value = "";
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
+      if (buttons[parseInt(i)].checked){
         buttons[parseInt(i)].checked = false;
       }
     }
@@ -40,7 +40,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
     try {
       if (friendsWebIds.length > 0) {
         for (let i = 0; i < friendsWebIds.length; i++) {
-          const inboxUrl = await discoverInbox(friendsWebIds[i]);
+          const inboxUrl = await discoverInbox(friendsWebIds[parseInt(i)]);
           if (!inboxUrl) {
             throw new Error("Inbox not found");
           }

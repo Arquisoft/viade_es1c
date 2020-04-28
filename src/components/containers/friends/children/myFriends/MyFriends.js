@@ -88,7 +88,7 @@ export const MyFriends = ({myWebId, service}) => {
         await fService.delete(friendsWebId[parseInt(i)]);
         if (!fService.errorDelete) {
           let text = "User: ".concat(webId).concat(", deleted you from his/her friend list");
-          await sendNotification(friendsWebId[i], text);
+          await sendNotification(friendsWebId[parseInt(i)], text);
           window.location.reload(true);
         } else {
           NotificationManager.error(t("friends.permissionsErrorMessage"), t("friends.deleteErrorTitle"), 3000);

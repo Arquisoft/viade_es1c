@@ -18,7 +18,7 @@ export default class UploadService {
           this.error = true;
         } else if (HTMLElement.files[parseInt(i)].name.includes(".json")) {
           this.success = true;
-        } else if (HTMLElement.files[i].name.includes(".ttl")) {
+        } else if (HTMLElement.files[parseInt(i)].name.includes(".ttl")) {
           this.errorPermissions = true;
         }
       }
