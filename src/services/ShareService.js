@@ -55,13 +55,13 @@ export default class ShareService {
    * Aux method to return the session with it's logged in.
    */
   async getSession(){
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session);
   }
 
@@ -123,7 +123,7 @@ export default class ShareService {
         this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
         if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
           try{
-            await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
+            await fc.postFile(this.urlRouteInOtherPod, this.content, "application/json");
             this.successShare = true;
           } catch (SFCFetchError){
             this.error = "Error en el create";

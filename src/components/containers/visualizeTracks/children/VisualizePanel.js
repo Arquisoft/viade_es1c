@@ -118,6 +118,35 @@ export const VisualizePanel = ({service}) => {
   }
 
   /**
+   * Fuction to handle multimedia hooks and advices
+   * @param vService
+   */
+  function handleMultimedia(vService) {
+    setShowVideo(false);
+    setShowImage(false);
+    if (vService.videos.length > 0 || vService.images.length > 0) {
+      if (vService.images.length > 0) {
+        setShowImage(true);
+        setImages(vService.images);
+      }
+      if (vService.videos.length > 0) {
+        setShowVideo(true);
+        setVideos(vService.videos);
+        setActualVideo(vService.videos[actualIndexVideo]);
+      }
+    } else {
+      setShowImage(false);
+      setShowVideo(false);
+      if (!vService.permissionsImage && vService.existsImage === true) {
+        NotificationManager.error(t("routes.imageErrorMessage"), t("routes.imageErrorTitle"), 3000);
+      }
+      if (!vService.permissionsVideo && vService.existsVideo === true) {
+        NotificationManager.error(t("routes.videoErrorMessage"), t("routes.videoErrorTitle"), 3000);
+      }
+    }
+  }
+
+  /**
    * Function to handle display map, histogram and multimedia event
    * @returns {Promise<void>}
    */
@@ -150,35 +179,6 @@ export const VisualizePanel = ({service}) => {
     }
     setLoading(false);
     handleFilter();
-  }
-
-  /**
-   * Fuction to handle multimedia hooks and advices
-   * @param vService
-   */
-  function handleMultimedia(vService) {
-    setShowVideo(false);
-    setShowImage(false);
-    if (vService.videos.length > 0 || vService.images.length > 0) {
-      if (vService.images.length > 0) {
-        setShowImage(true);
-        setImages(vService.images);
-      }
-      if (vService.videos.length > 0) {
-        setShowVideo(true);
-        setVideos(vService.videos);
-        setActualVideo(vService.videos[actualIndexVideo]);
-      }
-    } else {
-      setShowImage(false);
-      setShowVideo(false);
-      if (!vService.permissionsImage && vService.existsImage === true) {
-        NotificationManager.error(t("routes.imageErrorMessage"), t("routes.imageErrorTitle"), 3000);
-      }
-      if (!vService.permissionsVideo && vService.existsVideo === true) {
-        NotificationManager.error(t("routes.videoErrorMessage"), t("routes.videoErrorTitle"), 3000);
-      }
-    }
   }
 
   /**

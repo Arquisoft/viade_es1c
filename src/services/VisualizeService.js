@@ -167,7 +167,7 @@ export default class VisualizeService {
             this.points.push([latitude, longitude]);
 
             elevation = route.points[i].elevation;
-            this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
+            this.elevationsValues.push({ x: "P".concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getMultimedia(route);
     }

@@ -84,7 +84,9 @@ export const NotificationsTable = ({myWebId, service}) => {
    */
   function withLoading(Component) {
     return function WithLoadingComponent({ isLoading, ...props }) {
-      if (!isLoading) return (<Component {...props} />);
+      if (!isLoading){
+        return (<Component {...props} />);
+      } 
       return (<div align="center">
         <ReactLoading type={"spin"} color={"#5FB0FF"} height={"10%"} width={"10%"}/>
         <br/>
@@ -175,7 +177,7 @@ export const NotificationsTable = ({myWebId, service}) => {
                       </TableCell>
                       <TableCell align="right">{row.Notification}</TableCell>
                     </TableRow>
-                  )
+                  );
                 })}
               </TableBody>)}
             </Table>

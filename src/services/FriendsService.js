@@ -90,7 +90,7 @@ export default class FriendsService {
    * @returns {Promise<*>}
    */
   async checkOrigin(friendWebId) {
-    return await this.request(async client => await client.itemExists(friendWebId));
+    return await this.request(async (client) => await client.itemExists(friendWebId));
   }
 
   /**

@@ -18,6 +18,30 @@ export const MyFriends = ({myWebId, service}) => {
   );
 
   /**
+   * Send a notification to the added / deleted user
+   * @param userWebId - WebId of the receiver
+   * @returns {Promise<void>}
+   */
+  const sendNotification = async (userWebId, content) => {
+    try {
+      const inboxUrl = await discoverInbox(userWebId);
+      if (!inboxUrl) {
+        throw new Error("Inbox not found");
+      }
+      createNotification(
+        {
+          title: "Friend notification",
+          summary: content,
+          actor: webId
+        },
+        inboxUrl
+      );
+    } catch (ex) {
+      errorNotification = ex;
+    }
+  };
+
+  /**
    * Add a new friend
    * @returns {Promise<void>}
    */
@@ -44,30 +68,6 @@ export const MyFriends = ({myWebId, service}) => {
       }
     }
   }
-
-  /**
-   * Send a notification to the added / deleted user
-   * @param userWebId - WebId of the receiver
-   * @returns {Promise<void>}
-   */
-  const sendNotification = async (userWebId, content) => {
-    try {
-      const inboxUrl = await discoverInbox(userWebId);
-      if (!inboxUrl) {
-        throw new Error("Inbox not found");
-      }
-      createNotification(
-        {
-          title: "Friend notification",
-          summary: content,
-          actor: webId
-        },
-        inboxUrl
-      );
-    } catch (ex) {
-      errorNotification = ex;
-    }
-  };
 
   /**
    * Delete the selected friend
