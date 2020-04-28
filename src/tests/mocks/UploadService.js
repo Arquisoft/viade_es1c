@@ -16,9 +16,9 @@ export default class UploadService {
       for (let i = 0; i < HTMLElement.files.length; i++) {
         if (HTMLElement.files[parseInt(i)].name.includes(".txt")) {
           this.error = true;
-        } else if (HTMLElement.files[parseInt(i)].name.includes(".json")) {
+        } else if (HTMLElement.files[parseInt(i, 10)].name.includes(".json")) {
           this.success = true;
-        } else if (HTMLElement.files[parseInt(i)].name.includes(".ttl")) {
+        } else if (HTMLElement.files[parseInt(i, 10)].name.includes(".ttl")) {
           this.errorPermissions = true;
         }
       }

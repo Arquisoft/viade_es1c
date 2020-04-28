@@ -135,7 +135,7 @@ export default class FriendGroupService {
     // We obtain the webIds of the group
     let users = group.users.length;
     for (let i = 0; i < users; i++) {
-      let friend = group.users[parseInt(i)].url;
+      let friend = group.users[parseInt(i, 10)].url;
       this.groupFriends.push(friend);
     }
   }
