@@ -8,6 +8,7 @@ export default class FriendsService {
     this.webId = "";
     this.errorAdd = false;
     this.errorDelete = false;
+    this.errorRequest = null;
   }
 
   /**
@@ -89,7 +90,7 @@ export default class FriendsService {
    * @returns {Promise<*>}
    */
   async checkOrigin(friendWebId) {
-    return await this.request(async client => await client.itemExists(friendWebId));
+    return await this.request(async (client) => await client.itemExists(friendWebId));
   }
 
   /**
@@ -101,7 +102,7 @@ export default class FriendsService {
     try {
       return await op(await this.obtainSessionFc());
     } catch (error) {
-      throw new Error("failed requesto to the webId");
+      this.errorRequest = "Error en la request al webId";
     }
   }
 

@@ -6,6 +6,8 @@ import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
+let errorNotification = null;
+
 export const MyFriends = ({myWebId, service}) => {
 
   // i18n locales
@@ -14,6 +16,30 @@ export const MyFriends = ({myWebId, service}) => {
   const { createNotification, discoverInbox } = useNotification(
     webId
   );
+
+  /**
+   * Send a notification to the added / deleted user
+   * @param userWebId - WebId of the receiver
+   * @returns {Promise<void>}
+   */
+  const sendNotification = async (userWebId, content) => {
+    try {
+      const inboxUrl = await discoverInbox(userWebId);
+      if (!inboxUrl) {
+        throw new Error("Inbox not found");
+      }
+      createNotification(
+        {
+          title: "Friend notification",
+          summary: content,
+          actor: webId
+        },
+        inboxUrl
+      );
+    } catch (ex) {
+      errorNotification = ex;
+    }
+  };
 
   /**
    * Add a new friend
@@ -44,30 +70,6 @@ export const MyFriends = ({myWebId, service}) => {
   }
 
   /**
-   * Send a notification to the added / deleted user
-   * @param userWebId - WebId of the receiver
-   * @returns {Promise<void>}
-   */
-  const sendNotification = async (userWebId, summary) => {
-    try {
-      const inboxUrl = await discoverInbox(userWebId);
-      if (!inboxUrl) {
-        throw new Error("Inbox not found");
-      }
-      createNotification(
-        {
-          title: "Friend notification",
-          summary: summary,
-          actor: webId
-        },
-        inboxUrl
-      );
-    } catch (ex) {
-      throw new Error("Problem creating the notification");
-    }
-  };
-
-  /**
    * Delete the selected friend
    * @returns {Promise<void>}
    */
@@ -77,16 +79,16 @@ export const MyFriends = ({myWebId, service}) => {
     let buttons = document.getElementsByName("friend");
     let friendsWebId = [];
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendsWebId.push(friends[i].innerText);
+      if (buttons[parseInt(i)].checked){
+        friendsWebId.push(friends[parseInt(i)].innerText);
       }
     }
     if (friendsWebId !== undefined && friendsWebId.length > 0) {
       for (let i = 0; i < friendsWebId.length; i++) {
-        await fService.delete(friendsWebId[i]);
+        await fService.delete(friendsWebId[parseInt(i)]);
         if (!fService.errorDelete) {
           let text = "User: ".concat(webId).concat(", deleted you from his/her friend list");
-          await sendNotification(friendsWebId[i], text);
+          await sendNotification(friendsWebId[parseInt(i)], text);
           window.location.reload(true);
         } else {
           NotificationManager.error(t("friends.permissionsErrorMessage"), t("friends.deleteErrorTitle"), 3000);

@@ -25,7 +25,7 @@ export const Welcome = () => {
                                 <li id = "linkDoc" className = "welcomeLinkDocs"><a
                                     href="https://arquisoft.github.io/viade_es1c/docs/">{t("welcome.documentation")}</a>
                                 </li >
-                                <li id = "linkBuild" className = "welcomeLinksViade" ><a href="https://github.com/Arquisoft/viade_es1c">{t('welcome.repository')}</a></li>
+                                <li id = "linkBuild" className = "welcomeLinksViade" ><a href="https://github.com/Arquisoft/viade_es1c">{t("welcome.repository")}</a></li>
                             </ul>
                         </div>
                     </div>

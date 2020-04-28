@@ -110,10 +110,10 @@ export default class VisualizeService {
             this.warning = "No hay contenido";
         } else {
             for (let i = 0; i < content.files.length; i++) {
-                this.extension = content.files[i].name.split(".");
+                this.extension = content.files[parseInt(i)].name.split(".");
                 if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
                     // 5 == length(".json")
-                    this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                    this.routes.push(content.files[parseInt(i)].name.slice(0, content.files[parseInt(i)].name.length - 5));
                 }
             }
             this.success = "Cargo rutas";
@@ -162,12 +162,12 @@ export default class VisualizeService {
         let numberOfPoints = route.points.length;
         for (let i = 0; i < numberOfPoints; i++) {
 
-            latitude = route.points[i].latitude;
-            longitude = route.points[i].longitude;
+            latitude = route.points[parseInt(i)].latitude;
+            longitude = route.points[parseInt(i)].longitude;
             this.points.push([latitude, longitude]);
 
-            elevation = route.points[i].elevation;
-            this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
+            elevation = route.points[parseInt(i)].elevation;
+            this.elevationsValues.push({ x: "P".concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getMultimedia(route);
     }

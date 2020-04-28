@@ -63,7 +63,7 @@ export const NotificationsTable = ({myWebId, service}) => {
         if (notification.notifications.length > 0 && restartNotifications) {
           let rows = [];
           for (let i=0; i < notification.notifications.length; i++) {
-            rows.push(createData(i+1, notification.notifications[i].summary));
+            rows.push(createData(i+1, notification.notifications[parseInt(i)].summary));
           }
           setRows(rows);
           setShowTable(true);
@@ -82,19 +82,21 @@ export const NotificationsTable = ({myWebId, service}) => {
    * @returns {WithLoadingComponent}
    * @constructor
    */
-  function WithLoading(Component) {
+  function withLoading(Component) {
     return function WithLoadingComponent({ isLoading, ...props }) {
-      if (!isLoading) return (<Component {...props} />);
+      if (!isLoading){
+        return (<Component {...props} />);
+      } 
       return (<div align="center">
-        <ReactLoading type={"spin"} color={"#5FB0FF"} height={'10%'} width={'10%'}/>
+        <ReactLoading type={"spin"} color={"#5FB0FF"} height={"10%"} width={"10%"}/>
         <br/>
-        <p>{t('notifications.loadingNotifications')}</p>
+        <p>{t("notifications.loadingNotifications")}</p>
       </div>);
-    }
+    };
   }
 
   // Loading box
-  const BoxWithLoading = WithLoading(Box);
+  const BoxWithLoading = withLoading(Box);
 
   /**
    * Search notifications by input
@@ -105,9 +107,9 @@ export const NotificationsTable = ({myWebId, service}) => {
       if (searchInput.localeCompare("") !== 0) {
         let notifications = [];
         for (let i=0; i < notification.notifications.length; i++) {
-          if (notification.notifications[i].summary.toUpperCase().includes(searchInput.toUpperCase())) {
+          if (notification.notifications[parseInt(i)].summary.toUpperCase().includes(searchInput.toUpperCase())) {
             restartNotifications = false;
-            notifications.push(createData(i+1, notification.notifications[i].summary));
+            notifications.push(createData(i+1, notification.notifications[parseInt(i)].summary));
           }
         }
         if (notifications.length === 0) {
@@ -175,7 +177,7 @@ export const NotificationsTable = ({myWebId, service}) => {
                       </TableCell>
                       <TableCell align="right">{row.Notification}</TableCell>
                     </TableRow>
-                  )
+                  );
                 })}
               </TableBody>)}
             </Table>
