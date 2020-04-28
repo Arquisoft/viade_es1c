@@ -132,7 +132,7 @@ export const VisualizePanel = ({service}) => {
       if (vService.videos.length > 0) {
         setShowVideo(true);
         setVideos(vService.videos);
-        setActualVideo(vService.videos[actualIndexVideo]);
+        setActualVideo(vService.videos[parseInt(actualIndexVideo)]);
       }
     } else {
       setShowImage(false);
@@ -212,7 +212,7 @@ export const VisualizePanel = ({service}) => {
   function handlePrevious() {
     if (actualIndexVideo > 0) {
       actualIndexVideo--;
-      setActualVideo(videos[actualIndexVideo]);
+      setActualVideo(videos[parseInt(actualIndexVideo)]);
     }
   }
 

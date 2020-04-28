@@ -49,7 +49,7 @@ export const MyFriends = ({myWebId, service}) => {
     let fService = service;
     let friendWebId = document.getElementById("friendId").value;
     let checkFriend = await fService.check(friendWebId);
-    if (friendWebId !== undefined) {
+    if (typeof(friendWebId) !== undefined) {
       if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
         if (checkFriend) {
           NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
