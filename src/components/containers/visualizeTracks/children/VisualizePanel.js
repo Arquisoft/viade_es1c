@@ -202,7 +202,7 @@ export const VisualizePanel = ({service}) => {
   function handleNext() {
     if ((actualIndexVideo + 1 <= (videos.length - 1)) && (videos.length > 1)) {
       actualIndexVideo++;
-      setActualVideo(videos[actualIndexVideo]);
+      setActualVideo(videos[parseInt(actualIndexVideo, 10)]);
     }
   }
 
