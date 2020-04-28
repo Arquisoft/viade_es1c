@@ -116,28 +116,31 @@ export default class ShareService {
   }
 
   async upload(fc, urlFriendPod){
-    if (await fc.itemExists(urlFriendPod) === true){
-      let permisos = await this.readPermission(urlFriendPod);
-      if (permisos === true){
-        let selectedRouteName = this.HTMLElement.value.concat("");
-        this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
-        if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
-          try{
-            await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
-            this.successShare = true;
-          } catch (SFCFetchError){
-            this.error = "Error en el create";
-          } 
+    try {
+      if (await fc.itemExists(urlFriendPod) === true){
+        let permisos = await this.readPermission(urlFriendPod);
+        if (permisos === true){
+          let selectedRouteName = this.HTMLElement.value.concat("");
+          this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
+          if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
+            try{
+              await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
+              this.successShare = true;
+            } catch (SFCFetchError){
+              this.error = "Error en el create";
+            }
+          } else {
+            this.warning = true;
+          }
         } else {
-          this.warning = true;
+          this.error = "Permisos denegados";
         }
       } else {
-        this.error = "Permisos denegados";
+        this.error = "Carpeta no encontrada";
       }
-    } else {
-      this.error = "Carpeta no encontrada";
+    } catch (SFCFetchError) {
+      this.error = "Permisos denegados";
     }
-    
   }
 
   /**

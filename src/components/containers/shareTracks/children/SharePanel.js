@@ -99,10 +99,10 @@ export const SharePanel = ({myWebId, service, gService}) => {
       let userWebId = null;
       let name = null;
       let sService = service;
-      if (sService instanceof ShareService) {
-        sService = new ShareService();
-      }
       for (let i=0 ; i < friendsWebIds.length; i++){
+        if (sService instanceof ShareService) {
+          sService = new ShareService();
+        }
         userWebId = friendsWebIds[i];
         name = await sService.getName(userWebId);
         await sService.shareTrack(friendsWebIds[i], HTMLElement);
