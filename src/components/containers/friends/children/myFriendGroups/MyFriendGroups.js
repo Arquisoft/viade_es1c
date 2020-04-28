@@ -76,7 +76,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
         friendsWebIds.push(friends[parseInt(i)].innerText);
       }
     }
-    if (friendGroup !== undefined && friendsWebIds.length > 0) {
+    if (typeof(friendGroup) !== "undefined" && friendsWebIds.length > 0) {
       if (friendGroup.localeCompare("") !== 0) {
           await gService.create(friendGroup, friendsWebIds);
           if (gService.success === true) {

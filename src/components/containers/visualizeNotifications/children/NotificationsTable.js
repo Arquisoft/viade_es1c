@@ -49,7 +49,7 @@ export const NotificationsTable = ({myWebId, service}) => {
    * @returns {Promise<void>}
    */
   async function handleNotifications() {
-      if (webId !== undefined && webId !== null) {
+      if (typeof(webId) !== "undefined" && webId !== null) {
         let userWebId = webId.replace("/profile/card#me","/inbox/");
         const inboxes = [{ path: userWebId, inboxName: "Global Inbox", shape: "default" }];
         if (service instanceof NotificationsService) {

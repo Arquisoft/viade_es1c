@@ -80,7 +80,7 @@ export const VisualizePanel = ({service}) => {
    * Function that handle select radioButton
    */
   function handleFilter() {
-    if (selectedFilter !== undefined ){
+    if (typeof(selectedFilter) !== "undefined" ){
       if (selectedFilter.localeCompare(shared) === 0) {
         document.getElementById("radio-2").checked = true;
       } else if (selectedFilter.localeCompare(myTracks) === 0) {
@@ -107,7 +107,7 @@ export const VisualizePanel = ({service}) => {
     }
     if (vService.warning !== null){
       NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
-    } else if (vService.errorLoad || selectedFilter === undefined)  {
+    } else if (vService.errorLoad || typeof(selectedFilter) === "undefined")  {
       NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       setDisableVisualize(false);

@@ -113,7 +113,7 @@ export default class VisualizeService {
                 this.extension = content.files[parseInt(i)].name.split(".");
                 if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
                     // 5 == length(".json")
-                    this.routes.push(content.files[parseInt(i)].name.slice(0, content.files[parseInt(i)].name.length - 5));
+                    this.routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
                 }
             }
             this.success = "Cargo rutas";
@@ -162,11 +162,11 @@ export default class VisualizeService {
         let numberOfPoints = route.points.length;
         for (let i = 0; i < numberOfPoints; i++) {
 
-            latitude = route.points[parseInt(i)].latitude;
-            longitude = route.points[parseInt(i)].longitude;
+            latitude = route.points[parseInt(i, 10)].latitude;
+            longitude = route.points[parseInt(i, 10)].longitude;
             this.points.push([latitude, longitude]);
 
-            elevation = route.points[parseInt(i)].elevation;
+            elevation = route.points[parseInt(i, 10)].elevation;
             this.elevationsValues.push({ x: "P".concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getMultimedia(route);
@@ -183,7 +183,7 @@ export default class VisualizeService {
         let extensionRoute = null;
         let extension = null;
         let permissionRoute = null;
-        if (route.media !== undefined && route.media.length > 0) {
+        if (typeof(route.media) !== "undefined" && route.media.length > 0) {
                 for (let media in route.media) {
                     if (media !== null){
                         routeMedia = route.media[media]["@id"];

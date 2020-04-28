@@ -121,7 +121,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
     for (let i = 0; i < buttons.length; i++){
       if (group) {
         if (buttons[parseInt(i)].checked) {
-          await gService.getFriendsWebIds(friends[parseInt(i)].innerText);
+          await gService.getFriendsWebIds(friends[parseInt(i, 10)].innerText);
         }
       } else {
         if (buttons[parseInt(i)].checked){
@@ -168,7 +168,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
    * Handle filter change
    */
   function handleFilter() {
-    if (selectedFilter !== undefined) {
+    if (typeof(selectedFilter) !== "undefined") {
       if (selectedFilter.localeCompare("radio-1") === 0){
         document.getElementById("radio-1").checked = true;
       } else if (selectedFilter.localeCompare("radio-2") === 0) {

@@ -83,7 +83,7 @@ export const MyFriends = ({myWebId, service}) => {
         friendsWebId.push(friends[parseInt(i)].innerText);
       }
     }
-    if (friendsWebId !== undefined && friendsWebId.length > 0) {
+    if (typeof(friendsWebId) !== "undefined" && friendsWebId.length > 0) {
       for (let i = 0; i < friendsWebId.length; i++) {
         await fService.delete(friendsWebId[parseInt(i)]);
         if (!fService.errorDelete) {
