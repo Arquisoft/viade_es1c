@@ -50,7 +50,7 @@ export const MyFriends = ({myWebId, service}) => {
    * @param userWebId - WebId of the receiver
    * @returns {Promise<void>}
    */
-  const sendNotification = async (userWebId, summary) => {
+  const sendNotification = async (userWebId, content) => {
     try {
       const inboxUrl = await discoverInbox(userWebId);
       if (!inboxUrl) {
@@ -59,7 +59,7 @@ export const MyFriends = ({myWebId, service}) => {
       createNotification(
         {
           title: "Friend notification",
-          summary: summary,
+          summary: content,
           actor: webId
         },
         inboxUrl

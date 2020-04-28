@@ -6,12 +6,12 @@
 # VIADE ES1C
 
 ## Contributors
-- Castaño Fonseca, Sandra
-- Fernández Rodríguez, Mario
+-   Castaño Fonseca, Sandra
+-   Fernández Rodríguez, Mario
 -   Jove Lafuente, Alberto
-- Ornia Gómez, Miguel
-- Santos Fernández, Raquel
-- Satour El Hammouti, Nourdine
+-   Ornia Gómez, Miguel
+-   Santos Fernández, Raquel
+-   Satour El Hammouti, Nourdine
 
 This repository contains a skeleton of the VIADE project.
 

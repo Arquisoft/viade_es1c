@@ -185,7 +185,7 @@ export default class VisualizeService {
         let permissionRoute = null;
         if (route.media !== undefined && route.media.length > 0) {
                 for (let media in route.media) {
-                    if (media !== undefined){
+                    if (media !== null){
                         routeMedia = route.media[media]["@id"];
                         extensionRoute = routeMedia.split(".");
                         extension = ".".concat(extensionRoute[extensionRoute.length - 1]);

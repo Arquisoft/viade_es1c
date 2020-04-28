@@ -36,7 +36,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
    * Send a notification to the user in the new group
    * @returns {Promise<void>}
    */
-  const sendNotification = async (summary) => {
+  const sendNotification = async (content) => {
     try {
       if (friendsWebIds.length > 0) {
         for (let i = 0; i < friendsWebIds.length; i++) {
@@ -47,7 +47,7 @@ export const MyFriendGroups = ({myWebId, service}) => {
           createNotification(
             {
               title: "Group notification",
-              summary: summary,
+              summary: content,
               actor: webId
             },
             inboxUrl

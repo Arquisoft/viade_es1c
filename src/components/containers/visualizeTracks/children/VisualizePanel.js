@@ -231,7 +231,7 @@ export const VisualizePanel = ({service}) => {
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     {showElements && (
                       <div>
-                        <Polyline color={'blue'}
+                        <Polyline color={"blue"}
                                   positions={positions}/>
                         <Marker position={origin}>
                           <Popup>{t("routes.origin")}</Popup>

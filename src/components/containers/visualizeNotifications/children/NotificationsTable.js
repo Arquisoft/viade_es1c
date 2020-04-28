@@ -82,19 +82,19 @@ export const NotificationsTable = ({myWebId, service}) => {
    * @returns {WithLoadingComponent}
    * @constructor
    */
-  function WithLoading(Component) {
+  function withLoading(Component) {
     return function WithLoadingComponent({ isLoading, ...props }) {
       if (!isLoading) return (<Component {...props} />);
       return (<div align="center">
-        <ReactLoading type={"spin"} color={"#5FB0FF"} height={'10%'} width={'10%'}/>
+        <ReactLoading type={"spin"} color={"#5FB0FF"} height={"10%"} width={"10%"}/>
         <br/>
-        <p>{t('notifications.loadingNotifications')}</p>
+        <p>{t("notifications.loadingNotifications")}</p>
       </div>);
-    }
+    };
   }
 
   // Loading box
-  const BoxWithLoading = WithLoading(Box);
+  const BoxWithLoading = withLoading(Box);
 
   /**
    * Search notifications by input

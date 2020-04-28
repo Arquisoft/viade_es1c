@@ -14,7 +14,7 @@ defineFeature((feature), (test) => {
     given("The login page", async() => {
       browser = await puppeteer.launch({
         headless: false,
-		ignoreDefaultArgs: ['--disable-extensions'],
+		ignoreDefaultArgs: ["--disable-extensions"],
         defaultViewport: null
       });
       page = await browser.newPage();

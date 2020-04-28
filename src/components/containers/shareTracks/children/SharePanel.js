@@ -57,40 +57,6 @@ export const SharePanel = ({myWebId, service, gService}) => {
   };
 
   /**
-   * Handle friends/groups to share
-   * @returns {Promise<void>}
-   */
-  async function handleFriends(){
-    let friends = document.getElementsByName("listFriend");
-    let buttons = document.getElementsByName("myFriend");
-    let group = false;
-    let friendsWebIds = [];
-    if (selectedFilter.localeCompare("radio-2") === 0) {
-      if (gService instanceof FriendGroupService){
-        gService = new FriendGroupService();
-      }
-      group = true;
-      friends = document.getElementsByName("groupList");
-      buttons = document.getElementsByName("group");
-    }
-    for (let i = 0; i < buttons.length; i++){
-      if (group) {
-        if (buttons[i].checked) {
-          await gService.getFriendsWebIds(friends[i].innerText);
-        }
-      } else {
-        if (buttons[i].checked){
-          friendsWebIds.push(friends[i].innerText);
-        }
-      }
-    }
-    if (group && gService.groupFriends.length > 0) {
-      friendsWebIds = gService.groupFriends;
-    }
-    await handleShare(friendsWebIds);
-  }
-
-  /**
    * Upload the share track and send a notification to the receiver
    * @param friendsWebIds
    * @returns {Promise<void>}
@@ -136,6 +102,40 @@ export const SharePanel = ({myWebId, service, gService}) => {
   }
 
   /**
+   * Handle friends/groups to share
+   * @returns {Promise<void>}
+   */
+  async function handleFriends(){
+    let friends = document.getElementsByName("listFriend");
+    let buttons = document.getElementsByName("myFriend");
+    let group = false;
+    let friendsWebIds = [];
+    if (selectedFilter.localeCompare("radio-2") === 0) {
+      if (gService instanceof FriendGroupService){
+        gService = new FriendGroupService();
+      }
+      group = true;
+      friends = document.getElementsByName("groupList");
+      buttons = document.getElementsByName("group");
+    }
+    for (let i = 0; i < buttons.length; i++){
+      if (group) {
+        if (buttons[i].checked) {
+          await gService.getFriendsWebIds(friends[i].innerText);
+        }
+      } else {
+        if (buttons[i].checked){
+          friendsWebIds.push(friends[i].innerText);
+        }
+      }
+    }
+    if (group && gService.groupFriends.length > 0) {
+      friendsWebIds = gService.groupFriends;
+    }
+    await handleShare(friendsWebIds);
+  }
+
+  /**
    * Load tracks to select component
    * @returns {Promise<void>}
    */
@@ -165,6 +165,19 @@ export const SharePanel = ({myWebId, service, gService}) => {
   }
 
   /**
+   * Handle filter change
+   */
+  function handleFilter() {
+    if (selectedFilter !== undefined) {
+      if (selectedFilter.localeCompare("radio-1") === 0){
+        document.getElementById("radio-1").checked = true;
+      } else if (selectedFilter.localeCompare("radio-2") === 0) {
+        document.getElementById("radio-2").checked = true;
+      }
+    }
+  }
+
+  /**
    * Shows friend or groups and loads tracks
    * @returns {Promise<void>}
    */
@@ -187,19 +200,6 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
     setShowElements(true);
     handleFilter();
-  }
-
-  /**
-   * Handle filter change
-   */
-  function handleFilter() {
-    if (selectedFilter !== undefined) {
-      if (selectedFilter.localeCompare("radio-1") === 0){
-        document.getElementById("radio-1").checked = true;
-      } else if (selectedFilter.localeCompare("radio-2") === 0) {
-        document.getElementById("radio-2").checked = true;
-      }
-    }
   }
 
   return (
