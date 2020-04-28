@@ -157,7 +157,7 @@ export const VisualizePanel = ({service}) => {
       vService = new VisualizeService();
     }
     await vService.fillMap(selectedFilter, document.getElementById("selectRoute"));
-    if (vService.error != null){
+    if (vService.error !== null){
       NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
     } else {
       let points = vService.points;
