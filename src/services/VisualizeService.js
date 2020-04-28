@@ -52,7 +52,7 @@ export default class VisualizeService {
      * Method that returns shared tracks stored in pod
      */
     async getSharedRoutesFromPod() {
-        await this.getSession("public/share/");
+        await this.getSession("viade/shared/");
         const fc = new FC(auth);
         try {
             this.content = await fc.readFolder(this.urlRouteInPod, null);

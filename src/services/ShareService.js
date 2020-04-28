@@ -179,7 +179,7 @@ export default class ShareService {
       let urlFriendPod = this.userFriends[i].slice(0, this.userFriends[i].length - 15).concat("public/share/");
       await this.upload(fc, urlFriendPod);
     }*/
-    let urlFriendPod = this.userFriend.slice(0, this.userFriend.length - 15).concat("public/share/");
+    let urlFriendPod = this.userFriend.slice(0, this.userFriend.length - 15).concat("viade/shared/");
     await this.upload(fc, urlFriendPod);
     //**delete copy file**/
     await this.removeCopiedTrack(fc);
