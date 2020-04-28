@@ -14,6 +14,8 @@ let timesLoad = 0; // For handleLoad()
 let isSelectedFriends; // For selected filter (boolean)
 let selectedFilter; // For selected filter (value)
 
+let errorNotification = null;
+
 export const SharePanel = ({myWebId, service, gService}) => {
 
   // i18n locales
@@ -50,7 +52,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
         inboxUrl
       );
     } catch (ex) {
-      console.log(ex);
+      errorNotification = ex;
     }
   };
 

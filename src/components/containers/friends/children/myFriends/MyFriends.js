@@ -6,6 +6,8 @@ import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
+let errorNotification = null;
+
 export const MyFriends = ({myWebId, service}) => {
 
   // i18n locales
@@ -63,7 +65,7 @@ export const MyFriends = ({myWebId, service}) => {
         inboxUrl
       );
     } catch (ex) {
-      console.log(ex);
+      errorNotification = ex;
     }
   };
 

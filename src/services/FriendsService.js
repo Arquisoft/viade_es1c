@@ -8,6 +8,7 @@ export default class FriendsService {
     this.webId = "";
     this.errorAdd = false;
     this.errorDelete = false;
+    this.errorRequest = null;
   }
 
   /**
@@ -100,7 +101,9 @@ export default class FriendsService {
   async request(op) {
     try {
       return await op(await this.obtainSessionFc());
-    } catch (error) {}
+    } catch (error) {
+      this.errorRequest = "Error en la request al webId";
+    }
   }
 
   /**
