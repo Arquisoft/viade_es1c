@@ -22,10 +22,14 @@ image:Black_Box_Diagram.png[]
 |===
 |Action |Description
 |Log in |User has to log in using his *SOLID* credentials
-|Share his tracks |User can upload his new tracks, don't saved in his SOLID POD
+|Share his tracks |User can upload his new tracks, don't saved on his *SOLID POD*
 |Visualize tracks |User can watch his track displayed on a map
-|Save new tracks |ViaDe application will *save* user's tracks that he has saved on his *SOLID POD*
+|Save new tracks |ViaDe application will *save* user's tracks on his *SOLID POD*
 |Load tracks |ViaDe application will *get* user's tracks that he has saved on his *SOLID POD*
+|Download tracks |ViaDe application will *download and save* user's selected track on the user's device
+|Upload new tracks |ViaDe application will *allow* the user to select the track he wants to save on his *SOLID POD* from his device
+|Add/delete friend |ViaDe application will *allow* the user to both add and delete users from his friend list
+|Store user N's/A's shared tracks |ViaDe application will *save* the tracks that other users have shared with him in the user's pod
 |===
 === Technical Context
 
