@@ -53,13 +53,13 @@ export default class FriendGroupService {
    * Aux method to return the session with it's logged in.
    */
   async getSession(){
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session);
   }
 
@@ -81,7 +81,7 @@ export default class FriendGroupService {
     jsonld["name"] = this.groupName;
     let group = [];
     for (let i = 0; i < friendsWebIds.length; i++) {
-        group.push({"url" : friendsWebIds[i]});
+        group.push({"url" : friendsWebIds[parseInt(i)]});
     }
     jsonld["users"] = group;
     this.groupJsonContent = JSON.stringify(jsonld);
@@ -118,7 +118,7 @@ export default class FriendGroupService {
         this.warning = "No hay grupos";
       } else {
         for (let i = 0; i < this.folderContent.files.length; i++) {
-          this.groupsNames.push(this.folderContent.files[i].name.slice(0, this.folderContent.files[i].name.length - 5));
+          this.groupsNames.push(this.folderContent.files[parseInt(i)].name.slice(0, this.folderContent.files[parseInt(i)].name.length - 5));
         }
       }
     } catch(SFCFetchError){
@@ -135,7 +135,7 @@ export default class FriendGroupService {
     // We obtain the webIds of the group
     let users = group.users.length;
     for (let i = 0; i < users; i++) {
-      let friend = group.users[i].url;
+      let friend = group.users[parseInt(i, 10)].url;
       this.groupFriends.push(friend);
     }
   }

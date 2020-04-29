@@ -31,7 +31,7 @@ export default class VisualizeService {
         this.permissionsVideo = false;
         this.videos = [];
         this.permission = null;
-		    this.mostrar=true;
+        this.mostrar=true;
     }
 
     /**
@@ -110,10 +110,10 @@ export default class VisualizeService {
             this.warning = "No hay contenido";
         } else {
             for (let i = 0; i < content.files.length; i++) {
-                this.extension = content.files[i].name.split(".");
+                this.extension = content.files[parseInt(i)].name.split(".");
                 if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
                     // 5 == length(".json")
-                    this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+                    this.routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
                 }
             }
             this.success = "Cargo rutas";
@@ -162,12 +162,12 @@ export default class VisualizeService {
         let numberOfPoints = route.points.length;
         for (let i = 0; i < numberOfPoints; i++) {
 
-            latitude = route.points[i].latitude;
-            longitude = route.points[i].longitude;
+            latitude = route.points[parseInt(i, 10)].latitude;
+            longitude = route.points[parseInt(i, 10)].longitude;
             this.points.push([latitude, longitude]);
 
-            elevation = route.points[i].elevation;
-            this.elevationsValues.push({ x: 'P'.concat(i+1), y: parseInt(elevation, 10)});
+            elevation = route.points[parseInt(i, 10)].elevation;
+            this.elevationsValues.push({ x: "P".concat(i+1), y: parseInt(elevation, 10)});
         }
         await this.getMultimedia(route);
     }
@@ -183,31 +183,33 @@ export default class VisualizeService {
         let extensionRoute = null;
         let extension = null;
         let permissionRoute = null;
-        if (route.media !== undefined && route.media.length > 0) {
+        if (typeof(route.media) !== "undefined" && route.media.length > 0) {
                 for (let media in route.media) {
-                    routeMedia = route.media[media]["@id"];
-                    extensionRoute = routeMedia.split(".");
-                    extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
-                    if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)
-                        || (extension.localeCompare(".jpeg") === 0)) {
-                        try {
-                            this.existsImage = true;
-                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                            await this.readPermission(permissionRoute);
-                            this.permissionsImage = true;
-                            this.images.push(routeMedia);
-                        } catch (e) {
-                            this.permissionsImage = false;
-                        }
-                    } else if (extension.localeCompare(".mp4") === 0) {
-                        try {
-                            this.existsVideo = true;
-                            permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                            await this.readPermission(permissionRoute);
-                            this.permissionsVideo = true;
-                            this.videos.push(routeMedia);
-                        } catch (e) {
-                            this.permissionsVideo = false;
+                    if (media !== null){
+                        routeMedia = route.media[media]["@id"];
+                        extensionRoute = routeMedia.split(".");
+                        extension = ".".concat(extensionRoute[extensionRoute.length - 1]);
+                        if ((extension.localeCompare(".jpg") === 0) || (extension.localeCompare(".png") === 0)
+                            || (extension.localeCompare(".jpeg") === 0)) {
+                            try {
+                                this.existsImage = true;
+                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                                await this.readPermission(permissionRoute);
+                                this.permissionsImage = true;
+                                this.images.push(routeMedia);
+                            } catch (e) {
+                                this.permissionsImage = false;
+                            }
+                        } else if (extension.localeCompare(".mp4") === 0) {
+                            try {
+                                this.existsVideo = true;
+                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
+                                await this.readPermission(permissionRoute);
+                                this.permissionsVideo = true;
+                                this.videos.push(routeMedia);
+                            } catch (e) {
+                                this.permissionsVideo = false;
+                            }
                         }
                     }
                 }

@@ -30,7 +30,7 @@ export default class ShareService {
   async getPodRoute(webId){
     this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/");
     this.urlToCopy = webId.slice(0, webId.length - 15).concat("public/");
-    if (this.HTMLElement != null){
+    if (this.HTMLElement !== null){
       let selectedRouteName = this.HTMLElement.value.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
       this.urlToCopy = this.urlToCopy.concat(selectedRouteName);
@@ -55,13 +55,13 @@ export default class ShareService {
    * Aux method to return the session with it's logged in.
    */
   async getSession(){
-    await auth.trackSession(session => {
+    await auth.trackSession((session) => {
       if (!session){
         return;
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session);
   }
 
@@ -91,10 +91,10 @@ export default class ShareService {
         this.warning = "No hay contenido";
     } else {
       for (let i = 0; i < content.files.length; i++) {
-          this.extension = content.files[i].name.split(".");
+          this.extension = content.files[parseInt(i)].name.split(".");
           if (!this.extension[1].localeCompare("json")) {
               // 5 == length(".json")
-              this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+              this.routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
           }
       }
       this.success = "Cargo rutas";
@@ -194,6 +194,6 @@ export default class ShareService {
    * @returns {Promise<*>}
    */
   async getName(userWebId) {
-    return await ldflex[userWebId].name
+    return await ldflex[userWebId].name;
   }
 }

@@ -50,7 +50,7 @@ export default class UploadService {
       } else {
         this.session = session;
       }
-    })
+    });
     await this.getSessionId(this.session);
   }
 

@@ -103,10 +103,10 @@ export default class DownloadService {
       this.warning = "No hay contenido";
     } else {
       for (let i = 0; i < content.files.length; i++) {
-        this.extension = content.files[i].name.split(".");
+        this.extension = content.files[parseInt(i)].name.split(".");
         if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
           // 5 == length(".json")
-          this.routes.push(content.files[i].name.slice(0, content.files[i].name.length - 5));
+          this.routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
         }
       }
       this.success = "Cargo rutas";

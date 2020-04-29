@@ -36,7 +36,6 @@ defineFeature((feature), (test) => {
           await page.evaluate(() => {
             let links = [...document.querySelectorAll("a")];
             links.forEach(function (a) {
-              console.log(a);
               if (a.id === "navBarDownload"){
                 a.click();
               }  
@@ -46,12 +45,27 @@ defineFeature((feature), (test) => {
         });
 
         when("We enter a name of the file that we want to download", async () => {
-          await page.type("[id='txtUrl']", "rutaDePrueba1", {visible: true, waitUntil: "load", timeout: 0});   
-          await page.waitFor(1500); //Time that it needs to write the url
+          await expect(page).toMatchElement("div > div > section > div > div > div > button", { id: "btnLoadTracksDownload", waitUntil: "load", timeout: 0});
+          expect(page).toClick("div > div > section > div > div > div > button", { id: "btnLoadTracksDownload" });
+          await expect(page).toMatch("rutaDePrueba1", {waitUntil: "load", timeout: 0});
+          //Old version
+          //await page.type("[id='txtUrl']", "rutaDePrueba1", {visible: true, waitUntil: "load", timeout: 0});   
+          //await page.waitFor(1500); //Time that it needs to write the url
         });
 
         and("We click to the button", async () => {
-          expect(page).toClick("div > div > section > div > div > div > button", { id: "btnDownload" });
+          await expect(page).toMatchElement("div > div > section > div > div > div > button", { id: "btnDownload", waitUntil: "load", timeout: 0});
+          await page.waitFor(500);
+          await page.evaluate(() => {
+            let btns = [...document.querySelectorAll("button")];
+            btns.forEach(function (btn) {
+              if (btn.id === "btnDownload"){
+                btn.click();
+              }  
+            });
+          });
+          
+          //expect(page).toClick("div > div > section > div > div > div > button", { id: "btnDownload" });
         });
 
         then("I expect a message to be shown", async () => {

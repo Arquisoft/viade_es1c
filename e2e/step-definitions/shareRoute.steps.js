@@ -4,10 +4,10 @@ const puppeteer = require("puppeteer");
 let browser = null;
 let page = null;
 
-defineFeature(feature, test => {
+defineFeature((feature), (test) => {
     //Raquel is already my friend
     //We have routes
-    test("We want to share a route with a friend",({given,when,and,then}) =>{
+    test("We want to share a route with a friend",({given,when,and,then}) => {
 
         given("The share route page on the application", async() => {
 
@@ -36,7 +36,6 @@ defineFeature(feature, test => {
             await page.evaluate(() => {
                 let links = [...document.querySelectorAll("a")];
                 links.forEach(function (a) {
-                    console.log(a);
                     if (a.id === "navBarShare"){
                         a.click();
                     }  

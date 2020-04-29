@@ -33,7 +33,6 @@ defineFeature((feature), (test) => {
       await page.evaluate(() => {
         let links = [...document.querySelectorAll("a")];
         links.forEach(function (a) {
-          console.log(a);
           if (a.id === "navBarVisualize"){
             a.click();
           }  

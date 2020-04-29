@@ -16,7 +16,7 @@ export default class VisualizeService {
     this.permissionsVideo = true;
     this.existsVideo = true;
     this.existsImage = true;
-	  this.mostrar = false;
+    this.mostrar = false;
   }
   
   
