@@ -1,0 +1,3 @@
+[submodule "node-solid-server"]
+	path = node-solid-server
+	url = https://github.com/solid/node-solid-server
