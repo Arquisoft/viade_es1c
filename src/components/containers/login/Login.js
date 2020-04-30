@@ -5,7 +5,7 @@ import "./Login.css";
 
 export const Login = () => {
     const {t} = useTranslation();
-    const publicUrl = "url(".concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(")");
+    const publicUrl = "url(".concat(process.env.PUBLIC_URL).concat("/img/background-image.jpg").concat(")");
 
     return (
       <div id="loginPane" style={{ background: publicUrl

@@ -10,7 +10,7 @@ export default class FriendsService {
 
   check(friendWebId) {
     for (let i = 0; i < this.friends.length; i++) {
-      if (this.friends[i].localeCompare(friendWebId) === 0) {
+      if (this.friends[parseInt(i)].localeCompare(friendWebId) === 0) {
         return true;
       }
     }
@@ -19,7 +19,7 @@ export default class FriendsService {
 
   exists(friendWebId) {
     for (let i = 0; i < this.existsWebId.length; i++) {
-      if (this.existsWebId[i].localeCompare(friendWebId) === 0) {
+      if (this.existsWebId[parseInt(i)].localeCompare(friendWebId) === 0) {
         return true;
       }
     }
@@ -32,7 +32,7 @@ export default class FriendsService {
 
   delete(friendWebId) {
     for (let i = 0; i < this.friends.length; i++) {
-      if (this.friends[i].localeCompare(friendWebId) === 0) {
+      if (this.friends[parseInt(i)].localeCompare(friendWebId) === 0) {
         this.friends.splice(i);
       }
     }

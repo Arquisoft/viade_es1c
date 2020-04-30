@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {useTranslation} from "react-i18next";
 import NotificationsTable  from "./children/NotificationsTable";
 import "./VisualizeNotifications.css";

@@ -17,22 +17,22 @@ const MyNavBar = () => {
                         <img src={process.env.PUBLIC_URL + "/img/logoViaDe.svg"} width="100" height="45" alt="ViaDe icon"/>
                     </a>
                     <Nav className="mr-auto">
-                        <a id="navBarVisualize" data-tip={t('navBar.maps')} className="navbar-link a-bar" href="#/visualize">
+                        <a id="navBarVisualize" data-tip={t("navBar.maps")} className="navbar-link a-bar" href="#/visualize">
                             <img src={process.env.PUBLIC_URL + "/img/icon/maps-icon.png"} width="40" height="40" alt="My tracks"/>
                         </a>
-                        <a id="navBarShare" data-tip={t('navBar.share-files')} className="navbar-link a-bar" href="#/share">
+                        <a id="navBarShare" data-tip={t("navBar.share-files")} className="navbar-link a-bar" href="#/share">
                             <img src={process.env.PUBLIC_URL + "/img/icon/share-files.svg"} width="27" height="49" alt="Share files"/>
                         </a>
-                        <a id="navBarFriends" data-tip={t('navBar.friends')} className="navbar-link a-bar" href="#/friends">
+                        <a id="navBarFriends" data-tip={t("navBar.friends")} className="navbar-link a-bar" href="#/friends">
                             <img src={process.env.PUBLIC_URL + "/img/icon/friends-icon.png"} width="38" height="40" alt="My friends"/>
                         </a>
-                        <a id="navBarNotifications" data-tip={t('navBar.notifications')} className="navbar-link a-bar" href="#/notifications">
+                        <a id="navBarNotifications" data-tip={t("navBar.notifications")} className="navbar-link a-bar" href="#/notifications">
                             <img src={process.env.PUBLIC_URL + "/img/icon/notification-icon.svg"} width="26" height="44" alt="Notifications"/>
                         </a>
-                        <a id="navBarUpload" data-tip={t('navBar.upload')} className="navbar-link a-bar" href="#/upload">
+                        <a id="navBarUpload" data-tip={t("navBar.upload")} className="navbar-link a-bar" href="#/upload">
                             <img src={process.env.PUBLIC_URL + "/img/icon/upload-icon.png"} width="40" height="40" alt="Upload track"/>
                         </a>
-                        <a id="navBarDownload" data-tip={t('navBar.download')} className="navbar-link a-bar a-download" href="#/download">
+                        <a id="navBarDownload" data-tip={t("navBar.download")} className="navbar-link a-bar a-download" href="#/download">
                             <img src={process.env.PUBLIC_URL + "/img/icon/download-icon.svg"} width="31" height="25" alt="Download track"/>
                         </a>
                         <div className="i18nMenu">

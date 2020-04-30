@@ -26,8 +26,8 @@ export const MyFriendGroups = ({myWebId, service}) => {
   function clear(buttons) {
     document.getElementById("groupId").value = "";
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        buttons[i].checked = false;
+      if (buttons[parseInt(i)].checked){
+        buttons[parseInt(i)].checked = false;
       }
     }
   }
@@ -36,18 +36,18 @@ export const MyFriendGroups = ({myWebId, service}) => {
    * Send a notification to the user in the new group
    * @returns {Promise<void>}
    */
-  const sendNotification = async (summary) => {
+  const sendNotification = async (content) => {
     try {
       if (friendsWebIds.length > 0) {
         for (let i = 0; i < friendsWebIds.length; i++) {
-          const inboxUrl = await discoverInbox(friendsWebIds[i]);
+          const inboxUrl = await discoverInbox(friendsWebIds[parseInt(i)]);
           if (!inboxUrl) {
             throw new Error("Inbox not found");
           }
           createNotification(
             {
               title: "Group notification",
-              summary: summary,
+              summary: content,
               actor: webId
             },
             inboxUrl
@@ -72,11 +72,11 @@ export const MyFriendGroups = ({myWebId, service}) => {
     let friends = document.getElementsByName("friendListGroup");
     let buttons = document.getElementsByName("friendGroup");
     for (let i = 0; i < buttons.length; i++){
-      if (buttons[i].checked){
-        friendsWebIds.push(friends[i].innerText);
+      if (buttons[parseInt(i)].checked){
+        friendsWebIds.push(friends[parseInt(i)].innerText);
       }
     }
-    if (friendGroup !== undefined && friendsWebIds.length > 0) {
+    if (typeof(friendGroup) !== "undefined" && friendsWebIds.length > 0) {
       if (friendGroup.localeCompare("") !== 0) {
           await gService.create(friendGroup, friendsWebIds);
           if (gService.success === true) {

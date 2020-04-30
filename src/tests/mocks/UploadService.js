@@ -14,11 +14,11 @@ export default class UploadService {
     this.error = false;
     if (HTMLElement.files.length > 0) {
       for (let i = 0; i < HTMLElement.files.length; i++) {
-        if (HTMLElement.files[i].name.includes(".txt")) {
+        if (HTMLElement.files[parseInt(i)].name.includes(".txt")) {
           this.error = true;
-        } else if (HTMLElement.files[i].name.includes(".json")) {
+        } else if (HTMLElement.files[parseInt(i, 10)].name.includes(".json")) {
           this.success = true;
-        } else if (HTMLElement.files[i].name.includes(".ttl")) {
+        } else if (HTMLElement.files[parseInt(i, 10)].name.includes(".ttl")) {
           this.errorPermissions = true;
         }
       }
