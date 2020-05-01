@@ -46,4 +46,16 @@ export default class NotificationsService {
       this.error = true;
     }
   }
+
+  /**
+   * Returns the formatted publication date
+   * @param date
+   * @returns {*}
+   */
+  formatDates(date) {
+    let dates = date.split("T");
+    let firstDate = dates[0].concat("\n"); // Day, month and year
+    let secondDate = dates[1].slice(0, dates[1].length - 1) // Hour, mins, secs
+    return firstDate.concat(secondDate);
+  }
 }

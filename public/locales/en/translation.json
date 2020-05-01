@@ -138,8 +138,7 @@
     "loadingNotifications": "Loading your notifications...",
     "searchButton": "Search",
     "problemLoading": "No notifications available",
-    "notificationErrorTitle": "Error sending notification",
-    "notificationErrorMessage": "Could not send successfully"
+    "time": "Date"
   },
   "logout": {
     "button": "Logout"

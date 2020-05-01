@@ -15,4 +15,8 @@ export default class NotificationsService {
       this.error = true;
     }
   }
+
+  formatDate(date) {
+    return "";
+  }
 }
