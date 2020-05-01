@@ -67,7 +67,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
       let name = null;
       let sService = service;
       for (let i=0 ; i < friendsWebIds.length; i++){
-        userWebId = friendsWebIds[parseInt(i)];
+        userWebId = friendsWebIds[parseInt(i, 10)];
         if (sService instanceof ShareService) {
           sService = new ShareService();
         }
@@ -119,12 +119,12 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
     for (let i = 0; i < buttons.length; i++){
       if (group) {
-        if (buttons[parseInt(i)].checked) {
+        if (buttons[parseInt(i, 10)].checked) {
           await gService.getFriendsWebIds(friends[parseInt(i, 10)].innerText);
         }
       } else {
-        if (buttons[parseInt(i)].checked){
-          friendsWebIds.push(friends[parseInt(i)].innerText);
+        if (buttons[parseInt(i, 10)].checked){
+          friendsWebIds.push(friends[parseInt(i, 10)].innerText);
         }
       }
     }
