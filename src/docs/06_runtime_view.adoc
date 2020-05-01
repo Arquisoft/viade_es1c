@@ -56,12 +56,19 @@ image:Share_flowchart.png[]
 
 . User logs in to the app.
 . User selects "share tracks" section.
-. User selects:
-.. The track that he wants to share.
-.. The added friend with whom he wants to share.
+. User selects with whom he wants to share, "Friends" or "Groups".
+. User clicks on "Upload tracks and contacts".
+. If user has selected "Friends".
+.. User selects:
+... The track that he wants to share.
+... The added friend with whom he wants to share.
+. If user has selected "Groups".
+.. User selects:
+... The track that he wants to share.
+... His friend group with whom he wants to share.
 . User clicks on "Share".
-.. If user does not select any friend to share with, the app will show an error to the user.
-.. If user has already shared that track with that friend, then the app will show a warning to the user.
+.. If user does not select any friend or friend group to share with, the app will show an error to the user.
+.. If user has already shared that track with that friend or with a friend who belongs to the selected group, then the app will show a warning to the user.
 .. If something was wrong during the creation of the file in friend's pod, app will show an error to the user.
 .. If everything was good and there were any problems then the app will show a notification of success to the user and share the track with his selected friend.
 
@@ -75,6 +82,7 @@ image:Myfriends_flowchart.png[]
 
 . User logs in to the app.
 . User selects "my friends" section.
+. User focuses on "My friends" box.
 . User can add a new friend or delete an existing friend.
 . If user wants to add a new friend.
 .. User has to enter the webid of the user who wants to add.
@@ -88,7 +96,25 @@ non-existent webid, the app will show an error to the user.
 .. If user has not selected the webid of the user that he wants to remove, the app will show an error to the user.
 .. If everything was good the app will remove the other user from user's friend list.
 
-=== Fifth Scenario: My Notifications
+=== Fifth Scenario: My groups
+==== My groups flowchart
+****
+image:Mygroups_flowchart.png[]
+****
+==== My groups in detail
+*This scenario is not an essential scenario for the basic operation of the app, but it will allow us to create friend groups to share routes with them.*
+
+. User logs in to the app.
+. User selects "my friends" section.
+. User focuses on "My groups" box.
+. User has to enter the group's name.
+. User has to select the friends he wants to invite to the group.
+. User clicks on "Create a new group".
+.. If user has not entered the group's name, then the app will show an error to the user.
+.. If user has not selected any friend, then the app will show an error to the user.
+.. If everything was good the app will add a new friend group.
+
+=== Sixth Scenario: My Notifications
 ==== My Notifications flowchart
 ****
 image:Mynotifications_flowchart.png[]
@@ -104,7 +130,7 @@ image:Mynotifications_flowchart.png[]
 .. If user has not selected any notifications, the app the app will show him an error.
 .. If user has selected the notifications that he wants to mark as read, the app will mark and remove them from the user's notification list.
 
-=== Sixth Scenario: Upload tracks
+=== Seventh Scenario: Upload tracks
 ==== Upload tracks flowchart
 ****
 image:Upload_flowchart.png[]
@@ -122,7 +148,7 @@ image:Upload_flowchart.png[]
 .. If there was any problem during the upload operation, app will show an error to the user.
 .. If there was not any problem during the upload operation, app will upload the track or tracks selected to user's POD and show the user a success notification.
 
-=== Seventh Scenario: Download tracks 
+=== Eighth Scenario: Download tracks 
 ==== Download tracks flowchart
 ****
 image:Download_flowchart.png[]
@@ -133,8 +159,9 @@ image:Download_flowchart.png[]
 
 . User logs in to the app.
 . User selects "Download tracks" section.
-. User enters the track's name that he wants to download to his device.
+. User clicks on "Load tracks from POD".
+. User selects the track he wants to download.
 . User clicks on "Download".
-.. If user has not entered any track from his POD, app will show him an error.
+.. If user has not loaded his tracks from his POD, app will show him an error.
 .. If there was any problem during the download operation, app will show an error to the user.
-.. If there was not any problem during the download operation, app will download the track entered to user's device.
+.. If there was not any problem during the download operation, app will download the selected track to user's device.
