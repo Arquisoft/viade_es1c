@@ -1,5 +1,6 @@
 import auth from "solid-auth-client";
 import FC from "solid-file-client";
+import AbstractService from "./AbstractService";
 
 /*
     *****************************************
@@ -9,9 +10,10 @@ import FC from "solid-file-client";
     * ***************************************
 */
 
-export default class VisualizeService {
+export default class VisualizeService extends AbstractService{
 
     constructor(){
+        super();
         this.points = [];
         this.elevationsValues = [];
         this.urlRouteInPod = null;
@@ -38,7 +40,7 @@ export default class VisualizeService {
      * Method that returns my tracks stored in pod
      */
     async getMyRoutesFromPod() {
-        await this.getSession("viade/routes/");
+        await this.getPodRoute("viade/routes/");
         const fc = new FC(auth);
         try {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
@@ -52,7 +54,7 @@ export default class VisualizeService {
      * Method that returns shared tracks stored in pod
      */
     async getSharedRoutesFromPod() {
-        await this.getSession("viade/shared/");
+        await this.getPodRoute("viade/shared/");
         const fc = new FC(auth);
         try {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
@@ -64,41 +66,19 @@ export default class VisualizeService {
 
     /**
      * Aux method that returns the route to tracks upload in the pod.
-     * @param {logged in user's webId} webId
+     * @param {route in pod} route
      */
-    async getPodRoute(route, webId) {
+    async getPodRoute(route) {
         /*
             15 == length("profile/card#me")
             "viade/routes/" == folder where the routes are stored
         */
-        this.urlRouteInPod = webId.slice(0, webId.length - 15).concat(route);
+        await super.getSession();
+        this.urlRouteInPod = this.webId.slice(0, this.webId.length - this.viadeRoute).concat(route);
         if (this.HTMLElement !== null){
             let selectedRouteName = this.HTMLElement.value.concat(".json");
             this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
         }
-    }
-
-    /**
-     * Aux method that return the webId of the user who is logged in.
-     * @param {current session} session
-     */
-    async getSessionId(route, session) {
-        let webId = session.webId;
-        await this.getPodRoute(route, webId);
-    }
-
-    /**
-     * Aux method to return the session with it's logged in.
-     */
-    async getSession(route){
-        await auth.trackSession((session) => {
-            if (!session){
-                return;
-            } else {
-                this.session = session;
-            }
-        });
-        await this.getSessionId(route, this.session);
     }
 
     /**
@@ -126,9 +106,9 @@ export default class VisualizeService {
     async fillMap(selectedFilter, HTMLElement){
         this.HTMLElement = HTMLElement;
         if (selectedFilter.localeCompare("Mis rutas") === 0) {
-            await this.getSession("viade/routes/");
+            await this.getPodRoute("viade/routes/");
         } else if (selectedFilter.localeCompare("Compartidas") === 0) {
-            await this.getSession("public/share/");
+            await this.getPodRoute("viade/shared/");
         }
         const fc = new FC(auth);
         try{
@@ -137,16 +117,6 @@ export default class VisualizeService {
         } catch (SFCFetchError){
             this.error = "Error al pillar datos";
         }
-    }
-
-    /**
-     * Aux method to check read permissions
-     * @returns {Promise<boolean>}
-     */
-    readPermission(url) {
-        let req = new XMLHttpRequest();
-        req.open("GET", url, false);
-        req.send(null);
     }
 
     /**
@@ -193,20 +163,26 @@ export default class VisualizeService {
                             || (extension.localeCompare(".jpeg") === 0)) {
                             try {
                                 this.existsImage = true;
-                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                                await this.readPermission(permissionRoute);
-                                this.permissionsImage = true;
-                                this.images.push(routeMedia);
+                                permissionRoute = routeMedia.replace("/viade/resources/", "/card#me").concat(routeMedia);
+                                if (await super.readPermission(permissionRoute)){
+                                    this.permissionsImage = true;
+                                    this.images.push(routeMedia);
+                                } else {
+                                    this.permissionsImage = false;
+                                }
                             } catch (e) {
                                 this.permissionsImage = false;
                             }
                         } else if (extension.localeCompare(".mp4") === 0) {
                             try {
                                 this.existsVideo = true;
-                                permissionRoute = routeMedia.replace("/viade/resources/*", "/card#me");
-                                await this.readPermission(permissionRoute);
-                                this.permissionsVideo = true;
-                                this.videos.push(routeMedia);
+                                permissionRoute = routeMedia.replace("/viade/resources/", "/card#me").concat(routeMedia);
+                                if(await super.readPermission(permissionRoute)){
+                                    this.permissionsVideo = true;
+                                    this.videos.push(routeMedia);
+                                } else {
+                                    this.permissionsVideo = false;
+                                }
                             } catch (e) {
                                 this.permissionsVideo = false;
                             }

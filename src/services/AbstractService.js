@@ -6,6 +6,7 @@ export default class AbstractService{
     constructor(){
         this.webId = null;
         this.viadeRoute = 15;
+        this.errorReadPermission = null;
     }
 
     /**
@@ -39,5 +40,22 @@ export default class AbstractService{
         url = url.concat("/test.ttl");
         await fc.createFile(url, null);
         await fc.delete(url);
+    }
+
+    /**
+     * Aux method to check permissions over
+     * an URL.
+     * @param url - url to check
+     * @returns {Promise<boolean>} if we have permissions
+     * or not
+     */
+    async readPermission(url) {
+        //let urlp = url.replace("/card#me", "");
+        let perm = false;
+        const fc = new FC(auth);
+        await fc.readFile(url).then((content) => {
+        perm = true;
+        }, (err) => this.errorReadPermission = "Error en el permission".concat(err));
+        return perm;
     }
 }
