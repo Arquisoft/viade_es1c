@@ -1,0 +1,10 @@
+{
+  "simulation": "gatling_viade_es1c.seefriends1user",
+  "simulationId": "seefriends1user",
+  "start": 1588334383095,
+  "description": "",
+  "scenarios": ["seefriends1user"],
+  "assertions": [
+
+  ]
+}
