@@ -7,6 +7,7 @@ import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
 
+
 export const MyFriends = ({ myWebId, service }) => {
 
   // i18n locales

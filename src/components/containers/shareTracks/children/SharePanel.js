@@ -15,6 +15,7 @@ let isSelectedFriends; // For selected filter (boolean)
 let selectedFilter; // For selected filter (value)
 
 
+
 export const SharePanel = ({myWebId, service, gService}) => {
 
   // i18n locales

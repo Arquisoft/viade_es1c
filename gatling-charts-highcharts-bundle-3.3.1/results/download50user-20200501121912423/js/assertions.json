@@ -1,0 +1,10 @@
+{
+  "simulation": "gatling_viade_es1c.download1user",
+  "simulationId": "download1user",
+  "start": 1588335552423,
+  "description": "",
+  "scenarios": ["download1user"],
+  "assertions": [
+
+  ]
+}
