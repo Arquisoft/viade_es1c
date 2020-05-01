@@ -137,7 +137,8 @@
     "infoMessage2": " notifications",
     "loadingNotifications": "Loading your notifications...",
     "searchButton": "Search",
-    "problemLoading": "No notifications available"
+    "problemLoading": "No notifications available",
+    "time": "Date"
   },
   "logout": {
     "button": "Logout"

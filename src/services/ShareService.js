@@ -124,7 +124,7 @@ export default class ShareService {
           this.urlRouteInOtherPod = urlFriendPod.concat(selectedRouteName);
           if (await fc.itemExists(this.urlRouteInOtherPod.concat(".json")) === false){
             try{
-              await fc.postFile(this.urlRouteInOtherPod, this.content, 'application/json');
+              await fc.postFile(this.urlRouteInOtherPod, this.content, "application/json");
               this.successShare = true;
             } catch (SFCFetchError){
               this.error = "Error en el create";

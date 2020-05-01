@@ -137,7 +137,8 @@
     "infoMessage2": " notificaciones",
     "loadingNotifications": "Cargando sus notificaciones...",
     "searchButton": "Buscar",
-    "problemLoading": "No hay notificaciones disponibles"
+    "problemLoading": "No hay notificaciones disponibles",
+    "time": "Fecha"
   },
   "logout": {
     "button": "Cerrar sesión"

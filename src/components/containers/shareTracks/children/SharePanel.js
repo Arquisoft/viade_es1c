@@ -14,8 +14,7 @@ let timesLoad = 0; // For handleLoad()
 let isSelectedFriends; // For selected filter (boolean)
 let selectedFilter; // For selected filter (value)
 
-// eslint-disable-next-line
-let errorNotification = null;
+
 
 export const SharePanel = ({myWebId, service, gService}) => {
 
@@ -53,7 +52,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
         inboxUrl
       );
     } catch (ex) {
-      errorNotification = ex;
+      NotificationManager.error(t("notifications.notificationErrorMessage"), t("notifications.notificationErrorTitle"), 3000);
     }
   };
 
@@ -69,7 +68,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
       let name = null;
       let sService = service;
       for (let i=0 ; i < friendsWebIds.length; i++){
-        userWebId = friendsWebIds[parseInt(i)];
+        userWebId = friendsWebIds[parseInt(i, 10)];
         if (sService instanceof ShareService) {
           sService = new ShareService();
         }
@@ -121,12 +120,12 @@ export const SharePanel = ({myWebId, service, gService}) => {
     }
     for (let i = 0; i < buttons.length; i++){
       if (group) {
-        if (buttons[parseInt(i)].checked) {
+        if (buttons[parseInt(i, 10)].checked) {
           await gService.getFriendsWebIds(friends[parseInt(i, 10)].innerText);
         }
       } else {
-        if (buttons[parseInt(i)].checked){
-          friendsWebIds.push(friends[parseInt(i)].innerText);
+        if (buttons[parseInt(i, 10)].checked){
+          friendsWebIds.push(friends[parseInt(i, 10)].innerText);
         }
       }
     }
