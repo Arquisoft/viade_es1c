@@ -14,7 +14,6 @@ let timesLoad = 0; // For handleLoad()
 let isSelectedFriends; // For selected filter (boolean)
 let selectedFilter; // For selected filter (value)
 
-let errorNotification = null;
 
 export const SharePanel = ({myWebId, service, gService}) => {
 
@@ -52,7 +51,7 @@ export const SharePanel = ({myWebId, service, gService}) => {
         inboxUrl
       );
     } catch (ex) {
-      errorNotification = ex;
+      NotificationManager.error(t("notifications.notificationErrorMessage"), t("notifications.notificationErrorTitle"), 3000);
     }
   };
 

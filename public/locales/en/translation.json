@@ -137,7 +137,9 @@
     "infoMessage2": " notifications",
     "loadingNotifications": "Loading your notifications...",
     "searchButton": "Search",
-    "problemLoading": "No notifications available"
+    "problemLoading": "No notifications available",
+    "notificationErrorTitle": "Error sending notification",
+    "notificationErrorMessage": "Could not send successfully"
   },
   "logout": {
     "button": "Logout"

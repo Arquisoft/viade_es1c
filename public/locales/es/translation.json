@@ -137,7 +137,9 @@
     "infoMessage2": " notificaciones",
     "loadingNotifications": "Cargando sus notificaciones...",
     "searchButton": "Buscar",
-    "problemLoading": "No hay notificaciones disponibles"
+    "problemLoading": "No hay notificaciones disponibles",
+    "notificationErrorTitle": "Error enviando notificación",
+    "notificationErrorMessage": "No se ha podido enviar con éxito"
   },
   "logout": {
     "button": "Cerrar sesión"
