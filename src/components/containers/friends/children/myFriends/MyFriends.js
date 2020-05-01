@@ -6,6 +6,7 @@ import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
+// eslint-disable-next-line
 let errorNotification = null;
 
 export const MyFriends = ({myWebId, service}) => {
