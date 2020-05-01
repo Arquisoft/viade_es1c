@@ -1,5 +1,5 @@
 import FC from "solid-file-client";
-import auth from "solid-auth-client";
+import AbstractService from "./AbstractService";
 
 /*
     *****************************************
@@ -9,9 +9,10 @@ import auth from "solid-auth-client";
     * ***************************************
 */
 
-export default class UploadService {
+export default class UploadService extends AbstractService{
 
   constructor() {
+    super();
     this.HTMLElement = null;
     this.error = false;
     this.success = false;
@@ -21,37 +22,14 @@ export default class UploadService {
 
   /**
    * Aux method that returns the route to tracks upload in the pod.
-   * @param {logged in user's webId} webId
    */
-  async getPodRoute(webId) {
+  async getPodRoute() {
     /*
         15 == length("profile/card#me")
         "viade/routes/" == folder where the routes are stored
     */
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes");
-  }
-
-  /**
-   * Aux method that return the webId of the user who is logged in.
-   * @param {current session} session
-   */
-  async getSessionId(session) {
-    let webId = session.webId;
-    await this.getPodRoute(webId);
-  }
-
-  /**
-   * Aux method to return the session with it's logged in.
-   */
-  async getSession(){
-    await auth.trackSession((session) => {
-      if (!session){
-        return;
-      } else {
-        this.session = session;
-      }
-    });
-    await this.getSessionId(this.session);
+    await super.getSession();
+    this.urlRouteInPod = this.webId.slice(0, this.webId.length - this.viadeRoute).concat("viade/routes");
   }
 
   /**
@@ -62,9 +40,9 @@ export default class UploadService {
    * @param track - The track to upload
    * @returns {Promise<*>}
    */
-
   async processFile(track, nameFile) {
     let reader = new FileReader();
+    let viadeRoute = this.viadeRoute;
     reader.onload = function() {
       let fileContent = reader.result;
       const auth = require("solid-auth-client");
@@ -77,10 +55,10 @@ export default class UploadService {
             "viade/routes/" == folder where the routes are stored
           */
           let webId = session.webId;
-          let urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/routes/").concat(nameFile);
+          let urlRouteInPod = webId.slice(0, webId.length - viadeRoute).concat("viade/routes/").concat(nameFile);
           const fc = new FC(auth);
           fc.createFile(urlRouteInPod, fileContent, "text/turtle", {}).then(() => {}
-          ).catch((err) => this.error = "Error ".concat(err));
+          ).catch((err) => this.error = true);
         }
       });
     };
@@ -92,7 +70,6 @@ export default class UploadService {
    * @param track - Track to upload
    * @returns {Promise<void>}
    */
-
   async processTrack(track) {
     let times = 0;  // To avoid too much success message
     let nameFile = track.name;
@@ -122,29 +99,17 @@ export default class UploadService {
   }
 
   /**
-   * Aux method to check read permissions
-   * @returns {Promise<boolean>}
-   */
-  async readPermission(url) {
-    const fc = new FC(auth);
-    url = url.concat("/test.ttl");
-    await fc.createFile(url, null);
-    await fc.delete(url);
-  }
-
-  /**
    * Perform multiple upload of tracks
    * @param {*} HTMLElement {input file}
    * @returns {Promise<void>}
    */
-
   async handleUpload(HTMLElement) {
     this.HTMLElement = HTMLElement;
     const fileInput = this.HTMLElement;
     const tracks = fileInput.files;
-    await this.getSession();
+    await this.getPodRoute();
     try {
-      await this.readPermission(this.urlRouteInPod);
+      await super.writePermission(this.urlRouteInPod);
       await this.processMultipleTrack(tracks);
     } catch (SFCFetchError) {
       this.errorPermissions = true;
