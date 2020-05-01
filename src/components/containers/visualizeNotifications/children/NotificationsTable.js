@@ -39,8 +39,8 @@ export const NotificationsTable = ({myWebId, service}) => {
    * @param Notification
    * @returns {{N: *, Notification: *}}
    */
-  function createData(N, Notification) {
-    return { N, Notification };
+  function createData(N, Notification, Time) {
+    return { N, Notification, Time };
   }
 
   /**
@@ -63,7 +63,8 @@ export const NotificationsTable = ({myWebId, service}) => {
         if (notification.notifications.length > 0 && restartNotifications) {
           let rows = [];
           for (let i=0; i < notification.notifications.length; i++) {
-            rows.push(createData(i+1, notification.notifications[parseInt(i)].summary));
+            rows.push(createData(i+1, notification.notifications[parseInt(i, 10)].summary,
+              service.formatDates(notification.notifications[parseInt(i, 10)].published)));
           }
           setRows(rows);
           setShowTable(true);
@@ -105,11 +106,15 @@ export const NotificationsTable = ({myWebId, service}) => {
     if (notification.notifications.length > 0) {
       let searchInput = document.getElementById("searchInput").value;
       if (searchInput.localeCompare("") !== 0) {
+        if (service instanceof NotificationsService) {
+          service = new NotificationsService();
+        }
         let notifications = [];
         for (let i=0; i < notification.notifications.length; i++) {
           if (notification.notifications[parseInt(i)].summary.toUpperCase().includes(searchInput.toUpperCase())) {
             restartNotifications = false;
-            notifications.push(createData(i+1, notification.notifications[parseInt(i)].summary));
+            notifications.push(createData(i+1, notification.notifications[parseInt(i, 10)].summary,
+              service.formatDates(notification.notifications[parseInt(i, 10)].published)));
           }
         }
         if (notifications.length === 0) {
@@ -163,6 +168,7 @@ export const NotificationsTable = ({myWebId, service}) => {
                 <TableRow>
                   <TableCell>Nº</TableCell>
                   <TableCell align="right">{t("notifications.value")}</TableCell>
+                  <TableCell align="right">{t("notifications.time")}</TableCell>
                 </TableRow>
               </TableHead>
               {(<TableBody>
@@ -176,6 +182,7 @@ export const NotificationsTable = ({myWebId, service}) => {
                         {row.N}
                       </TableCell>
                       <TableCell align="right">{row.Notification}</TableCell>
+                      <TableCell align="right">{row.Time}</TableCell>
                     </TableRow>
                   );
                 })}

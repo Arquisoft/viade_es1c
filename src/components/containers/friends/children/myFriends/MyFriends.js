@@ -6,9 +6,8 @@ import FriendList from "../../../../utils/friendList/FriendList";
 import "./MyFriends.css";
 import { useNotification } from "@inrupt/solid-react-components";
 
-let errorNotification = null;
 
-export const MyFriends = ({myWebId, service}) => {
+export const MyFriends = ({ myWebId, service }) => {
 
   // i18n locales
   const { t } = useTranslation();
@@ -37,7 +36,7 @@ export const MyFriends = ({myWebId, service}) => {
         inboxUrl
       );
     } catch (ex) {
-      errorNotification = ex;
+      NotificationManager.error(t("notifications.notificationErrorMessage"), t("notifications.notificationErrorTitle"), 3000);
     }
   };
 
@@ -49,7 +48,7 @@ export const MyFriends = ({myWebId, service}) => {
     let fService = service;
     let friendWebId = document.getElementById("friendId").value;
     let checkFriend = await fService.check(friendWebId);
-    if (typeof(friendWebId) !== "undefined") {
+    if (typeof (friendWebId) !== "undefined") {
       if (await fService.exists(friendWebId) && friendWebId.localeCompare("") !== 0) {
         if (checkFriend) {
           NotificationManager.error(t("friends.checkErrorMessage"), t("friends.addErrorTitle"), 3000);
@@ -63,7 +62,7 @@ export const MyFriends = ({myWebId, service}) => {
             NotificationManager.error(t("friends.permissionsErrorMessage"), t("friends.addErrorTitle"), 3000);
           }
         }
-      } else  {
+      } else {
         NotificationManager.error(t("friends.addErrorMessage"), t("friends.addErrorTitle"), 3000);
       }
     }
@@ -78,12 +77,12 @@ export const MyFriends = ({myWebId, service}) => {
     let friends = document.getElementsByName("friendList");
     let buttons = document.getElementsByName("friend");
     let friendsWebId = [];
-    for (let i = 0; i < buttons.length; i++){
-      if (buttons[parseInt(i)].checked){
+    for (let i = 0; i < buttons.length; i++) {
+      if (buttons[parseInt(i)].checked) {
         friendsWebId.push(friends[parseInt(i)].innerText);
       }
     }
-    if (typeof(friendsWebId) !== "undefined" && friendsWebId.length > 0) {
+    if (typeof (friendsWebId) !== "undefined" && friendsWebId.length > 0) {
       for (let i = 0; i < friendsWebId.length; i++) {
         await fService.delete(friendsWebId[parseInt(i)]);
         if (!fService.errorDelete) {
@@ -100,34 +99,35 @@ export const MyFriends = ({myWebId, service}) => {
   }
 
   return (
-        <div data-testid="friendsTest">
-          <div className="modal-app">
-            <div className="modal-header">
-              <h2>{t("friends.title")}</h2>
-              <hr/>
-            </div>
-            <div className="modal-body">
-              <span className="span-friends">{t("friends.addTitle")}</span>
-              <div className="add-friends">
-                <input data-testid="input-add" className="input-add" id="friendId" type="text" placeholder="e.g. https://user.solid.community/profile/card#me"></input>
-                <Button id="btnAdd" data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
-                  {t("friends.add")}
-                </Button>
-              </div>
-              <br/>
-              <span className="span-friends">{t("friends.deleteTitle")}</span>
-              <div className="list-friends">
-                <FriendList src="user.friends" nameList="friendList" nameCk="friend"></FriendList>
-              </div>
-              <div>
-                <Button id = "deleteFriend" data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
-                  {t("friends.delete")}
-               </Button>
-              </div>
-            </div>
-          </div>
-        <NotificationContainer/>
+    <div data-testid="friendsTest">
+      <div className="modal-app">
+        <div className="modal-header">
+          <h2>{t("friends.title")}</h2>
+          <hr/>
         </div>
+        <div className="modal-body">
+          <span className="span-friends">{t("friends.addTitle")}</span>
+          <div className="add-friends">
+            <input data-testid="input-add" className="input-add" id="friendId" type="text"
+                   placeholder="e.g. https://user.solid.community/profile/card#me"></input>
+            <Button id="btnAdd" data-testid="btnAddFriend" className="correct-margin" onClick={addFriend}>
+              {t("friends.add")}
+            </Button>
+          </div>
+          <br/>
+          <span className="span-friends">{t("friends.deleteTitle")}</span>
+          <div className="list-friends">
+            <FriendList src="user.friends" nameList="friendList" nameCk="friend"></FriendList>
+          </div>
+          <div>
+            <Button id="deleteFriend" data-testid="btnDeleteFriend" className="correct-margin" onClick={deleteFriend}>
+              {t("friends.delete")}
+            </Button>
+          </div>
+        </div>
+      </div>
+      <NotificationContainer/>
+    </div>
   );
 };
 
