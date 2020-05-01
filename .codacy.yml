@@ -1,2 +1,2 @@
 exclude_paths:
-  - node-solid-server/*
+  - node-solid-server/**
