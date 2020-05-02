@@ -34,9 +34,9 @@ image:Visualize_flowchart.png[]
 ... If user pod's folder "viade/routes" is empty, app will show a warning to the user.
 ... If folder "viade/routes" exist and it's not empty then the combo will be filled with the tracks uploaded in that folder.
 .. If user selected visualize other user's tracks.
-... If folder "public/share" does not exist on user's pod, app will show an error to the user.
-... If user pod's folder "public/share" is empty, app will show a warning to the user.
-... If folder "public/share" exist and it's not empty then the combo will be filled with the tracks uploaded in that folder.
+... If folder "viade/shared" does not exist on user's pod, app will show an error to the user.
+... If user pod's folder "viade/shared" is empty, app will show a warning to the user.
+... If folder "viade/shared" exist and it's not empty then the combo will be filled with the tracks uploaded in that folder.
 . User clicks on "Visualize".
 .. If user has not loaded his tracks from pod, app will not allow the user to click on visualize.
 .. If user has loaded his tracks from pod.
@@ -68,6 +68,7 @@ image:Share_flowchart.png[]
 ... His friend group with whom he wants to share.
 . User clicks on "Share".
 .. If user does not select any friend or friend group to share with, the app will show an error to the user.
+.. If user does not select any track to share, the app will show a warning to the user and not shares the track.
 .. If user has already shared that track with that friend or with a friend who belongs to the selected group, then the app will show a warning to the user.
 .. If something was wrong during the creation of the file in friend's pod, app will show an error to the user.
 .. If everything was good and there were any problems then the app will show a notification of success to the user and share the track with his selected friend.
@@ -90,11 +91,13 @@ image:Myfriends_flowchart.png[]
 .. If user has entered an invalid or 
 non-existent webid, the app will show an error to the user.
 .. If user has entered a webid of an existing friend, the app will show an error to the user.
+.. If app does not have permissions to add a new friend, then it will show an error to the user.
 .. If everything was good the app will add the new friend to user's friend list.
 . If user wants to delete an existing friend.
 .. User has to select the webid of the user that he wants to remove from his friends list.
 .. If user has not selected the webid of the user that he wants to remove, the app will show an error to the user.
-.. If everything was good the app will remove the other user from user's friend list.
+.. If app does not have permissions to delete an existing friend, then it will show an error to the user.
+.. If everything was good the app will delete the other user from user's friend list.
 
 === Fifth Scenario: My groups
 ==== My groups flowchart
@@ -112,6 +115,7 @@ image:Mygroups_flowchart.png[]
 . User clicks on "Create a new group".
 .. If user has not entered the group's name, then the app will show an error to the user.
 .. If user has not selected any friend, then the app will show an error to the user.
+.. If app does not have permissions to create a new group, then it will show an error to the user.
 .. If everything was good the app will add a new friend group.
 
 === Sixth Scenario: My Notifications
@@ -124,11 +128,13 @@ image:Mynotifications_flowchart.png[]
 
 . User logs in to the app.
 . User selects "my notifications" section.
-. App will show the user how many notifications he has unread.
-. User can view all his notifications and mark them as read if he wants.
-. User clicks on the button "Mark".
-.. If user has not selected any notifications, the app the app will show him an error.
-.. If user has selected the notifications that he wants to mark as read, the app will mark and remove them from the user's notification list.
+. App will show the user how many notifications he has currently.
+. User can view all his notifications and filter them if he wants.
+. If user has not any notifications, the app will show a message saying "No notifications available".
+. If user wants to filter his notifications.
+.. User has to enter the criteria by which he wants to filter in the box.
+.. User has to click on "Search".
+.. App will show the notifications that match the entered filter to the user.
 
 === Seventh Scenario: Upload tracks
 ==== Upload tracks flowchart
@@ -145,6 +151,7 @@ image:Upload_flowchart.png[]
 . User selects the track or tracks that he wants to upload from his device.
 . User clicks on "Upload".
 .. If user has not selected any tracks from his device, app will show him an error.
+.. If user has selected a file with an invalid extension, app will show him an error.
 .. If there was any problem during the upload operation, app will show an error to the user.
 .. If there was not any problem during the upload operation, app will upload the track or tracks selected to user's POD and show the user a success notification.
 
