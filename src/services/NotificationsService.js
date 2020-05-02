@@ -1,5 +1,6 @@
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
+import AbstractService from "./AbstractService";
 
 /*
     *****************************************
@@ -9,9 +10,10 @@ import auth from "solid-auth-client";
     * ***************************************
 */
 
-export default class NotificationsService {
+export default class NotificationsService extends AbstractService{
 
   constructor() {
+    super();
     this.error = false;
   }
 
@@ -21,13 +23,7 @@ export default class NotificationsService {
    * @returns {Promise<boolean>}
    */
   async checkContent(path) {
-    await auth.trackSession((session) => {
-      if (!session){
-        return;
-      } else {
-        this.session = session;
-      }
-    });
+    await super.getSession();
     const fc = new FC(auth);
     try {
       let content = await fc.readFolder(path, null);

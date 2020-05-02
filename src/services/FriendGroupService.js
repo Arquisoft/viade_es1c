@@ -1,5 +1,6 @@
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
+import AbstractService from "./AbstractService";
 
 /*
     *****************************************
@@ -9,9 +10,10 @@ import auth from "solid-auth-client";
     * ***************************************
 */
 
-export default class FriendGroupService {
+export default class FriendGroupService extends AbstractService{
 
   constructor() {
+    super();
     this.groupName = null;
     this.urlRouteInPod = "";
     this.groupJsonContent = "";
@@ -26,42 +28,20 @@ export default class FriendGroupService {
 
   /**
    * Aux method that returns the route to groups upload in the pod.
-   * @param {logged in user's webId} webId
    */
-  async getPodRoute(webId) {
+  async getPodRoute() {
     /*
         15 == length("profile/card#me")
         "viade/groups/" == folder where the groups are stored
     */
-    this.urlRouteInPod = webId.slice(0, webId.length - 15).concat("viade/groups/");
+    await super.getSession();
+    this.urlRouteInPod = this.webId.slice(0, this.webId.length - this.viadeRoute).concat("viade/groups/");
     if (this.groupName !== null){
       let name = this.groupName.concat(".json");
       this.urlRouteInPod = this.urlRouteInPod.concat(name);
     }
   }
 
-  /**
-   * Aux method that return the webId of the user who is logged in.
-   * @param {current session} session
-   */
-  async getSessionId(session) {
-    let webId = session.webId;
-    await this.getPodRoute(webId);
-  }
-
-  /**
-   * Aux method to return the session with it's logged in.
-   */
-  async getSession(){
-    await auth.trackSession((session) => {
-      if (!session){
-        return;
-      } else {
-        this.session = session;
-      }
-    });
-    await this.getSessionId(this.session);
-  }
 
   /**
    * Creates the jsonld for group
@@ -95,7 +75,7 @@ export default class FriendGroupService {
    */
   async create(friendGroup, friendsWebIds) {
     this.groupName = friendGroup;
-    await this.getSession();
+    await this.getPodRoute();
     this.generateJsonld(friendsWebIds);
     const fc = new FC(auth);
     try {
@@ -110,7 +90,7 @@ export default class FriendGroupService {
    * Returns groups stored in POD
    */
   async getGroups(){
-    await this.getSession();
+    await this.getPodRoute();
     const fc = new FC(auth);
     try{
       this.folderContent = await fc.readFolder(this.urlRouteInPod, null);
@@ -146,7 +126,7 @@ export default class FriendGroupService {
    * @returns {Promise<void>}
    */
   async getFriendsWebIds(group) {
-    await this.getSession();
+    await this.getPodRoute();
     let url = this.urlRouteInPod.concat(group).concat(".json");
     const fc = new FC(auth);
     this.content = await fc.readFile(url, null);

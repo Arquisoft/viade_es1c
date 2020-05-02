@@ -44,7 +44,7 @@ export default class VisualizeService extends AbstractService{
         const fc = new FC(auth);
         try {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
-            await this.getRoutesNames(this.content);
+            await this.getRoutesNames(this.content, this.extension, this.routes);
         } catch (SFCFetchError) {
             this.errorLoad = true;
         }
@@ -58,7 +58,7 @@ export default class VisualizeService extends AbstractService{
         const fc = new FC(auth);
         try {
             this.content = await fc.readFolder(this.urlRouteInPod, null);
-            await this.getRoutesNames(this.content);
+            await this.getRoutesNames(this.content, this.extension, this.routes);
         } catch (SFCFetchError) {
             this.errorLoad = true;
         }
@@ -78,25 +78,6 @@ export default class VisualizeService extends AbstractService{
         if (this.HTMLElement !== null){
             let selectedRouteName = this.HTMLElement.value.concat(".json");
             this.urlRouteInPod = this.urlRouteInPod.concat(selectedRouteName);
-        }
-    }
-
-    /**
-     * Aux method that extracts track's name without extension
-     * @param {content of readFile} content 
-     */
-    async getRoutesNames(content) {
-        if (content.files.length === 0) {
-            this.warning = "No hay contenido";
-        } else {
-            for (let i = 0; i < content.files.length; i++) {
-                this.extension = content.files[parseInt(i)].name.split(".");
-                if (this.extension[this.extension.length - 1].localeCompare("json") === 0) {
-                    // 5 == length(".json")
-                    this.routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
-                }
-            }
-            this.success = "Cargo rutas";
         }
     }
 
@@ -163,7 +144,8 @@ export default class VisualizeService extends AbstractService{
                             || (extension.localeCompare(".jpeg") === 0)) {
                             try {
                                 this.existsImage = true;
-                                permissionRoute = routeMedia.replace("/viade/resources/", "/card#me").concat(routeMedia);
+                                routeMedia.replace("/viade/resources/", "/card#me");
+                                permissionRoute = routeMedia;
                                 if (await super.readPermission(permissionRoute)){
                                     this.permissionsImage = true;
                                     this.images.push(routeMedia);
@@ -176,7 +158,8 @@ export default class VisualizeService extends AbstractService{
                         } else if (extension.localeCompare(".mp4") === 0) {
                             try {
                                 this.existsVideo = true;
-                                permissionRoute = routeMedia.replace("/viade/resources/", "/card#me").concat(routeMedia);
+                                routeMedia.replace("/viade/resources/", "/card#me");
+                                permissionRoute = routeMedia;
                                 if(await super.readPermission(permissionRoute)){
                                     this.permissionsVideo = true;
                                     this.videos.push(routeMedia);

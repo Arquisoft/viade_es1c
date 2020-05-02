@@ -5,8 +5,14 @@ export default class AbstractService{
 
     constructor(){
         this.webId = null;
+         /*
+            15 == length("profile/card#me")
+            "viade/routes/" == folder where the routes are stored
+        */
         this.viadeRoute = 15;
         this.errorReadPermission = null;
+        this.warning = null;
+        this.success = null;
     }
 
     /**
@@ -14,7 +20,11 @@ export default class AbstractService{
      * @param {current session} session
      */
     getSessionId(session) {
-        this.webId = session.webId;
+        if (session !== null) {
+            this.webId = session.webId;
+        }
+        //Si session es null, significa que no existe un contexto, es decir, se está
+        //cargando únicamente este componente => test unitarios
     }
 
     /**
@@ -57,5 +67,26 @@ export default class AbstractService{
         perm = true;
         }, (err) => this.errorReadPermission = "Error en el permission".concat(err));
         return perm;
+    }
+
+    /**
+     * Aux method that extracts track's name without extension
+     * @param {content of readFile} content 
+     * @param {extension of file} extension
+     * @param {array of tracks} routes
+     */
+    async getRoutesNames(content, extension, routes) {
+        if (content.files.length === 0) {
+            this.warning = "No hay contenido";
+        } else {
+            for (let i = 0; i < content.files.length; i++) {
+                extension = content.files[parseInt(i)].name.split(".");
+                if (extension[extension.length - 1].localeCompare("json") === 0) {
+                    // 5 == length(".json")
+                    routes.push(content.files[parseInt(i, 10)].name.slice(0, content.files[parseInt(i, 10)].name.length - 5));
+                }
+            }
+            this.success = "Cargo rutas";
+        }
     }
 }
