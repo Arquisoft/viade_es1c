@@ -13,7 +13,7 @@ defineFeature((feature), (test) => {
 
             let popup;
             browser = await puppeteer.launch({
-                headless: false,
+                headless: true,
                 defaultViewport: null
             });
             page = await browser.newPage();

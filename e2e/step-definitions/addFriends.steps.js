@@ -12,7 +12,7 @@ defineFeature((feature), (test) => {
     given("The friends page on the application", async() => {
       let popup;
       browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         defaultViewport: null
       });
       page = await browser.newPage();

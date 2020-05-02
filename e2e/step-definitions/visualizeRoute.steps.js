@@ -12,7 +12,7 @@ defineFeature((feature), (test) => {
     given("the 'Visualize' page with the comboBox filled", async() => {
       let popup;
       browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         defaultViewport: null
       });
       page = await browser.newPage();
