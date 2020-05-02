@@ -61,7 +61,7 @@ export default class FriendGroupService extends AbstractService{
     jsonld["name"] = this.groupName;
     let group = [];
     for (let i = 0; i < friendsWebIds.length; i++) {
-        group.push({"url" : friendsWebIds[parseInt(i)]});
+        group.push({"url" : friendsWebIds[parseInt(i, 10)]});
     }
     jsonld["users"] = group;
     this.groupJsonContent = JSON.stringify(jsonld);
@@ -98,7 +98,7 @@ export default class FriendGroupService extends AbstractService{
         this.warning = "No hay grupos";
       } else {
         for (let i = 0; i < this.folderContent.files.length; i++) {
-          this.groupsNames.push(this.folderContent.files[parseInt(i)].name.slice(0, this.folderContent.files[parseInt(i)].name.length - 5));
+          this.groupsNames.push(this.folderContent.files[parseInt(i, 10)].name.slice(0, this.folderContent.files[parseInt(i, 10)].name.length - 5));
         }
       }
     } catch(SFCFetchError){
