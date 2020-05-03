@@ -5,12 +5,12 @@ import "./Login.css";
 
 export const Login = () => {
     const {t} = useTranslation();
-    const publicUrl = "url(".concat(process.env.PUBLIC_URL).concat(`/img/background-image.jpg`).concat(")");
+    const publicUrl = "url(".concat(process.env.PUBLIC_URL).concat("/img/background-image.jpg").concat(")");
 
     return (
       <div id="loginPane" style={{ background: publicUrl
-              , backgroundRepeat: 'no-repeat', height: '100vh', width:'100vw'
-              , backgroundPosition: 'center', backgroundSize: 'cover' }}>
+              , backgroundRepeat: "no-repeat", height: "100vh", width:"100vw"
+              , backgroundPosition: "center", backgroundSize: "cover" }}>
                 <div className="Login">
                     <h2 className = "loginTitle">{t("login.title")}</h2>
                     <div >
@@ -25,11 +25,11 @@ export const Login = () => {
                         target="_blank"
                         className="link"
                     >
-                        {t('login.solidHelp')}
+                        {t("login.solidHelp")}
                     </a>
                 </div>
         </div>
     );
-}
+};
 
 export default Login;

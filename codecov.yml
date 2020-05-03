@@ -1,3 +1,5 @@
 ignore:
   - "src/index.js"
   - "src/services/*"
+  - "src/i18n.js"
+  - "src/tests/jest.config.js"

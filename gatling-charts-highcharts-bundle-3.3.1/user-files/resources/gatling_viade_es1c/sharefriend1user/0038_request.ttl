@@ -1,0 +1,15 @@
+@prefix terms: <http://purl.org/dc/terms#>.
+@prefix as: <https://www.w3.org/ns/activitystreams#>.
+@prefix schema: <http://schema.org/>.
+@prefix solid: <https://www.w3.org/ns/solid/terms#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix : <https://uo265308.solid.community/inbox/1588332986586.ttl>.
+
+<https://uo265308.solid.community/inbox/1588332986586.ttl> a as:Announce;
+    schema:license <https://creativecommons.org/licenses/by-sa/4.0/>;
+    terms:title "Share notification";
+    as:summary "Your friend: https://uo265379.solid.community/profile/card#me, shared this track with you: rutaDePrueba3";
+    as:actor <https://uo265379.solid.community/profile/card#me>;
+    solid:read "false"^^xsd:boolean;
+    as:published "2020-05-01T11:36:26.589Z"^^xsd:dateTime.
