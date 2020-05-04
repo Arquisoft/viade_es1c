@@ -32,8 +32,7 @@ Table 1. Explanation of the black boxes
 
 === Level 2
 
-In this level, we are going to explain in detail the Service black box presented in the previous diagram. The box splits in 5 different services, each
-one correspondent o a specific feature offered to the user in the interface.
+In this level, we are going to explain in detail the Service black box presented in the previous diagram. The box splits in 7 different services. There's an inheritance relation between Abstract Service and the rest of them. This one, provides the common functionality that is required in the rest of the services. Each concrete one, correspons to a specific feature offered to the user in the interface.
 
 image:doc05_whiteBoxServices.jpeg[""]
 
@@ -41,8 +40,10 @@ Table 2. Explanation of the services
 [cols="1,2" options="header"]
 |===
 | **Service** | **Function**
+| Abstract | Common functionality related to the POD which is needed in the rest of services
 | Download | Used when the user wants to obtain a route stored in his pod as a file
 | Friends | Used when the user wants to manage his list of friends (add, delete)
+| Notifications | Used when the user wants to interact with his notifications
 | Share | Used when the user wants to share one of his routes (with all its multimedia) with one of his friends
 | Upload | Used when the user wants to add a new route to his collection
 | Visualize | Used when the user wants to view one of his routes (or a shared one)
