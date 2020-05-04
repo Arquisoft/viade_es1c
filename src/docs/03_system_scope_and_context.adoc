@@ -30,6 +30,7 @@ image:Black_Box_Diagram.png[]
 |Upload new tracks |ViaDe application will *allow* the user to select the track he wants to save on his *SOLID POD* from his device
 |Add/delete friend |ViaDe application will *allow* the user to both add and delete users from his friend list
 |Store user N's/A's shared tracks |ViaDe application will *save* the tracks that other users have shared with him in the user's pod
+|Create groups |ViaDe application will *allow* the user to create his own friend groups.
 |===
 === Technical Context
 
