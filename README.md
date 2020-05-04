@@ -40,3 +40,12 @@ npm start
 ```
 
 And the application should open in your browser.
+
+## Use the Viade app on Docker
+
+If you want to start the application using Docker, you need to run the Docker application, navigate to the Viade_en1c folder and run the following command:
+
+```shell
+docker-compose up -d
+```
+It will show a URL from which you can access the application Viade and another URL to access your Solid POD.
