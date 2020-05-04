@@ -22,19 +22,20 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 ****
 
 === Quality Goals
+ The priority column contains two values, the first for the development team and the second for the client.
 
 [cols=",3,3"]
 |===
 
 |*Ref* |*Goal* |*Priority*
 
-|1 |[.underline]#Security and privacy#: There should be no vulnerable points. |Medium, Medium
+|1 |[.underline]#Security and privacy#: There should be no vulnerable points. |High, High
 
-|2 |[.underline]#Independence online#:  Decentralized architecture in which data is separated from the application  |High, Medium
+|2 |[.underline]#Independence online#:  Decentralized architecture in which data is separated from the application  |High, Low
 
-|3 |[.underline]#Usability#: Easy to use by begginers and non-technical users. |High, Low
+|3 |[.underline]#Usability#: Easy to use by begginers and non-technical users. |Medium, High
 
-|4 |[.underline]#Efficiency#: Answer's capacity. |Medium, Medium
+|4 |[.underline]#Efficiency#: Answer's capacity. |High, High
 
 
 |===
