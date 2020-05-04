@@ -36,6 +36,11 @@ The list of decisions will increase throughout the development of the project. T
 |17/03/2020 |*Structure* |Decoupled application, separating components and functionalities.
 |Improves architecture | |All the development team
 
+|23/04/2020| *Groups* | The implementation of the groups was done following the proposal made in the following issue. https://github.com/Arquisoft/viadeSpec/issues/38
+ It is developed into a Jsonld file containing the webid of the friends and group name| Flexible and allowing modifications| May not be used by all groups | Miguel and Alberto
+
+|30/04/2020 |*Abstract Service* | All the common methods in the services are extracted into an Abstract Service
+| Improvement in code quality and less code duplicationay not be used by all groups | | Miguel and Alberto
 
 |===
 
