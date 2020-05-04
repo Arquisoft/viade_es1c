@@ -23,7 +23,7 @@ The following quality scenarios are studied in a global way, since as it has not
 |Robustness | Robustness in terms of persistence | High, High
 |Security | Data security with Solid PODs | High, High
 |Security | Access control, the application must have a strong access control to avoid bad practices | High, Low
-|Efficiency | The application must respond in less than two seconds to make it more dynamic | High, High
+|Efficiency | The application must respond in less than two seconds to make it more dynamic (except notifications panel, which will depend on the number of them) | High, High
 |Efficiency | The application must upload and download routes in less than two seconds | Medium, High
 |Simplicity | Application with a simple interface | Medium, High 
 |Simplicity | Easy to use application for the user without prior knowledge | Medium, High
