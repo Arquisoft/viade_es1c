@@ -43,6 +43,7 @@ image:Visualize_flowchart.png[]
 ... If app can not read the track, app will show an error to the user.
 ... If app can read the track but, app or user has not permissions to access media content, app will show an error to the user, but it will paint the track on the map.
 ... If app can read the track and all permissions are good, then app will paint the track on the map and show all track's media content.
+. User logs out.
 
 === Third Scenario: Share tracks
 ==== Share tracks flowchart
@@ -72,6 +73,7 @@ image:Share_flowchart.png[]
 .. If user has already shared that track with that friend or with a friend who belongs to the selected group, then the app will show a warning to the user.
 .. If something was wrong during the creation of the file in friend's pod, app will show an error to the user.
 .. If everything was good and there were any problems then the app will show a notification of success to the user and share the track with his selected friend.
+. User logs out.
 
 === Fourth Scenario: My Friends
 ==== My Friends flowchart
@@ -98,6 +100,7 @@ non-existent webid, the app will show an error to the user.
 .. If user has not selected the webid of the user that he wants to remove, the app will show an error to the user.
 .. If app does not have permissions to delete an existing friend, then it will show an error to the user.
 .. If everything was good the app will delete the other user from user's friend list.
+. User logs out.
 
 === Fifth Scenario: My groups
 ==== My groups flowchart
@@ -117,6 +120,7 @@ image:Mygroups_flowchart.png[]
 .. If user has not selected any friend, then the app will show an error to the user.
 .. If app does not have permissions to create a new group, then it will show an error to the user.
 .. If everything was good the app will add a new friend group.
+. User logs out.
 
 === Sixth Scenario: My Notifications
 ==== My Notifications flowchart
@@ -135,6 +139,8 @@ image:Mynotifications_flowchart.png[]
 .. User has to enter the criteria by which he wants to filter in the box.
 .. User has to click on "Search".
 .. App will show the notifications that match the entered filter to the user.
+.. If the filter criteria do not match any notification, app shows an error.
+. User logs out.
 
 === Seventh Scenario: Upload tracks
 ==== Upload tracks flowchart
@@ -154,6 +160,7 @@ image:Upload_flowchart.png[]
 .. If user has selected a file with an invalid extension, app will show him an error.
 .. If there was any problem during the upload operation, app will show an error to the user.
 .. If there was not any problem during the upload operation, app will upload the track or tracks selected to user's POD and show the user a success notification.
+. User logs out.
 
 === Eighth Scenario: Download tracks 
 ==== Download tracks flowchart
@@ -172,3 +179,4 @@ image:Download_flowchart.png[]
 .. If user has not loaded his tracks from his POD, app will show him an error.
 .. If there was any problem during the download operation, app will show an error to the user.
 .. If there was not any problem during the download operation, app will download the selected track to user's device.
+. User logs out.
