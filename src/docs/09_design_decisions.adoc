@@ -10,6 +10,8 @@ The list of decisions will increase throughout the development of the project. T
 
 |*Date* |*Decision* |*Details* |*Advantages* |*Disadvantages* |*Participants*
 
+|04/02/2020 |*Language* |The documentation is in English, and the hole application is interationalized into English too |Internationalization |Need to translate |All the development team
+
 |11/02/2020 | *Design Architecture*  |We base our implementation on MVC, an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. |Improves usability  |Need to have an organized code |All the development team
 
 |11/02/2020 | *Development Environment* |Visual Studio Code and WebStorm. |Simplicity | |All the development team
@@ -21,8 +23,6 @@ The list of decisions will increase throughout the development of the project. T
 |11/02/2020 |*Login* |The login redirects to a Solid popup in order to connect with the customers' PODs |Improves usability | If solid is not working you can not log into the application |All the development team
 
 |11/02/2020 |*Testing* |Implementation of exhaustive Test-driven development (TDD) at the backend and frontend level. The route management system must pass successfully all the tests |Assure that the app works correctly |Need to invert time on exhaustive tests |All the development team
-
-|04/02/2020 |*Language* |The documentation is in English, and the hole application is interationalized into English too |Internationalization |Need to translate |All the development team
 
 |17/03/2020 |*Acceptance tests* |Implementation of Behaviour-Driven Development (BDD) tests using Cucumber.
 |They can be run in front of the client |Time to make them and write the 'User Stories' |All the development team
