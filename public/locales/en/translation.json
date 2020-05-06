@@ -28,7 +28,7 @@
     "origin": "Origin of the track",
     "target": "Track destination",
     "errorTitle": "Error loading",
-    "errorMessage": "Track not found",
+    "errorMessage": "Track invalid format",
     "loadWarningTitle": "Warning when loading",
     "loadWarningMessage": "There is no track in the POD",
     "loadButton": "Load tracks from POD",

@@ -28,7 +28,7 @@
     "origin": "Origen de la ruta",
     "target": "Destino de la ruta",
     "errorTitle": "Error al visualizar",
-    "errorMessage": "No se encuentra la ruta",
+    "errorMessage": "Formato inválido de la ruta",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
     "loadButton": "Cargar rutas del POD",
