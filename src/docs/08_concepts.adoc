@@ -6,7 +6,7 @@ All the components are wrapped up in a LoggedIn label that makes sure the differ
 All the user information is stored in the pod, so that only the own user has access to it.
 
 === Patterns
-We have use a MVC structure, separatting the application into services (they have the functionality of the application), and components (that mix the View part with the Mdel one).
+We have use a MVC structure, separatting the application into services (they have the functionality of the application), and components (that mix the View part with the Model one).
 We have wanted to use this architectural pattern in order to be able to distinguish the appearance, the business (logic) and the persistance.
 
 === Stability and Change 
