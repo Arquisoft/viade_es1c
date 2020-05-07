@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/viade_es1c/static/css/main.d727d704.chunk.css",
+    "main.js": "/viade_es1c/static/js/main.d5231026.chunk.js",
+    "main.js.map": "/viade_es1c/static/js/main.d5231026.chunk.js.map",
+    "runtime-main.js": "/viade_es1c/static/js/runtime-main.b86410ad.js",
+    "runtime-main.js.map": "/viade_es1c/static/js/runtime-main.b86410ad.js.map",
+    "static/css/2.94f2424c.chunk.css": "/viade_es1c/static/css/2.94f2424c.chunk.css",
+    "static/js/2.aa88378f.chunk.js": "/viade_es1c/static/js/2.aa88378f.chunk.js",
+    "static/js/2.aa88378f.chunk.js.map": "/viade_es1c/static/js/2.aa88378f.chunk.js.map",
+    "index.html": "/viade_es1c/index.html",
+    "precache-manifest.c4c6d6aca363cdb61e4ca820657ff518.js": "/viade_es1c/precache-manifest.c4c6d6aca363cdb61e4ca820657ff518.js",
+    "service-worker.js": "/viade_es1c/service-worker.js",
+    "static/css/2.94f2424c.chunk.css.map": "/viade_es1c/static/css/2.94f2424c.chunk.css.map",
+    "static/css/main.d727d704.chunk.css.map": "/viade_es1c/static/css/main.d727d704.chunk.css.map",
+    "static/media/notifications.css": "/viade_es1c/static/media/notification.c0d3c94c.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b86410ad.js",
+    "static/css/2.94f2424c.chunk.css",
+    "static/js/2.aa88378f.chunk.js",
+    "static/css/main.d727d704.chunk.css",
+    "static/js/main.d5231026.chunk.js"
+  ]
+}
