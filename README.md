@@ -44,7 +44,7 @@ And the application should open in your browser.
 
 ## Use the Viade app on Docker
 
-If you want to start the application using Docker, you need to run the Docker application, navigate to the Viade_en1c folder and run the following command:
+If you want to start the application using Docker, you need to run the Docker application, navigate to the Viade_es1c folder and run the following command:
 
 ```shell
 docker-compose up -d
