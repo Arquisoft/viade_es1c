@@ -29,6 +29,8 @@
     "target": "Destino de la ruta",
     "errorTitle": "Error al visualizar",
     "errorMessage": "Formato inválido de la ruta",
+    "errorLoadMessage": "No hay permisos",
+    "errorLoadTitle": "Error al cargar",
     "loadWarningTitle": "Advertencia al cargar",
     "loadWarningMessage": "No existe ninguna ruta en el POD",
     "loadButton": "Cargar rutas del POD",

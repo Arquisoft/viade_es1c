@@ -29,6 +29,8 @@
     "target": "Track destination",
     "errorTitle": "Error loading",
     "errorMessage": "Track invalid format",
+    "errorLoadMessage": "There are no permissions",
+    "errorLoadTitle": "Loading failed",
     "loadWarningTitle": "Warning when loading",
     "loadWarningMessage": "There is no track in the POD",
     "loadButton": "Load tracks from POD",

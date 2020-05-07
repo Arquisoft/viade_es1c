@@ -22,7 +22,9 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 ****
 
 === Quality Goals
- The priority column contains two values, the first for the development team and the second for the client.
+****
+The priority column contains two values, the first for the development team and the second for the client.
+****
 
 [cols=",3,3"]
 |===
@@ -60,6 +62,6 @@ The goal of this project is to create ViaDe. ViaDe is a decentralized route mana
 
 |Wikiloc |Application | Interoperability with ViaDe 
 
-|OpenStreetMap |Free wiki world map |Allows visualization of maps
+|Leaflet |Free wiki world map |Allows visualization of maps
 
 |===

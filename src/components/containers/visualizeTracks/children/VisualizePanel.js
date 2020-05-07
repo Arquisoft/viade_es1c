@@ -108,7 +108,7 @@ export const VisualizePanel = ({service}) => {
     if (vService.warning !== null){
       NotificationManager.warning(t("routes.loadWarningMessage"), t("routes.loadWarningTitle"), 3000);
     } else if (vService.errorLoad || typeof(selectedFilter) === "undefined")  {
-      NotificationManager.error(t("routes.errorMessage"), t("routes.errorTitle"), 3000);
+      NotificationManager.error(t("routes.errorLoadMessage"), t("routes.errorLoadTitle"), 3000);
     } else {
       setDisableVisualize(false);
       NotificationManager.success(t("routes.successLoadMessage"), t("routes.successLoadTitle"), 2000);
